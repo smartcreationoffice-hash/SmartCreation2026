@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -13,15 +14,26 @@ import {
 import { m, AnimatePresence } from "framer-motion";
 import { navigation, CONTACT, type NavItem } from "@/lib/data";
 import { Logo } from "@/components/logo";
-import { ConsultationModal } from "@/components/consultation-modal";
 import { cn } from "@/lib/utils";
+
+// Lazy-load the modal so libphonenumber-js (~75 KB) and its dependencies
+// only ship when the user actually clicks "Book consultation".
+const ConsultationModal = dynamic(
+  () => import("@/components/consultation-modal").then((m) => ({ default: m.ConsultationModal })),
+  { ssr: false },
+);
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMega, setActiveMega] = useState<string | null>(null);
   const [isClosing, setIsClosing] = useState(false);
-  const [consultOpen, setConsultOpen] = useState(false);
+  const [consultOpen, setConsultOpenInner] = useState(false);
+  const [consultEverOpened, setConsultEverOpened] = useState(false);
+  const setConsultOpen = (open: boolean) => {
+    if (open) setConsultEverOpened(true);
+    setConsultOpenInner(open);
+  };
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const exitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -31,21 +43,36 @@ export function SiteHeader() {
   const inverted = !scrolled;
 
   useEffect(() => {
-    const update = () => {
-      const dark = document.querySelector<HTMLElement>("[data-dark-hero]");
-      if (!dark) {
-        setScrolled(true);
-        return;
+    // Cache the dark-hero element so each scroll event doesn't re-query the DOM.
+    let dark = document.querySelector<HTMLElement>("[data-dark-hero]");
+    let raf = 0;
+    let lastScrolled: boolean | null = null;
+
+    const apply = () => {
+      raf = 0;
+      // Re-query lazily in case the page swapped (e.g. SPA nav).
+      if (!dark || !dark.isConnected) {
+        dark = document.querySelector<HTMLElement>("[data-dark-hero]");
       }
-      const rect = dark.getBoundingClientRect();
-      setScrolled(rect.bottom < 80);
+      const next = dark ? dark.getBoundingClientRect().bottom < 80 : true;
+      if (next !== lastScrolled) {
+        lastScrolled = next;
+        setScrolled(next);
+      }
     };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
+
+    const onScrollOrResize = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(apply);
+    };
+
+    apply();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize, { passive: true });
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
     };
   }, []);
 
@@ -241,11 +268,14 @@ export function SiteHeader() {
       )}
     </AnimatePresence>
 
-    {/* Book-consultation modal — controlled by the header button + mobile drawer CTA */}
-    <ConsultationModal
-      open={consultOpen}
-      onClose={() => setConsultOpen(false)}
-    />
+    {/* Book-consultation modal — only mounts after first open so the heavy
+        phone-input + libphonenumber-js code doesn't ship on initial load. */}
+    {consultEverOpened && (
+      <ConsultationModal
+        open={consultOpen}
+        onClose={() => setConsultOpen(false)}
+      />
+    )}
     </>
   );
 }

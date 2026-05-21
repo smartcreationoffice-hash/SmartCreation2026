@@ -13,12 +13,29 @@ export function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY > window.innerHeight * 0.6);
+    let raf = 0;
+    let lastVisible: boolean | null = null;
+
+    const apply = () => {
+      raf = 0;
+      const next = window.scrollY > window.innerHeight * 0.6;
+      if (next !== lastVisible) {
+        lastVisible = next;
+        setVisible(next);
+      }
     };
-    onScroll();
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(apply);
+    };
+
+    apply();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   function handleClick() {
