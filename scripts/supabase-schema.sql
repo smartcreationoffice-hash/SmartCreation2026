@@ -142,6 +142,38 @@ create trigger sc_popups_updated_at
   for each row execute function public.sc_set_updated_at();
 
 -- ─────────────────────────────────────────────────────────────────────
+-- sc_insights — long-form blog posts editable from admin
+-- ─────────────────────────────────────────────────────────────────────
+
+create table if not exists public.sc_insights (
+  id                   bigserial   primary key,
+  slug                 text        not null unique,
+  title                text        not null,
+  excerpt              text        not null default '',
+  meta_title           text        not null default '',
+  meta_description     text        not null default '',
+  primary_keyword      text        not null default '',
+  secondary_keywords   text[]      not null default '{}',
+  category             text        not null default 'Insight',
+  date                 date        not null default current_date,
+  read_minutes         integer     not null default 0,
+  cover                text        not null default '',
+  body                 text        not null default '',
+  faqs                 jsonb       not null default '[]'::jsonb,
+  status               text        not null default 'published',
+  created_at           timestamptz not null default now(),
+  updated_at           timestamptz not null default now()
+);
+
+create index if not exists sc_insights_status_date_idx
+  on public.sc_insights (status, date desc);
+
+drop trigger if exists sc_insights_updated_at on public.sc_insights;
+create trigger sc_insights_updated_at
+  before update on public.sc_insights
+  for each row execute function public.sc_set_updated_at();
+
+-- ─────────────────────────────────────────────────────────────────────
 -- Row Level Security — anon can read everything, only service role writes
 -- ─────────────────────────────────────────────────────────────────────
 
@@ -149,11 +181,13 @@ alter table public.sc_centres    enable row level security;
 alter table public.sc_properties enable row level security;
 alter table public.sc_team       enable row level security;
 alter table public.sc_popups     enable row level security;
+alter table public.sc_insights   enable row level security;
 
 drop policy if exists "sc_centres anon read"    on public.sc_centres;
 drop policy if exists "sc_properties anon read" on public.sc_properties;
 drop policy if exists "sc_team anon read"       on public.sc_team;
 drop policy if exists "sc_popups anon read"     on public.sc_popups;
+drop policy if exists "sc_insights anon read"   on public.sc_insights;
 
 create policy "sc_centres anon read"
   on public.sc_centres for select
@@ -174,6 +208,11 @@ create policy "sc_popups anon read"
   on public.sc_popups for select
   to anon, authenticated
   using (active = true);
+
+create policy "sc_insights anon read"
+  on public.sc_insights for select
+  to anon, authenticated
+  using (status = 'published');
 
 -- ─────────────────────────────────────────────────────────────────────
 -- Storage bucket — sc-media (public)
