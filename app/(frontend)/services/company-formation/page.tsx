@@ -54,7 +54,7 @@ const sections: ServiceSectionData[] = [
     steps: [
       "Pick the activity and legal form (LLC, sole estab., branch).",
       "Reserve trade name, get DET initial approval.",
-      "Sign Ejari from one of our centres and notarise the MOA.",
+      "Sign Ejari and notarise the MOA.",
       "Trade licence issued; open immigration file and start hiring.",
     ],
   },
