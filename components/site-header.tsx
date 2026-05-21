@@ -336,10 +336,11 @@ function MegaPanel({
   return (
     <div
       className={cn(
-        "relative rounded-2xl border shadow-[0_40px_100px_-20px_rgba(0,0,0,0.45)] overflow-hidden",
+        "relative rounded-2xl border shadow-[0_40px_100px_-20px_rgba(0,0,0,0.55)] overflow-hidden",
+        "[backdrop-filter:blur(80px)_saturate(200%)_brightness(110%)] [-webkit-backdrop-filter:blur(80px)_saturate(200%)_brightness(110%)]",
         inverted
-          ? "bg-ink/92 border-paper/10 backdrop-blur-2xl text-paper"
-          : "bg-paper-soft/95 border-ink/10 backdrop-blur-2xl text-ink"
+          ? "bg-ink/[0.98] border-paper/15 text-paper"
+          : "bg-paper/[0.98] border-ink/10 text-ink"
       )}
     >
       {/* Subtle brand glow */}

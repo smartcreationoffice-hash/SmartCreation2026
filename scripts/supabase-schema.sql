@@ -114,16 +114,46 @@ create trigger sc_team_updated_at
   for each row execute function public.sc_set_updated_at();
 
 -- ─────────────────────────────────────────────────────────────────────
+-- sc_popups — promotional / announcement modals editable from admin
+-- ─────────────────────────────────────────────────────────────────────
+
+create table if not exists public.sc_popups (
+  id             bigserial   primary key,
+  title          text        not null,
+  subtitle       text,
+  eyebrow        text,                                -- small label above title (e.g. "LIMITED TIME")
+  image_url      text,
+  cta_label      text,
+  cta_href       text,
+  target_pages   text        not null default '*',    -- '*' for all pages, or comma-separated paths like '/, /calculator'
+  delay_seconds  integer     not null default 6,
+  active         boolean     not null default false,
+  display_order  integer     not null default 100,    -- when multiple active popups match, lowest wins
+  created_at     timestamptz not null default now(),
+  updated_at     timestamptz not null default now()
+);
+
+create index if not exists sc_popups_active_idx
+  on public.sc_popups (active, display_order);
+
+drop trigger if exists sc_popups_updated_at on public.sc_popups;
+create trigger sc_popups_updated_at
+  before update on public.sc_popups
+  for each row execute function public.sc_set_updated_at();
+
+-- ─────────────────────────────────────────────────────────────────────
 -- Row Level Security — anon can read everything, only service role writes
 -- ─────────────────────────────────────────────────────────────────────
 
 alter table public.sc_centres    enable row level security;
 alter table public.sc_properties enable row level security;
 alter table public.sc_team       enable row level security;
+alter table public.sc_popups     enable row level security;
 
 drop policy if exists "sc_centres anon read"    on public.sc_centres;
 drop policy if exists "sc_properties anon read" on public.sc_properties;
 drop policy if exists "sc_team anon read"       on public.sc_team;
+drop policy if exists "sc_popups anon read"     on public.sc_popups;
 
 create policy "sc_centres anon read"
   on public.sc_centres for select
@@ -139,6 +169,11 @@ create policy "sc_team anon read"
   on public.sc_team for select
   to anon, authenticated
   using (visible = true);
+
+create policy "sc_popups anon read"
+  on public.sc_popups for select
+  to anon, authenticated
+  using (active = true);
 
 -- ─────────────────────────────────────────────────────────────────────
 -- Storage bucket — sc-media (public)

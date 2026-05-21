@@ -3,7 +3,8 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Star } from "lucide-react";
+import { googleRating, trustpilotRating } from "@/lib/data";
 
 const ServiceDonut = dynamic(
   () =>
@@ -130,7 +131,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-7 max-w-[34rem] text-[1.05rem] md:text-[1.12rem] leading-relaxed text-paper/70 text-pretty">
-              Smart Creation Group brings four Dubai business centres together with company formation, technology, real estate, holiday rentals, transport and contracting. One trusted partner since 2013.
+              Smart Creation Group brings six Dubai business centres together with company formation, technology, real estate, holiday rentals, transport and contracting. One trusted partner since 2013.
             </p>
 
             <div className="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
@@ -148,6 +149,39 @@ export function Hero() {
                 <Play className="h-3 w-3 fill-brand text-brand" strokeWidth={0} />
                 Explore services
               </Link>
+            </div>
+
+            {/* Rating chips */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <div
+                className="inline-flex items-center gap-2.5"
+                aria-label={`Google reviews · ${googleRating.average} out of 5`}
+              >
+                <HeroGoogleLogo className="h-5 w-5 shrink-0" />
+                <div className="flex items-center gap-1.5">
+                  <StarRow value={googleRating.average} />
+                  <span className="text-[0.92rem] font-semibold text-paper tabular-nums">
+                    {googleRating.average.toFixed(1)}
+                  </span>
+                  <span className="text-[0.85rem] text-paper/65">Google</span>
+                </div>
+              </div>
+
+              <span aria-hidden className="hidden sm:block h-4 w-px bg-paper/15" />
+
+              <div
+                className="inline-flex items-center gap-2.5"
+                aria-label={`Trustpilot · ${trustpilotRating.average} out of 5`}
+              >
+                <TrustpilotMark className="h-5 w-5 shrink-0" />
+                <div className="flex items-center gap-1.5">
+                  <StarRow value={trustpilotRating.average} variant="trustpilot" />
+                  <span className="text-[0.92rem] font-semibold text-paper tabular-nums">
+                    {trustpilotRating.average.toFixed(1)}
+                  </span>
+                  <span className="text-[0.85rem] text-paper/65">Trustpilot</span>
+                </div>
+              </div>
             </div>
 
             {/* Office status */}
@@ -192,5 +226,58 @@ export function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function StarRow({ value, variant = "google" }: { value: number; variant?: "google" | "trustpilot" }) {
+  const full = Math.floor(value);
+  const hasHalf = value - full >= 0.25 && value - full < 0.75;
+  const filledCount = hasHalf ? full + 0.5 : Math.round(value);
+  const color = variant === "trustpilot" ? "#00B67A" : "#FBBC04";
+
+  return (
+    <span className="inline-flex items-center gap-[2px]" aria-hidden>
+      {Array.from({ length: 5 }).map((_, i) => {
+        const isFull = i < Math.floor(filledCount);
+        const isHalf = !isFull && hasHalf && i === full;
+        return (
+          <span key={i} className="relative inline-flex">
+            <Star className="h-3.5 w-3.5 text-paper/25" strokeWidth={1.5} fill="currentColor" />
+            {(isFull || isHalf) && (
+              <span
+                className="absolute inset-0 overflow-hidden"
+                style={{ width: isHalf ? "50%" : "100%" }}
+              >
+                <Star
+                  className="h-3.5 w-3.5"
+                  strokeWidth={1.5}
+                  fill={color}
+                  color={color}
+                />
+              </span>
+            )}
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+
+function HeroGoogleLogo({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
+      <path fill="#4285F4" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6 8-11.3 8a12 12 0 1 1 0-24c3 0 5.8 1.1 7.9 2.9l5.7-5.7A20 20 0 1 0 44 24c0-1.3-.1-2.6-.4-3.9z" />
+      <path fill="#34A853" d="M6.3 14.7l6.6 4.8A12 12 0 0 1 24 12c3 0 5.8 1.1 7.9 2.9l5.7-5.7A20 20 0 0 0 6.3 14.7z" />
+      <path fill="#FBBC05" d="M24 44a20 20 0 0 0 13.5-5.2l-6.2-5.3a12 12 0 0 1-18-6.3l-6.6 5.1A20 20 0 0 0 24 44z" />
+      <path fill="#EA4335" d="M43.6 20.1H42V20H24v8h11.3a12 12 0 0 1-4 5.5l6.2 5.3c-.4.4 6.6-4.9 6.6-14.8 0-1.3-.1-2.6-.5-3.9z" />
+    </svg>
+  );
+}
+
+function TrustpilotMark({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
+      <path fill="#00B67A" d="M12 0l2.95 8.55H24l-7.36 5.34L19.55 24 12 18.55 4.45 24l2.91-10.11L0 8.55h9.05z" />
+    </svg>
   );
 }

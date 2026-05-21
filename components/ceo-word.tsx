@@ -41,7 +41,7 @@ export function CeoWord() {
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-paper/10 bg-ink-soft">
               <Image
                 src="/ceo-asad-hashmi.webp"
-                alt="Asad Hashmi · CEO, Smart Creation Group of Companies"
+                alt="Asad Hashmi · CEO, Smart Creation Group"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover"
@@ -75,7 +75,7 @@ export function CeoWord() {
               <p>
                 <strong className="text-paper font-semibold">Asad Hashmi</strong> is the
                 CEO of{" "}
-                <strong className="text-paper font-semibold">Smart Creation Group of Companies</strong>,
+                <strong className="text-paper font-semibold">Smart Creation Group</strong>,
                 a multi-sector group spanning business setup, real estate, technology,
                 hospitality, transport and contracting across the UAE, Canada and Pakistan.
                 With a proven track record of success, Asad leads the group with a
@@ -106,7 +106,7 @@ export function CeoWord() {
                 Asad Hashmi
               </div>
               <div className="mt-1.5 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-mist">
-                CEO · Smart Creation Group of Companies
+                CEO · Smart Creation Group
               </div>
             </div>
           </div>

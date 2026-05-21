@@ -446,7 +446,7 @@ export function ServiceSection({
               </div>
             </div>
             <div className="hidden md:block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-stone">
-              4 stages
+              {s.steps.length} stages
             </div>
           </m.div>
 
@@ -474,7 +474,7 @@ export function ServiceSection({
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-stone">
-                    Stage {i + 1} / 4
+                    Stage {i + 1} / {s.steps.length}
                   </span>
                 </div>
                 <p className="text-[0.95rem] leading-snug text-ink">{step}</p>

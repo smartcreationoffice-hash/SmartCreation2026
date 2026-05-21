@@ -178,7 +178,7 @@ export const navigation: NavItem[] = [
             { label: "Smart Holiday Homes",      href: "/group-companies#smart-holiday-homes",    desc: "Hospitality · UAE" },
             { label: "Intercity Bus Service",    href: "/group-companies#intercity-bus",          desc: "Transport · Canada" },
             { label: "MM Contractor",            href: "/group-companies#mm-contractor",          desc: "Construction · Pakistan" },
-            { label: "Immersion Social",         href: "/group-companies#immersion-social",       desc: "Experiences · UAE" },
+            { label: "Immersion Social",         href: "/group-companies#immersion-social",       desc: "Social Media · UAE" },
           ],
         },
       ],
@@ -655,7 +655,7 @@ export type Differentiator = {
 export const differentiators: Differentiator[] = [
   {
     index: "01",
-    title: "Four real offices, not a PO box",
+    title: "Six real offices, not a PO box",
     body:
       "We own and operate six business centres across Dubai: Damac Executive Heights (Tecom), Iridium Tower (Al Barsha), Al Hamriya (Bur Dubai), Salah Al Din Street (Al Muraqabat), Umm Ramool (Smart Founders) and Naif/Deira (Abna Rashid). When investors or clients visit you, they walk into a professional address, not a virtual mailbox.",
   },
@@ -738,12 +738,18 @@ export type Testimonial = {
 };
 
 export const googleRating = {
-  average: 4.9,
+  average: 4.8,
   count: 327,
   /** Public Google Business profile (reads all reviews). */
-  profileUrl: "https://share.google/1dajNlp5Rf9qaLxXv",
+  profileUrl: "https://share.google/b0Fdxmp4HEPomOhAJ",
   /** Direct "write a review" link from Google Business. */
   writeReviewUrl: "https://g.page/r/CTJ-ZCcQwEuBEBM/review",
+};
+
+export const trustpilotRating = {
+  average: 4.8,
+  count: 50,
+  profileUrl: "https://www.trustpilot.com/review/thesmartcreation.com",
 };
 
 export const testimonials: Testimonial[] = [

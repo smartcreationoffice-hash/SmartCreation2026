@@ -15,7 +15,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Smart Creation Group of Companies (&ldquo;Smart Creation&rdquo;,
+          Smart Creation Group (&ldquo;Smart Creation&rdquo;,
           &ldquo;we&rdquo;, &ldquo;our&rdquo; or &ldquo;us&rdquo;) is a U.A.E.
           business-setup consultancy operating six owned business centres
           across Dubai and serving founders, family offices and multinationals

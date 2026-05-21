@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 import { faqs } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/section-header";
 import { cn } from "@/lib/utils";
@@ -47,11 +47,15 @@ export function FAQ() {
                       </span>
                       <span
                         className={cn(
-                          "shrink-0 flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 bg-paper text-ink transition-all",
-                          isOpen && "bg-ink text-paper border-ink rotate-45"
+                          "shrink-0 flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 bg-paper text-ink transition-colors",
+                          isOpen && "bg-ink text-paper border-ink"
                         )}
                       >
-                        <Plus className="h-4 w-4" strokeWidth={1.8} />
+                        {isOpen ? (
+                          <Minus className="h-4 w-4" strokeWidth={1.8} />
+                        ) : (
+                          <Plus className="h-4 w-4" strokeWidth={1.8} />
+                        )}
                       </span>
                     </button>
                     <AnimatePresence initial={false}>

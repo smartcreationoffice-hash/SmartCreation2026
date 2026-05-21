@@ -347,3 +347,78 @@ export async function deleteInsightAction(formData: FormData) {
   revalidatePath("/");
   redirect("/admin/insights");
 }
+
+/* ── Popups ────────────────────────────────────────────────────────── */
+
+export async function savePopupAction(formData: FormData) {
+  await requireAdmin();
+  const id = formData.get("id") ? Number(formData.get("id")) : null;
+
+  // Image is uploaded via the HeroImagePicker; we just read the resulting URL.
+  const imageUrl = String(formData.get("image_url") ?? "").trim() || null;
+
+  const title = String(formData.get("title") ?? "").trim();
+  if (!title) throw new Error("Title is required");
+
+  const delaySecondsRaw = Number(formData.get("delay_seconds") || 6);
+  const delaySeconds = Number.isFinite(delaySecondsRaw)
+    ? Math.max(0, Math.min(60, Math.round(delaySecondsRaw)))
+    : 6;
+
+  const displayOrderRaw = Number(formData.get("display_order") || 100);
+  const displayOrder = Number.isFinite(displayOrderRaw)
+    ? Math.max(0, Math.round(displayOrderRaw))
+    : 100;
+
+  // Normalise target_pages: trim, drop empties; preserve '*' if used.
+  const rawTargets = String(formData.get("target_pages") ?? "").trim();
+  const targetPages = rawTargets
+    ? rawTargets
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+        .join(", ")
+    : "*";
+
+  const data = {
+    title,
+    subtitle: String(formData.get("subtitle") ?? "").trim() || null,
+    eyebrow: String(formData.get("eyebrow") ?? "").trim() || null,
+    image_url: imageUrl,
+    cta_label: String(formData.get("cta_label") ?? "").trim() || null,
+    cta_href: String(formData.get("cta_href") ?? "").trim() || null,
+    target_pages: targetPages || "*",
+    delay_seconds: delaySeconds,
+    active: formData.get("active") === "on",
+    display_order: displayOrder,
+    updated_at: new Date().toISOString(),
+  };
+
+  if (id) {
+    const { error } = await supabaseAdmin
+      .from("sc_popups")
+      .update(data)
+      .eq("id", id);
+    if (error) throw new Error(error.message);
+  } else {
+    const { error } = await supabaseAdmin.from("sc_popups").insert(data);
+    if (error) throw new Error(error.message);
+  }
+  revalidatePath("/admin/popups");
+  revalidatePath("/");
+  redirect("/admin/popups");
+}
+
+export async function deletePopupAction(formData: FormData) {
+  await requireAdmin();
+  const id = Number(formData.get("id"));
+  if (!id) return;
+  const { error } = await supabaseAdmin
+    .from("sc_popups")
+    .delete()
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/popups");
+  revalidatePath("/");
+  redirect("/admin/popups");
+}

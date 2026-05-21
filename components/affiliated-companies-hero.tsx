@@ -28,7 +28,7 @@ const pillars: Pillar[] = [
   { id: "smart-holiday-homes",     index: "03", label: "Hospitality",     desc: "Smart Holiday Homes",         icon: Home },
   { id: "intercity-bus",           index: "04", label: "Transport",       desc: "Intercity Bus, Canada",       icon: Bus },
   { id: "mm-contractor",           index: "05", label: "Contracting",     desc: "MM Contractor, Pakistan",     icon: HardHat },
-  { id: "immersion-social",        index: "06", label: "Experiences",     desc: "Immersion Social",            icon: Sparkles },
+  { id: "immersion-social",        index: "06", label: "Social Media",    desc: "Immersion Social",            icon: Sparkles },
 ];
 
 const trust = [

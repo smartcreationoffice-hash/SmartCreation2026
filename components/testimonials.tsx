@@ -96,12 +96,9 @@ export function Testimonials() {
                 <GoogleLogo className="h-5 w-5 shrink-0 mt-0.5" />
               </div>
 
-              {/* Star rating + date */}
+              {/* Star rating */}
               <div className="mt-4 flex items-center gap-2.5">
                 <Stars rating={t.rating} size="sm" />
-                <span className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-stone">
-                  {t.date}
-                </span>
               </div>
 
               {/* Review body */}

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { LegalPageLayout, type LegalSection } from "@/components/legal-page-layout";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Smart Creation Group",
+  title: "Terms of Service · Smart Creation Group",
   description:
-    "The terms that govern the use of thesmartcreation.com and the services we provide — engagement, fees, intellectual property, liability and the law applied.",
+    "The terms that govern the use of thesmartcreation.com and the services we provide: engagement, fees, intellectual property, liability and the law applied.",
   alternates: { canonical: "/terms" },
 };
 
@@ -16,7 +16,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           By accessing thesmartcreation.com or engaging Smart Creation Group
-          of Companies (&ldquo;Smart Creation&rdquo;, &ldquo;we&rdquo;,
+          (&ldquo;Smart Creation&rdquo;, &ldquo;we&rdquo;,
           &ldquo;our&rdquo;) to deliver any of our services, you agree to
           these Terms of Service together with the separate{" "}
           <a href="/privacy" className="underline hover:text-ink">
@@ -42,8 +42,8 @@ const sections: LegalSection[] = [
           visa, accounting, audit, Corporate Tax, real-estate and related
           professional services. The exact scope of any engagement is set out
           in a written proposal or service agreement that we send before the
-          work begins. That document — together with any change order signed
-          afterwards — governs what we deliver.
+          work begins. That document, together with any change order signed
+          afterwards, governs what we deliver.
         </p>
         <p>
           We do not provide legal, tax or accounting advice within the meaning
@@ -211,7 +211,7 @@ export default function TermsPage() {
     <LegalPageLayout
       eyebrow="Terms"
       title="Terms of Service"
-      intro="The terms below govern the use of thesmartcreation.com and the engagements we deliver. Please read them carefully — they explain what we do, what we don't, and who is responsible for what."
+      intro="The terms below govern the use of thesmartcreation.com and the engagements we deliver. Please read them carefully: they explain what we do, what we don't, and who is responsible for what."
       lastUpdated="15 May 2026"
       sections={sections}
       current="terms"

@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
 import { LazyMotionProvider } from "@/components/lazy-motion-provider";
+import { PromoPopup } from "@/components/promo-popup";
+import { getActivePopups } from "@/lib/popup";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -110,9 +112,14 @@ const jsonLd = {
       description:
         "Smart Creation Group of Companies, a multi-sector group operating four Dubai business centres alongside company formation, real estate, technology (Next Journey), holiday rentals, transport and contracting across the UAE, Canada and Pakistan.",
       sameAs: [
-        "https://www.linkedin.com/company/smartbusinesscreation",
-        "https://www.instagram.com/smartbusinesscreation",
-        "https://www.facebook.com/smartbusinesscreation",
+        "https://www.linkedin.com/company/smartbusinesscreation/",
+        "https://www.instagram.com/smartcreationuae",
+        "https://www.facebook.com/smartbusinesscreationuae/",
+        "https://www.youtube.com/@SmartBusinessCreation",
+        "https://www.tiktok.com/@smartcreationuae",
+        "https://www.threads.com/@smartcreationuae",
+        "https://x.com/smartcreationae",
+        "https://whatsapp.com/channel/0029Va7wizZKwqSORXwdtQ0H",
       ],
       subOrganization: [
         { "@type": "Organization", name: "Smart Creation Business Center" },
@@ -186,11 +193,12 @@ const jsonLd = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const popups = await getActivePopups();
   return (
     <html
       lang="en"
@@ -220,6 +228,7 @@ export default function RootLayout({
           <SiteFooter />
           <WhatsAppFab />
           <ScrollToTop />
+          <PromoPopup popups={popups} />
         </LazyMotionProvider>
       </body>
     </html>
