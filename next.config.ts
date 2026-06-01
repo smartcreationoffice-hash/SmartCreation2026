@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },
   images: {
+    // Hobby-plan image-optimization limits cause 402s site-wide once exhausted.
+    // Bypass Vercel's optimizer entirely — Supabase serves the originals directly.
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
