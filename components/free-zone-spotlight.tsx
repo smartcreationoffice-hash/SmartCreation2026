@@ -61,7 +61,7 @@ export function FreeZoneSpotlight({
     <section
       id={z.id}
       className={cn(
-        "relative scroll-mt-28 md:scroll-mt-32 py-20 md:py-28 overflow-hidden border-t border-ink/8",
+        "relative scroll-mt-28 md:scroll-mt-32 py-14 md:py-20 overflow-hidden border-t border-ink/8",
         onSoft ? "bg-paper-soft" : "bg-paper",
       )}
     >

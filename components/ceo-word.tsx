@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function CeoWord() {
   return (
-    <section id="ceo-word" className="relative py-24 md:py-36 bg-ink text-paper overflow-hidden">
+    <section id="ceo-word" className="relative py-16 md:py-24 bg-ink text-paper overflow-hidden">
       {/* Editorial background accents */}
       <div
         aria-hidden

@@ -152,7 +152,7 @@ export function GroupOfCompanies() {
     <section
       ref={sectionRef}
       id="group"
-      className="relative py-24 md:py-36 bg-ink text-paper overflow-hidden"
+      className="relative py-16 md:py-24 bg-ink text-paper overflow-hidden"
     >
       {/* Grid texture */}
       <div
@@ -321,7 +321,10 @@ export function GroupOfCompanies() {
                         alt={`${c.name} logo`}
                         width={120}
                         height={56}
-                        className="max-h-full max-w-full w-auto h-auto object-contain"
+                        className={
+                          "max-h-full max-w-full w-auto h-auto object-contain " +
+                          (c.id === "mm-contractor" ? "scale-[2.1]" : c.id === "intercity-bus" ? "scale-110" : "")
+                        }
                       />
                     ) : (
                       <c.icon

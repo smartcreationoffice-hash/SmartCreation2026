@@ -29,7 +29,7 @@ const pillars = [
 
 export function AboutMission() {
   return (
-    <section className="relative py-20 md:py-28 bg-paper overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-paper overflow-hidden">
       {/* Soft brand pool */}
       <div
         aria-hidden

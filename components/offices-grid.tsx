@@ -89,7 +89,7 @@ export function OfficesGrid({
   const moreCount = Math.max(0, totalForFilter - visible.length);
 
   return (
-    <section id="offices" className="relative py-24 md:py-36 bg-paper-deep">
+    <section id="offices" className="relative py-16 md:py-24 bg-paper-deep">
       <div className="container-edit">
         <div className="grid grid-cols-12 gap-x-4 md:gap-x-8 gap-y-10 items-end mb-12 md:mb-16">
           <div className="col-span-12 lg:col-span-7">

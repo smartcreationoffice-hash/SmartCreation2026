@@ -90,7 +90,7 @@ export function AboutJourney() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 bg-paper-soft border-y border-ink/8 overflow-hidden"
+      className="relative py-14 md:py-20 bg-paper-soft border-y border-ink/8 overflow-hidden"
     >
       {/* Soft brand pool */}
       <div

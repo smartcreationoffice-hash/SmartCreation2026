@@ -67,7 +67,7 @@ const items: Diff[] = [
 
 export function AboutDifferentiators() {
   return (
-    <section className="relative py-20 md:py-28 bg-paper border-y border-ink/8 overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-paper border-y border-ink/8 overflow-hidden">
       {/* Soft brand pool */}
       <div
         aria-hidden

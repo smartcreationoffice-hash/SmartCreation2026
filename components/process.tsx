@@ -27,7 +27,7 @@ export function Process() {
   const lineScale = useTransform(lineProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="process" className="relative py-24 md:py-36 bg-ink text-paper overflow-hidden">
+    <section id="process" className="relative py-16 md:py-24 bg-ink text-paper overflow-hidden">
       {/* Subtle backdrop */}
       <div
         aria-hidden

@@ -68,7 +68,7 @@ const countries: Country[] = [
 
 export function AboutPresence() {
   return (
-    <section className="relative py-20 md:py-28 bg-paper border-t border-ink/8 overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-paper border-t border-ink/8 overflow-hidden">
       {/* Soft brand pool */}
       <div
         aria-hidden

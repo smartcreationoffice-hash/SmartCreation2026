@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 md:py-36">
+    <section id="testimonials" className="relative py-16 md:py-24">
       <div className="container-edit">
         <div className="grid grid-cols-12 gap-x-4 md:gap-x-8 gap-y-10 items-end mb-14 md:mb-20">
           <div className="col-span-12 lg:col-span-7">

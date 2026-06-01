@@ -295,7 +295,7 @@ export const groupCenters: GroupCenter[] = [
     logo: "/centres/smart-founders.webp",
     city: "Dubai",
     country: "UAE",
-    address: "Smart Founders Centre, Dubai, U.A.E.",
+    address: "Umm Ramool 1, Nad Al Hamar Road, Umm Ramool, Dubai",
     summary:
       "A dedicated workspace for early-stage founders and small teams: desks, meeting space and back-office support tailored to new businesses getting off the ground.",
     highlights: [

@@ -5,7 +5,7 @@ import { Logo } from "@/components/logo";
 
 export function FinalCTA() {
   return (
-    <section id="contact-cta" className="relative py-24 md:py-36 bg-ink text-paper overflow-hidden">
+    <section id="contact-cta" className="relative py-16 md:py-24 bg-ink text-paper overflow-hidden">
       {/* Ambient decoration */}
       <div
         aria-hidden

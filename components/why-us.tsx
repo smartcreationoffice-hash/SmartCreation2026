@@ -23,7 +23,7 @@ const cardImages: Record<string, { src: string; alt: string }> = {
 
 export function WhyUs() {
   return (
-    <section id="why" className="relative py-24 md:py-36">
+    <section id="why" className="relative py-16 md:py-24">
       <div className="container-edit">
         <div className="max-w-3xl mb-14 md:mb-20">
           <SectionHeader

@@ -72,7 +72,7 @@ export function FreeZonesExplorer() {
   }, [filter]);
 
   return (
-    <section id="zones" className="relative py-20 md:py-28 bg-paper">
+    <section id="zones" className="relative py-14 md:py-20 bg-paper">
       {/* Soft brand pool */}
       <div
         aria-hidden
@@ -301,7 +301,7 @@ export function FreeZoneMethod() {
   ];
 
   return (
-    <section className="relative py-20 md:py-28 bg-paper-soft border-t border-ink/8">
+    <section className="relative py-14 md:py-20 bg-paper-soft border-t border-ink/8">
       <div className="container-edit relative">
         <div className="max-w-3xl mb-10 md:mb-14">
           <div className="flex items-center gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-4">

@@ -3,7 +3,7 @@ import { stats } from "@/lib/data";
 
 export function Stats() {
   return (
-    <section aria-label="Firm at a glance" className="relative py-20 md:py-28 bg-paper-deep">
+    <section aria-label="Firm at a glance" className="relative py-14 md:py-20 bg-paper-deep">
       <div className="container-edit">
         <div className="flex items-center gap-3 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-10">
           <span className="h-px w-8 bg-ink/20" />
