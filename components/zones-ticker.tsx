@@ -7,6 +7,14 @@ import { groupCompanies } from "@/lib/data";
  * Group of Companies ticker — pure CSS marquee. Doubled list for a seamless
  * loop; pauses on hover via the .marquee-track:hover rule in globals.css.
  */
+// Square / icon-style logos look tiny next to the wide text wordmarks
+// because object-contain caps them at the row height. Scale them up so
+// their visual weight matches the rest.
+const LOGO_SCALE: Record<string, string> = {
+  "mm-contractor": "scale-[2.2]",
+  "intercity-bus": "scale-125",
+};
+
 export function ZonesTicker() {
   // Doubled so translating -50% lands on an identical frame.
   const items = [...groupCompanies, ...groupCompanies];
@@ -43,7 +51,10 @@ export function ZonesTicker() {
                   fill
                   sizes="200px"
                   draggable={false}
-                  className="object-contain object-left pointer-events-none select-none"
+                  className={
+                    "object-contain object-left pointer-events-none select-none " +
+                    (LOGO_SCALE[company.id] ?? "")
+                  }
                 />
               </div>
             </div>
