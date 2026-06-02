@@ -112,6 +112,22 @@ const companyById: Record<string, GroupCompany> = Object.fromEntries(
   groupCompanies.map((c) => [c.id, c])
 );
 
+// Mobile-only list order — six business centres first (Smart Creation BC,
+// Smart Business Creation, Smart Place, Smart Founders, Smart View, Future
+// Space), then the rest of the group in current desktop-circuit order.
+const MOBILE_ORDER: string[] = [
+  "smart-creation-bc",
+  "smart-business-creation",
+  "smart-place-bc",
+  "smart-founders",
+  "smart-view-bc",
+  "future-space-bc",
+  "mm-contractor",
+  "abna-rashid",
+  "smart-holiday-homes",
+  "intercity-bus",
+];
+
 export function GroupOfCompanies() {
   const sectionRef = useRef<HTMLElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
@@ -307,7 +323,7 @@ export function GroupOfCompanies() {
             <CentreCard compact />
           </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {CHIPS.map((chip) => companyById[chip.companyId])
+            {MOBILE_ORDER.map((id) => companyById[id])
               .filter((c): c is GroupCompany => Boolean(c))
               .map((c) => (
                 <li
