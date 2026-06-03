@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -16,11 +15,12 @@ import { navigation, CONTACT, type NavItem } from "@/lib/data";
 import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
 
-// Lazy-load the modal so libphonenumber-js (~75 KB) and its dependencies
-// only ship when the user actually clicks "Book consultation".
-const ConsultationModal = dynamic(
-  () => import("@/components/consultation-modal").then((m) => ({ default: m.ConsultationModal })),
-  { ssr: false },
+// React.lazy (not next/dynamic) so the modal chunk + its libphonenumber-js
+// dependency (~125 KB raw / ~33 KB gzipped) aren't preloaded by Next's
+// async-script injection. The chunk only downloads when consultEverOpened
+// flips true and the lazy component first renders.
+const ConsultationModal = lazy(() =>
+  import("@/components/consultation-modal").then((m) => ({ default: m.ConsultationModal }))
 );
 
 export function SiteHeader() {
@@ -271,10 +271,12 @@ export function SiteHeader() {
     {/* Book-consultation modal — only mounts after first open so the heavy
         phone-input + libphonenumber-js code doesn't ship on initial load. */}
     {consultEverOpened && (
-      <ConsultationModal
-        open={consultOpen}
-        onClose={() => setConsultOpen(false)}
-      />
+      <Suspense fallback={null}>
+        <ConsultationModal
+          open={consultOpen}
+          onClose={() => setConsultOpen(false)}
+        />
+      </Suspense>
     )}
     </>
   );

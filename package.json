@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/optimize-public-images.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "postinstall": "node scripts/strip-next-polyfills.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -52,6 +54,7 @@
     "pg": "^8.20.0",
     "playwright": "^1.59.1",
     "postcss": "^8",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.0.0",
     "typescript": "^5"
   }
