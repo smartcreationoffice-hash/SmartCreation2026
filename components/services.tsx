@@ -43,17 +43,6 @@ export function Services() {
                 <ReceptionPlaceholder />
               )}
 
-              {/* Editorial overlay — top-left marker */}
-              <div className="absolute top-4 left-4 right-4 flex items-start justify-between pointer-events-none">
-                <div className="flex items-center gap-2 rounded-full bg-brand-night/85 backdrop-blur-md px-3 py-1.5 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-paper">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand" />
-                  fig. 02 · Reception
-                </div>
-                <div className="hidden sm:flex items-center gap-2 rounded-full bg-brand-night/85 backdrop-blur-md px-3 py-1.5 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-paper/85">
-                  Floor XIX
-                </div>
-              </div>
-
               {/* Editorial overlay — bottom caption */}
               <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 pointer-events-none bg-gradient-to-t from-ink/80 via-ink/25 to-transparent">
                 <div className="font-display text-[0.98rem] md:text-[1.1rem] text-paper tracking-[-0.01em]">

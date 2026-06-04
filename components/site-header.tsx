@@ -1,6 +1,6 @@
 "use client";
 
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -13,27 +13,15 @@ import {
 import { m, AnimatePresence } from "framer-motion";
 import { navigation, CONTACT, type NavItem } from "@/lib/data";
 import { Logo } from "@/components/logo";
+import { useConsultation } from "@/components/consultation-provider";
 import { cn } from "@/lib/utils";
 
-// React.lazy (not next/dynamic) so the modal chunk + its libphonenumber-js
-// dependency (~125 KB raw / ~33 KB gzipped) aren't preloaded by Next's
-// async-script injection. The chunk only downloads when consultEverOpened
-// flips true and the lazy component first renders.
-const ConsultationModal = lazy(() =>
-  import("@/components/consultation-modal").then((m) => ({ default: m.ConsultationModal }))
-);
-
 export function SiteHeader() {
+  const { open: openConsultation } = useConsultation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMega, setActiveMega] = useState<string | null>(null);
   const [isClosing, setIsClosing] = useState(false);
-  const [consultOpen, setConsultOpenInner] = useState(false);
-  const [consultEverOpened, setConsultEverOpened] = useState(false);
-  const setConsultOpen = (open: boolean) => {
-    if (open) setConsultEverOpened(true);
-    setConsultOpenInner(open);
-  };
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const exitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -197,7 +185,7 @@ export function SiteHeader() {
 
             <button
               type="button"
-              onClick={() => setConsultOpen(true)}
+              onClick={openConsultation}
               aria-haspopup="dialog"
               className={cn(
                 "group inline-flex items-center gap-1.5 rounded-full px-3 sm:px-4 py-2.5 text-[0.82rem] sm:text-[0.85rem] font-medium whitespace-nowrap transition-colors",
@@ -262,22 +250,11 @@ export function SiteHeader() {
           onClose={() => setMenuOpen(false)}
           onBookConsultation={() => {
             setMenuOpen(false);
-            setConsultOpen(true);
+            openConsultation();
           }}
         />
       )}
     </AnimatePresence>
-
-    {/* Book-consultation modal — only mounts after first open so the heavy
-        phone-input + libphonenumber-js code doesn't ship on initial load. */}
-    {consultEverOpened && (
-      <Suspense fallback={null}>
-        <ConsultationModal
-          open={consultOpen}
-          onClose={() => setConsultOpen(false)}
-        />
-      </Suspense>
-    )}
     </>
   );
 }

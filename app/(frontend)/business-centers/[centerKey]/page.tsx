@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
   CheckCircle2,
-  Eye,
   Mail,
   MapPin,
-  Maximize2,
   MessageCircle,
   Phone,
-  Users,
 } from "lucide-react";
 
 import {
@@ -20,8 +16,9 @@ import {
   propertyToOffice,
 } from "@/lib/supabase-queries";
 import { CONTACT } from "@/lib/data";
-import { cn } from "@/lib/utils";
 import { CentreDetailHero } from "@/components/centre-detail-hero";
+import { CentreGallery } from "@/components/centre-gallery";
+import { CentreProperties } from "@/components/centre-properties-grid";
 
 export const dynamic = "force-dynamic";
 
@@ -88,30 +85,13 @@ export default async function CentrePage({ params }: PageProps) {
             <div className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-6">
               Inside the centre
             </div>
-            <ul className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-              {galleryArr.map((g, i) => {
-                const src = g.url;
-                if (!src) return null;
-                return (
-                  <li key={i} className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-paper-deep">
-                    <Image
-                      src={src}
-                      alt={g.caption ?? `${String(centre.name)} · ${i + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      className="object-cover hover:scale-[1.03] transition-transform duration-700"
-                    />
-                    {g.caption && (
-                      <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-ink/70 to-transparent">
-                        <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-paper">
-                          {g.caption}
-                        </span>
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+            <CentreGallery
+              items={galleryArr.map((g) => ({
+                url: String(g.url ?? ""),
+                caption: g.caption ?? null,
+              }))}
+              centreName={String(centre.name)}
+            />
           </div>
         </section>
       )}
@@ -220,117 +200,36 @@ export default async function CentrePage({ params }: PageProps) {
       {/* Properties at this centre */}
       <section id="properties" className="scroll-mt-28 md:scroll-mt-32 pb-16 md:pb-24">
         <div className="container-edit">
-          <div className="flex items-end justify-between mb-10 gap-4">
-            <div>
-              <div className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-3">
-                Available properties
-              </div>
-              <h2 className="font-display font-medium text-[clamp(1.7rem,3vw,2.4rem)] tracking-[-0.02em] leading-tight text-ink">
-                {offices.length === 0
-                  ? "No live inventory at this centre. Call us"
-                  : `${offices.length} ${offices.length === 1 ? "office" : "offices"} at ${String(centre.name)}`}
-              </h2>
-            </div>
-          </div>
-
           {offices.length > 0 ? (
-            <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6">
-              {offices.map((o) => {
-                const isUpcoming = o.availabilityAccent === "upcoming";
-                return (
-                  <li key={o.id}>
-                    <Link
-                      href={`/business-centers/${centerKey}/${o.slug}`}
-                      className="group flex flex-col h-full rounded-3xl border border-ink/10 bg-paper overflow-hidden transition-all hover:border-ink/25 hover:shadow-[0_22px_60px_-30px_rgba(13,16,19,0.28)]"
-                    >
-                      <div className="relative h-[200px] overflow-hidden bg-paper-deep">
-                        {o.image && (
-                          <Image
-                            src={o.image}
-                            alt={`${o.officeNo} · ${o.title}`}
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                          />
-                        )}
-                        <div className="absolute inset-x-0 top-0 p-4 flex items-start justify-between pointer-events-none">
-                          <span className="rounded-full bg-ink/70 backdrop-blur-md px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-paper">
-                            {o.category}
-                          </span>
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-paper/95 backdrop-blur-md px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-ink">
-                            <span className={cn("h-1.5 w-1.5 rounded-full", isUpcoming ? "bg-amber-500" : "bg-emerald-500")} />
-                            {o.availability}
-                          </span>
-                        </div>
-                        {o.featured && (
-                          <div className="absolute bottom-4 left-5">
-                            <span className="rounded-full bg-brand px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-ink">
-                              ★ Featured
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex flex-col flex-1 p-6">
-                        <div className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-stone mb-2">
-                          {o.officeNo}
-                        </div>
-                        <h3 className="font-display text-[1.3rem] leading-[1.1] tracking-[-0.02em] text-ink">
-                          {o.title}
-                        </h3>
-                        <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[0.84rem] text-ink-mute">
-                          {o.sqft && (
-                            <li className="inline-flex items-center gap-1.5">
-                              <Maximize2 className="h-3.5 w-3.5 text-stone" strokeWidth={1.6} />
-                              {o.sqft}
-                            </li>
-                          )}
-                          <li className="inline-flex items-center gap-1.5">
-                            <Users className="h-3.5 w-3.5 text-stone" strokeWidth={1.6} />
-                            {o.capacity}
-                          </li>
-                          {o.view && (
-                            <li className="inline-flex items-center gap-1.5">
-                              <Eye className="h-3.5 w-3.5 text-stone" strokeWidth={1.6} />
-                              {o.view}
-                            </li>
-                          )}
-                        </ul>
-                        <div className="mt-auto pt-5 border-t border-ink/10 flex items-end justify-between gap-3">
-                          <div>
-                            {o.price.note && (
-                              <div className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-stone mb-0.5">
-                                {o.price.note}
-                              </div>
-                            )}
-                            <div className="flex items-baseline gap-1">
-                              <span className="font-display text-[1.5rem] font-medium text-ink tracking-[-0.02em]">
-                                {o.price.amount}
-                              </span>
-                              <span className="text-[0.82rem] text-ink-mute">{o.price.period}</span>
-                            </div>
-                          </div>
-                          <ArrowUpRight className="h-4 w-4 text-ink-mute group-hover:text-brand-deep group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" strokeWidth={1.8} />
-                        </div>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            <CentreProperties
+              centerKey={centerKey}
+              centreName={String(centre.name)}
+              offices={offices}
+            />
           ) : (
-            <div className="rounded-3xl border border-ink/10 bg-paper p-10 md:p-14 text-center">
-              <p className="text-ink-mute max-w-xl mx-auto">
-                Fresh inventory is being prepared at this centre. Get in touch and
-                we'll match you with a unit before it's listed publicly.
-              </p>
-              <Link
-                href="/contact"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.9rem] font-medium text-paper hover:bg-brand transition-colors"
-              >
-                Schedule a tour
-                <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} />
-              </Link>
-            </div>
+            <>
+              <div className="mb-10">
+                <div className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-3">
+                  Available properties
+                </div>
+                <h2 className="font-display font-medium text-[clamp(1.7rem,3vw,2.4rem)] tracking-[-0.02em] leading-tight text-ink">
+                  No live inventory at this centre. Call us
+                </h2>
+              </div>
+              <div className="rounded-3xl border border-ink/10 bg-paper p-10 md:p-14 text-center">
+                <p className="text-ink-mute max-w-xl mx-auto">
+                  Fresh inventory is being prepared at this centre. Get in touch and
+                  we'll match you with a unit before it's listed publicly.
+                </p>
+                <Link
+                  href="/contact"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.9rem] font-medium text-paper hover:bg-brand transition-colors"
+                >
+                  Schedule a tour
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} />
+                </Link>
+              </div>
+            </>
           )}
         </div>
       </section>

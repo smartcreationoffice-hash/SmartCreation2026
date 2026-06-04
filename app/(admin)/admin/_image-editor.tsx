@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Image from "next/image";
+import { GripVertical } from "lucide-react";
 import { uploadImageAction } from "./actions";
 
 type GalleryItem = { url: string; caption?: string };
@@ -82,6 +83,19 @@ export function GalleryEditor({
   const [items, setItems] = useState<GalleryItem[]>(initial);
   const [pending, startTransition] = useTransition();
   const [err, setErr] = useState<string | null>(null);
+  // Drag state — we track only indices; React rerenders on each step.
+  const [dragFrom, setDragFrom] = useState<number | null>(null);
+  const [dragOver, setDragOver] = useState<number | null>(null);
+
+  function reorder(from: number, to: number) {
+    if (from === to) return;
+    setItems((cur) => {
+      const next = cur.slice();
+      const [moved] = next.splice(from, 1);
+      next.splice(to, 0, moved);
+      return next;
+    });
+  }
 
   async function onFiles(files: FileList) {
     setErr(null);
@@ -131,29 +145,81 @@ export function GalleryEditor({
         </label>
       </div>
       {err && <p className="mb-3 text-[0.8rem] text-red-600">{err}</p>}
+      {items.length > 1 && (
+        <p className="mb-3 text-[0.72rem] text-ink-mute">
+          Drag a card by the <GripVertical className="inline h-3 w-3 -mt-0.5" /> handle to reorder.
+        </p>
+      )}
       <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-        {items.map((it, i) => (
-          <li key={i} className="rounded-xl border border-ink/10 bg-paper overflow-hidden">
-            <div className="relative aspect-[4/3] bg-paper-soft">
-              {it.url && <Image src={it.url} alt="" fill sizes="200px" className="object-cover" />}
-            </div>
-            <div className="p-2 space-y-2">
-              <input
-                placeholder="Caption (optional)"
-                value={it.caption ?? ""}
-                onChange={(e) => setCaption(i, e.target.value)}
-                className="w-full rounded-md border border-ink/15 bg-paper-soft px-2 py-1 text-[0.78rem] focus:outline-none focus:border-ink/40"
-              />
+        {items.map((it, i) => {
+          const isDragging = dragFrom === i;
+          const isDropTarget = dragOver === i && dragFrom !== null && dragFrom !== i;
+          return (
+            <li
+              key={i}
+              onDragOver={(e) => {
+                if (dragFrom === null) return;
+                e.preventDefault();
+                e.dataTransfer.dropEffect = "move";
+                if (dragOver !== i) setDragOver(i);
+              }}
+              onDrop={(e) => {
+                e.preventDefault();
+                if (dragFrom !== null) reorder(dragFrom, i);
+                setDragFrom(null);
+                setDragOver(null);
+              }}
+              className={
+                "relative rounded-xl border bg-paper overflow-hidden transition-all " +
+                (isDragging ? "opacity-40 " : "") +
+                (isDropTarget
+                  ? "border-brand-night ring-2 ring-brand-night/30 "
+                  : "border-ink/10 ")
+              }
+            >
+              {/* Drag handle — only the handle is draggable so caption inputs stay focusable */}
               <button
                 type="button"
-                onClick={() => remove(i)}
-                className="w-full text-[0.75rem] text-ink-mute hover:text-red-600 text-left"
+                aria-label="Drag to reorder"
+                draggable
+                onDragStart={(e) => {
+                  setDragFrom(i);
+                  // Firefox needs data on the transfer to actually drag.
+                  e.dataTransfer.effectAllowed = "move";
+                  e.dataTransfer.setData("text/plain", String(i));
+                }}
+                onDragEnd={() => {
+                  setDragFrom(null);
+                  setDragOver(null);
+                }}
+                className="absolute top-1.5 left-1.5 z-10 flex h-7 w-7 items-center justify-center rounded-md border border-ink/15 bg-paper/90 text-ink-mute backdrop-blur cursor-grab active:cursor-grabbing hover:text-ink hover:border-ink/40 transition-colors"
               >
-                Remove
+                <GripVertical className="h-3.5 w-3.5" strokeWidth={2} />
               </button>
-            </div>
-          </li>
-        ))}
+              <div className="absolute top-1.5 right-1.5 z-10 rounded-md bg-ink/70 text-paper backdrop-blur px-1.5 py-0.5 font-mono text-[0.62rem] tabular-nums">
+                {i + 1}
+              </div>
+              <div className="relative aspect-[4/3] bg-paper-soft pointer-events-none">
+                {it.url && <Image src={it.url} alt="" fill sizes="200px" className="object-cover" />}
+              </div>
+              <div className="p-2 space-y-2">
+                <input
+                  placeholder="Caption (optional)"
+                  value={it.caption ?? ""}
+                  onChange={(e) => setCaption(i, e.target.value)}
+                  className="w-full rounded-md border border-ink/15 bg-paper-soft px-2 py-1 text-[0.78rem] focus:outline-none focus:border-ink/40"
+                />
+                <button
+                  type="button"
+                  onClick={() => remove(i)}
+                  className="w-full text-[0.75rem] text-ink-mute hover:text-red-600 text-left"
+                >
+                  Remove
+                </button>
+              </div>
+            </li>
+          );
+        })}
       </ul>
       <input type="hidden" name={name} value={JSON.stringify(items)} />
     </div>

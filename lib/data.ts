@@ -384,7 +384,7 @@ export const groupCompanies: GroupCompany[] = [
   },
   {
     id: "abna-rashid",
-    name: "Abna Rashid Hamd Bin Huwaidi Building",
+    name: "Abna Rashid Bin Huwaidi Building",
     sector: "Real Estate · UAE",
     country: "UAE",
     flag: "🇦🇪",
@@ -417,7 +417,7 @@ export const groupCompanies: GroupCompany[] = [
   },
   {
     id: "intercity-bus",
-    name: "Intercity Bus Service",
+    name: "Intercity Bus Service CA",
     sector: "Transport · Canada",
     country: "Canada",
     flag: "🇨🇦",
@@ -428,7 +428,7 @@ export const groupCompanies: GroupCompany[] = [
   },
   {
     id: "mm-contractor",
-    name: "MM Contractor & General Order Supplies",
+    name: "MM Contractor",
     sector: "Construction · Pakistan",
     country: "Pakistan",
     flag: "🇵🇰",

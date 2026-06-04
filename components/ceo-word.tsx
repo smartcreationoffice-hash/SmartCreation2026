@@ -46,16 +46,6 @@ export function CeoWord() {
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover"
               />
-              {/* Top marker */}
-              <div className="absolute top-4 left-4 right-4 flex items-start justify-between pointer-events-none">
-                <div className="flex items-center gap-2 rounded-full bg-paper/10 backdrop-blur-md px-3 py-1.5 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-paper">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand" />
-                  fig. 03 · Founder
-                </div>
-                <div className="hidden sm:flex items-center gap-2 rounded-full bg-paper/10 backdrop-blur-md px-3 py-1.5 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-paper/85">
-                  Est. MMXIII
-                </div>
-              </div>
             </div>
             <figcaption className="mt-3 font-mono text-[0.62rem] uppercase tracking-[0.2em] text-mist">
               Portrait · Asad Hashmi, Dubai

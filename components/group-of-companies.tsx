@@ -122,10 +122,10 @@ const MOBILE_ORDER: string[] = [
   "smart-founders",
   "smart-view-bc",
   "future-space-bc",
-  "mm-contractor",
   "abna-rashid",
   "smart-holiday-homes",
   "intercity-bus",
+  "mm-contractor",
 ];
 
 export function GroupOfCompanies() {

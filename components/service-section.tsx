@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { m, useScroll, useTransform } from "framer-motion";
+import { useConsultation } from "@/components/consultation-provider";
 import {
   ArrowUpRight,
   BadgeCheck,
@@ -150,6 +151,7 @@ export function ServiceSection({
   section: ServiceSectionData;
   idx: number;
 }) {
+  const { open: openConsultation } = useConsultation();
   const Icon = ICONS[s.icon];
   const flip = idx % 2 === 1;
   const onSoft = idx % 2 === 1;
@@ -268,8 +270,10 @@ export function ServiceSection({
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                href="/contact"
+              <button
+                type="button"
+                onClick={openConsultation}
+                aria-haspopup="dialog"
                 className="group inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
               >
                 Discuss this option
@@ -277,7 +281,7 @@ export function ServiceSection({
                   className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   strokeWidth={1.8}
                 />
-              </Link>
+              </button>
             </div>
           </m.div>
 

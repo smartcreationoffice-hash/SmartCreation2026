@@ -8,6 +8,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
 import { LazyMotionProvider } from "@/components/lazy-motion-provider";
 import { PromoPopup } from "@/components/promo-popup";
+import { ConsultationProvider } from "@/components/consultation-provider";
 import { getActivePopups } from "@/lib/popup";
 
 const geist = Geist({
@@ -221,14 +222,16 @@ export default async function RootLayout({
           Skip to content
         </a>
         <LazyMotionProvider>
-          <SiteHeader />
-          <main id="main" className="relative z-[2]">
-            {children}
-          </main>
-          <SiteFooter />
-          <WhatsAppFab />
-          <ScrollToTop />
-          <PromoPopup popups={popups} />
+          <ConsultationProvider>
+            <SiteHeader />
+            <main id="main" className="relative z-[2]">
+              {children}
+            </main>
+            <SiteFooter />
+            <WhatsAppFab />
+            <ScrollToTop />
+            <PromoPopup popups={popups} />
+          </ConsultationProvider>
         </LazyMotionProvider>
       </body>
     </html>
