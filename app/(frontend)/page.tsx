@@ -32,14 +32,14 @@ function fmtDate(iso: string) {
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Business Setup, Centres & More in Dubai",
+  title: "Business Setup, Centers & More in Dubai",
   description:
-    "Smart Creation Group of Companies. Four Dubai business centres plus company formation, real estate, technology, holiday rentals, transport and contracting. One trusted partner since 2013.",
+    "Smart Creation Group of Companies. Four Dubai business centers plus company formation, real estate, technology, holiday rentals, transport and contracting. One trusted partner since 2020.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Smart Creation Group · Business Setup, Centres & More in Dubai",
+    title: "Smart Creation Group · Business Setup, Centers & More in Dubai",
     description:
-      "Four owned-and-operated Dubai business centres plus a multi-sector group across the UAE, Canada and Pakistan.",
+      "Four owned-and-operated Dubai business centers plus a multi-sector group across the UAE, Canada and Pakistan.",
     url: "/",
     type: "website",
   },
@@ -70,11 +70,11 @@ export default async function HomePage() {
         eyebrow="§ 03 · On the map"
         title={
           <>
-            Six centres across Dubai
+            Six centers across Dubai
             <span className="block text-brand-deep">Live office count and price range.</span>
           </>
         }
-        lede="Click any pin to see what's available right now and the entry price at that centre. Same team handles your file regardless of which one you start from."
+        lede="Click any pin to see what's available right now and the entry price at that center. Same team handles your file regardless of which one you start from."
       />
       <CeoWord />
       <GroupOfCompanies />

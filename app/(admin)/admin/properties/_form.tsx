@@ -2,7 +2,7 @@ import { savePropertyAction, deletePropertyAction } from "../actions";
 import { ArrayEditor } from "../_array-editor";
 import { GalleryEditor, HeroImagePicker } from "../_image-editor";
 
-type Centre = { id: number; name: string };
+type Center = { id: number; name: string };
 
 export type PropertyFormData = {
   id: number | null;
@@ -37,7 +37,7 @@ export type PropertyFormData = {
   gallery: { url: string; caption?: string }[];
 };
 
-export function PropertyForm({ data, centres }: { data: PropertyFormData; centres: Centre[] }) {
+export function PropertyForm({ data, centers }: { data: PropertyFormData; centers: Center[] }) {
   const isNew = data.id === null;
   return (
     <>
@@ -53,15 +53,15 @@ export function PropertyForm({ data, centres }: { data: PropertyFormData; centre
           <div className="grid sm:grid-cols-2 gap-4">
             <Field label="Slug (URL)" name="slug" defaultValue={data.slug} required hint="e.g. office-14" />
             <label className="block">
-              <span className="block text-[0.82rem] text-ink-mute mb-1">Centre <span className="text-red-500">*</span></span>
+              <span className="block text-[0.82rem] text-ink-mute mb-1">Center <span className="text-red-500">*</span></span>
               <select
                 name="centre_id"
                 defaultValue={data.centre_id ?? ""}
                 required
                 className="w-full rounded-xl border border-ink/15 bg-paper-soft px-3 py-2 text-[0.92rem] focus:outline-none focus:border-ink/40"
               >
-                <option value="">Select a centre…</option>
-                {centres.map((c) => (
+                <option value="">Select a center…</option>
+                {centers.map((c) => (
                   <option key={c.id} value={c.id}>{c.name}</option>
                 ))}
               </select>
@@ -120,7 +120,7 @@ export function PropertyForm({ data, centres }: { data: PropertyFormData; centre
             <Field label="Capacity" name="capacity" defaultValue={data.capacity} required hint="e.g. 4–5 desks" />
             <Field label="View" name="view" defaultValue={data.view ?? ""} />
           </div>
-          <Field label="Floor (overrides centre default)" name="floor" defaultValue={data.floor ?? ""} />
+          <Field label="Floor (overrides center default)" name="floor" defaultValue={data.floor ?? ""} />
           <ValueArrayEditor name="features" label="Features" initial={data.features.map((f) => f.value)} />
         </div>
 

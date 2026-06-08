@@ -49,7 +49,7 @@ async function uploadFile(file: File): Promise<string> {
   return supabaseAdmin.storage.from(SC_MEDIA_BUCKET).getPublicUrl(filename).data.publicUrl;
 }
 
-/* ── Centres ───────────────────────────────────────────────────────── */
+/* ── Centers ───────────────────────────────────────────────────────── */
 
 export async function uploadImageAction(formData: FormData): Promise<{ url: string } | { error: string }> {
   await requireAdmin();

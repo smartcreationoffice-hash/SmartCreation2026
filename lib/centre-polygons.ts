@@ -1,5 +1,5 @@
 /**
- * Approximate neighbourhood polygons for each business centre.
+ * Approximate neighbourhood polygons for each business center.
  * Sourced from OpenStreetMap (ODbL) where available; Tecom + Al Muraqabat
  * are hand-drawn approximations.
  */
@@ -150,7 +150,7 @@ export const CENTRE_POLYGONS: Record<string, LatLng[][]> = {
   ],
 };
 
-/** Brand-blue palette — assign distinct shades so adjacent centres read as separate. */
+/** Brand-blue palette — assign distinct shades so adjacent centers read as separate. */
 export const CENTRE_POLYGON_COLOR: Record<string, string> = {
   "smart-creation": "#1D4ED8",
   "smart-place": "#2563EB",

@@ -44,7 +44,7 @@ const sections: LegalSection[] = [
           <li>
             <span className="font-medium text-ink">Functional</span> — remember
             your preferences such as language, recently viewed business
-            centres or the position of the WhatsApp button.
+            centers or the position of the WhatsApp button.
           </li>
           <li>
             <span className="font-medium text-ink">Analytics</span> — aggregate,

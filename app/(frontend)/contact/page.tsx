@@ -56,7 +56,7 @@ const offices = [
   {
     key: "smart-founders",
     logo: "/group-logos/smart-founders.webp",
-    address: "Smart Founders Centre, Dubai, U.A.E.",
+    address: "Smart Founders Center, Dubai, U.A.E.",
     note: "Founder-focused workspace",
   },
   {
@@ -213,7 +213,7 @@ export default function ContactPage() {
                       Prefer to visit?
                     </div>
                     <h3 className="font-display font-semibold text-[1.2rem] leading-[1.2] tracking-[-0.01em] text-paper text-balance">
-                      Walk into any of our six Dubai centres.
+                      Walk into any of our six Dubai centers.
                     </h3>
                     <p className="mt-3 text-[0.92rem] leading-relaxed text-paper/75">
                       Tour the floors, see the offices, meet the team handling your
@@ -223,7 +223,7 @@ export default function ContactPage() {
                       href="/business-centers"
                       className="group mt-5 inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2.5 text-[0.85rem] font-medium text-ink hover:bg-paper transition-colors"
                     >
-                      Pick a centre to visit
+                      Pick a center to visit
                       <ArrowRight
                         className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
                         strokeWidth={2}
@@ -427,7 +427,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Centres map */}
+      {/* Centers map */}
       <CentresMapSection
         eyebrow="§ On the map"
         title={
@@ -436,7 +436,7 @@ export default function ContactPage() {
             <span className="text-brand-deep">six pins, live office count.</span>
           </>
         }
-        lede="Each pin opens to the centre with its current available offices and entry price. Click through to visit the centre page or book a tour."
+        lede="Each pin opens to the center with its current available offices and entry price. Click through to visit the center page or book a tour."
       />
 
       {/* Offices */}
@@ -448,7 +448,7 @@ export default function ContactPage() {
                 <span className="h-px w-8 bg-ink/25" />§ Where to find us
               </div>
               <h2 className="font-display font-semibold text-[clamp(1.8rem,3vw,2.6rem)] leading-[1.1] tracking-[-0.02em] text-ink text-balance">
-                Six centres,{" "}
+                Six centers,{" "}
                 <span className="text-brand-deep">all walking distance from a metro line.</span>
               </h2>
               <p className="mt-5 max-w-2xl text-[1rem] leading-relaxed text-ink-mute">

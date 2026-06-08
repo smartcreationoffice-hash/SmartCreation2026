@@ -19,6 +19,7 @@ import { CONTACT } from "@/lib/data";
 import { CentreDetailHero } from "@/components/centre-detail-hero";
 import { CentreGallery } from "@/components/centre-gallery";
 import { CentreProperties } from "@/components/centre-properties-grid";
+import { BookViewingButton } from "@/components/book-viewing-button";
 
 export const dynamic = "force-dynamic";
 
@@ -28,13 +29,13 @@ type PageProps = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { centerKey } = await params;
-  const centre = await getCentreByKey(centerKey);
-  if (!centre) return {};
+  const center = await getCentreByKey(centerKey);
+  if (!center) return {};
 
-  const title = centre.name;
-  const description = centre.tagline ?? centre.description ?? "";
+  const title = center.name;
+  const description = center.tagline ?? center.description ?? "";
   const url = `/business-centers/${centerKey}`;
-  const heroSrc = centre.hero_image ?? undefined;
+  const heroSrc = center.hero_image ?? undefined;
 
   return {
     title,
@@ -52,29 +53,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CentrePage({ params }: PageProps) {
   const { centerKey } = await params;
-  const centre = await getCentreByKey(centerKey);
-  if (!centre) notFound();
+  const center = await getCentreByKey(centerKey);
+  if (!center) notFound();
 
   const propsRaw = await getProperties({ centreKey: centerKey, limit: 100 });
   const offices = propsRaw.map(propertyToOffice);
 
-  const heroSrc = centre.hero_image ?? "";
-  const advantages = centre.advantages ?? [];
-  const nearby = centre.nearby ?? [];
-  const galleryArr = centre.gallery ?? [];
+  const heroSrc = center.hero_image ?? "";
+  const advantages = center.advantages ?? [];
+  const nearby = center.nearby ?? [];
+  const galleryArr = center.gallery ?? [];
 
-  const phone = centre.phone || CONTACT.phone;
-  const email = centre.email || "info@thesmartcreation.com";
-  const mapUrl = centre.google_maps_url ?? undefined;
+  const phone = center.phone || CONTACT.phone;
+  const email = center.email || "info@thesmartcreation.com";
+  const mapUrl = center.google_maps_url ?? undefined;
 
   return (
     <>
       <CentreDetailHero
-        name={String(centre.name)}
-        tagline={centre.tagline ? String(centre.tagline) : null}
-        location={String(centre.location)}
-        building={String(centre.building)}
-        emirate={centre.emirate ? String(centre.emirate) : null}
+        name={String(center.name)}
+        tagline={center.tagline ? String(center.tagline) : null}
+        location={String(center.location)}
+        building={String(center.building)}
+        emirate={center.emirate ? String(center.emirate) : null}
         officesCount={offices.length}
       />
 
@@ -83,14 +84,14 @@ export default async function CentrePage({ params }: PageProps) {
         <section className="py-16 md:py-24">
           <div className="container-edit">
             <div className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-6">
-              Inside the centre
+              Inside the center
             </div>
             <CentreGallery
               items={galleryArr.map((g) => ({
                 url: String(g.url ?? ""),
                 caption: g.caption ?? null,
               }))}
-              centreName={String(centre.name)}
+              centreName={String(center.name)}
             />
           </div>
         </section>
@@ -101,16 +102,16 @@ export default async function CentrePage({ params }: PageProps) {
         <div className="container-edit grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-12">
           <div className="col-span-12 lg:col-span-7">
             <div className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-3">
-              About this centre
+              About this center
             </div>
             <p className="text-[1.05rem] leading-relaxed text-ink text-pretty max-w-[60ch]">
-              {String(centre.description)}
+              {String(center.description)}
             </p>
 
             {advantages.length > 0 && (
               <div className="mt-12">
                 <div className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-5">
-                  Why tenants pick this centre
+                  Why tenants pick this center
                 </div>
                 <ul className="grid sm:grid-cols-2 gap-x-4 md:gap-x-8 gap-y-5">
                   {advantages.map((a, i) => (
@@ -141,22 +142,16 @@ export default async function CentrePage({ params }: PageProps) {
               <div className="flex items-start gap-2 text-[0.95rem] text-ink mb-5">
                 <MapPin className="h-4 w-4 text-stone mt-0.5 shrink-0" strokeWidth={1.8} />
                 <div>
-                  <div>{String(centre.building)}</div>
-                  {centre.address_line ? <div className="text-ink-mute">{String(centre.address_line)}</div> : (
-                    <div className="text-ink-mute">{String(centre.location)}</div>
+                  <div>{String(center.building)}</div>
+                  {center.address_line ? <div className="text-ink-mute">{String(center.address_line)}</div> : (
+                    <div className="text-ink-mute">{String(center.location)}</div>
                   )}
-                  <div className="text-ink-mute">{String(centre.emirate)}</div>
+                  <div className="text-ink-mute">{String(center.emirate)}</div>
                 </div>
               </div>
 
               <div className="space-y-2.5">
-                <Link
-                  href="/contact"
-                  className="group flex items-center justify-center gap-2 rounded-full bg-brand-night px-5 py-3.5 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
-                >
-                  Book a viewing
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
-                </Link>
+                <BookViewingButton />
                 <Link
                   href={CONTACT.whatsappHref}
                   target="_blank"
@@ -197,13 +192,13 @@ export default async function CentrePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Properties at this centre */}
+      {/* Properties at this center */}
       <section id="properties" className="scroll-mt-28 md:scroll-mt-32 pb-16 md:pb-24">
         <div className="container-edit">
           {offices.length > 0 ? (
             <CentreProperties
               centerKey={centerKey}
-              centreName={String(centre.name)}
+              centreName={String(center.name)}
               offices={offices}
             />
           ) : (
@@ -213,12 +208,12 @@ export default async function CentrePage({ params }: PageProps) {
                   Available properties
                 </div>
                 <h2 className="font-display font-medium text-[clamp(1.7rem,3vw,2.4rem)] tracking-[-0.02em] leading-tight text-ink">
-                  No live inventory at this centre. Call us
+                  No live inventory at this center. Call us
                 </h2>
               </div>
               <div className="rounded-3xl border border-ink/10 bg-paper p-10 md:p-14 text-center">
                 <p className="text-ink-mute max-w-xl mx-auto">
-                  Fresh inventory is being prepared at this centre. Get in touch and
+                  Fresh inventory is being prepared at this center. Get in touch and
                   we'll match you with a unit before it's listed publicly.
                 </p>
                 <Link

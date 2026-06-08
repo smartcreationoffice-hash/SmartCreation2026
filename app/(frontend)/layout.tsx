@@ -23,18 +23,18 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Smart Creation Group of Companies · Business Setup, Centres & More in Dubai",
+      "Smart Creation Group of Companies · Business Setup, Centers & More in Dubai",
     template: "%s · Smart Creation Group",
   },
   description:
-    "Smart Creation Group of Companies. Four Dubai business centres, plus company formation, real estate, technology, holiday homes, transport and contracting across the UAE, Canada and Pakistan. Trusted since 2013.",
+    "Smart Creation Group of Companies. Four Dubai business centers, plus company formation, real estate, technology, holiday homes, transport and contracting across the UAE, Canada and Pakistan. Trusted since 2020.",
   keywords: [
     "Smart Creation Group",
     "Smart Creation Business Center",
     "business setup in Dubai",
     "company formation Dubai",
     "serviced offices Dubai",
-    "business centres Dubai",
+    "business centers Dubai",
     "free zone setup UAE",
     "PRO services Dubai",
     "Golden Visa UAE",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Smart Creation Group of Companies",
-    title: "Smart Creation Group · Business Setup, Centres & More in Dubai",
+    title: "Smart Creation Group · Business Setup, Centers & More in Dubai",
     description:
-      "Four owned-and-operated Dubai business centres plus company formation, technology, real estate, hospitality, transport and contracting under one trusted group. Since 2013.",
+      "Four owned-and-operated Dubai business centers plus company formation, technology, real estate, hospitality, transport and contracting under one trusted group. Since 2020.",
     locale: "en_AE",
     images: [
       {
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Smart Creation Group · Business Setup & Centres in Dubai",
+    title: "Smart Creation Group · Business Setup & Centers in Dubai",
     description:
-      "Four Dubai business centres plus company formation, technology, real estate, hospitality, transport and contracting.",
+      "Four Dubai business centers plus company formation, technology, real estate, hospitality, transport and contracting.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -108,10 +108,10 @@ const jsonLd = {
       alternateName: ["Smart Creation Group", "SCG"],
       url: SITE_URL,
       logo: `${SITE_URL}/sc-group-logo.webp`,
-      foundingDate: "2013",
+      foundingDate: "2020",
       founder: { "@type": "Person", name: "Asad Hashmi" },
       description:
-        "Smart Creation Group of Companies, a multi-sector group operating four Dubai business centres alongside company formation, real estate, technology (Next Journey), holiday rentals, transport and contracting across the UAE, Canada and Pakistan.",
+        "Smart Creation Group of Companies, a multi-sector group operating four Dubai business centers alongside company formation, real estate, technology (Next Journey), holiday rentals, transport and contracting across the UAE, Canada and Pakistan.",
       sameAs: [
         "https://www.linkedin.com/company/smartbusinesscreation/",
         "https://www.instagram.com/smartcreationuae",
@@ -176,7 +176,7 @@ const jsonLd = {
         { "@type": "Offer", name: "PRO & Visa Services" },
         { "@type": "Offer", name: "Corporate Banking" },
         { "@type": "Offer", name: "Accounting, VAT & Corporate Tax" },
-        { "@type": "Offer", name: "Business Centres & Serviced Offices" },
+        { "@type": "Offer", name: "Business Centers & Serviced Offices" },
         { "@type": "Offer", name: "Compliance & Licensing" },
         { "@type": "Offer", name: "Real Estate" },
         { "@type": "Offer", name: "Technology Services (AI, Web, Mobile)" },

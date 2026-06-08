@@ -21,7 +21,7 @@ export default async function EditProperty({ params }: Args) {
   ]);
   if (!propRes.data) notFound();
   const p = propRes.data as PropertyFormData;
-  const centres = (centresRes.data ?? []) as { id: number; name: string }[];
+  const centers = (centresRes.data ?? []) as { id: number; name: string }[];
 
   return (
     <AdminShell active="properties">
@@ -31,7 +31,7 @@ export default async function EditProperty({ params }: Args) {
         </Link>
         <h1 className="font-display text-[1.8rem] tracking-[-0.02em] text-ink mt-1">{p.title}</h1>
       </div>
-      <PropertyForm data={p} centres={centres} />
+      <PropertyForm data={p} centers={centers} />
     </AdminShell>
   );
 }

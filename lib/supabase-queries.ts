@@ -69,7 +69,7 @@ export type PropertyRow = {
   updated_at: string;
 };
 
-export type PropertyWithCentre = PropertyRow & { centre: CentreRow | null };
+export type PropertyWithCentre = PropertyRow & { center: CentreRow | null };
 
 /* ── Reads ─────────────────────────────────────────────────────────── */
 
@@ -107,16 +107,16 @@ export async function getProperties({
 }: PropertyQuery = {}): Promise<PropertyWithCentre[]> {
   let q = supabasePublic
     .from("sc_properties")
-    .select("*, centre:sc_centres(*)")
+    .select("*, center:sc_centres(*)")
     .order("featured", { ascending: false })
     .order("id", { ascending: true })
     .limit(limit);
   if (featured) q = q.eq("featured", true);
   if (showOnHome) q = q.eq("show_on_home", true);
   if (centreKey) {
-    const centre = await getCentreByKey(centreKey);
-    if (!centre) return [];
-    q = q.eq("centre_id", centre.id);
+    const center = await getCentreByKey(centreKey);
+    if (!center) return [];
+    q = q.eq("centre_id", center.id);
   }
   const { data, error } = await q;
   if (error) throw error;
@@ -126,7 +126,7 @@ export async function getProperties({
 export async function getProperty(slug: string): Promise<PropertyWithCentre | null> {
   const { data, error } = await supabasePublic
     .from("sc_properties")
-    .select("*, centre:sc_centres(*)")
+    .select("*, center:sc_centres(*)")
     .eq("slug", slug)
     .maybeSingle();
   if (error) throw error;
@@ -140,7 +140,7 @@ export async function getSimilarProperties(opts: {
 }): Promise<PropertyWithCentre[]> {
   const { data, error } = await supabasePublic
     .from("sc_properties")
-    .select("*, centre:sc_centres(*)")
+    .select("*, center:sc_centres(*)")
     .eq("centre_id", opts.centreId)
     .neq("slug", opts.excludeSlug)
     .limit(opts.limit ?? 3);
@@ -149,9 +149,9 @@ export async function getSimilarProperties(opts: {
 }
 
 /**
- * Map-pin data per centre: { officesCount, priceMin, priceMax } where
+ * Map-pin data per center: { officesCount, priceMin, priceMax } where
  * "price" is parsed from the free-text `price_amount` field. Returns one
- * entry per centre (in display order) so the map can render a pin for each.
+ * entry per center (in display order) so the map can render a pin for each.
  */
 export type CentreMapData = {
   id: number;
@@ -186,12 +186,12 @@ function parseAmount(raw: string | null | undefined): number | null {
 }
 
 export async function getCentresWithMapData(): Promise<CentreMapData[]> {
-  const [centres, props] = await Promise.all([
+  const [centers, props] = await Promise.all([
     getCentres(),
     getProperties({ limit: 500 }),
   ]);
-  return centres.map((c) => {
-    const own = props.filter((p) => p.centre?.id === c.id);
+  return centers.map((c) => {
+    const own = props.filter((p) => p.center?.id === c.id);
     const prices = own.map((p) => parseAmount(p.price_amount)).filter((n): n is number => n !== null);
     return {
       id: c.id,
@@ -233,12 +233,12 @@ export function propertyToOffice(p: PropertyWithCentre): OfficeListing {
     category: p.category,
     accent: p.accent,
 
-    centerId: (p.centre?.key as CenterId) ?? "smart-creation",
-    centerName: p.centre?.name ?? "",
-    building: p.centre?.building ?? "",
-    location: p.centre?.location ?? "",
+    centerId: (p.center?.key as CenterId) ?? "smart-creation",
+    centerName: p.center?.name ?? "",
+    building: p.center?.building ?? "",
+    location: p.center?.location ?? "",
     floor: p.floor ?? "",
-    emirate: p.centre?.emirate ?? "Dubai, U.A.E.",
+    emirate: p.center?.emirate ?? "Dubai, U.A.E.",
 
     sqft: p.sqft ?? undefined,
     capacity: p.capacity,

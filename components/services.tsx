@@ -21,7 +21,7 @@ export function Services() {
                   <span className="text-brand-deep">under one group.</span>
                 </>
               }
-              lede="From trade license to corporate bank account to Corporate Tax filing, Smart Creation Group is the one partner a Dubai business actually needs. Twelve practices, one standard, backed by six owned-and-operated business centres."
+              lede="From trade license to corporate bank account to Corporate Tax filing, Smart Creation Group is the one partner a Dubai business actually needs. Twelve practices, one standard, backed by six owned-and-operated business centers."
             />
           </div>
 
@@ -213,7 +213,7 @@ function ReceptionPlaceholder() {
             fill="#f6f3ec"
             fillOpacity="0.55"
           >
-            EST. MMXIII · DUBAI
+            EST. MMXX · DUBAI
           </text>
         </g>
         {/* Ceiling light strip */}

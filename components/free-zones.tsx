@@ -1,10 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { freeZones, type FreeZone } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/section-header";
 
+// Codes to hide from the homepage preview grid (no high-quality logo yet —
+// they still appear on the full /free-zones/dubai and other-emirates pages).
+const HOMEPAGE_HIDE = new Set(["DUBAI-SOUTH", "SPARK"]);
+// Show exactly 2 rows on desktop (4 cols × 2 rows = 8 cards).
+const PREVIEW_COUNT = 8;
+
 export function FreeZones() {
+  const previewZones = freeZones
+    .filter((z) => !HOMEPAGE_HIDE.has(z.code))
+    .slice(0, PREVIEW_COUNT);
+
   return (
     <section id="free-zones" className="relative py-14 md:py-20 bg-paper-soft">
       <div className="container-edit">
@@ -14,7 +24,7 @@ export function FreeZones() {
               section="§ 05 · Free Zones"
               title={
                 <>
-                  Twelve jurisdictions.{" "}
+                  Every UAE free zone.{" "}
                   <span className="text-brand-deep">One honest recommendation.</span>
                 </>
               }
@@ -30,21 +40,30 @@ export function FreeZones() {
         </div>
 
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-          {freeZones.map((zone, idx) => (
-            <li
-              key={zone.code}
-                                                                    >
+          {previewZones.map((zone) => (
+            <li key={zone.code}>
               <ZoneCard zone={zone} />
             </li>
           ))}
         </ul>
 
-        <div className="mt-10 md:mt-12 border-t border-ink/10 pt-6">
+        {/* CTA — see the full Dubai zone list */}
+        <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-between gap-6 border-t border-ink/10 pt-8">
           <p className="max-w-xl text-[0.92rem] text-ink-mute">
             Still choosing? In a 45-minute call we model three jurisdictions
             side-by-side: total cost, visa quota, timeline and Corporate Tax
             impact.
           </p>
+          <Link
+            href="/free-zones/dubai"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors shrink-0"
+          >
+            More zones
+            <ArrowRight
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              strokeWidth={2}
+            />
+          </Link>
         </div>
       </div>
     </section>

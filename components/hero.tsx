@@ -18,8 +18,8 @@ const ServiceDonut = dynamic(
 );
 
 const trustItems = [
-  { value: "12+", label: "Years in U.A.E.", meta: "Founded 2013" },
-  { value: "6", label: "Business centres", meta: "Owned & operated, Dubai" },
+  { value: "6+", label: "Years in U.A.E.", meta: "Founded 2020" },
+  { value: "6", label: "Business centers", meta: "Owned & operated, Dubai" },
   { value: "12", label: "Group companies", meta: "Across UAE, Canada & Pakistan" },
   { value: "10,000+", label: "Companies launched", meta: "Across every emirate" },
 ];
@@ -124,14 +124,14 @@ export function Hero() {
         <div className="grid grid-cols-12 gap-x-4 md:gap-x-8 gap-y-14 items-center">
           {/* Left — headline + cta (no entrance fade so LCP fires on first paint) */}
           <div className="col-span-12 lg:col-span-7">
-            <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.4rem,6.2vw,4.8rem)] text-paper text-balance">
+            <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.2rem,5.4vw,4.4rem)] text-paper text-balance">
               <span className="block">A group of companies</span>
               <span className="block">built around your</span>
               <span className="block text-brand">business success.</span>
             </h1>
 
             <p className="mt-7 max-w-[34rem] text-[1.05rem] md:text-[1.12rem] leading-relaxed text-paper/70 text-pretty">
-              Smart Creation Group brings six Dubai business centres together with company formation, technology, real estate, holiday rentals, transport and contracting. One trusted partner since 2013.
+              Smart Creation Group brings six Dubai business centers together with company formation, technology, real estate, holiday rentals, transport and contracting. One trusted partner since 2020.
             </p>
 
             <div className="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">

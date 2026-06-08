@@ -19,16 +19,12 @@ const pillars: Pillar[] = [
   { id: "dmcc", index: "02", code: "DMCC", name: "Dubai Multi Commodities Centre", focus: "Commodities & global trade", logoSrc: "/free-zones/dmcc.png" },
   { id: "difc", index: "03", code: "DIFC", name: "Dubai International Financial Centre", focus: "Finance & fintech", logoSrc: "/free-zones/difc.png" },
   { id: "meydan", index: "04", code: "MEYDAN", name: "Meydan Free Zone", focus: "Professional services", logoSrc: "/free-zones/meydan.png" },
-  { id: "dcc", index: "05", code: "DCC", name: "Dubai CommerCity", focus: "E-commerce & digital", logoSrc: "/free-zones/dcc.png" },
-  { id: "dtec", index: "06", code: "DTEC", name: "Dubai Technology Entrepreneur Campus", focus: "Technology & digital focus", logoSrc: "/free-zones/dtec.webp" },
-  { id: "ancfz", index: "07", code: "ANCFZ", name: "Ajman NuVentures Centre Free Zone", focus: "Tailored for startups & SMEs", logoSrc: "/free-zones/anc.webp" },
-  { id: "uaq", index: "08", code: "UAQ", name: "Umm Al Quwain Free Trade Zone Authority", focus: "Fast-setup environment for SMEs", logoSrc: "/free-zones/uaq.webp" },
 ];
 
 const trust = [
-  { value: "8", label: "Free zones covered", meta: "Across the U.A.E." },
-  { value: "3 days", label: "Fastest licence", meta: "IFZA · Meydan · UAQ" },
-  { value: "100%", label: "Foreign ownership", meta: "Across every U.A.E. zone" },
+  { value: "7", label: "Free zones covered", meta: "All across Dubai" },
+  { value: "3 days", label: "Fastest licence", meta: "IFZA · Meydan" },
+  { value: "100%", label: "Foreign ownership", meta: "Across every Dubai zone" },
   { value: "0%", label: "Personal income tax", meta: "9% CT above AED 375k" },
 ];
 
@@ -179,9 +175,9 @@ export function DubaiZonesHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.4rem,6vw,4.6rem)] text-paper text-balance"
+              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.2rem,5.2vw,4.2rem)] text-paper text-balance"
             >
-              <span className="block">Eight Dubai zones,</span>
+              <span className="block">Seven Dubai zones,</span>
               <span className="block">one team that</span>
               <span className="block text-brand">knows them all.</span>
             </m.h1>
@@ -192,7 +188,7 @@ export function DubaiZonesHero() {
               transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
               className="mt-7 max-w-[36rem] text-[1.04rem] md:text-[1.1rem] leading-relaxed text-paper/70 text-pretty"
             >
-              IFZA, DMCC, JAFZA, DIFC, Meydan, DAFZA, DWTC, DCC. Every Dubai
+              IFZA, DMCC, DIFC, Meydan, DCC, DTEC and Dubai South. Every Dubai
               free zone has its own activity list, cost band and visa quota.
               We compare them all and apply through the right one.
             </m.p>
@@ -252,7 +248,7 @@ export function DubaiZonesHero() {
                   Jump to a zone
                 </span>
                 <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-paper/40">
-                  8 zones
+                  7 zones
                 </span>
               </div>
 
@@ -272,7 +268,7 @@ export function DubaiZonesHero() {
                       href={`#${p.id}`}
                       title={p.name}
                       aria-label={p.name}
-                      className="group relative block aspect-[16/9] rounded-2xl border border-paper/15 bg-[#48a8db] overflow-hidden transition-all hover:border-brand hover:shadow-[0_18px_40px_-20px_rgba(72,168,219,0.7)] hover:-translate-y-0.5"
+                      className="group relative block aspect-square rounded-2xl border border-paper/15 bg-[#48a8db] overflow-hidden transition-all hover:border-brand hover:shadow-[0_18px_40px_-20px_rgba(72,168,219,0.7)] hover:-translate-y-0.5"
                     >
                       <span
                         aria-hidden

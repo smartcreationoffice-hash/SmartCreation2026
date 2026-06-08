@@ -4,8 +4,12 @@ import Link from "next/link";
 import { m } from "framer-motion";
 import {
   ArrowUpRight,
+  Banknote,
+  Briefcase,
   Building2,
   Bus,
+  Calculator,
+  FileText,
   HardHat,
   HeartHandshake,
   Landmark,
@@ -32,16 +36,16 @@ const countries: Country[] = [
     flag: "🇦🇪",
     name: "United Arab Emirates",
     region: "Headquarters · Dubai",
-    headline: "Six owned centres. The whole back office.",
-    body: "Tecom, Al Barsha, Bur Dubai, Al Muraqabat, Smart Founders, Naif. Company formation, banking, accounting, audit, Corporate Tax, PRO, real estate and technology: every line under one accountable team.",
+    headline: "Everything your business needs to succeed in the UAE.",
+    body: "From company formation and bank account assistance to accounting, tax compliance, government services, and premium office spaces, we help entrepreneurs and growing businesses stay focused on growth while we handle the paperwork, compliance, and operations behind the scenes.",
     metric: "10,000+",
-    metricLabel: "Files launched · since 2013",
+    metricLabel: "Files launched · since 2020",
     pillars: [
-      { icon: Building2, label: "Centres" },
-      { icon: HeartHandshake, label: "Setup & PRO" },
-      { icon: Sparkles, label: "Tax & audit" },
-      { icon: Landmark, label: "Real estate" },
-      { icon: Laptop, label: "Technology" },
+      { icon: Briefcase, label: "Business Setup & Formation" },
+      { icon: Calculator, label: "Accounting & Tax Services" },
+      { icon: Banknote, label: "Banking & Financial Services" },
+      { icon: FileText, label: "PRO & Government Services" },
+      { icon: Building2, label: "Office Space Solutions" },
     ],
   },
   {
@@ -192,7 +196,7 @@ export function AboutPresence() {
                   {/* Pillars */}
                   <div className="col-span-12 lg:col-span-3">
                     <div className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-stone mb-3">
-                      Operating arms
+                      Core services
                     </div>
                     <ul className="flex flex-wrap gap-2">
                       {c.pillars.map((p) => {

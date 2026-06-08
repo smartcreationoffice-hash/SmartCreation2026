@@ -21,9 +21,9 @@ export default async function CentresList() {
     .from("sc_centres")
     .select("id, key, name, building, location, hero_image")
     .order("display_order", { ascending: true });
-  const centres = (data ?? []) as Row[];
+  const centers = (data ?? []) as Row[];
 
-  // count properties per centre
+  // count properties per center
   const counts: Record<number, number> = {};
   const { data: propRows } = await supabaseAdmin
     .from("sc_properties")
@@ -33,18 +33,18 @@ export default async function CentresList() {
   }
 
   return (
-    <AdminShell active="centres">
+    <AdminShell active="centers">
       <div className="flex items-end justify-between mb-8 gap-4">
         <div>
           <div className="font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-2">
             Content
           </div>
-          <h1 className="font-display text-[2rem] tracking-[-0.02em] text-ink">Business Centres</h1>
+          <h1 className="font-display text-[2rem] tracking-[-0.02em] text-ink">Business Centers</h1>
         </div>
       </div>
 
       <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-        {centres.map((c) => (
+        {centers.map((c) => (
           <li key={c.id}>
             <Link
               href={`/admin/centres/${c.id}`}

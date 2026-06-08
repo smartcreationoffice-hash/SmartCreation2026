@@ -5,7 +5,7 @@ import { useInView, animate } from "framer-motion";
 
 /**
  * Animates a numeric counter from 0 → `value` when scrolled into view.
- * Preserves prefix / suffix (e.g. "10,000+", "12+", "9%").
+ * Preserves prefix / suffix (e.g. "10,000+", "6+", "9%").
  *
  *   <CountUp value={10000} suffix="+" />
  *   <CountUp value={12} suffix="+" />

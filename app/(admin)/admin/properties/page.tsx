@@ -26,7 +26,7 @@ type CentreRow = { id: number; key: string; name: string; display_order: number 
 export default async function PropertiesList({
   searchParams,
 }: {
-  searchParams: Promise<{ centre?: string }>;
+  searchParams: Promise<{ center?: string }>;
 }) {
   await requireAdmin();
   const sp = await searchParams;
@@ -39,13 +39,13 @@ export default async function PropertiesList({
       .order("featured", { ascending: false })
       .order("id", { ascending: true }),
   ]);
-  const centres = (centresRes.data ?? []) as CentreRow[];
+  const centers = (centresRes.data ?? []) as CentreRow[];
   let properties = (propsRes.data ?? []) as PropertyRow[];
 
-  const filterCentreId = sp.centre ? Number(sp.centre) : null;
+  const filterCentreId = sp.center ? Number(sp.center) : null;
   if (filterCentreId) properties = properties.filter((p) => p.centre_id === filterCentreId);
 
-  const centreById = new Map(centres.map((c) => [c.id, c]));
+  const centreById = new Map(centers.map((c) => [c.id, c]));
 
   return (
     <AdminShell active="properties">
@@ -64,15 +64,15 @@ export default async function PropertiesList({
         </Link>
       </div>
 
-      {/* Centre tabs */}
+      {/* Center tabs */}
       <div className="mb-8 flex flex-wrap items-center gap-2">
         <FilterPill href="/admin/properties" active={!filterCentreId} primary="All" secondary={`${propsRes.data?.length ?? 0}`} />
-        {centres.map((c) => {
+        {centers.map((c) => {
           const count = (propsRes.data ?? []).filter((p) => p.centre_id === c.id).length;
           return (
             <FilterPill
               key={c.id}
-              href={`/admin/properties?centre=${c.id}`}
+              href={`/admin/properties?center=${c.id}`}
               active={filterCentreId === c.id}
               primary={c.name.replace("Business Center", "BC").replace("Hamd Bin Huwaidi Building", "Bldg.")}
               secondary={`${count}`}
@@ -86,7 +86,7 @@ export default async function PropertiesList({
       ) : (
         <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           {properties.map((p) => {
-            const centre = p.centre_id ? centreById.get(p.centre_id) : null;
+            const center = p.centre_id ? centreById.get(p.centre_id) : null;
             const isUpcoming = p.availability_accent === "upcoming";
             return (
               <li key={p.id}>
@@ -115,7 +115,7 @@ export default async function PropertiesList({
                   </div>
                   <div className="p-4">
                     <div className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-stone">
-                      {p.office_no} · {centre?.name ?? "–"}
+                      {p.office_no} · {center?.name ?? "–"}
                     </div>
                     <h3 className="mt-1 font-display text-[1.1rem] tracking-[-0.01em] text-ink truncate">
                       {p.title}

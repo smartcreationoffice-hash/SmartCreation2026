@@ -3,10 +3,15 @@
 import { useRef } from "react";
 import { m, useScroll, useTransform } from "framer-motion";
 import {
+  Briefcase,
   Building2,
+  Bus,
   Compass,
-  Globe2,
+  Eye,
+  HardHat,
+  Home,
   Landmark,
+  Laptop,
   Rocket,
   Sparkles,
   Trophy,
@@ -22,60 +27,88 @@ type Milestone = {
 
 const milestones: Milestone[] = [
   {
-    year: "2013",
-    title: "One floor. One promise.",
-    body: "Smart Creation Business Center is founded at Damac Executive Heights, Tecom. Asad Hashmi's bet that founders deserve one accountable team for every part of setting up in the U.A.E.",
+    year: "2020",
+    title: "Smart Creation Business Center.",
+    body: "The Group is born at Damac Executive Heights, Tecom.",
     tag: "Founded · Tecom, Dubai",
     icon: Rocket,
   },
   {
-    year: "2015",
-    title: "The first thousand.",
-    body: "Banking introductions, PRO and visa services scale alongside formation. We pass our first thousand U.A.E. companies launched, across mainland and free-zone jurisdictions.",
-    tag: "1,000+ companies launched",
-    icon: Compass,
-  },
-  {
-    year: "2017",
-    title: "Smart Place opens in Al Barsha.",
-    body: "A second owned centre opens at Iridium Building, Umm Suqeim Street: flexible furnished offices for entrepreneurs and growing teams in Al Barsha.",
-    tag: "2nd owned centre · Al Barsha 1",
-    icon: Building2,
-  },
-  {
-    year: "2019",
-    title: "Smart View in Bur Dubai.",
-    body: "We expand into Bur Dubai with serviced offices designed for credible daily operations: local sponsorship, corporate structuring, and finance & tax under one roof.",
-    tag: "3rd owned centre · Bur Dubai",
-    icon: Building2,
-  },
-  {
     year: "2021",
-    title: "The Group goes international.",
-    body: "Intercity Bus Service launches in London, Ontario. MM Contractor begins infrastructure works in Pakistan. The same accountable team, now across three countries.",
-    tag: "🇦🇪 · 🇨🇦 · 🇵🇰",
-    icon: Globe2,
+    title: "MM Contractors goes live in Pakistan.",
+    body: "Civil works, road development and general-order supplies across Punjab.",
+    tag: "Construction · Pakistan",
+    icon: HardHat,
   },
   {
     year: "2022",
-    title: "Future Space in Al Muraqabat.",
-    body: "Premium serviced offices, flexi desks and virtual offices open at Salah Al Din Street: our fourth owned centre and a full operational footprint across central Dubai.",
-    tag: "4th owned centre · Deira",
-    icon: Landmark,
+    title: "Smart Place opens in Al Barsha.",
+    body: "Second owned center: flexible serviced offices at Iridium Tower.",
+    tag: "2nd owned center · Al Barsha 1",
+    icon: Building2,
+  },
+  {
+    year: "2023",
+    title: "Intercity Bus crosses into Canada.",
+    body: "Scheduled routes and charter services launch from London, Ontario.",
+    tag: "Transport · Canada 🇨🇦",
+    icon: Bus,
   },
   {
     year: "2024",
-    title: "Compliance, properly.",
-    body: "AML, ESR, UBO and Corporate Tax frameworks rolled out across the client base. Three regulators, three deadlines, one calendar. No missed filings.",
-    tag: "Compliance & tax frameworks",
+    title: "Abna Rashid Building joins the Group.",
+    body: "Owned freehold commercial property in Naif, Deira.",
+    tag: "Real estate · Deira",
+    icon: Landmark,
+  },
+  {
+    year: "2025",
+    title: "Smart Business Creation goes flagship.",
+    body: "Formation, PRO and banking-introductions spin out into their own brand.",
+    tag: "Business setup · UAE",
+    icon: Briefcase,
+  },
+  {
+    year: "2025",
+    title: "Smart Holiday Homes launches.",
+    body: "End-to-end short-term rental management across Dubai.",
+    tag: "Hospitality · UAE",
+    icon: Home,
+  },
+  {
+    year: "2025",
+    title: "Immersion Social opens its doors.",
+    body: "Social-media and digital-marketing agency for the Group and outside clients.",
+    tag: "Social media & marketing",
     icon: Sparkles,
   },
   {
+    year: "2025",
+    title: "Next Journey Technology.",
+    body: "Our tech arm: software, web, mobile, AI and ML services.",
+    tag: "Technology · UAE",
+    icon: Laptop,
+  },
+  {
     year: "2026",
-    title: "Six centres. Ten companies. One Group.",
-    body: "Smart Creation Group of Companies: six owned Dubai centres, ten sister companies across the U.A.E., Canada and Pakistan, and 10,000+ businesses launched on the ground.",
-    tag: "Today · 25 people on staff",
+    title: "Future Space comes online.",
+    body: "Fourth owned center at Salah Al Din Street, Al Muraqabat.",
+    tag: "4th owned center · Deira",
+    icon: Compass,
+  },
+  {
+    year: "2026",
+    title: "Smart Founders opens at Umm Ramool.",
+    body: "Fifth owned center, built for early-stage founders and small teams.",
+    tag: "5th owned center · Umm Ramool",
     icon: Trophy,
+  },
+  {
+    year: "2026",
+    title: "Smart View completes the six.",
+    body: "Sixth owned center at Al Hamriya, Bur Dubai.",
+    tag: "6th owned center · Bur Dubai",
+    icon: Eye,
   },
 ];
 
@@ -115,15 +148,16 @@ export function AboutJourney() {
             <span className="h-px w-8 bg-ink/25" />§ The journey
           </div>
           <h2 className="font-display font-semibold text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.04] tracking-[-0.02em] text-ink text-balance">
-            From one floor in 2013,{" "}
+            One floor in 2020,{" "}
             <span className="text-brand-deep">
-              to a Group of ten, today.
+              twelve companies by 2026.
             </span>
           </h2>
           <p className="mt-5 max-w-2xl text-[1.02rem] leading-relaxed text-ink-mute">
-            Twelve years of compounding work: every centre we own, every
-            renewal we file, every company we launch sits on the same operating
-            promise we made on day one.
+            Every entity below is a company we operate ourselves: real
+            teams, real licences, real P&amp;Ls. Each one launched only
+            after the practice it replaces was already running cleanly
+            inside the Group.
           </p>
         </m.div>
 
@@ -141,7 +175,7 @@ export function AboutJourney() {
             className="pointer-events-none absolute left-5 md:left-1/2 top-0 w-px -translate-x-px bg-gradient-to-b from-brand via-brand-deep to-brand origin-top"
           />
 
-          <ol className="relative space-y-12 md:space-y-16">
+          <ol className="relative space-y-5 md:space-y-7">
             {milestones.map((milestone, i) => {
               const Icon = milestone.icon;
               const isRight = i % 2 === 0;
@@ -186,7 +220,7 @@ export function AboutJourney() {
                   {/* Card */}
                   <article
                     className={
-                      "relative ml-16 md:ml-0 group rounded-3xl border border-ink/10 bg-paper p-6 md:p-7 transition-all duration-500 hover:border-brand/40 hover:shadow-[0_22px_60px_-30px_rgba(72,168,219,0.45)] hover:-translate-y-0.5 " +
+                      "relative ml-16 md:ml-0 group rounded-2xl border border-ink/10 bg-paper px-5 py-4 md:px-6 md:py-5 transition-all duration-500 hover:border-brand/40 hover:shadow-[0_18px_44px_-26px_rgba(72,168,219,0.45)] hover:-translate-y-0.5 " +
                       (isRight ? "md:col-start-2" : "md:col-start-1")
                     }
                   >
@@ -204,20 +238,18 @@ export function AboutJourney() {
                     />
 
                     <div className="flex items-baseline gap-3">
-                      <span className="font-display font-semibold text-[1.7rem] md:text-[1.9rem] leading-none tracking-[-0.03em] text-brand-deep">
+                      <span className="font-display font-semibold text-[1.25rem] md:text-[1.35rem] leading-none tracking-[-0.02em] text-brand-deep">
                         {milestone.year}
                       </span>
-                      <span className="h-px flex-1 bg-ink/10" />
+                      <h3 className="font-display font-semibold text-[1rem] md:text-[1.05rem] leading-[1.2] tracking-[-0.01em] text-ink">
+                        {milestone.title}
+                      </h3>
                     </div>
-
-                    <h3 className="mt-3 font-display font-semibold text-[1.18rem] md:text-[1.28rem] leading-[1.18] tracking-[-0.015em] text-ink">
-                      {milestone.title}
-                    </h3>
-                    <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-mute">
+                    <p className="mt-1.5 text-[0.88rem] leading-snug text-ink-mute">
                       {milestone.body}
                     </p>
-                    <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-paper-soft px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-stone">
-                      <span className="h-1.5 w-1.5 rounded-full bg-brand" />
+                    <div className="mt-2.5 inline-flex items-center gap-1.5 font-mono text-[0.58rem] uppercase tracking-[0.18em] text-stone">
+                      <span className="h-1 w-1 rounded-full bg-brand" />
                       {milestone.tag}
                     </div>
                   </article>

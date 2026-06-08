@@ -128,7 +128,7 @@ export function CentreDetailHero({
             href="/business-centers"
             className="hover:text-paper transition-colors"
           >
-            Business Centres
+            Business Centers
           </Link>
           <span className="text-paper/30">/</span>
           <span className="text-paper">{name}</span>
@@ -142,7 +142,7 @@ export function CentreDetailHero({
             className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5"
             strokeWidth={1.8}
           />
-          All centres
+          All centers
         </Link>
 
         <m.div
@@ -153,7 +153,7 @@ export function CentreDetailHero({
           {/* Eyebrow pill */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.05] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist">
             <Sparkles className="h-3 w-3 text-brand" strokeWidth={2} />§ Smart
-            Creation Group · owned centre
+            Creation Group · owned center
           </div>
 
           {/* Headline */}
@@ -196,7 +196,7 @@ export function CentreDetailHero({
               className="hover:text-paper transition-colors inline-flex items-center gap-1.5"
             >
               <span className="h-px w-4 bg-paper/30" />
-              About this centre
+              About this center
             </a>
             <a
               href="#properties"

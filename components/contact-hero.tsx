@@ -112,13 +112,13 @@ export function ContactHero() {
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ Contact
             </div>
-            <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.2rem,5.4vw,4.2rem)] text-paper text-balance">
+            <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2rem,5vw,4rem)] text-paper text-balance">
               <span className="block">Tell us the business.</span>
               <span className="block">We'll come back with</span>
               <span className="block text-brand">licence, bank, visa.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-[1.02rem] md:text-[1.08rem] leading-relaxed text-paper/70 text-pretty">
-              Twelve years setting up companies across the U.A.E.: mainland,
+              Six years setting up companies across the U.A.E.: mainland,
               free zone, offshore. One brief in, one written plan out within a
               business day. Free. 30 minutes. No sales script.
             </p>
@@ -168,7 +168,7 @@ export function ContactHero() {
                     <span className="absolute inset-0 animate-ping rounded-full bg-brand opacity-75" />
                     <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
                   </span>
-                  Trusted since 2013
+                  Trusted since 2020
                 </div>
               </div>
             </div>

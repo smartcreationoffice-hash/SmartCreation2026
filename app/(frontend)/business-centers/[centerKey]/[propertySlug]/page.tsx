@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import { OfficeGallery } from "@/components/office-gallery";
+import { BookViewingButton } from "@/components/book-viewing-button";
 import {
   getProperty,
   getSimilarProperties,
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const office = propertyToOffice(raw);
 
   const title = `${office.officeNo} · ${office.title}`;
-  const description = `${office.sqft ?? office.capacity} ${office.category.toLowerCase()} at ${office.building}, ${office.location}. ${office.availability}. From AED ${office.price.amount}${office.price.period}. Trusted since 2013.`;
+  const description = `${office.sqft ?? office.capacity} ${office.category.toLowerCase()} at ${office.building}, ${office.location}. ${office.availability}. From AED ${office.price.amount}${office.price.period}. Trusted since 2020.`;
   const url = `/business-centers/${centerKey}/${propertySlug}`;
 
   return {
@@ -69,7 +70,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
   const images = propertyToImages(raw);
 
-  const centreId = raw.centre?.id;
+  const centreId = raw.center?.id;
   const similarRaw = centreId
     ? await getSimilarProperties({ centreId, excludeSlug: propertySlug, limit: 3 })
     : [];
@@ -97,7 +98,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
             <Link href="/" className="hover:text-ink transition-colors">Home</Link>
             <span className="text-mist/60">/</span>
             <Link href="/business-centers" className="hover:text-ink transition-colors">
-              Business centres
+              Business centers
             </Link>
             <span className="text-mist/60">/</span>
             <Link href={`/business-centers/${centerKey}`} className="hover:text-ink transition-colors">
@@ -244,10 +245,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="mt-5 space-y-2.5">
-                  <Link href="/contact" className="group flex items-center justify-center gap-2 rounded-full bg-brand-night px-5 py-3.5 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors">
-                    Book a viewing
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
-                  </Link>
+                  <BookViewingButton />
                   <Link href={CONTACT.whatsappHref} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-paper px-5 py-3 text-[0.88rem] text-ink hover:border-ink/40 transition-colors">
                     <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
                     WhatsApp us
@@ -286,7 +284,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
               <div className="mt-5 rounded-2xl border border-ink/10 bg-paper p-5">
                 <div className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-stone mb-2">
-                  Trusted since 2013
+                  Trusted since 2020
                 </div>
                 <p className="text-[0.88rem] text-ink-mute leading-relaxed">
                   Every tenant gets free company-formation and PRO consultation.
@@ -306,14 +304,14 @@ export default async function PropertyDetailPage({ params }: PageProps) {
               <div>
                 <div className="flex items-center gap-3 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-3">
                   <span className="h-px w-8 bg-ink/20" />
-                  Other spaces at this centre
+                  Other spaces at this center
                 </div>
                 <h2 className="font-display font-medium text-[clamp(1.6rem,3vw,2.2rem)] tracking-[-0.02em] leading-tight text-ink">
                   More at {office.centerName}
                 </h2>
               </div>
               <Link href={`/business-centers/${centerKey}`} className="group hidden md:inline-flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-ink hover:text-brand-deep transition-colors">
-                View all at this centre
+                View all at this center
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
               </Link>
             </div>

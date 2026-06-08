@@ -12,7 +12,7 @@ export default async function NewProperty() {
     .from("sc_centres")
     .select("id, name")
     .order("display_order");
-  const centres = (centresData ?? []) as { id: number; name: string }[];
+  const centers = (centresData ?? []) as { id: number; name: string }[];
 
   const empty: PropertyFormData = {
     id: null,
@@ -52,7 +52,7 @@ export default async function NewProperty() {
         </Link>
         <h1 className="font-display text-[1.8rem] tracking-[-0.02em] text-ink mt-1">New property</h1>
       </div>
-      <PropertyForm data={empty} centres={centres} />
+      <PropertyForm data={empty} centers={centers} />
     </AdminShell>
   );
 }

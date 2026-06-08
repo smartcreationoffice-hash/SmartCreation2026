@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export default async function AdminDashboard() {
   await requireAdmin();
 
-  const [centres, properties, featured, team] = await Promise.all([
+  const [centers, properties, featured, team] = await Promise.all([
     supabaseAdmin.from("sc_centres").select("id", { count: "exact", head: true }),
     supabaseAdmin.from("sc_properties").select("id", { count: "exact", head: true }),
     supabaseAdmin.from("sc_properties").select("id", { count: "exact", head: true }).eq("featured", true),
@@ -16,7 +16,7 @@ export default async function AdminDashboard() {
   ]);
 
   const stats = [
-    { label: "Centres", value: centres.count ?? 0, href: "/admin/centres" },
+    { label: "Centers", value: centers.count ?? 0, href: "/admin/centres" },
     { label: "Properties", value: properties.count ?? 0, href: "/admin/properties" },
     { label: "Featured", value: featured.count ?? 0, href: "/admin/properties?featured=1" },
     { label: "Team", value: team.count ?? 0, href: "/admin/team" },
@@ -54,16 +54,16 @@ export default async function AdminDashboard() {
         >
           <div className="font-display text-[1.1rem] text-ink">Add a property</div>
           <p className="mt-1 text-[0.88rem] text-ink-mute">
-            Create a new office listing, links it to a centre and uploads a hero image.
+            Create a new office listing, links it to a center and uploads a hero image.
           </p>
         </Link>
         <Link
           href="/admin/centres"
           className="rounded-2xl border border-ink/10 bg-paper p-5 hover:border-ink/30 transition-colors"
         >
-          <div className="font-display text-[1.1rem] text-ink">Edit a centre</div>
+          <div className="font-display text-[1.1rem] text-ink">Edit a center</div>
           <p className="mt-1 text-[0.88rem] text-ink-mute">
-            Update name, address, advantages, gallery for a business centre.
+            Update name, address, advantages, gallery for a business center.
           </p>
         </Link>
       </div>

@@ -37,7 +37,7 @@ const pillars: Pillar[] = [
 
 const trust = [
   { value: "10,000+", label: "Visas processed", meta: "Across every emirate" },
-  { value: "12+", label: "Years in U.A.E.", meta: "Founded 2013" },
+  { value: "6+", label: "Years in U.A.E.", meta: "Founded 2020" },
   { value: "All types", label: "Residency routes", meta: "Investor · Golden · Family · Skilled" },
   { value: "5–10 days", label: "Typical timeline", meta: "From application to Emirates ID" },
 ];
@@ -204,7 +204,7 @@ export function VisasHero() {
                 <span className="absolute inset-0 inline-flex animate-ping rounded-full bg-brand opacity-70" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
               </span>
-              <span>Approved typing centre · ICP & GDRFA channels</span>
+              <span>Approved typing center · ICP & GDRFA channels</span>
             </m.div>
           </div>
 

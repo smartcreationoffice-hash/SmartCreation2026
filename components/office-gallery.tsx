@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { m, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -17,6 +17,7 @@ type OfficeGalleryProps = {
  */
 export function OfficeGallery({ images, title }: OfficeGalleryProps) {
   const [activeIdx, setActiveIdx] = useState(0);
+  const thumbStripRef = useRef<HTMLUListElement>(null);
 
   const next = useCallback(
     () => setActiveIdx((i) => (i + 1) % images.length),
@@ -37,10 +38,22 @@ export function OfficeGallery({ images, title }: OfficeGalleryProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev]);
 
+  // Keep the active thumbnail visible in the scrollable strip whenever
+  // activeIdx changes (arrow keys, chevrons, or direct thumb click).
+  useEffect(() => {
+    const strip = thumbStripRef.current;
+    if (!strip) return;
+    const active = strip.children[activeIdx] as HTMLElement | undefined;
+    if (!active) return;
+    active.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [activeIdx]);
+
   return (
     <div>
-      {/* Main / hero */}
-      <div className="relative aspect-[16/9] rounded-3xl overflow-hidden bg-paper-deep border border-ink/10">
+      {/* Main / hero — keep a 16:9 aspect on mobile, but on desktop/laptop
+          cap the height so the whole gallery (image + thumbs) fits in a
+          single viewport without scrolling. */}
+      <div className="relative aspect-[16/9] md:aspect-auto md:h-[clamp(360px,58vh,620px)] rounded-3xl overflow-hidden bg-paper-deep border border-ink/10">
         <AnimatePresence initial={false} mode="wait">
           <m.div
             key={images[activeIdx]}
@@ -89,27 +102,25 @@ export function OfficeGallery({ images, title }: OfficeGalleryProps) {
         </div>
       </div>
 
-      {/* Thumbnail strip */}
+      {/* Thumbnail strip — single horizontal row, scrolls on overflow */}
       {images.length > 1 && (
         <ul
-          className="mt-3 md:mt-4 grid gap-2 md:gap-3"
-          style={{
-            gridTemplateColumns: `repeat(auto-fill, minmax(84px, 1fr))`,
-          }}
+          ref={thumbStripRef}
+          className="mt-3 md:mt-4 flex gap-2 md:gap-3 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:bg-ink/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent"
           role="group"
           aria-label={`${title} photos`}
         >
           {images.map((img, i) => {
             const isActive = i === activeIdx;
             return (
-              <li key={img}>
+              <li key={img} className="shrink-0 snap-start">
                 <button
                   type="button"
                   aria-pressed={isActive}
                   aria-label={`Show photo ${i + 1}`}
                   onClick={() => setActiveIdx(i)}
                   className={cn(
-                    "group relative block w-full aspect-[4/3] rounded-lg overflow-hidden border transition-all",
+                    "group relative block w-[96px] sm:w-[110px] aspect-[4/3] rounded-lg overflow-hidden border transition-all",
                     isActive
                       ? "border-brand ring-2 ring-brand/25 shadow-[0_6px_20px_-10px_rgba(72,168,219,0.5)]"
                       : "border-ink/10 opacity-75 hover:opacity-100 hover:border-ink/30"
@@ -119,7 +130,7 @@ export function OfficeGallery({ images, title }: OfficeGalleryProps) {
                     src={img}
                     alt=""
                     fill
-                    sizes="96px"
+                    sizes="120px"
                     className={cn(
                       "object-cover transition-transform duration-300",
                       !isActive && "group-hover:scale-[1.04]"

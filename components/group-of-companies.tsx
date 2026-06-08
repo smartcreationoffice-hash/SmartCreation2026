@@ -21,16 +21,16 @@ type Chip = {
   companyId: string;
   /** Cable path in viewBox coords */
   path: string;
-  /** Card centre position in viewBox coords */
+  /** Card center position in viewBox coords */
   cx: number;
   cy: number;
   /** offset-path animation timing */
   anim: { duration: string; delay: string };
 };
 
-// Paths START at the Smart Creation Group centre card edge and travel OUT to
+// Paths START at the Smart Creation Group center card edge and travel OUT to
 // each perimeter card. Orbs animate offset-distance 0%→100%, so light flows
-// from the centre outward.
+// from the center outward.
 const CHIPS: Chip[] = [
   // ── LEFT ──
   {
@@ -112,7 +112,7 @@ const companyById: Record<string, GroupCompany> = Object.fromEntries(
   groupCompanies.map((c) => [c.id, c])
 );
 
-// Mobile-only list order — six business centres first (Smart Creation BC,
+// Mobile-only list order — six business centers first (Smart Creation BC,
 // Smart Business Creation, Smart Place, Smart Founders, Smart View, Future
 // Space), then the rest of the group in current desktop-circuit order.
 const MOBILE_ORDER: string[] = [
@@ -217,7 +217,7 @@ export function GroupOfCompanies() {
                 </span>
               </>
             }
-            lede="The Group sits at the centre of the circuit. Around it, twelve specialist companies plug in: six sister business centres, real estate, hospitality, travel, transport, contracting and accounting & tax across the UAE, Canada and Pakistan."
+            lede="The Group sits at the center of the circuit. Around it, twelve specialist companies plug in: six sister business centers, real estate, hospitality, travel, transport, contracting and accounting & tax across the UAE, Canada and Pakistan."
           />
         </div>
 
@@ -291,7 +291,7 @@ export function GroupOfCompanies() {
             </g>
           </svg>
 
-          {/* Centre card — Smart Creation Group (bigger) */}
+          {/* Center card — Smart Creation Group (bigger) */}
           <div
                                                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
           >
@@ -373,7 +373,7 @@ export function GroupOfCompanies() {
             href="/business-centers"
             className="text-paper hover:text-brand-soft transition-colors"
           >
-            Visit our business centres →
+            Visit our business centers →
           </Link>
         </div>
       </div>
@@ -402,7 +402,7 @@ function CentreCard({ compact = false }: { compact?: boolean }) {
         }`}
       >
         <div className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-stone mb-3">
-          Holding entity · Est. 2013
+          Holding entity · Est. 2020
         </div>
         <Image
           src="/sc-group-logo-light.webp"

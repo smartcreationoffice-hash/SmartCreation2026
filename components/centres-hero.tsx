@@ -101,7 +101,7 @@ export function CentresHero({
     };
   }, []);
 
-  // Word-form for the centre count.
+  // Word-form for the center count.
   const count = centresCount || 6;
   const words = [
     "zero",
@@ -175,24 +175,24 @@ export function CentresHero({
             Home
           </Link>
           <span className="text-paper/30">/</span>
-          <span className="text-paper">Business Centres</span>
+          <span className="text-paper">Business Centers</span>
         </nav>
 
         <div className="grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-12 items-center">
           {/* Left — copy */}
           <div className="col-span-12 lg:col-span-7">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ Business Centres
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ Business Centers
             </div>
             <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.2rem,5.4vw,4.4rem)] text-paper text-balance">
-              <span className="block">{headlineCount} centres</span>
+              <span className="block">{headlineCount} centers</span>
               <span className="block">across Dubai,</span>
               <span className="block text-brand">pick where you work.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-[1.02rem] md:text-[1.08rem] leading-relaxed text-paper/70 text-pretty">
-              Every Smart Creation Group centre is owned, fully serviced and
+              Every Smart Creation Group center is owned, fully serviced and
               Ejari-ready, managed by the same team that handles your trade
-              licence, bank account and visa. Click into a centre for the
+              licence, bank account and visa. Click into a center for the
               address, local advantages and live property availability.
             </p>
 
@@ -268,14 +268,14 @@ export function CentresHero({
                 </div>
 
                 <ul className="relative space-y-4">
-                  {/* Owned centres */}
+                  {/* Owned centers */}
                   <li className="border-b border-paper/10 pb-4">
                     <div className="flex items-baseline justify-between gap-4">
                       <span className="font-display text-[1.7rem] tracking-[-0.025em] text-paper leading-none tabular-nums">
                         <CountUp to={centresCount} inView={inView} />
                       </span>
                       <span className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-mist text-right">
-                        Owned centres
+                        Owned centers
                       </span>
                     </div>
                     <div className="mt-2 h-[2px] w-full rounded-full bg-paper/10 overflow-hidden">

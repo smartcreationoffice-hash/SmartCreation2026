@@ -50,7 +50,7 @@ const columns = [
     })),
   },
   {
-    title: "Business centres",
+    title: "Business centers",
     links: [
       { label: "Smart Creation", href: "/business-centers/smart-creation" },
       { label: "Smart Place", href: "/business-centers/smart-place" },
@@ -93,8 +93,8 @@ export function SiteFooter() {
           <div className="col-span-12 lg:col-span-4">
             <Logo onLight />
             <p className="mt-6 max-w-sm text-[0.95rem] leading-relaxed text-ink-mute">
-              A multi-sector group spanning six Dubai business centres, real estate,
-              technology, hospitality, transport and contracting. Trusted since 2013.
+              A multi-sector group spanning six Dubai business centers, real estate,
+              technology, hospitality, transport and contracting. Trusted since 2020.
             </p>
 
             <address className="not-italic mt-8 text-[0.92rem] text-ink leading-relaxed">
@@ -105,6 +105,9 @@ export function SiteFooter() {
             <div className="mt-6 space-y-1.5 text-[0.92rem]">
               <a href={CONTACT.phoneHref} className="block text-ink hover:text-brand-deep transition-colors">
                 {CONTACT.phone}
+              </a>
+              <a href="tel:+971555519459" className="block text-ink hover:text-brand-deep transition-colors">
+                +971 55 551 9459
               </a>
               <a href={CONTACT.emailHref} className="block text-ink hover:text-brand-deep transition-colors">
                 {CONTACT.email}

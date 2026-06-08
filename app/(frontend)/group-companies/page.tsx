@@ -25,7 +25,7 @@ const sections: ServiceSectionData[] = [
     mediaMode: "logo",
     logoTheme: "dark",
     lede:
-      "The founding company of the Group. Smart Business Creation has licensed, banked and visa'd more than 10,000 businesses across every UAE jurisdiction since 2013. Mainland, free zone, offshore, holding structures and the day-to-day PRO file every founder lives inside.",
+      "The founding company of the Group. Smart Business Creation has licensed, banked and visa'd more than 10,000 businesses across every UAE jurisdiction since 2020. Mainland, free zone, offshore, holding structures and the day-to-day PRO file every founder lives inside.",
     image: {
       src: "/group-logos/smart-business-creation.webp",
       alt: "Smart Business Creation",
@@ -40,11 +40,11 @@ const sections: ServiceSectionData[] = [
       "End-to-end licensing — mainland, free zone, offshore",
       "Banking introductions with 10+ UAE banking partners",
       "Investor, employment and family-visa processing in-house",
-      "Office space at any of the six owned business centres",
+      "Office space at any of the six owned business centers",
       "Annual renewals, audit and Corporate Tax filings",
     ],
     meta: [
-      { label: "Founded", value: "2013" },
+      { label: "Founded", value: "2020" },
       { label: "Companies launched", value: "10,000+" },
       { label: "Country", value: "UAE 🇦🇪" },
       { label: "HQ", value: "Damac Executive Heights, Tecom" },
@@ -58,13 +58,108 @@ const sections: ServiceSectionData[] = [
       "Brief us on the activity, ownership and team size.",
       "Receive a costed, written setup plan within one business day.",
       "We file the licence, run banking, secure visas in parallel.",
-      "Operate from one of our six centres or your own address.",
+      "Operate from one of our six centers or your own address.",
       "We renew, file and refile every year, on the calendar.",
     ],
   },
   {
-    id: "next-journey",
+    id: "smart-accounting-bookkeeping",
     index: "02",
+    eyebrow: "Accounting · UAE 🇦🇪",
+    title: "Smart Accounting & Bookkeeping",
+    icon: "banknote",
+    logoSrc: "/group-logos/smart-accounting-bookkeeping.webp",
+    mediaMode: "logo",
+    logoTheme: "dark",
+    logoScale: "scale-150",
+    lede:
+      "Dedicated bookkeeping and accounting arm: monthly closes, payroll, VAT cycles, Corporate Tax preparation and audit-readiness — clean books on a calendar instead of a year-end scramble.",
+    image: {
+      src: "/group-logos/smart-accounting-bookkeeping.webp",
+      alt: "Smart Accounting & Bookkeeping",
+    },
+    good: [
+      "Founders who want clean books from day one",
+      "SMEs preparing for VAT, Corporate Tax and statutory audit",
+      "Companies migrating off an ad-hoc bookkeeper or spreadsheet",
+      "Multinationals needing UAE-compliant monthly closes",
+    ],
+    included: [
+      "Cloud-accounting setup (Zoho, Xero or QuickBooks)",
+      "Monthly bookkeeping, bank reconciliation and reports",
+      "Payroll, WPS and end-of-service calculations",
+      "VAT registration, filings and refund support",
+      "Corporate Tax registration, calculation and EmaraTax filing",
+      "Statutory audit liaison",
+    ],
+    meta: [
+      { label: "Sector", value: "Accounting · finance" },
+      { label: "Cycle", value: "Monthly · quarterly · annual" },
+      { label: "Country", value: "UAE 🇦🇪" },
+      { label: "HQ", value: "Damac Executive Heights, Tecom" },
+    ],
+    highlight: {
+      eyebrow: "Why a dedicated bookkeeping arm",
+      title: "Clean books, calendared. Not rebuilt under deadline.",
+      body: "Companies don't get fined for being wrong, they get fined for being late. We keep your books closed monthly so VAT, Corporate Tax and audit are filings, not fire drills.",
+    },
+    steps: [
+      "Onboarding: chart of accounts, prior-period clean-up, tool setup.",
+      "Monthly close: bookkeeping, reconciliation, management report.",
+      "Quarterly: VAT, payroll review, cash and runway view.",
+      "Annual: Corporate Tax filing, audit pack, year-end review.",
+    ],
+  },
+  {
+    id: "smart-typing-center",
+    index: "03",
+    eyebrow: "Typing services · UAE 🇦🇪",
+    title: "Smart Typing Center",
+    icon: "file-text",
+    logoSrc: "/group-logos/smart-typing-center.webp",
+    mediaMode: "logo",
+    logoTheme: "dark",
+    logoScale: "scale-150",
+    lede:
+      "Our in-house government-relations typing centre: visa applications, Emirates ID renewals, Tas-heel labour services, MOI paperwork and Ministry of Foreign Affairs attestations submitted, tracked and chased without you ever queuing.",
+    image: {
+      src: "/group-logos/smart-typing-center.webp",
+      alt: "Smart Typing Center",
+    },
+    good: [
+      "Founders and HR teams running visa cycles for staff",
+      "Investors and family-visa applicants needing fast processing",
+      "Companies needing Tas-heel / MOL labour-portal filings",
+      "Anyone tired of typing-centre queues and missed deadlines",
+    ],
+    included: [
+      "GDRFA visa, entry-permit and status-change applications",
+      "Emirates ID applications, renewals and biometric scheduling",
+      "Tas-heel and MOL labour-card filings",
+      "MOFA document attestation and notarisation",
+      "Direct courier to ICA, MOI and labour offices",
+    ],
+    meta: [
+      { label: "Sector", value: "Government services" },
+      { label: "Authorities served", value: "ICA · GDRFA · MOL · MOFA" },
+      { label: "Country", value: "UAE 🇦🇪" },
+      { label: "HQ", value: "Damac Executive Heights, Tecom" },
+    ],
+    highlight: {
+      eyebrow: "Why have your own typing centre",
+      title: "Submitted today, tracked daily, chased until it lands.",
+      body: "Standalone typing centres process you and move on. Ours sits inside the same team that owns your file, so a stuck application gets followed up the same hour — not the next visit.",
+    },
+    steps: [
+      "Send the brief and supporting docs.",
+      "We type, validate and submit through the right authority.",
+      "Tracking and chasing daily until issuance.",
+      "Originals delivered or stored with your other corporate docs.",
+    ],
+  },
+  {
+    id: "next-journey",
+    index: "04",
     eyebrow: "Technology · UAE 🇦🇪",
     title: "Next Journey Technology LLC",
     icon: "globe",
@@ -109,7 +204,7 @@ const sections: ServiceSectionData[] = [
   },
   {
     id: "smart-holiday-homes",
-    index: "03",
+    index: "05",
     eyebrow: "Hospitality · UAE 🇦🇪",
     title: "Smart Holiday Homes",
     icon: "star",
@@ -155,7 +250,7 @@ const sections: ServiceSectionData[] = [
   },
   {
     id: "intercity-bus",
-    index: "04",
+    index: "06",
     eyebrow: "Transport · Canada 🇨🇦",
     title: "Intercity Bus Service",
     icon: "globe",
@@ -189,7 +284,7 @@ const sections: ServiceSectionData[] = [
     highlight: {
       eyebrow: "Reliable transport, every route",
       title: "On-time intercity travel, run by an operator that answers the phone.",
-      body: "From single-trip riders to weekly corporate contracts, Intercity Bus delivers the same standard of operations our UAE clients have trusted since 2013.",
+      body: "From single-trip riders to weekly corporate contracts, Intercity Bus delivers the same standard of operations our UAE clients have trusted since 2020.",
     },
     steps: [
       "Pick a route or request a charter.",
@@ -200,18 +295,18 @@ const sections: ServiceSectionData[] = [
   },
   {
     id: "mm-contractor",
-    index: "05",
+    index: "07",
     eyebrow: "Construction · Pakistan 🇵🇰",
     title: "MM Contractor & General Order Supplies",
     icon: "shield",
-    logoSrc: "/group-logos/mm-contractor.webp",
+    logoSrc: "/group-logos/mm-contractor-square.webp",
     mediaMode: "logo",
     logoTheme: "dark",
-    logoScale: "scale-[1.7]",
+    logoScale: "scale-[1.1]",
     lede:
       "Pakistan-based contracting arm of the Group. MM Contractor handles civil works, road development, infrastructure projects and general order supplies for public-sector and private-sector clients across Punjab.",
     image: {
-      src: "/group-logos/mm-contractor.webp",
+      src: "/group-logos/mm-contractor-square.webp",
       alt: "MM Contractor & General Order Supplies",
     },
     good: [
@@ -247,7 +342,7 @@ const sections: ServiceSectionData[] = [
   },
   {
     id: "immersion-social",
-    index: "06",
+    index: "08",
     eyebrow: "Social Media · UAE 🇦🇪",
     title: "Immersion Social",
     icon: "star",
@@ -338,7 +433,7 @@ export default function AffiliatedCompaniesPage() {
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-paper/20 bg-paper/5 backdrop-blur px-5 py-3 text-[0.9rem] text-paper hover:bg-paper/10 transition-colors"
                 >
                   <Calendar className="h-3.5 w-3.5" strokeWidth={1.8} />
-                  Tour our business centres
+                  Tour our business centers
                 </Link>
               </div>
             </div>

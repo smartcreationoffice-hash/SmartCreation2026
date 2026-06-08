@@ -37,9 +37,9 @@ const items: Diff[] = [
   },
   {
     title: "Owned infrastructure",
-    body: "Six business centres we own and operate: Tecom, Al Barsha, Bur Dubai, Al Muraqabat, Smart Founders and Naif. Walk-in tours, floors we control, no broker layer.",
+    body: "Six business centers we own and operate: Tecom, Al Barsha, Bur Dubai, Al Muraqabat, Smart Founders and Naif. Walk-in tours, floors we control, no broker layer.",
     metric: "6",
-    metricLabel: "owned Dubai centres",
+    metricLabel: "owned Dubai centers",
     icon: Building2,
   },
   {
@@ -51,7 +51,7 @@ const items: Diff[] = [
   },
   {
     title: "Built to renew, not just open",
-    body: "Twelve years means we've seen the renewal cycle, the audit cycle, the corporate-tax cycle. We don't disappear after the licence; we file every year, on the calendar.",
+    body: "Six years means we've seen the renewal cycle, the audit cycle, the corporate-tax cycle. We don't disappear after the licence; we file every year, on the calendar.",
     metric: "100%",
     metricLabel: "renewals before expiry",
     icon: Calendar,
@@ -99,7 +99,7 @@ export function AboutDifferentiators() {
             <p className="mt-5 max-w-2xl text-[1.02rem] leading-relaxed text-ink-mute">
               The reasons 10,000+ founders, family offices and multinationals
               have trusted us with the operational backbone of their U.A.E.
-              business since 2013.
+              business since 2020.
             </p>
           </m.div>
         </div>
@@ -167,7 +167,7 @@ export function AboutDifferentiators() {
           })}
         </ul>
 
-        {/* Centres CTA — walk-in-ready inventory across Dubai */}
+        {/* Centers CTA — walk-in-ready inventory across Dubai */}
         <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -194,7 +194,7 @@ export function AboutDifferentiators() {
                   Walk-in-ready · live availability
                 </div>
                 <h3 className="font-display font-semibold text-[1.3rem] md:text-[1.55rem] leading-[1.2] tracking-[-0.02em] text-ink text-balance">
-                  Want to see the centres themselves?{" "}
+                  Want to see the centers themselves?{" "}
                   <span className="text-brand-deep">
                     Six owned floors across Dubai. Every room, every price, live.
                   </span>
@@ -206,7 +206,7 @@ export function AboutDifferentiators() {
                   href="/business-centers"
                   className="group/btn inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand hover:text-ink transition-colors"
                 >
-                  Browse business centres
+                  Browse business centers
                   <ArrowUpRight
                     className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
                     strokeWidth={2}

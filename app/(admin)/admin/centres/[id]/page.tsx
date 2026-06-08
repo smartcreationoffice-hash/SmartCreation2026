@@ -31,11 +31,11 @@ export default async function CentreEdit({ params }: Args) {
   };
 
   return (
-    <AdminShell active="centres">
+    <AdminShell active="centers">
       <div className="flex items-center justify-between mb-6">
         <div>
           <Link href="/admin/centres" className="text-[0.82rem] text-ink-mute hover:text-ink">
-            ← All centres
+            ← All centers
           </Link>
           <h1 className="font-display text-[1.8rem] tracking-[-0.02em] text-ink mt-1">{c.name}</h1>
         </div>
@@ -80,7 +80,7 @@ export default async function CentreEdit({ params }: Args) {
         <ArrayEditor
           name="advantages"
           label="Advantages"
-          description="Bullet points highlighting what makes this centre stand out."
+          description="Bullet points highlighting what makes this center stand out."
           fields={[
             { key: "title", label: "Title" },
             { key: "description", label: "Description", type: "textarea" },
@@ -119,7 +119,7 @@ export default async function CentreEdit({ params }: Args) {
           type="submit"
           className="text-[0.82rem] text-red-600 hover:underline"
         >
-          Delete this centre
+          Delete this center
         </button>
       </form>
     </AdminShell>

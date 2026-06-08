@@ -22,7 +22,7 @@ const pillars: Pillar[] = [
 ];
 
 const trust = [
-  { value: "4", label: "Northern-emirate zones", meta: "Sharjah · RAK · Ajman" },
+  { value: "7", label: "Other-emirate zones", meta: "Sharjah · Ajman · RAK · UAQ" },
   { value: "2 days", label: "Fastest licence", meta: "AFZA · SHAMS" },
   { value: "From AED 5,750", label: "Most affordable setup", meta: "AFZA entry tier" },
   { value: "100%", label: "Foreign ownership", meta: "Across every zone" },
@@ -154,7 +154,7 @@ export function NorthernEmiratesZonesHero() {
             Free zones
           </Link>
           <span className="text-paper/30">/</span>
-          <span className="text-paper">Northern emirates</span>
+          <span className="text-paper">Other emirates</span>
         </m.div>
 
         <div className="grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-14 items-center">
@@ -165,14 +165,14 @@ export function NorthernEmiratesZonesHero() {
               transition={{ duration: 0.55, delay: 0.05 }}
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ Sharjah · RAK · Ajman
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ Other emirates
             </m.div>
 
             <m.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.4rem,6vw,4.6rem)] text-paper text-balance"
+              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.2rem,5.2vw,4.2rem)] text-paper text-balance"
             >
               <span className="block">The most affordable</span>
               <span className="block">free zones,</span>
@@ -185,10 +185,10 @@ export function NorthernEmiratesZonesHero() {
               transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
               className="mt-7 max-w-[36rem] text-[1.04rem] md:text-[1.1rem] leading-relaxed text-paper/70 text-pretty"
             >
-              SHAMS, SPC, RAKEZ, AFZA across Sharjah, Ras Al Khaimah and Ajman
-              free zones. Lower setup cost, equally legitimate licence, same 100%
-              foreign ownership. Right when budget matters more than the Dubai
-              postcode.
+              SHAMS, SPC, SPARK, RAKEZ, AFZA, ANCFZ and UAQ across Sharjah,
+              Ras Al Khaimah, Ajman and Umm Al Quwain. Lower setup cost, equally
+              legitimate licence, same 100% foreign ownership. Right when budget
+              matters more than the Dubai postcode.
             </m.p>
 
             <m.div

@@ -21,7 +21,7 @@ const pillars = [
   {
     eyebrow: "Promise",
     icon: HeartHandshake,
-    title: "One accountable team, for the next twelve years.",
+    title: "One accountable team, for the next six years.",
     body: "We don't disappear after the licence is issued. We renew, we file, we open the next bank account, we stamp the next visa. The work that matters happens in the years after setup.",
     accent: "from-brand-deep/15 via-brand/8 to-transparent",
   },
@@ -59,7 +59,7 @@ export function AboutMission() {
           <p className="mt-5 max-w-2xl text-[1.02rem] leading-relaxed text-ink-mute">
             Three constants that have shaped every decision Smart Creation
             Group has made since we opened our first floor at Damac Executive
-            Heights in 2013.
+            Heights in 2020.
           </p>
         </m.div>
 

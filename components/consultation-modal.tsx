@@ -21,7 +21,7 @@ const TOPICS = [
   "Free zone setup",
   "Banking & finance",
   "Compliance & licensing",
-  "Office space / business centres",
+  "Office space / business centers",
   "Something else",
 ];
 

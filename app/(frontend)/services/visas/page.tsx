@@ -22,7 +22,7 @@ const sections: ServiceSectionData[] = [
     title: "PRO services",
     icon: "id-card",
     lede:
-      "Visa stamping, Emirates ID, labour cards and the recurring government touchpoints that keep your team legally on the ground. Our typing centre and PROs handle the queues so your staff don't.",
+      "Visa stamping, Emirates ID, labour cards and the recurring government touchpoints that keep your team legally on the ground. Our typing center and PROs handle the queues so your staff don't.",
     image: {
       src: "/services/visas/pro-visa.webp",
       alt: "UAE PRO services",
@@ -42,7 +42,7 @@ const sections: ServiceSectionData[] = [
     ],
     meta: [
       { label: "Channels", value: "ICP · GDRFA · MOHRE" },
-      { label: "Typing centre", value: "In-house" },
+      { label: "Typing center", value: "In-house" },
       { label: "Turnaround", value: "Same/next-day for most filings" },
       { label: "Coverage", value: "All seven emirates" },
     ],

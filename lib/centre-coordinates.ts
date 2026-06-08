@@ -1,5 +1,5 @@
 /**
- * Static lat/lng for each business centre. Coordinates resolved from the
+ * Static lat/lng for each business center. Coordinates resolved from the
  * Google Maps share links the client provided. Used by the map component
  * on the homepage and the contact page. Keep in sync with `sc_centres.key`.
  */
@@ -20,7 +20,7 @@ export const CENTRE_COORDS: Record<string, { lat: number; lng: number }> = {
   // https://maps.app.goo.gl/bxW1yxGcuJnYyR3r9
   "future-space": { lat: 25.2698514, lng: 55.3284298 },
 
-  // Smart Founders BC — Umm Ramool 1, Nad Al Hamar Rd, Umm Ramool
+  // Smart Founders BC — Mezzanine Floor, New Building 2, Street 32C, Umm Ramool
   // https://maps.app.goo.gl/nLrsKiSXMCFuBB9k7
   "smart-founders": { lat: 25.2332625, lng: 55.3772656 },
 

@@ -379,7 +379,7 @@ export function ServiceSection({
                     <span className="absolute inset-0 animate-ping rounded-full bg-brand opacity-75" />
                     <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
                   </span>
-                  Trusted since 2013
+                  Trusted since 2020
                 </div>
               </m.div>
             ) : (
@@ -423,7 +423,7 @@ export function ServiceSection({
                     <span className="absolute inset-0 animate-ping rounded-full bg-brand opacity-75" />
                     <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
                   </span>
-                  Trusted since 2013
+                  Trusted since 2020
                 </div>
               </m.div>
             )}

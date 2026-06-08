@@ -9,9 +9,9 @@ import { CentresHero } from "@/components/centres-hero";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Our Business Centres",
+  title: "Our Business Centers",
   description:
-    "Smart Creation Group operates six business centres across Dubai: flagship Tecom skyline offices, Al Barsha and Bur Dubai serviced suites, Al Muraqabat, Umm Ramool and Deira/Naif locations.",
+    "Smart Creation Group operates six business centers across Dubai: flagship Tecom skyline offices, Al Barsha and Bur Dubai serviced suites, Al Muraqabat, Umm Ramool and Deira/Naif locations.",
   alternates: { canonical: "/business-centers" },
 };
 
@@ -20,7 +20,7 @@ function heroUrl(c: CentreRow): string {
 }
 
 export default async function BusinessCentresIndexPage() {
-  const centres = await getCentres();
+  const centers = await getCentres();
   const allProps = await getProperties({ limit: 200 });
   const offices = allProps.map(propertyToOffice);
   const countByCentre: Record<string, number> = {};
@@ -30,12 +30,12 @@ export default async function BusinessCentresIndexPage() {
 
   return (
     <>
-      <CentresHero centresCount={centres.length} officesCount={offices.length} />
+      <CentresHero centresCount={centers.length} officesCount={offices.length} />
 
       <section className="py-16 md:py-24">
         <div className="container-edit">
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {centres.map((c) => {
+            {centers.map((c) => {
               const count = countByCentre[c.key as string] ?? 0;
               return (
                 <li key={String(c.id)}>
@@ -78,7 +78,7 @@ export default async function BusinessCentresIndexPage() {
                       </div>
 
                       <div className="mt-auto pt-6 inline-flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink group-hover:text-brand-deep transition-colors">
-                        Visit centre
+                        Visit center
                         <ArrowUpRight
                           className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                           strokeWidth={1.8}

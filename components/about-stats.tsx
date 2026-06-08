@@ -33,7 +33,7 @@ const stats: Stat[] = [
     value: 12,
     suffix: "+",
     label: "Years on the ground",
-    meta: "Founded 2013",
+    meta: "Founded 2020",
     icon: CalendarDays,
     bar: 0.6,
   },
@@ -48,7 +48,7 @@ const stats: Stat[] = [
   },
   {
     value: 6,
-    label: "Owned Dubai centres",
+    label: "Owned Dubai centers",
     meta: "Tecom · Al Barsha · Bur Dubai · Deira",
     icon: Building2,
     bar: 0.5,

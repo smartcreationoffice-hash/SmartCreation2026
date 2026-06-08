@@ -28,7 +28,7 @@ const pillars: Pillar[] = [
 ];
 
 const trust = [
-  { value: "12+", label: "Years compliance work", meta: "Founded 2013" },
+  { value: "6+", label: "Years compliance work", meta: "Founded 2020" },
   { value: "All zones", label: "Renewal coverage", meta: "Mainland · free zone · offshore" },
   { value: "MOFA", label: "Attestation desk", meta: "In-house, no agent chains" },
   { value: "0", label: "Missed deadlines", meta: "Calendar-managed renewals" },

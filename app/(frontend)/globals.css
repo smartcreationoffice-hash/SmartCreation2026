@@ -119,18 +119,26 @@
     color: var(--color-stone);
   }
 
-  /* Container with editorial gutters */
+  /* Container with editorial gutters — graded so tablet and laptop
+     always get visible side breathing room instead of jumping straight
+     from 40px (md) to 64px (xl) with nothing in between. */
   .container-edit {
     width: 100%;
-    max-width: 88rem;
+    max-width: 84rem;          /* was 88rem — slight reduction so 13" laptops feel less stretched */
     margin-inline: auto;
-    padding-inline: 1.25rem;
+    padding-inline: 1.25rem;   /* mobile · 20px */
   }
-  @media (min-width: 48rem) {
-    .container-edit { padding-inline: 2.5rem; }
+  @media (min-width: 40rem) {  /* sm · 640px+ — large phones / portrait tablet */
+    .container-edit { padding-inline: 2rem; }
   }
-  @media (min-width: 80rem) {
+  @media (min-width: 48rem) {  /* md · 768px+ — tablet */
+    .container-edit { padding-inline: 3rem; }
+  }
+  @media (min-width: 64rem) {  /* lg · 1024px+ — laptop */
     .container-edit { padding-inline: 4rem; }
+  }
+  @media (min-width: 80rem) {  /* xl · 1280px+ — desktop */
+    .container-edit { padding-inline: 5rem; }
   }
 }
 

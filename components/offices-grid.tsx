@@ -15,7 +15,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { cn } from "@/lib/utils";
 import type { OfficeListing, CenterId } from "@/lib/office-listings";
 
-type Centre = {
+type Center = {
   id: string;
   key: string;
   name: string;
@@ -43,25 +43,25 @@ type Filter = "all" | string;
 
 export function OfficesGrid({
   offices,
-  centres,
+  centers,
 }: {
   offices: OfficeListing[];
-  centres: Centre[];
+  centers: Center[];
 }) {
   const [filter, setFilter] = useState<Filter>("all");
 
   const counts = useMemo(() => {
     const c: Record<Filter, number> = { all: offices.length };
-    for (const cen of centres) c[cen.key] = 0;
+    for (const cen of centers) c[cen.key] = 0;
     for (const o of offices) {
       c[o.centerId] = (c[o.centerId] ?? 0) + 1;
     }
     return c;
-  }, [offices, centres]);
+  }, [offices, centers]);
 
   // Always cap the homepage grid to 6 cards. `getProperties` already sorts
   // by `featured DESC, id ASC`, so featured properties surface first; if a
-  // centre has fewer than 6 featured, the remaining slots are filled with
+  // center has fewer than 6 featured, the remaining slots are filled with
   // its other live inventory.
   const HOMEPAGE_PER_FILTER = 6;
   const totalForFilter =
@@ -77,15 +77,15 @@ export function OfficesGrid({
   }, [offices, filter]);
 
   const activeCentre =
-    filter === "all" ? null : centres.find((c) => c.key === filter) ?? null;
+    filter === "all" ? null : centers.find((c) => c.key === filter) ?? null;
   const browseHref =
     filter === "all"
       ? "/business-centers"
       : `/business-centers/${filter}#properties`;
   const browseLabel =
     filter === "all"
-      ? "Browse all properties across centres"
-      : `Browse all ${activeCentre?.name ?? "centre"} properties`;
+      ? "Browse all properties across centers"
+      : `Browse all ${activeCentre?.name ?? "center"} properties`;
   const moreCount = Math.max(0, totalForFilter - visible.length);
 
   return (
@@ -97,13 +97,13 @@ export function OfficesGrid({
               section="§ 02 · Available offices"
               title={
                 <>
-                  Six centres, one group
+                  Six centers, one group
                   <span className="block text-brand-deep">
                     Pick where you want to work.
                   </span>
                 </>
               }
-              lede="Real inventory across all six Smart Creation Group locations in Dubai. Filter by centre to see what's available, from flagship suites at Damac Executive Heights to flexible desks in Al Muraqabat."
+              lede="Real inventory across all six Smart Creation Group locations in Dubai. Filter by center to see what's available, from flagship suites at Damac Executive Heights to flexible desks in Al Muraqabat."
             />
           </div>
           <div className="col-span-12 lg:col-span-5 lg:text-right">
@@ -117,7 +117,7 @@ export function OfficesGrid({
               </span>
               <span className="text-stone">
                 Showing {visible.length}
-                {filter === "all" ? " featured across all centres" : ` at ${activeCentre?.name ?? ""}`}
+                {filter === "all" ? " featured across all centers" : ` at ${activeCentre?.name ?? ""}`}
                 {" · Updated daily"}
               </span>
             </div>
@@ -126,7 +126,7 @@ export function OfficesGrid({
 
         <div
           role="group"
-          aria-label="Filter offices by business centre"
+          aria-label="Filter offices by business center"
           className="mb-8 md:mb-12 -mx-4 px-4 md:mx-0 md:px-0 flex md:grid md:grid-cols-4 lg:grid-cols-7 overflow-x-auto md:overflow-visible gap-2 md:gap-3 snap-x snap-mandatory scrollbar-hide pb-1 md:pb-0"
         >
           <FilterPill
@@ -135,7 +135,7 @@ export function OfficesGrid({
             primary="All locations"
             secondary={`${counts.all} offices`}
           />
-          {centres.map((c) => {
+          {centers.map((c) => {
             const count = counts[c.key] ?? 0;
             return (
               <FilterPill
@@ -168,7 +168,7 @@ export function OfficesGrid({
         )}
 
         {/* Contextual "Browse" CTA — leads to either the full catalog or the
-            specific centre page anchored to its properties section */}
+            specific center page anchored to its properties section */}
         {visible.length > 0 && (
           <div className="mt-10 md:mt-12 flex justify-center">
             <Link
@@ -189,32 +189,33 @@ export function OfficesGrid({
           </div>
         )}
 
-        <div className="mt-14 md:mt-16 grid grid-cols-12 gap-x-4 md:gap-x-8 gap-y-8 border-t border-ink/10 pt-10">
+        <div className="mt-8 md:mt-16 grid grid-cols-12 gap-x-4 md:gap-x-8 gap-y-6 md:gap-y-8 border-t border-ink/10 pt-6 md:pt-10">
           <div className="col-span-12 lg:col-span-8">
-            <div className="flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-5">
+            <div className="flex items-center gap-2 font-mono text-[0.66rem] md:text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-3 md:mb-5">
               <Info className="h-3.5 w-3.5" strokeWidth={1.8} />
               What's included in every plan
             </div>
-            <dl className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
+            {/* Mobile: 1-col compact list, no per-row borders. Desktop: 3-col grid with bottom rule per row. */}
+            <dl className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-0 md:gap-y-3 divide-y divide-ink/10 md:divide-y-0">
               {standardFees.map((fee) => (
                 <div
                   key={fee.label}
-                  className="flex items-baseline justify-between gap-3 border-b border-ink/10 pb-2"
+                  className="flex items-baseline justify-between gap-3 py-2 md:py-0 md:border-b md:border-ink/10 md:pb-2"
                 >
                   <dt className="text-[0.84rem] text-ink-mute">{fee.label}</dt>
-                  <dd className="font-mono text-[0.82rem] text-ink">{fee.value}</dd>
+                  <dd className="font-mono text-[0.82rem] text-ink whitespace-nowrap">{fee.value}</dd>
                 </div>
               ))}
             </dl>
-            <p className="mt-4 text-[0.82rem] text-ink-mute">
+            <p className="mt-3 md:mt-4 text-[0.8rem] md:text-[0.82rem] leading-relaxed text-ink-mute">
               Co-working plans use a reduced fee schedule (deposit AED 1,000, management
               AED 500). Meeting rooms available from AED 200 / hour for tenants.
             </p>
           </div>
-          <div className="col-span-12 lg:col-span-4 flex flex-col justify-end gap-3">
+          <div className="col-span-12 lg:col-span-4 flex flex-col justify-end gap-2.5 md:gap-3">
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-night px-5 py-3.5 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-night px-5 py-3 md:py-3.5 text-[0.9rem] md:text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
             >
               Book an office tour
               <ArrowUpRight
@@ -224,7 +225,7 @@ export function OfficesGrid({
             </Link>
             <Link
               href="/business-centers"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-paper px-5 py-3 text-[0.88rem] text-ink hover:border-ink/40 transition-colors"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-paper px-5 py-2.5 md:py-3 text-[0.86rem] md:text-[0.88rem] text-ink hover:border-ink/40 transition-colors"
             >
               View the full catalog
               <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.8} />
@@ -350,7 +351,7 @@ function EmptyCenterState() {
         <MapPin className="h-5 w-5" strokeWidth={1.6} />
       </div>
       <h3 className="font-display text-[1.4rem] leading-[1.15] tracking-[-0.015em] text-ink">
-        Fresh inventory drops weekly at this centre.
+        Fresh inventory drops weekly at this center.
       </h3>
       <p className="mt-3 max-w-xl mx-auto text-[0.95rem] text-ink-mute">
         Tell us your team size and timing. We'll send you the units that match

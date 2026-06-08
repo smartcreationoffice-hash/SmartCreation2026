@@ -17,9 +17,9 @@ const sections: LegalSection[] = [
         <p>
           Smart Creation Group (&ldquo;Smart Creation&rdquo;,
           &ldquo;we&rdquo;, &ldquo;our&rdquo; or &ldquo;us&rdquo;) is a U.A.E.
-          business-setup consultancy operating six owned business centres
+          business-setup consultancy operating six owned business centers
           across Dubai and serving founders, family offices and multinationals
-          since 2013. Our registered address is 19th Floor, Damac Executive
+          since 2020. Our registered address is 19th Floor, Damac Executive
           Heights, Barsha Heights (Tecom), Dubai, U.A.E.
         </p>
         <p>

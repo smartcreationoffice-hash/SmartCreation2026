@@ -80,7 +80,7 @@ function shortCentreName(name: string): string {
 /**
  * Per-centre stem length in pixels. Pins anchor at their geographic
  * coordinate (the bottom dot) and the head floats above by `STEM_PX`,
- * so geographically close centres can be staggered vertically to avoid
+ * so geographically close centers can be staggered vertically to avoid
  * head-on collisions on the map.
  */
 const STEM_PX: Record<string, number> = {
@@ -195,7 +195,7 @@ export function CentresMap({ pins }: { pins: CentreMapPin[] }) {
                     onMouseLeave={() => setHovered(null)}
                     className="relative flex flex-col items-center cursor-pointer group"
                   >
-                    {/* Head card — dark navy blue with centre name + office count */}
+                    {/* Head card — dark navy blue with center name + office count */}
                     <div
                       className={
                         "relative inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition-all duration-300 whitespace-nowrap " +
@@ -296,7 +296,7 @@ export function CentresMap({ pins }: { pins: CentreMapPin[] }) {
             <span className="absolute inset-0 inline-flex animate-ping rounded-full bg-emerald-500 opacity-70" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
           </span>
-          {valid.length} centres · {totalOffices} live office{totalOffices === 1 ? "" : "s"}
+          {valid.length} centers · {totalOffices} live office{totalOffices === 1 ? "" : "s"}
         </div>
 
         {/* Side-slide details panel */}
@@ -315,7 +315,7 @@ export function CentresMap({ pins }: { pins: CentreMapPin[] }) {
                 className="flex items-center gap-2 px-5 pt-4 pb-2 text-[0.78rem] text-stone hover:text-ink transition-colors"
               >
                 <ChevronLeft className="h-3.5 w-3.5" strokeWidth={2} />
-                Back to all centres
+                Back to all centers
               </button>
 
               <div className="px-5 pb-5">
@@ -380,7 +380,7 @@ export function CentresMap({ pins }: { pins: CentreMapPin[] }) {
                     href={`/business-centers/${selected.key}`}
                     className="group flex items-center justify-center w-full gap-1.5 rounded-full bg-brand-night px-4 py-2.5 text-[0.85rem] font-medium text-paper hover:bg-brand transition-colors"
                   >
-                    Visit centre
+                    Visit center
                     <ArrowUpRight
                       className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       strokeWidth={1.8}
@@ -408,7 +408,7 @@ export function CentresMap({ pins }: { pins: CentreMapPin[] }) {
         </AnimatePresence>
       </div>
 
-      {/* Properties grid — appears when a centre is selected */}
+      {/* Properties grid — appears when a center is selected */}
       <AnimatePresence>
         {selected && (selected.properties?.length ?? 0) > 0 && (
           <m.div

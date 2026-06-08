@@ -256,83 +256,43 @@ const sections: ServiceSectionData[] = [
     ],
   },
   {
-    id: "ancfz",
+    id: "dubai-south",
     index: "07",
-    eyebrow: "Startups & SMEs · Ajman",
-    title: "ANCFZ",
+    eyebrow: "Aviation, logistics & e-commerce",
+    title: "Dubai South",
     icon: "globe",
-    image: { src: "/free-zones/anc-large.webp", alt: "ANCFZ · Ajman NuVentures Centre Free Zone" },
+    image: { src: "/free-zones/dubai-south-large.webp", alt: "Dubai South · Aviation, logistics and e-commerce free zone" },
     lede:
-      "Ajman NuVentures Centre Free Zone is purpose-built for startups and small businesses that want low setup cost, fast turnaround and a flexible activity list. Right for founders launching lean, freelancers and remote teams.",
+      "Dubai South Free Zone is the master-planned city around Al Maktoum International Airport: aviation, logistics, e-commerce, light industrial and the Expo legacy district. Right for businesses that move physical goods or operate within the airport-and-Jebel-Ali corridor.",
     good: [
-      "Solo founders and freelancers seeking a credible licence",
-      "Bootstrapped SMEs prioritising cost and speed",
-      "Service businesses without a heavy physical footprint",
-      "Remote-first teams that need a U.A.E. address with a visa",
+      "Aviation, MRO and aerospace services",
+      "Logistics, freight forwarding and last-mile",
+      "E-commerce sellers needing fulfilment-grade warehousing",
+      "Light manufacturing and assembly operations",
     ],
     included: [
-      "Activity confirmation against ANCFZ's flexible list",
-      "Smart-office or flexi-desk lease",
-      "Application, KYC and shareholder docs",
-      "Establishment card and visa quota provisioning",
-      "Bank introduction with two U.A.E. banks",
+      "Activity confirmation against Dubai South's licence categories",
+      "Choice of office, warehouse or logistics-park lease",
+      "Application package, KYC and shareholder docs",
+      "Establishment card, immigration file and visa quota",
+      "Bank introduction with two suitable U.A.E. banks",
     ],
     meta: [
-      { label: "Authority", value: "ANCFZ · Ajman" },
-      { label: "Setup time", value: "2–4 working days" },
-      { label: "Visa quota", value: "Flexible 1–4 visas" },
-      { label: "Year-one cost", value: "From AED 9,500" },
+      { label: "Authority", value: "Dubai South Free Zone" },
+      { label: "Setup time", value: "5–7 working days" },
+      { label: "Visa quota", value: "Tied to leased area" },
+      { label: "Year-one cost", value: "From AED 16,500" },
     ],
     highlight: {
-      eyebrow: "Why ANCFZ wins on cost",
-      title: "One of the lowest entry points in the U.A.E.",
-      body: "If your business doesn't need Dubai prestige, ANCFZ trims the licence and lease bill significantly while keeping the same investor visa, bank account access and CT framework as any other free zone.",
+      eyebrow: "Why Dubai South for movement",
+      title: "Built around the airport and the port at the same time.",
+      body: "Dubai South sits between Al Maktoum International and Jebel Ali Port — the only U.A.E. free zone with both megahubs in walking distance. If your business hinges on customs, cargo or e-commerce throughput, the geography pays for itself.",
     },
     steps: [
-      "Confirm activity matches ANCFZ's list.",
-      "Pick smart-office or flexi-desk.",
+      "Confirm activity matches Dubai South's category list.",
+      "Pick the right lease type — office, warehouse or logistics park.",
       "Submit application + KYC.",
       "Licence + visa quota activated.",
-    ],
-  },
-  {
-    id: "uaq",
-    index: "08",
-    eyebrow: "Fast setup · Umm Al Quwain",
-    title: "UAQ",
-    icon: "globe",
-    image: { src: "/free-zones/uaq-large.webp", alt: "UAQ · Umm Al Quwain Free Trade Zone" },
-    lede:
-      "Umm Al Quwain Free Trade Zone Authority offers the fastest-setup environment in the U.A.E. for SMEs. Light-touch process, broad activity list, and an entry-level price point with full ownership and tax benefits.",
-    good: [
-      "SMEs that need a quick licence on a tight timeline",
-      "Trading and consulting firms without a physical footprint",
-      "Founders who want minimum bureaucracy",
-      "Cost-conscious teams scaling 1–5 people",
-    ],
-    included: [
-      "Activity confirmation against UAQ FTZ's list",
-      "Flexi-desk or virtual-office lease",
-      "Application, KYC and shareholder docs",
-      "Establishment card and visa quota provisioning",
-      "Bank introduction with U.A.E. banks",
-    ],
-    meta: [
-      { label: "Authority", value: "UAQ FTZ · Umm Al Quwain" },
-      { label: "Setup time", value: "2–4 working days" },
-      { label: "Visa quota", value: "Flexible 1–6 visas" },
-      { label: "Year-one cost", value: "From AED 8,500" },
-    ],
-    highlight: {
-      eyebrow: "Why UAQ for speed",
-      title: "From signed brief to issued licence in days, not weeks.",
-      body: "UAQ FTZ runs one of the leanest application flows in the country. For founders who need to move fast (sign a contract, hire on a visa, open a bank), UAQ lets you skip weeks of bureaucracy elsewhere.",
-    },
-    steps: [
-      "Match your activity to UAQ's list.",
-      "Pick virtual office or flexi-desk.",
-      "Submit application + KYC.",
-      "Licence + visa quota issued in days.",
     ],
   },
 ];
@@ -381,7 +341,7 @@ export default function DubaiZonesPage() {
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-paper/20 bg-paper/5 backdrop-blur px-5 py-3 text-[0.9rem] text-paper hover:bg-paper/10 transition-colors"
                 >
                   <Calendar className="h-3.5 w-3.5" strokeWidth={1.8} />
-                  See northern-emirates zones
+                  See other-emirates zones
                 </Link>
               </div>
             </div>

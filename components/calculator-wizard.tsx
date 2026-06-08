@@ -62,7 +62,7 @@ const VISA_OPTIONS_PILL = ["0", "1", "2", "3", "4", "5", "6", "7+"];
 
 const OFFICE_OPTIONS: Option[] = [
   { id: "separate-office", label: "Separate office",  desc: "Standalone leased commercial unit",       icon: Building2 },
-  { id: "business-centre", label: "Business centre",  desc: "Serviced office in one of our six centres", icon: Briefcase },
+  { id: "business-centre", label: "Business center",  desc: "Serviced office in one of our six centers", icon: Briefcase },
   { id: "warehouse",       label: "Warehouse",        desc: "Storage, logistics or light industrial",   icon: Warehouse },
   { id: "shop",            label: "Shop",             desc: "Ground-floor retail or showroom",          icon: ShoppingBag },
   { id: "own",             label: "I have my own",    desc: "Existing premises or Ejari",               icon: Home },
@@ -414,7 +414,7 @@ export function CalculatorWizard() {
           {current === "office" && (
             <StepPick
               title="What kind of office?"
-              subtitle="Most licences require an address. We own and operate six centres in Dubai."
+              subtitle="Most licences require an address. We own and operate six centers in Dubai."
               options={OFFICE_OPTIONS}
               value={state.office}
               onPick={(id) => pick("office", id)}

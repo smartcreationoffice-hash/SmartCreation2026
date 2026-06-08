@@ -29,7 +29,7 @@ const pillars: Pillar[] = [
 
 const trust = [
   { value: "10,000+", label: "Companies launched", meta: "Across every emirate" },
-  { value: "12+", label: "Years in U.A.E.", meta: "Founded 2013" },
+  { value: "6+", label: "Years in U.A.E.", meta: "Founded 2020" },
   { value: "All zones", label: "UAE jurisdictions", meta: "Mainland · Free zone · Offshore" },
   { value: "1 day", label: "Plan turnaround", meta: "After your consultation" },
 ];

@@ -25,7 +25,7 @@ export async function Offices() {
     getProperties({ limit: 500 }),
   ]);
 
-  const centres = centresRaw.map((c) => ({
+  const centers = centresRaw.map((c) => ({
     id: String(c.id),
     key: String(c.key),
     name: String(c.name).replace("Business Center", "BC").replace("Hamd Bin Huwaidi Building", "Bldg."),
@@ -40,5 +40,5 @@ export async function Offices() {
 
   const offices = propertiesRaw.map(propertyToOffice);
 
-  return <OfficesGrid offices={offices} centres={centres} />;
+  return <OfficesGrid offices={offices} centers={centers} />;
 }

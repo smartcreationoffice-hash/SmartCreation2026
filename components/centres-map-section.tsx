@@ -74,7 +74,7 @@ export async function CentresMapSection({
             >
               {title ?? (
                 <>
-                  Six centres mapped.{" "}
+                  Six centers mapped.{" "}
                   <span className={isDark ? "text-brand-soft" : "text-brand-deep"}>
                     live office count and price range.
                   </span>
@@ -103,7 +103,7 @@ export async function CentresMapSection({
               }
             >
               <MapPin className="h-3.5 w-3.5" strokeWidth={1.8} />
-              Browse all centres
+              Browse all centers
               <ArrowUpRight
                 className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 strokeWidth={1.8}

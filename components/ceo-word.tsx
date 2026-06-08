@@ -84,10 +84,10 @@ export function CeoWord() {
                 business ecosystem where entrepreneurs thrive.
               </p>
               <p>
-                Twelve years on, that promise has only deepened. We've helped over{" "}
+                Six years on, that promise has only deepened. We've helped over{" "}
                 <span className="text-paper font-semibold">10,000 businesses</span> find
                 their footing in the U.A.E., every file passing through the same
-                accountable team that's been doing this since 2013.
+                accountable team that's been doing this since 2020.
               </p>
             </div>
 

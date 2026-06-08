@@ -670,7 +670,7 @@ function MobileDrawer({
             </span>
             § Menu
           </span>
-          <span className="text-paper/55">EST. 2013 · Dubai</span>
+          <span className="text-paper/55">EST. 2020 · Dubai</span>
         </m.div>
 
         {/* Nav */}

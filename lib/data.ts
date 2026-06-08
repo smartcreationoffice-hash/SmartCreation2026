@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  BookOpen,
   Building2,
   Landmark,
   Globe2,
@@ -10,6 +11,7 @@ import {
   ShieldCheck,
   Bus,
   Cpu,
+  FileText,
   Home,
   HardHat,
   Building,
@@ -21,7 +23,7 @@ export const BRAND = {
   group: "Smart Creation Group",
   groupLong: "Smart Creation Group of Companies",
   shortMark: "SCG",
-  founded: 2013,
+  founded: 2020,
   ceo: "Asad Hashmi",
   ceoTitle: "C.E.O of Smart Creation Group of Companies",
   tagline: "Your Trusted Partner in Business Success",
@@ -130,17 +132,19 @@ export const navigation: NavItem[] = [
             { label: "Meydan", href: "/free-zones/dubai#meydan", desc: "Professional services" },
             { label: "DCC", href: "/free-zones/dubai#dcc", desc: "Dubai CommerCity for e-commerce" },
             { label: "DTEC", href: "/free-zones/dubai#dtec", desc: "Technology Entrepreneur Campus" },
-            { label: "ANCFZ", href: "/free-zones/dubai#ancfz", desc: "Ajman NuVentures Centre" },
-            { label: "UAQ", href: "/free-zones/dubai#uaq", desc: "Umm Al Quwain Free Trade Zone" },
+            { label: "Dubai South", href: "/free-zones/dubai#dubai-south", desc: "Aviation, logistics & e-commerce" },
           ],
         },
         {
-          title: "Sharjah & northern emirates",
+          title: "Other emirates",
           links: [
             { label: "SHAMS", href: "/free-zones/northern-emirates#shams", desc: "Sharjah Media City" },
             { label: "SPC", href: "/free-zones/northern-emirates#spc", desc: "Sharjah Publishing City" },
+            { label: "SPARK", href: "/free-zones/northern-emirates#spark", desc: "Sharjah Research, Technology & Innovation Park" },
             { label: "RAKEZ", href: "/free-zones/northern-emirates#rakez", desc: "Ras Al Khaimah Economic Zone" },
             { label: "AFZA", href: "/free-zones/northern-emirates#afza", desc: "Ajman Free Zone" },
+            { label: "ANCFZ", href: "/free-zones/northern-emirates#ancfz", desc: "Ajman NuVentures Centre" },
+            { label: "UAQ", href: "/free-zones/northern-emirates#uaq", desc: "Umm Al Quwain Free Trade Zone" },
           ],
         },
       ],
@@ -160,7 +164,7 @@ export const navigation: NavItem[] = [
     mega: {
       groups: [
         {
-          title: "Business Centres",
+          title: "Business Centers",
           links: [
             { label: "Smart Creation",  href: "/business-centers/smart-creation", desc: "Tecom · Barsha Heights" },
             { label: "Smart Place",     href: "/business-centers/smart-place",    desc: "Al Barsha 1" },
@@ -174,6 +178,8 @@ export const navigation: NavItem[] = [
           title: "Group Companies",
           links: [
             { label: "Smart Business Creation",  href: "/group-companies#smart-business-creation", desc: "Business setup · UAE" },
+            { label: "Smart Accounting & Bookkeeping", href: "/group-companies#smart-accounting-bookkeeping", desc: "Accounting · UAE" },
+            { label: "Smart Typing Center",      href: "/group-companies#smart-typing-center",    desc: "Typing services · UAE" },
             { label: "Next Journey Technology",  href: "/group-companies#next-journey",           desc: "Technology · UAE" },
             { label: "Smart Holiday Homes",      href: "/group-companies#smart-holiday-homes",    desc: "Hospitality · UAE" },
             { label: "Intercity Bus Service",    href: "/group-companies#intercity-bus",          desc: "Transport · Canada" },
@@ -184,8 +190,8 @@ export const navigation: NavItem[] = [
       ],
       feature: {
         eyebrow: "Operating snapshot",
-        title: "One Group. Three countries. Twelve years.",
-        body: "Six owned business centres across Dubai plus six specialist arms in the UAE, Canada and Pakistan — every file run by the same accountable team.",
+        title: "One Group. Three countries. Six years.",
+        body: "Six owned business centers across Dubai plus six specialist arms in the UAE, Canada and Pakistan — every file run by the same accountable team.",
         cta: { label: "Meet the Group", href: "/about" },
       },
       footer: { label: "About the Group", href: "/about" },
@@ -205,13 +211,13 @@ export const navigation: NavItem[] = [
   },
 ];
 
-// ── Group business centres (UAE) ─────────────────────────────────────
+// ── Group business centers (UAE) ─────────────────────────────────────
 export type GroupCenter = {
   id: string;
   index: string;
   name: string;
   /** Brand-mark file under /public/centres/. Used in place of the
-   *  textual name on the centre cards. */
+   *  textual name on the center cards. */
   logo: string;
   city: string;
   country: "UAE";
@@ -295,7 +301,7 @@ export const groupCenters: GroupCenter[] = [
     logo: "/centres/smart-founders.webp",
     city: "Dubai",
     country: "UAE",
-    address: "Umm Ramool 1, Nad Al Hamar Road, Umm Ramool, Dubai",
+    address: "Mezzanine Floor, New Building 2, Street 32C, Umm Ramool, Dubai, U.A.E.",
     summary:
       "A dedicated workspace for early-stage founders and small teams: desks, meeting space and back-office support tailored to new businesses getting off the ground.",
     highlights: [
@@ -345,7 +351,7 @@ export const groupCompanies: GroupCompany[] = [
     country: "UAE",
     flag: "🇦🇪",
     summary:
-      "Flagship 500-office business centre at Damac Executive Heights, with end-to-end company formation, licensing, PRO and tax services.",
+      "Flagship 500-office business center at Damac Executive Heights, with end-to-end company formation, licensing, PRO and tax services.",
     icon: Building2,
     logo: "/group-logos/smart-creation-bc.webp",
   },
@@ -455,9 +461,31 @@ export const groupCompanies: GroupCompany[] = [
     country: "UAE",
     flag: "🇦🇪",
     summary:
-      "Original founding brand of the Group, with company formation, banking and PRO services delivered under the Smart Business Creation banner since 2013.",
+      "Original founding brand of the Group, with company formation, banking and PRO services delivered under the Smart Business Creation banner since 2020.",
     icon: Briefcase,
     logo: "/group-logos/smart-business-creation.webp",
+  },
+  {
+    id: "smart-accounting-bookkeeping",
+    name: "Smart Accounting & Bookkeeping",
+    sector: "Accounting · UAE",
+    country: "UAE",
+    flag: "🇦🇪",
+    summary:
+      "Dedicated bookkeeping, monthly closes, payroll and audit-readiness arm: clean books on a calendar, ready for VAT, Corporate Tax and Year-end without scrambling.",
+    icon: BookOpen,
+    logo: "/group-logos/smart-accounting-bookkeeping.webp",
+  },
+  {
+    id: "smart-typing-center",
+    name: "Smart Typing Center",
+    sector: "Typing services · UAE",
+    country: "UAE",
+    flag: "🇦🇪",
+    summary:
+      "Our in-house government-relations typing arm: visa applications, Emirates ID renewals, Tas-heel labour services, immigration forms and MOI paperwork submitted and tracked end-to-end.",
+    icon: FileText,
+    logo: "/group-logos/smart-typing-center.webp",
   },
   {
     id: "next-journey",
@@ -637,13 +665,15 @@ export const freeZones: FreeZone[] = [
   { code: "DCC",    name: "Dubai CommerCity",                         emirate: "Dubai",     focus: "E-commerce & digital trade",       leadTime: "5–7 days", href: "/free-zones/dubai#dcc",    logoSrc: "/free-zones/dafza.png" },
   { code: "IFZA",   name: "International Free Zone Authority",        emirate: "Dubai",     focus: "General trading & services",       leadTime: "3–5 days", href: "/free-zones/dubai#ifza",   logoSrc: "/free-zones/afza.png" },
   { code: "DTEC",   name: "Dubai Technology Entrepreneur Campus",     emirate: "Dubai",     focus: "Technology & digital focus",       leadTime: "3–5 days", href: "/free-zones/dubai#dtec",   logoSrc: "/free-zones/dtec.webp" },
-  { code: "ANCFZ",  name: "Ajman NuVentures Centre Free Zone",        emirate: "Dubai",     focus: "Startups & SMEs",                  leadTime: "2–4 days", href: "/free-zones/dubai#ancfz",  logoSrc: "/free-zones/anc.webp" },
-  { code: "UAQ",    name: "Umm Al Quwain Free Trade Zone",            emirate: "Dubai",     focus: "Fast-setup environment for SMEs",  leadTime: "2–4 days", href: "/free-zones/dubai#uaq",    logoSrc: "/free-zones/uaq.webp" },
-  // Northern emirates — each anchor matches /free-zones/northern-emirates
+  { code: "DUBAI-SOUTH", name: "Dubai South Free Zone",                emirate: "Dubai",     focus: "Aviation, logistics & e-commerce", leadTime: "5–7 days", href: "/free-zones/dubai#dubai-south", logoSrc: "/free-zones/dubai-south.webp" },
+  // Other emirates — each anchor matches /free-zones/northern-emirates
   { code: "SHAMS",  name: "Sharjah Media City",                       emirate: "Sharjah",   focus: "Media & creative",                 leadTime: "2–4 days", href: "/free-zones/northern-emirates#shams", logoSrc: "/free-zones/dwtc.png" },
   { code: "SPC",    name: "Sharjah Publishing City",                  emirate: "Sharjah",   focus: "Publishing & content",             leadTime: "3–5 days", href: "/free-zones/northern-emirates#spc",   logoSrc: "/free-zones/shams.png" },
+  { code: "SPARK",  name: "Sharjah Research, Technology & Innovation Park", emirate: "Sharjah", focus: "Research, innovation & deep-tech", leadTime: "4–6 days", href: "/free-zones/northern-emirates#spark", logoSrc: "/free-zones/spark.webp" },
   { code: "RAKEZ",  name: "Ras Al Khaimah Economic Zone",             emirate: "RAK",       focus: "Industrial & SME",                 leadTime: "3–5 days", href: "/free-zones/northern-emirates#rakez", logoSrc: "/free-zones/spc.png" },
   { code: "AFZA",   name: "Ajman Free Zone",                          emirate: "Ajman",     focus: "SMEs & low-cost trade",            leadTime: "2–4 days", href: "/free-zones/northern-emirates#afza",  logoSrc: "/free-zones/rakez.png" },
+  { code: "ANCFZ",  name: "Ajman NuVentures Centre Free Zone",        emirate: "Ajman",     focus: "Startups & SMEs",                  leadTime: "2–4 days", href: "/free-zones/northern-emirates#ancfz", logoSrc: "/free-zones/anc.webp" },
+  { code: "UAQ",    name: "Umm Al Quwain Free Trade Zone",            emirate: "UAQ",       focus: "Fast-setup environment for SMEs",  leadTime: "2–4 days", href: "/free-zones/northern-emirates#uaq",   logoSrc: "/free-zones/uaq.webp" },
 ];
 
 export type Differentiator = {
@@ -657,19 +687,19 @@ export const differentiators: Differentiator[] = [
     index: "01",
     title: "Six real offices, not a PO box",
     body:
-      "We own and operate six business centres across Dubai: Damac Executive Heights (Tecom), Iridium Tower (Al Barsha), Al Hamriya (Bur Dubai), Salah Al Din Street (Al Muraqabat), Umm Ramool (Smart Founders) and Naif/Deira (Abna Rashid). When investors or clients visit you, they walk into a professional address, not a virtual mailbox.",
+      "We own and operate six business centers across Dubai: Damac Executive Heights (Tecom), Iridium Tower (Al Barsha), Al Hamriya (Bur Dubai), Salah Al Din Street (Al Muraqabat), Umm Ramool (Smart Founders) and Naif/Deira (Abna Rashid). When investors or clients visit you, they walk into a professional address, not a virtual mailbox.",
   },
   {
     index: "02",
     title: "A group, not a single agency",
     body:
-      "Smart Creation Group brings together business centres, real estate, technology (Next Journey), holiday rentals, transport and contracting under one roof. One relationship that grows with you, across sectors and borders.",
+      "Smart Creation Group brings together business centers, real estate, technology (Next Journey), holiday rentals, transport and contracting under one roof. One relationship that grows with you, across sectors and borders.",
   },
   {
     index: "03",
-    title: "Twelve years. Ten thousand companies.",
+    title: "Six years. Ten thousand companies.",
     body:
-      "Trusted since 2013 by founders, family offices and multinationals. The edge cases you're about to hit, we've already solved them. Probably twice this quarter.",
+      "Trusted since 2020 by founders, family offices and multinationals. The edge cases you're about to hit, we've already solved them. Probably twice this quarter.",
   },
   {
     index: "04",
@@ -692,34 +722,34 @@ export const processSteps: ProcessStep[] = [
     title: "Consultation",
     summary:
       "A 45-minute call with a senior consultant. We map your activity, residency needs, and capital structure, then recommend a jurisdiction. No obligation, no sales script.",
-    duration: "Day 0",
+    duration: "Day 1",
   },
   {
     index: "02",
-    title: "Structure & license",
+    title: "Licence",
     summary:
-      "Name reservation, MoA drafting, shareholder documentation, and trade license issuance from the authority of your chosen jurisdiction.",
-    duration: "Days 1–10",
+      "Name reservation, MoA drafting, shareholder documentation, and trade-licence issuance from the authority of your chosen jurisdiction.",
+    duration: "Days 2–5",
   },
   {
     index: "03",
     title: "Visas & Emirates ID",
     summary:
       "Establishment card, investor / employee visas, entry permits, medical, biometrics, and Emirates ID: processed by our in-house PRO team.",
-    duration: "Days 10–25",
+    duration: "Days 5–8",
   },
   {
     index: "04",
     title: "Corporate banking",
     summary:
       "We introduce you to the right banker, prepare your application dossier, and accompany you through compliance questions across UAE and international banks.",
-    duration: "Days 20–45",
+    duration: "Days 8–15",
   },
   {
     index: "05",
     title: "Office & operations",
     summary:
-      "Flexi-desk, private office, or virtual address in our Barsha Heights centre, plus bookkeeping, VAT, and Corporate Tax from day one.",
+      "Flexi-desk, private office, or virtual address in our Barsha Heights center, plus bookkeeping, VAT, and Corporate Tax from day one.",
     duration: "Ongoing",
   },
 ];
@@ -791,7 +821,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Professional service, so helpful in supporting the set-up of the new company. Ongoing support is cost-effective and value for money. All staff at the business centre are brilliant, friendly and very helpful with every query. Brilliant access to car park for everyone.",
+      "Professional service, so helpful in supporting the set-up of the new company. Ongoing support is cost-effective and value for money. All staff at the business center are brilliant, friendly and very helpful with every query. Brilliant access to car park for everyone.",
     name: "Latica Grover",
     title: "Founder",
     company: "Verified Google review",
@@ -873,7 +903,7 @@ export type StatItem = {
 };
 
 export const stats: StatItem[] = [
-  { value: 10000, suffix: "+", label: "Companies launched", caption: "Since 2013 across every emirate" },
+  { value: 10000, suffix: "+", label: "Companies launched", caption: "Since 2020 across every emirate" },
   { value: 45000, suffix: "+", label: "Visas processed", caption: "Investor, employment, family, Golden" },
   { value: 12, label: "Free zones covered", caption: "Direct authority relationships" },
   { value: 96, suffix: "%", label: "Client retention", caption: "Year over year, post-licensing" },
@@ -932,7 +962,11 @@ export const CONTACT = {
   phoneHref: "tel:+97143939099",
   phoneAltHref: "tel:+971555519459",
   whatsapp: "+971 55 551 9459",
-  whatsappHref: "https://wa.me/971555519459",
+  whatsappHref:
+    "https://wa.me/971555519459?text=" +
+    encodeURIComponent(
+      "Hi, I would like to know more about your services. Please assist me.",
+    ),
   email: "info@thesmartcreation.com",
   emailHref: "mailto:info@thesmartcreation.com",
   website: "www.thesmartcreation.com",

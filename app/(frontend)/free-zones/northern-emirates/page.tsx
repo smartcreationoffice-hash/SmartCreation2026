@@ -8,9 +8,9 @@ import {
 } from "@/components/service-section";
 
 export const metadata: Metadata = {
-  title: "Sharjah & Northern Emirates Free Zones · SHAMS, SPC, RAKEZ, AFZA",
+  title: "Other Emirates Free Zones · SHAMS, SPC, SPARK, RAKEZ, AFZA, ANCFZ, UAQ",
   description:
-    "Sharjah Media City, Sharjah Publishing City, RAKEZ and Ajman Free Zone: every Northern Emirates option compared by cost, activity list and visa quota.",
+    "Every UAE free zone outside Dubai compared side by side: SHAMS, SPC, SPARK in Sharjah, RAKEZ in Ras Al Khaimah, AFZA and ANCFZ in Ajman, and UAQ FTZ — by cost, activity list and visa quota.",
   alternates: { canonical: "/free-zones/northern-emirates" },
 };
 
@@ -96,8 +96,48 @@ const sections: ServiceSectionData[] = [
     ],
   },
   {
-    id: "rakez",
+    id: "spark",
     index: "03",
+    eyebrow: "Sharjah · research, technology & innovation",
+    title: "SPARK",
+    icon: "globe",
+    image: { src: "/free-zones/spark-large.webp", alt: "SPARK · Sharjah Research, Technology and Innovation Park" },
+    lede:
+      "Sharjah Research, Technology and Innovation Park (SRTIP) is the U.A.E.'s applied-research and deep-tech free zone. Built for R&D-led businesses in renewable energy, water, transport, environment, EdTech and digital. Sits next to the American University of Sharjah and University City.",
+    good: [
+      "R&D-led startups in clean-tech, water, mobility and AgTech",
+      "Deep-tech founders commercialising university research",
+      "Industrial-tech and Industry 4.0 manufacturers",
+      "EdTech and digital-health companies wanting an academic partner",
+    ],
+    included: [
+      "Activity classification under SRTIP's research / tech categories",
+      "Choice of office, lab or industrial-park lease",
+      "Application package, KYC and shareholder docs",
+      "Establishment card, immigration file and visa quota",
+      "Intros to SRTIP's accelerator, grant and university partners",
+    ],
+    meta: [
+      { label: "Authority", value: "SRTIP · Sharjah" },
+      { label: "Setup time", value: "4–6 working days" },
+      { label: "Visa quota", value: "Tied to leased area" },
+      { label: "Year-one cost", value: "From AED 11,500" },
+    ],
+    highlight: {
+      eyebrow: "Why SPARK for deep-tech",
+      title: "A free zone built next to the laboratory you need.",
+      body: "SRTIP shares a campus with the American University of Sharjah, the University of Sharjah and the Sharjah Centre for Astronomy & Space Sciences. If your business needs research partners, post-grad talent and prototyping infrastructure, the proximity is the entire point.",
+    },
+    steps: [
+      "Confirm activity matches SRTIP's research / tech list.",
+      "Pick office, lab or industrial-park lease.",
+      "Submit application + KYC.",
+      "Licence + visa quota activated.",
+    ],
+  },
+  {
+    id: "rakez",
+    index: "04",
     eyebrow: "RAK · industrial & SME",
     title: "RAKEZ",
     icon: "globe",
@@ -137,7 +177,7 @@ const sections: ServiceSectionData[] = [
   },
   {
     id: "afza",
-    index: "04",
+    index: "05",
     eyebrow: "Ajman · fastest entry",
     title: "AFZA",
     icon: "globe",
@@ -175,6 +215,86 @@ const sections: ServiceSectionData[] = [
       "Licence + visa quota activated.",
     ],
   },
+  {
+    id: "ancfz",
+    index: "06",
+    eyebrow: "Startups & SMEs · Ajman",
+    title: "ANCFZ",
+    icon: "globe",
+    image: { src: "/free-zones/anc-large.webp", alt: "ANCFZ · Ajman NuVentures Centre Free Zone" },
+    lede:
+      "Ajman NuVentures Centre Free Zone is purpose-built for startups and small businesses that want low setup cost, fast turnaround and a flexible activity list. Right for founders launching lean, freelancers and remote teams.",
+    good: [
+      "Solo founders and freelancers seeking a credible licence",
+      "Bootstrapped SMEs prioritising cost and speed",
+      "Service businesses without a heavy physical footprint",
+      "Remote-first teams that need a U.A.E. address with a visa",
+    ],
+    included: [
+      "Activity confirmation against ANCFZ's flexible list",
+      "Smart-office or flexi-desk lease",
+      "Application, KYC and shareholder docs",
+      "Establishment card and visa quota provisioning",
+      "Bank introduction with two U.A.E. banks",
+    ],
+    meta: [
+      { label: "Authority", value: "ANCFZ · Ajman" },
+      { label: "Setup time", value: "2–4 working days" },
+      { label: "Visa quota", value: "Flexible 1–4 visas" },
+      { label: "Year-one cost", value: "From AED 9,500" },
+    ],
+    highlight: {
+      eyebrow: "Why ANCFZ wins on cost",
+      title: "One of the lowest entry points in the U.A.E.",
+      body: "If your business doesn't need Dubai prestige, ANCFZ trims the licence and lease bill significantly while keeping the same investor visa, bank account access and CT framework as any other free zone.",
+    },
+    steps: [
+      "Confirm activity matches ANCFZ's list.",
+      "Pick smart-office or flexi-desk.",
+      "Submit application + KYC.",
+      "Licence + visa quota activated.",
+    ],
+  },
+  {
+    id: "uaq",
+    index: "07",
+    eyebrow: "Fast setup · Umm Al Quwain",
+    title: "UAQ",
+    icon: "globe",
+    image: { src: "/free-zones/uaq-large.webp", alt: "UAQ · Umm Al Quwain Free Trade Zone" },
+    lede:
+      "Umm Al Quwain Free Trade Zone Authority offers the fastest-setup environment in the U.A.E. for SMEs. Light-touch process, broad activity list, and an entry-level price point with full ownership and tax benefits.",
+    good: [
+      "SMEs that need a quick licence on a tight timeline",
+      "Trading and consulting firms without a physical footprint",
+      "Founders who want minimum bureaucracy",
+      "Cost-conscious teams scaling 1–5 people",
+    ],
+    included: [
+      "Activity confirmation against UAQ FTZ's list",
+      "Flexi-desk or virtual-office lease",
+      "Application, KYC and shareholder docs",
+      "Establishment card and visa quota provisioning",
+      "Bank introduction with U.A.E. banks",
+    ],
+    meta: [
+      { label: "Authority", value: "UAQ FTZ · Umm Al Quwain" },
+      { label: "Setup time", value: "2–4 working days" },
+      { label: "Visa quota", value: "Flexible 1–6 visas" },
+      { label: "Year-one cost", value: "From AED 8,500" },
+    ],
+    highlight: {
+      eyebrow: "Why UAQ for speed",
+      title: "From signed brief to issued licence in days, not weeks.",
+      body: "UAQ FTZ runs one of the leanest application flows in the country. For founders who need to move fast (sign a contract, hire on a visa, open a bank), UAQ lets you skip weeks of bureaucracy elsewhere.",
+    },
+    steps: [
+      "Match your activity to UAQ's list.",
+      "Pick virtual office or flexi-desk.",
+      "Submit application + KYC.",
+      "Licence + visa quota issued in days.",
+    ],
+  },
 ];
 
 export default function NorthernEmiratesZonesPage() {
@@ -200,7 +320,7 @@ export default function NorthernEmiratesZonesPage() {
               </h2>
               <p className="mt-5 max-w-2xl text-[1.02rem] leading-relaxed text-paper/75">
                 Activity, ownership, visa quota, banking, lease type and total
-                year-one cost: assessed against all four Northern Emirates zones
+                year-one cost: assessed against every other-emirate zone
                 and back to you within one business day.
               </p>
             </div>

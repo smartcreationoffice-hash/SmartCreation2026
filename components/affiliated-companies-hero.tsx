@@ -34,7 +34,7 @@ const pillars: Pillar[] = [
 const trust = [
   { value: "6",        label: "Group companies",       meta: "Under Smart Creation Group" },
   { value: "3",        label: "Countries",             meta: "UAE · Canada · Pakistan" },
-  { value: "12+",      label: "Years on the ground",   meta: "Founded 2013" },
+  { value: "6+",      label: "Years on the ground",   meta: "Founded 2020" },
   { value: "1 team",   label: "Accountable for all",   meta: "One file, one owner" },
 ];
 
@@ -155,7 +155,7 @@ export function AffiliatedCompaniesHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.4rem,6vw,4.6rem)] text-paper text-balance"
+              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.2rem,5.2vw,4.2rem)] text-paper text-balance"
             >
               <span className="block">One parent.</span>
               <span className="block">Six group</span>
@@ -168,7 +168,7 @@ export function AffiliatedCompaniesHero() {
               transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
               className="mt-7 max-w-[36rem] text-[1.04rem] md:text-[1.1rem] leading-relaxed text-paper/70 text-pretty"
             >
-              Beyond the six business centres, Smart Creation Group operates six
+              Beyond the six business centers, Smart Creation Group operates six
               specialist arms across the UAE, Canada and Pakistan. Business
               setup, technology, hospitality, transport, contracting and
               experiences. One accountable team, every file.
@@ -212,7 +212,7 @@ export function AffiliatedCompaniesHero() {
                 <span className="absolute inset-0 inline-flex animate-ping rounded-full bg-brand opacity-70" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
               </span>
-              <span>UAE · Canada · Pakistan · Operating since 2013</span>
+              <span>UAE · Canada · Pakistan · Operating since 2020</span>
             </m.div>
           </div>
 
