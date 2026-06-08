@@ -22,7 +22,7 @@ export function Stats() {
                 to={s.value}
                 suffix={s.suffix}
                 prefix={s.prefix}
-                className="font-display text-[clamp(2.5rem,5.8vw,4.25rem)] leading-none tracking-[-0.03em] text-ink"
+                className="font-display text-[clamp(2.1rem,4.6vw,3.4rem)] leading-none tracking-[-0.03em] text-ink"
               />
               <div className="mt-4 font-medium text-[1rem] text-ink">{s.label}</div>
               <div className="mt-1 text-[0.85rem] text-ink-mute">{s.caption}</div>

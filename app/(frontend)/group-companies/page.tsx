@@ -405,7 +405,7 @@ export default function AffiliatedCompaniesPage() {
               <div className="flex items-center gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-mist mb-4">
                 <span className="h-px w-8 bg-mist/40" />§ Work with the Group
               </div>
-              <h2 className="font-display text-[clamp(1.9rem,4vw,3rem)] leading-[1.05] tracking-[-0.02em] text-paper text-balance max-w-3xl">
+              <h2 className="font-display text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.05] tracking-[-0.02em] text-paper text-balance max-w-3xl">
                 One brief in.{" "}
                 <span className="text-brand-soft">The right Group arm out.</span>
               </h2>

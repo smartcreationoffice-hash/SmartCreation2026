@@ -89,7 +89,7 @@ export function ContactForm() {
       <div className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-stone mb-3">
         Send us a brief
       </div>
-      <h2 className="font-display font-semibold text-[clamp(1.6rem,2.6vw,2.2rem)] leading-[1.1] tracking-[-0.02em] text-ink text-balance">
+      <h2 className="font-display font-semibold text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.1] tracking-[-0.02em] text-ink text-balance">
         Tell us what you're building.{" "}
         <span className="text-brand-deep">We'll come back within a day.</span>
       </h2>

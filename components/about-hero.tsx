@@ -140,7 +140,7 @@ export function AboutHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display font-medium tracking-[-0.03em] leading-[1.05] text-[clamp(1.5rem,3.4vw,2.8rem)] text-paper text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)] whitespace-nowrap"
+          className="font-display font-medium tracking-[-0.03em] leading-[1.05] text-[clamp(1.4rem,3vw,2.4rem)] text-paper text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)] whitespace-nowrap"
         >
           Built around your business{" "}
           <span className="text-brand">· since 2020.</span>

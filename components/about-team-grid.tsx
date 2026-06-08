@@ -108,7 +108,7 @@ export function AboutTeamGrid({ members }: { members: TeamMember[] }) {
           <div className="flex items-center gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-4">
             <span className="h-px w-8 bg-ink/25" />§ The team
           </div>
-          <h2 className="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.8rem)] leading-[1.05] tracking-[-0.02em] text-ink text-balance">
+          <h2 className="font-display font-semibold text-[clamp(1.75rem,3vw,2.4rem)] leading-[1.05] tracking-[-0.02em] text-ink text-balance">
             {members.length} people behind every licence,{" "}
             <span className="text-brand-deep">bank account and visa.</span>
           </h2>

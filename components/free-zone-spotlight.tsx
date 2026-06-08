@@ -195,7 +195,7 @@ export function FreeZoneSpotlight({
                     }}
                   />
                 </div>
-                <h2 className="font-display font-semibold leading-[0.92] tracking-[-0.03em] text-[clamp(2.4rem,5.4vw,4.4rem)] text-paper text-balance">
+                <h2 className="font-display font-semibold leading-[0.92] tracking-[-0.03em] text-[clamp(2.1rem,4.6vw,3.6rem)] text-paper text-balance">
                   {z.name}
                   <span className="text-brand">.</span>
                 </h2>

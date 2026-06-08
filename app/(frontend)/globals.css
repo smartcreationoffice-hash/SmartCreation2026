@@ -120,11 +120,12 @@
   }
 
   /* Container with editorial gutters — graded so tablet and laptop
-     always get visible side breathing room instead of jumping straight
-     from 40px (md) to 64px (xl) with nothing in between. */
+     always get visible side breathing room. Max-width capped at 80rem
+     (1280px) so even 1440-1600px laptops always have ~80-160px of side
+     gutter and the eye never has to track full-width lines. */
   .container-edit {
     width: 100%;
-    max-width: 84rem;          /* was 88rem — slight reduction so 13" laptops feel less stretched */
+    max-width: 80rem;          /* 1280px — was 84rem; gives more side air on 13"+ laptops */
     margin-inline: auto;
     padding-inline: 1.25rem;   /* mobile · 20px */
   }

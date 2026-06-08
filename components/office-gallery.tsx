@@ -50,10 +50,11 @@ export function OfficeGallery({ images, title }: OfficeGalleryProps) {
 
   return (
     <div>
-      {/* Main / hero — keep a 16:9 aspect on mobile, but on desktop/laptop
-          cap the height so the whole gallery (image + thumbs) fits in a
-          single viewport without scrolling. */}
-      <div className="relative aspect-[16/9] md:aspect-auto md:h-[clamp(360px,58vh,620px)] rounded-3xl overflow-hidden bg-paper-deep border border-ink/10">
+      {/* Main / hero — keep a softer 16:10 aspect on mobile, and on
+          desktop/laptop cap the height so the whole gallery (image +
+          thumbs) fits in a single viewport without scrolling AND
+          without aggressive bottom-cropping on `object-cover`. */}
+      <div className="relative mx-auto max-w-6xl aspect-[16/10] md:aspect-auto md:h-[clamp(320px,46vh,500px)] rounded-3xl overflow-hidden bg-paper-deep border border-ink/10">
         <AnimatePresence initial={false} mode="wait">
           <m.div
             key={images[activeIdx]}

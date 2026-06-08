@@ -108,7 +108,7 @@ export function InsightsHero({ liveCount }: { liveCount: number }) {
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ Insights
             </div>
-            <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.4rem,6vw,4.6rem)] text-paper text-balance">
+            <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.1rem,4.8vw,3.6rem)] text-paper text-balance">
               <span className="block">Field notes from</span>
               <span className="block">setting up businesses</span>
               <span className="block text-brand">in the U.A.E.</span>

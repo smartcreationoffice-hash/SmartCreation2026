@@ -89,7 +89,7 @@ export function LegalPageLayout({
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ {eyebrow}
               </div>
-              <h1 className="font-display font-medium tracking-[-0.03em] leading-[1] text-[clamp(2.2rem,5vw,3.8rem)] text-paper text-balance">
+              <h1 className="font-display font-medium tracking-[-0.03em] leading-[1] text-[clamp(2rem,4.2vw,3.2rem)] text-paper text-balance">
                 {title}
               </h1>
               <p className="mt-6 max-w-2xl text-[1.02rem] leading-relaxed text-paper/70 text-pretty">

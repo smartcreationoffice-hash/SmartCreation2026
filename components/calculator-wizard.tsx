@@ -224,7 +224,7 @@ export function CalculatorWizard() {
         className="relative"
       >
         <div className="text-center md:text-left">
-          <h2 className="font-display font-semibold tracking-[-0.025em] leading-[1.04] text-[clamp(1.8rem,3.6vw,2.6rem)] text-ink text-balance">
+          <h2 className="font-display font-semibold tracking-[-0.025em] leading-[1.04] text-[clamp(1.7rem,3.2vw,2.3rem)] text-ink text-balance">
             Your setup estimate is{" "}
             <span className="text-brand-deep">almost ready</span>
             {firstName !== "there" ? `, ${firstName}.` : "."}

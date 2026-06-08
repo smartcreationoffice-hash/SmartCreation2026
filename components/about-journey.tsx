@@ -147,7 +147,7 @@ export function AboutJourney() {
           <div className="flex items-center gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-4">
             <span className="h-px w-8 bg-ink/25" />§ The journey
           </div>
-          <h2 className="font-display font-semibold text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.04] tracking-[-0.02em] text-ink text-balance">
+          <h2 className="font-display font-semibold text-[clamp(1.75rem,3.2vw,2.5rem)] leading-[1.04] tracking-[-0.02em] text-ink text-balance">
             One floor in 2020,{" "}
             <span className="text-brand-deep">
               twelve companies by 2026.

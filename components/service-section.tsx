@@ -240,7 +240,7 @@ export function ServiceSection({
                 {s.badge}
               </div>
             )}
-            <h2 className="font-display font-semibold text-ink text-balance leading-[0.96] tracking-[-0.025em] text-[clamp(2.4rem,5vw,4rem)]">
+            <h2 className="font-display font-semibold text-ink text-balance leading-[0.96] tracking-[-0.025em] text-[clamp(2.1rem,4.4vw,3.4rem)]">
               {(() => {
                 const words = s.title.split(" ");
                 if (words.length < 2)

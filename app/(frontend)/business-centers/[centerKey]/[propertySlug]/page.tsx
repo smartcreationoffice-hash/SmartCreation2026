@@ -120,7 +120,12 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
       <section className="pb-10 md:pb-14">
         <div className="container-edit">
-          <OfficeGallery images={images} title={office.title} />
+          {/* Constrain the gallery to a comfortable reading width on
+              13"+ laptops so the main photo doesn't dominate the viewport
+              and the side gutters always feel intentional. */}
+          <div className="mx-auto max-w-[1180px]">
+            <OfficeGallery images={images} title={office.title} />
+          </div>
         </div>
       </section>
 
@@ -145,7 +150,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
             <div className="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-stone mb-3">
               {office.officeNo}
             </div>
-            <h1 className="font-display font-medium text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.02] tracking-[-0.025em] text-ink text-balance">
+            <h1 className="font-display font-medium text-[clamp(1.85rem,3.6vw,2.7rem)] leading-[1.02] tracking-[-0.025em] text-ink text-balance">
               {office.title}
             </h1>
 
