@@ -157,7 +157,7 @@ export function CentreDetailHero({
           </div>
 
           {/* Headline */}
-          <h1 className="max-w-4xl font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.1rem,4.8vw,3.6rem)] text-paper text-balance">
+          <h1 className="max-w-4xl font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.4rem,6vw,4.6rem)] text-paper text-balance">
             {name}
             <span className="text-brand">.</span>
           </h1>

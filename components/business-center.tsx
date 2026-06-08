@@ -16,7 +16,7 @@ export function BusinessCenter() {
               § 08 · Our Business Centers
             </span>
             <h2
-                                                                      className="font-display mt-5 text-[clamp(1.75rem,3.6vw,2.6rem)] leading-[1.04] tracking-[-0.02em] text-ink text-balance max-w-3xl"
+                                                                      className="font-display mt-5 text-[clamp(1.9rem,4.4vw,3.2rem)] leading-[1.04] tracking-[-0.02em] text-ink text-balance max-w-3xl"
             >
               Six real Dubai addresses,{" "}
               <span className="text-brand-deep">all owned and operated.</span>

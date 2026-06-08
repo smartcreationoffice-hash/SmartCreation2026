@@ -49,7 +49,7 @@ export default function CalculatorPage() {
               2-minute free estimate
             </div>
 
-            <h1 className="font-display font-semibold tracking-[-0.025em] leading-[1.04] text-[clamp(1.85rem,3.8vw,2.7rem)] text-ink text-balance">
+            <h1 className="font-display font-semibold tracking-[-0.025em] leading-[1.04] text-[clamp(2rem,4.4vw,3.4rem)] text-ink text-balance">
               Calculate the cost of your{" "}
               <span className="text-brand-deep">Dubai business setup.</span>
             </h1>

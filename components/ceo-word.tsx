@@ -56,7 +56,7 @@ export function CeoWord() {
           <div
                                                             className="col-span-12 md:col-span-7 md:pl-4 lg:pl-10"
           >
-            <h2 className="font-display text-balance text-[clamp(1.6rem,3vw,2.4rem)] leading-[1.05] tracking-[-0.02em] text-paper">
+            <h2 className="font-display text-balance text-[clamp(1.75rem,3.4vw,2.75rem)] leading-[1.05] tracking-[-0.02em] text-paper">
               A word from our{" "}
               <span className="text-brand-soft">CEO.</span>
             </h2>

@@ -155,7 +155,7 @@ export function FreeZonesHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(1.85rem,3.8vw,2.7rem)] text-paper text-balance"
+              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.2rem,5.2vw,4.2rem)] text-paper text-balance"
             >
               <span className="block">Twelve UAE free zones,</span>
               <span className="block">one honest</span>

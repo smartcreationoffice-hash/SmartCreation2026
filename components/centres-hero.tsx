@@ -184,7 +184,7 @@ export function CentresHero({
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ Business Centers
             </div>
-            <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(1.85rem,3.8vw,2.7rem)] text-paper text-balance">
+            <h1 className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.2rem,5.4vw,4.4rem)] text-paper text-balance">
               <span className="block">{headlineCount} centers</span>
               <span className="block">across Dubai,</span>
               <span className="block text-brand">pick where you work.</span>

@@ -55,7 +55,7 @@ export function SectionHeader({
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "font-display mt-5 text-balance text-[clamp(1.75rem,3.4vw,2.6rem)] leading-[1.05] tracking-[-0.02em]",
+          "font-display mt-5 text-balance text-[clamp(1.9rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.02em]",
           isDark ? "text-paper" : "text-ink"
         )}
       >

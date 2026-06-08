@@ -150,7 +150,7 @@ export function FinancialHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.1rem,4.8vw,3.6rem)] text-paper text-balance"
+              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.4rem,6vw,4.6rem)] text-paper text-balance"
             >
               <span className="block">Books, banks and</span>
               <span className="block">tax, handled by</span>

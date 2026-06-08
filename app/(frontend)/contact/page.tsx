@@ -380,7 +380,7 @@ export default function ContactPage() {
               <div className="flex items-center gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-4">
                 <span className="h-px w-8 bg-ink/25" />§ What happens after you send
               </div>
-              <h2 className="font-display font-semibold text-[clamp(1.7rem,2.8vw,2.3rem)] leading-[1.1] tracking-[-0.02em] text-ink text-balance">
+              <h2 className="font-display font-semibold text-[clamp(1.8rem,3vw,2.6rem)] leading-[1.1] tracking-[-0.02em] text-ink text-balance">
                 From brief to licence,{" "}
                 <span className="text-brand-deep">four predictable steps.</span>
               </h2>
@@ -447,7 +447,7 @@ export default function ContactPage() {
               <div className="flex items-center gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-4">
                 <span className="h-px w-8 bg-ink/25" />§ Where to find us
               </div>
-              <h2 className="font-display font-semibold text-[clamp(1.7rem,2.8vw,2.3rem)] leading-[1.1] tracking-[-0.02em] text-ink text-balance">
+              <h2 className="font-display font-semibold text-[clamp(1.8rem,3vw,2.6rem)] leading-[1.1] tracking-[-0.02em] text-ink text-balance">
                 Six centers,{" "}
                 <span className="text-brand-deep">all walking distance from a metro line.</span>
               </h2>

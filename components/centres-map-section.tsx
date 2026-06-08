@@ -68,7 +68,7 @@ export async function CentresMapSection({
             </div>
             <h2
               className={
-                "font-display font-semibold text-[clamp(1.7rem,2.8vw,2.3rem)] leading-[1.1] tracking-[-0.02em] text-balance " +
+                "font-display font-semibold text-[clamp(1.8rem,3vw,2.6rem)] leading-[1.1] tracking-[-0.02em] text-balance " +
                 (isDark ? "text-paper" : "text-ink")
               }
             >

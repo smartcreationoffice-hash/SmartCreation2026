@@ -33,7 +33,7 @@ export function FinalCTA() {
               § 10 · Start your company
             </div>
 
-            <h2 className="font-display mt-6 text-[clamp(1.85rem,3.8vw,2.7rem)] leading-[1.02] tracking-[-0.025em] text-paper text-balance">
+            <h2 className="font-display mt-6 text-[clamp(2.2rem,5.5vw,4.2rem)] leading-[1.02] tracking-[-0.025em] text-paper text-balance">
               Your U.A.E. company starts with{" "}
               <span className="text-brand">one conversation.</span>
             </h2>

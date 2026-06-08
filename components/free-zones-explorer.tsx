@@ -89,7 +89,7 @@ export function FreeZonesExplorer() {
             <div className="flex items-center gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-4">
               <span className="h-px w-8 bg-ink/25" />§ The catalog
             </div>
-            <h2 className="font-display font-semibold text-ink text-balance leading-[0.96] tracking-[-0.025em] text-[clamp(1.95rem,3.8vw,2.8rem)]">
+            <h2 className="font-display font-semibold text-ink text-balance leading-[0.96] tracking-[-0.025em] text-[clamp(2.2rem,4.4vw,3.4rem)]">
               Compare every UAE free zone,{" "}
               <span className="text-brand-deep">side by side.</span>
             </h2>
@@ -307,7 +307,7 @@ export function FreeZoneMethod() {
           <div className="flex items-center gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-4">
             <span className="h-px w-8 bg-ink/25" />§ Methodology
           </div>
-          <h2 className="font-display font-semibold text-ink text-balance leading-[0.98] tracking-[-0.025em] text-[clamp(1.85rem,3.4vw,2.5rem)]">
+          <h2 className="font-display font-semibold text-ink text-balance leading-[0.98] tracking-[-0.025em] text-[clamp(2rem,4vw,3rem)]">
             How we choose the right zone for{" "}
             <span className="text-brand-deep">your business.</span>
           </h2>
