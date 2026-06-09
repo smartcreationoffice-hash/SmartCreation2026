@@ -28,7 +28,7 @@ const pillars: Pillar[] = [
 ];
 
 const trust = [
-  { value: "6+", label: "Years on the books", meta: "Founded 2020" },
+  { value: "7+", label: "Years on the books", meta: "Founded 2020" },
   { value: "9%", label: "UAE Corporate Tax", meta: "Above AED 375k profit" },
   { value: "5%", label: "VAT", meta: "Quarterly filings, all sectors" },
   { value: "Dual", label: "FTA & FZ compliance", meta: "Mainland · free zone · offshore" },

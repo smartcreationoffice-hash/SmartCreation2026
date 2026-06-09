@@ -38,6 +38,10 @@ const RULES = [
   // Centre photos — displayed in cards at ~600 px.
   { match: /^centres\/.*\.webp$/, maxW: 1000, quality: 84 },
   // Free zones tile logos — small badges, square.
+  // Section-hero photos (high quality, ~1800px). Keep them rich so the
+  // free-zone detail cards read well. Excluded from the small-logo rule below.
+  { match: /^free-zones\/.*-large\.webp$/, maxW: 1800, quality: 92 },
+  // Small logo tiles in the homepage grid + hero pillars.
   { match: /^free-zones\/.*\.webp$/, maxW: 400, quality: 86 },
   // Insight cover images.
   { match: /^insights\/.*\.(webp|jpg|jpeg)$/, maxW: 1600, quality: 82 },

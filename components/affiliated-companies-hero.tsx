@@ -34,7 +34,7 @@ const pillars: Pillar[] = [
 const trust = [
   { value: "6",        label: "Group companies",       meta: "Under Smart Creation Group" },
   { value: "3",        label: "Countries",             meta: "UAE · Canada · Pakistan" },
-  { value: "6+",      label: "Years on the ground",   meta: "Founded 2020" },
+  { value: "7+",      label: "Years on the ground",   meta: "Founded 2020" },
   { value: "1 team",   label: "Accountable for all",   meta: "One file, one owner" },
 ];
 

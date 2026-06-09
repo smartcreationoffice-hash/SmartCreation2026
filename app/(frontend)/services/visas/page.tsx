@@ -131,7 +131,7 @@ const sections: ServiceSectionData[] = [
       { label: "Term", value: "10 years · renewable" },
       { label: "Sponsors who", value: "Self · family · domestic staff" },
       { label: "Re-entry rule", value: "No 6-month limit" },
-      { label: "Approval time", value: "30–45 working days typical" },
+      { label: "Approval time", value: "1–30 days" },
     ],
     highlight: {
       eyebrow: "How we strengthen the case",

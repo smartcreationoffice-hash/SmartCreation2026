@@ -13,7 +13,7 @@ const cardImages: Record<string, { src: string; alt: string }> = {
   },
   "03": {
     src: "/difference/03.webp",
-    alt: "Fifteen years of company files · ten thousand companies",
+    alt: "Seven years of company files · three thousand companies",
   },
   "04": {
     src: "/difference/04.webp",

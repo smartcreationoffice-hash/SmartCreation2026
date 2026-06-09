@@ -36,8 +36,8 @@ const pillars: Pillar[] = [
 ];
 
 const trust = [
-  { value: "10,000+", label: "Visas processed", meta: "Across every emirate" },
-  { value: "6+", label: "Years in U.A.E.", meta: "Founded 2020" },
+  { value: "29,000+", label: "Visas processed", meta: "Across every emirate" },
+  { value: "7+", label: "Years in U.A.E.", meta: "Founded 2020" },
   { value: "All types", label: "Residency routes", meta: "Investor · Golden · Family · Skilled" },
   { value: "5–10 days", label: "Typical timeline", meta: "From application to Emirates ID" },
 ];

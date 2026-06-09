@@ -38,7 +38,7 @@ const stats: Stat[] = [
     bar: 0.6,
   },
   {
-    value: 10000,
+    value: 3000,
     suffix: "+",
     label: "Companies launched",
     meta: "Across every emirate",

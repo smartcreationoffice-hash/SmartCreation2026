@@ -118,7 +118,7 @@ export function ContactHero() {
               <span className="block text-brand">licence, bank, visa.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-[1.02rem] md:text-[1.08rem] leading-relaxed text-paper/70 text-pretty">
-              Six years setting up companies across the U.A.E.: mainland,
+              Seven years setting up companies across the U.A.E.: mainland,
               free zone, offshore. One brief in, one written plan out within a
               business day. Free. 30 minutes. No sales script.
             </p>

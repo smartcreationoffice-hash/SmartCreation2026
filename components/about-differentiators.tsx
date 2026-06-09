@@ -51,7 +51,7 @@ const items: Diff[] = [
   },
   {
     title: "Built to renew, not just open",
-    body: "Six years means we've seen the renewal cycle, the audit cycle, the corporate-tax cycle. We don't disappear after the licence; we file every year, on the calendar.",
+    body: "Seven years means we've seen the renewal cycle, the audit cycle, the corporate-tax cycle. We don't disappear after the licence; we file every year, on the calendar.",
     metric: "100%",
     metricLabel: "renewals before expiry",
     icon: Calendar,
@@ -97,7 +97,7 @@ export function AboutDifferentiators() {
               </span>
             </h2>
             <p className="mt-5 max-w-2xl text-[1.02rem] leading-relaxed text-ink-mute">
-              The reasons 10,000+ founders, family offices and multinationals
+              The reasons 3,000+ founders, family offices and multinationals
               have trusted us with the operational backbone of their U.A.E.
               business since 2020.
             </p>

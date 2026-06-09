@@ -8,7 +8,6 @@ import { GroupOfCompanies } from "@/components/group-of-companies";
 import { FreeZones } from "@/components/free-zones";
 import { WhyUs } from "@/components/why-us";
 import { Process } from "@/components/process";
-import { BusinessCenter } from "@/components/business-center";
 import { CentresMapSection } from "@/components/centres-map-section";
 import { Stats } from "@/components/stats";
 import { Testimonials } from "@/components/testimonials";
@@ -81,7 +80,6 @@ export default async function HomePage() {
       <FreeZones />
       <WhyUs />
       <Process />
-      <BusinessCenter />
       <Stats />
       <Testimonials />
       <Blog posts={posts} />

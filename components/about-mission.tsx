@@ -21,7 +21,7 @@ const pillars = [
   {
     eyebrow: "Promise",
     icon: HeartHandshake,
-    title: "One accountable team, for the next six years.",
+    title: "One accountable team, for the next seven years.",
     body: "We don't disappear after the licence is issued. We renew, we file, we open the next bank account, we stamp the next visa. The work that matters happens in the years after setup.",
     accent: "from-brand-deep/15 via-brand/8 to-transparent",
   },

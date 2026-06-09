@@ -18,13 +18,13 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "About Smart Creation Group",
   description:
-    "Six years setting up businesses across the U.A.E.: six Dubai centers, four jurisdictions, one accountable team. Meet the people behind every licence, bank account and visa we process.",
+    "Seven years setting up businesses across the U.A.E.: six Dubai centers, four jurisdictions, one accountable team. Meet the people behind every licence, bank account and visa we process.",
   alternates: { canonical: "/about" },
 };
 
 const ceoBio = [
   "Asad Hashmi founded Smart Creation Business Center in 2020 with a single floor at Damac Executive Heights and a clear thesis: every founder coming to Dubai deserves one accountable team for everything that touches their business, not a chain of brokers.",
-  "Six years on, that team handles company formation, banking introductions, visas, accounting, audit, Corporate Tax and the day-to-day PRO work for 10,000+ businesses across every U.A.E. jurisdiction. The Group has expanded into real estate, technology, hospitality, transport and contracting across the U.A.E., Canada and Pakistan, but the original promise hasn't changed.",
+  "Seven years on, that team handles company formation, banking introductions, visas, accounting, audit, Corporate Tax and the day-to-day PRO work for 3,000+ businesses across every U.A.E. jurisdiction. The Group has expanded into real estate, technology, hospitality, transport and contracting across the U.A.E., Canada and Pakistan, but the original promise hasn't changed.",
   "He is regularly consulted on business-formation strategy by founders, family offices and multinationals, and continues to lead the Group from Tecom.",
 ];
 
@@ -100,7 +100,7 @@ export default async function AboutPage() {
                     &ldquo;Every founder coming to the U.A.E. deserves one
                     accountable team, not a chain of brokers. We've held that
                     rule since day one. It's the reason we still file every
-                    renewal, six years later.&rdquo;
+                    renewal, seven years later.&rdquo;
                   </div>
                 </div>
               </Reveal>

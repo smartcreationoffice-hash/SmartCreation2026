@@ -25,7 +25,7 @@ const sections: ServiceSectionData[] = [
     mediaMode: "logo",
     logoTheme: "dark",
     lede:
-      "The founding company of the Group. Smart Business Creation has licensed, banked and visa'd more than 10,000 businesses across every UAE jurisdiction since 2020. Mainland, free zone, offshore, holding structures and the day-to-day PRO file every founder lives inside.",
+      "The founding company of the Group. Smart Business Creation has licensed, banked and visa'd more than 3,000 businesses across every UAE jurisdiction since 2020. Mainland, free zone, offshore, holding structures and the day-to-day PRO file every founder lives inside.",
     image: {
       src: "/group-logos/smart-business-creation.webp",
       alt: "Smart Business Creation",
@@ -45,7 +45,7 @@ const sections: ServiceSectionData[] = [
     ],
     meta: [
       { label: "Founded", value: "2020" },
-      { label: "Companies launched", value: "10,000+" },
+      { label: "Companies launched", value: "3,000+" },
       { label: "Country", value: "UAE 🇦🇪" },
       { label: "HQ", value: "Damac Executive Heights, Tecom" },
     ],

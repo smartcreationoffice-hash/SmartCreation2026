@@ -190,7 +190,7 @@ export const navigation: NavItem[] = [
       ],
       feature: {
         eyebrow: "Operating snapshot",
-        title: "One Group. Three countries. Six years.",
+        title: "One Group. Three countries. Seven years.",
         body: "Six owned business centers across Dubai plus six specialist arms in the UAE, Canada and Pakistan — every file run by the same accountable team.",
         cta: { label: "Meet the Group", href: "/about" },
       },
@@ -697,7 +697,7 @@ export const differentiators: Differentiator[] = [
   },
   {
     index: "03",
-    title: "Six years. Ten thousand companies.",
+    title: "Seven years. Three thousand companies.",
     body:
       "Trusted since 2020 by founders, family offices and multinationals. The edge cases you're about to hit, we've already solved them. Probably twice this quarter.",
   },
@@ -903,9 +903,9 @@ export type StatItem = {
 };
 
 export const stats: StatItem[] = [
-  { value: 10000, suffix: "+", label: "Companies launched", caption: "Since 2020 across every emirate" },
-  { value: 45000, suffix: "+", label: "Visas processed", caption: "Investor, employment, family, Golden" },
-  { value: 12, label: "Free zones covered", caption: "Direct authority relationships" },
+  { value: 3000, suffix: "+", label: "Companies launched", caption: "Since 2020 across every emirate" },
+  { value: 29000, suffix: "+", label: "Visas processed", caption: "Investor, employment, family, Golden" },
+  { value: 14, label: "Free zones covered", caption: "Direct authority relationships" },
   { value: 96, suffix: "%", label: "Client retention", caption: "Year over year, post-licensing" },
 ];
 

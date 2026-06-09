@@ -21,7 +21,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Most popular all-rounder",
     title: "IFZA",
     icon: "globe",
-    image: { src: "/free-zones/ifza.webp", alt: "IFZA · Dubai Silicon Oasis" },
+    image: { src: "/free-zones/ifza-large.webp", alt: "IFZA · Dubai Silicon Oasis" },
     lede:
       "International Free Zone Authority, Dubai's most-applied-for free zone. Wide activity list, low setup cost, fast turnaround. The default starting point for consultancies, trading firms and small teams that need a clean licence quickly.",
     good: [
@@ -61,7 +61,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Premium · global trade",
     title: "DMCC",
     icon: "globe",
-    image: { src: "/free-zones/dmcc.webp", alt: "DMCC · JLT" },
+    image: { src: "/free-zones/dmcc-large.webp", alt: "DMCC · JLT" },
     lede:
       "Dubai Multi Commodities Centre, the gold standard for traders, commodity firms and serious global businesses. Higher cost, higher prestige, premier location at Jumeirah Lakes Towers and a bank-friendly reputation.",
     good: [
@@ -101,7 +101,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Finance & professional",
     title: "DIFC",
     icon: "globe",
-    image: { src: "/free-zones/difc.webp", alt: "DIFC · Dubai" },
+    image: { src: "/free-zones/difc-large.webp", alt: "DIFC · Dubai" },
     lede:
       "Dubai International Financial Centre, the region's financial district. Common-law jurisdiction, independent regulator (DFSA), home to most major banks, asset managers and fintechs. A serious commitment, but unmatched for finance.",
     good: [
@@ -141,7 +141,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Professional services",
     title: "Meydan",
     icon: "globe",
-    image: { src: "/free-zones/meydan.webp", alt: "Meydan · Dubai" },
+    image: { src: "/free-zones/meydan-large.webp", alt: "Meydan · Dubai" },
     lede:
       "Meydan Free Zone offers quick licensing for professional services, consulting, marketing and digital businesses. Affordable and fast, with a smart-office concept that suits 1–5 person teams.",
     good: [
@@ -181,7 +181,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Pure e-commerce zone",
     title: "DCC",
     icon: "globe",
-    image: { src: "/free-zones/dcc.webp", alt: "DCC · Dubai" },
+    image: { src: "/free-zones/dcc-large.webp", alt: "DCC · Dubai" },
     lede:
       "Dubai CommerCity, the UAE's first dedicated e-commerce free zone. Built around fulfilment, last-mile and digital retail. Right for online brands, marketplace sellers and D2C operators serving GCC and beyond.",
     good: [

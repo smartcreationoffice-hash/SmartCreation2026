@@ -35,7 +35,7 @@ const benefits = [
 ];
 
 const trust = [
-  { value: "12", label: "Free zones covered", meta: "All four emirates" },
+  { value: "14", label: "Free zones covered", meta: "All four emirates" },
   { value: "2 days", label: "Fastest setup", meta: "AFZA · SHAMS" },
   { value: "9%", label: "Corporate tax cap", meta: "Above AED 375k profit" },
   { value: "0%", label: "Personal income tax", meta: "On all UAE earnings" },

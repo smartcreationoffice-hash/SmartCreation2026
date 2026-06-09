@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 };
 
 const trust = [
-  "10,000+ companies launched since 2020",
-  "Every mainland authority + 12 free zones",
+  "3,000+ companies launched since 2020",
+  "Every mainland authority + 14 free zones",
   "Six owned business centers across Dubai",
   "Fixed fees, written plan within one business day",
 ];

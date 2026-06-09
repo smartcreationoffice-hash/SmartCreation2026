@@ -213,7 +213,7 @@ export function GroupOfCompanies() {
               <>
                 Smart Creation Group
                 <span className="block text-brand-soft">
-                  One parent, twelve group companies.
+                  One parent, group of twelve companies.
                 </span>
               </>
             }

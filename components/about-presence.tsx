@@ -38,7 +38,7 @@ const countries: Country[] = [
     region: "Headquarters · Dubai",
     headline: "Everything your business needs to succeed in the UAE.",
     body: "From company formation and bank account assistance to accounting, tax compliance, government services, and premium office spaces, we help entrepreneurs and growing businesses stay focused on growth while we handle the paperwork, compliance, and operations behind the scenes.",
-    metric: "10,000+",
+    metric: "3,000+",
     metricLabel: "Files launched · since 2020",
     pillars: [
       { icon: Briefcase, label: "Business Setup & Formation" },

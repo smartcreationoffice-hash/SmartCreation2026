@@ -18,10 +18,10 @@ const ServiceDonut = dynamic(
 );
 
 const trustItems = [
-  { value: "6+", label: "Years in U.A.E.", meta: "Founded 2020" },
+  { value: "7+", label: "Years in U.A.E.", meta: "Founded 2020" },
   { value: "6", label: "Business centers", meta: "Owned & operated, Dubai" },
   { value: "12", label: "Group companies", meta: "Across UAE, Canada & Pakistan" },
-  { value: "10,000+", label: "Companies launched", meta: "Across every emirate" },
+  { value: "3,000+", label: "Companies launched", meta: "Across every emirate" },
 ];
 
 export function Hero() {
