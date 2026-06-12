@@ -2,17 +2,16 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { ServicesAscentSteps } from "@/components/services-ascent-steps";
 import { m, AnimatePresence } from "framer-motion";
 import {
   ArrowUpRight,
-  Banknote,
-  BookOpen,
   Briefcase,
+  Building2,
   Calculator,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  FileText,
   Pause,
   Play,
   type LucideIcon,
@@ -36,85 +35,53 @@ const corePillars: Pillar[] = [
     id: "business-setup",
     index: "01",
     title: "Business Setup & Formation",
-    short: "Get licensed",
+    short: "Get set up",
     tagline:
-      "Pick the right jurisdiction. Get the trade licence. Open the bank account. Stamp the visa. Same team owns all of it.",
+      "Pick the right jurisdiction — mainland, free zone or offshore — then the trade licence, the bank account and the visas. One team owns the whole setup.",
     bullets: [
       "Mainland · free zone · offshore",
-      "Bank account introductions",
-      "Investor & employee visas",
-      "Local sponsorship & PRO",
+      "Trade licence & legal structure",
+      "Corporate bank account",
+      "Investor & employee visas · PRO",
     ],
     href: "/services/company-formation",
     icon: Briefcase,
   },
   {
-    id: "accounting-bookkeeping",
+    id: "financial-services",
     index: "02",
-    title: "Accounting & Bookkeeping",
-    short: "Keep books clean",
+    title: "Financial Services",
+    short: "Books, VAT & tax",
     tagline:
-      "Monthly closes on a calendar. Books reconciled, payroll run, VAT filed — every cycle ready for tax and audit without a scramble.",
+      "Accounting, bookkeeping and payroll kept on a calendar — VAT, Corporate Tax and audit-ready closes filed before the deadline, not under it.",
     bullets: [
-      "Monthly closes & management reports",
-      "Payroll & WPS",
-      "Cloud-accounting setup",
-      "Audit-ready year-end",
-    ],
-    href: "/services/financial#accounting",
-    icon: BookOpen,
-  },
-  {
-    id: "pro-services",
-    index: "03",
-    title: "PRO & Government Services",
-    short: "Skip the queue",
-    tagline:
-      "Submitted today, chased daily, tracked until the document lands in your hand. Visas, Emirates ID, labour, MOFA — every authority we touch.",
-    bullets: [
-      "Visa applications & renewals",
-      "Emirates ID & medical",
-      "Tas-heel & MOL filings",
-      "MOFA document attestation",
-    ],
-    href: "/services/visas",
-    icon: FileText,
-  },
-  {
-    id: "corporate-tax",
-    index: "04",
-    title: "Corporate Tax & VAT",
-    short: "File on a calendar",
-    tagline:
-      "Companies don't get fined for being wrong — they get fined for being late. We file every cycle on the calendar, not under deadline.",
-    bullets: [
-      "Corporate Tax registration",
-      "EmaraTax filings",
+      "Accounting & bookkeeping",
       "VAT registration & returns",
-      "Refund support & objections",
+      "Corporate Tax registration & filing",
+      "Payroll, audit & banking support",
     ],
-    href: "/services/financial#corporate-tax",
+    href: "/services/financial",
     icon: Calculator,
   },
   {
-    id: "banking-financial",
-    index: "05",
-    title: "Banking & Financial",
-    short: "Open & operate",
+    id: "business-centres",
+    index: "03",
+    title: "Business Centres",
+    short: "Office space, ready",
     tagline:
-      "Right banker, right dossier, every compliance question answered before it's asked. From new account to ongoing treasury — banking handled.",
+      "Move-in-ready offices, flexi-desks and meeting rooms across our UAE business centres — with the Ejari and licensed address your trade licence needs.",
     bullets: [
-      "Bank introductions (10+ UAE banks)",
-      "Application & KYC dossier",
-      "Statutory audit liaison",
-      "Treasury & cash-flow advisory",
+      "Move-in-ready private offices",
+      "Flexi-desks & meeting rooms",
+      "Ejari & licensed business address",
+      "Prime locations across the UAE",
     ],
-    href: "/services/financial#banking",
-    icon: Banknote,
+    href: "/business-centers",
+    icon: Building2,
   },
 ];
 
-const AUTO_INTERVAL_MS = 6500;
+const AUTO_INTERVAL_MS = 5000;
 
 export function Services() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -126,27 +93,22 @@ export function Services() {
   const ActiveIcon = active.icon;
   const total = corePillars.length;
 
+  // Jump to a step. Interaction no longer pauses autoplay — the deck always
+  // keeps cycling every AUTO_INTERVAL_MS; only the Pause button stops it.
   const goTo = useCallback(
-    (i: number, source: "auto" | "user" = "user") => {
+    (i: number) => {
       setActiveIdx(((i % total) + total) % total);
       setProgressKey((k) => k + 1);
-      if (source === "user") setAutoplay(false);
     },
     [total],
   );
-  const next = useCallback(
-    (source: "auto" | "user" = "user") => goTo(activeIdx + 1, source),
-    [activeIdx, goTo],
-  );
-  const prev = useCallback(
-    (source: "auto" | "user" = "user") => goTo(activeIdx - 1, source),
-    [activeIdx, goTo],
-  );
+  const next = useCallback(() => goTo(activeIdx + 1), [activeIdx, goTo]);
+  const prev = useCallback(() => goTo(activeIdx - 1), [activeIdx, goTo]);
 
   // Auto-advance — restarts whenever activeIdx or autoplay changes
   useEffect(() => {
     if (!autoplay) return;
-    const t = setTimeout(() => next("auto"), AUTO_INTERVAL_MS);
+    const t = setTimeout(next, AUTO_INTERVAL_MS);
     return () => clearTimeout(t);
   }, [activeIdx, autoplay, next]);
 
@@ -165,54 +127,56 @@ export function Services() {
   };
 
   return (
-    <section id="services" className="relative py-16 md:py-24">
+    <section id="services" className="relative pt-10 md:pt-16 pb-16 md:pb-24">
       <div className="container-edit">
-        {/* ── Section header (centered, editorial) ─────────────────── */}
-        <SectionHeader
-          align="center"
-          section="§ 01 · Services"
-          title={
-            <>
-              Built for every step of building{" "}
-              <span className="text-brand-deep">a UAE business.</span>
-            </>
-          }
-          lede="From your first day in Dubai to your tenth — one accountable team handles the licence, the books, the tax, the visas, and every signature in between."
-        />
+        {/* ── Section header (left-aligned) + bespoke ascent vector ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-y-6 gap-x-8 lg:gap-x-8">
+          <div className="lg:col-span-7">
+            <SectionHeader
+              align="left"
+              section="§ 01 · Services"
+              title={
+                <>
+                  Built for every step of building{" "}
+                  <span className="text-brand-deep">a UAE business.</span>
+                </>
+              }
+              lede="From your first day in Dubai to your tenth — one accountable team handles the licence, the books, the tax, the visas, and every signature in between."
+            />
+          </div>
+          <div className="lg:col-span-5 hidden lg:flex items-center justify-center lg:justify-end">
+            <div className="w-full max-w-[18rem] lg:max-w-[26rem]">
+              <ServicesAscentSteps />
+            </div>
+          </div>
+        </div>
 
-        {/* ── Interactive showcase · 5 pillars ─────────────────────── */}
-        <div
-          className="mt-14 md:mt-20 relative"
-          onMouseEnter={() => setAutoplay(false)}
-          onMouseLeave={() => setAutoplay(true)}
-        >
-          {/* TAB STRIP — works for both desktop and mobile (mobile = horizontal scroll snap) */}
+        {/* ── Interactive showcase · 3 steps ───────────────────────── */}
+        <div className="mt-4 md:mt-6 relative">
+          {/* TAB STRIP — all three steps fit as a clean grid on every size */}
           <div className="relative">
             <ul
               role="tablist"
               aria-label="Core services"
-              className="flex md:grid md:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory border-y border-ink/15 -mx-5 md:mx-0 px-5 md:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="grid grid-cols-3 border-y border-ink/15"
             >
               {corePillars.map((p, i) => {
                 const isActive = i === activeIdx;
                 return (
                   <li
                     key={p.id}
-                    className={
-                      "snap-start shrink-0 w-[78%] sm:w-[55%] md:w-auto " +
-                      (i > 0 ? "md:border-l md:border-ink/12" : "")
-                    }
+                    className={i > 0 ? "border-l border-ink/12" : ""}
                   >
                     <button
                       type="button"
                       role="tab"
                       aria-selected={isActive}
                       onMouseEnter={() => {
-                        if (window.matchMedia("(pointer: fine)").matches) goTo(i, "user");
+                        if (window.matchMedia("(pointer: fine)").matches) goTo(i);
                       }}
-                      onFocus={() => goTo(i, "user")}
-                      onClick={() => goTo(i, "user")}
-                      className="group relative flex w-full flex-col items-start gap-1.5 px-5 py-5 md:py-6 text-left transition-colors hover:bg-paper-soft focus:outline-none focus-visible:bg-paper-soft"
+                      onFocus={() => goTo(i)}
+                      onClick={() => goTo(i)}
+                      className="group relative flex h-full w-full flex-col items-start gap-1 md:gap-1.5 px-2.5 py-3.5 md:px-5 md:py-6 text-left transition-colors hover:bg-paper-soft focus:outline-none focus-visible:bg-paper-soft"
                     >
                       {/* Top progress / hover bar */}
                       {isActive ? (
@@ -240,14 +204,14 @@ export function Services() {
                           "font-display font-medium leading-none tracking-[-0.02em] transition-colors " +
                           (isActive ? "text-brand-deep" : "text-ink/40 group-hover:text-ink/70")
                         }
-                        style={{ fontSize: "clamp(1.5rem,2.4vw,2rem)" }}
+                        style={{ fontSize: "clamp(1.3rem,5.5vw,2rem)" }}
                       >
                         {p.index}
                       </span>
-                      <span className="block font-display text-[0.98rem] md:text-[1rem] font-semibold leading-tight tracking-[-0.015em] text-ink text-balance">
+                      <span className="block font-display text-[0.8rem] md:text-[1rem] font-semibold leading-tight tracking-[-0.015em] text-ink text-balance">
                         {p.short}
                       </span>
-                      <span className="font-mono text-[0.58rem] uppercase tracking-[0.18em] text-stone truncate w-full">
+                      <span className="hidden md:block font-mono text-[0.58rem] uppercase tracking-[0.18em] text-stone truncate w-full">
                         {p.title}
                       </span>
                     </button>
@@ -305,7 +269,7 @@ export function Services() {
               }}
             />
 
-            <div className="relative grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-10 px-6 sm:px-8 md:px-12 lg:px-14 py-12 md:py-16 lg:py-20">
+            <div className="relative grid grid-cols-12 content-center gap-x-4 md:gap-x-10 gap-y-10 px-6 sm:px-8 md:px-12 lg:px-14 py-12 md:py-16 lg:py-20 md:min-h-[480px] lg:min-h-[520px]">
               {/* GHOST INDEX in the corner */}
               <m.div
                 aria-hidden
@@ -335,7 +299,7 @@ export function Services() {
                   >
                     <div className="inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist mb-6">
                       <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
-                      Practice {active.index} / 05
+                      Step {active.index} / {String(total).padStart(2, "0")}
                     </div>
                     <h3 className="font-display font-semibold tracking-[-0.025em] leading-[1.02] text-[clamp(1.9rem,4.4vw,3.4rem)] text-paper text-balance">
                       {active.title}.
@@ -517,41 +481,44 @@ export function Services() {
             </Link>
           </div>
 
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-ink/10">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {services.map((service) => {
               const Icon = service.icon;
               return (
-                <li key={service.id} className="border-b border-r border-ink/10">
+                <li key={service.id} className="h-full">
                   <Link
                     href={service.href}
-                    className="group relative flex flex-col h-full p-6 md:p-7 transition-colors hover:bg-paper-soft"
+                    className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-paper-soft/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-paper-soft hover:shadow-[0_24px_50px_-24px_rgba(31,110,149,0.45)]"
                   >
-                    <div className="flex items-start justify-between">
+                    {/* brand accent bar — grows in on hover */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-brand-deep via-brand to-transparent transition-transform duration-500 group-hover:scale-x-100"
+                    />
+
+                    <div className="flex items-center justify-between">
                       <span className="font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone">
                         {service.index}
                       </span>
-                      <Icon
-                        className="h-5 w-5 text-ink-mute transition-all group-hover:text-brand-deep group-hover:-translate-y-0.5"
-                        strokeWidth={1.5}
-                      />
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-deep/15 bg-brand-wash text-brand-deep transition-colors duration-300 group-hover:bg-brand-deep group-hover:text-paper">
+                        <Icon className="h-[1.05rem] w-[1.05rem]" strokeWidth={1.6} />
+                      </span>
                     </div>
-                    <h4 className="font-display mt-7 text-[1.18rem] leading-[1.1] tracking-[-0.015em] text-ink">
+
+                    <h4 className="font-display mt-6 text-[1.14rem] leading-[1.12] tracking-[-0.015em] text-ink">
                       {service.title}
                     </h4>
-                    <p className="mt-3 text-[0.88rem] leading-relaxed text-ink-mute">
+                    <p className="mt-2.5 text-[0.86rem] leading-relaxed text-ink-mute">
                       {service.summary}
                     </p>
-                    <div className="mt-auto pt-7 flex items-center gap-2 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-ink-mute group-hover:text-brand-deep transition-colors">
+
+                    <div className="mt-auto pt-6 flex items-center gap-2 font-mono text-[0.64rem] uppercase tracking-[0.18em] text-stone transition-colors group-hover:text-brand-deep">
                       Explore
                       <ArrowUpRight
                         className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                         strokeWidth={1.8}
                       />
                     </div>
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute left-0 top-0 h-px w-0 bg-brand transition-all duration-500 group-hover:w-full"
-                    />
                   </Link>
                 </li>
               );

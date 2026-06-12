@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
 
 type CounterProps = {
   to: number;
@@ -13,24 +12,54 @@ type CounterProps = {
 
 export function Counter({ to, duration = 1600, prefix, suffix, className }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
+    const el = ref.current;
+    if (!el) return;
+
+    // Respect reduced-motion — show the final value immediately.
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setDisplay(to);
+      return;
+    }
+
     let rafId = 0;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      // easeOutExpo
-      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      setDisplay(Math.round(to * eased));
-      if (progress < 1) rafId = requestAnimationFrame(tick);
+    let started = false;
+    const animate = () => {
+      if (started) return;
+      started = true;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress); // easeOutExpo
+        setDisplay(Math.round(to * eased));
+        if (progress < 1) rafId = requestAnimationFrame(tick);
+      };
+      rafId = requestAnimationFrame(tick);
     };
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [inView, to, duration]);
+
+    // Native IntersectionObserver — reliable across mobile/desktop. Fires
+    // immediately for elements already on screen, and once when scrolled in.
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          animate();
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.01 },
+    );
+    io.observe(el);
+
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(rafId);
+    };
+  }, [to, duration]);
 
   return (
     <span ref={ref} className={className}>

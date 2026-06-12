@@ -166,6 +166,7 @@ export const navigation: NavItem[] = [
         {
           title: "Business Centers",
           links: [
+            { label: "All business centers", href: "/business-centers", desc: "Browse all six" },
             { label: "Smart Creation",  href: "/business-centers/smart-creation", desc: "Tecom · Barsha Heights" },
             { label: "Smart Place",     href: "/business-centers/smart-place",    desc: "Al Barsha 1" },
             { label: "Smart View",      href: "/business-centers/smart-view",     desc: "Bur Dubai" },
@@ -970,6 +971,6 @@ export const CONTACT = {
   email: "info@thesmartcreation.com",
   emailHref: "mailto:info@thesmartcreation.com",
   website: "www.thesmartcreation.com",
-  address: "19th Floor, Damac Executive Heights (Tecom)",
-  addressLine2: "Jebel Ali Race Course Road, Dubai, U.A.E.",
+  address: "19th Floor, Damac Executive Heights",
+  addressLine2: "Barsha Heights (Tecom), Dubai, U.A.E.",
 };

@@ -127,7 +127,7 @@ export function OfficesGrid({
         <div
           role="group"
           aria-label="Filter offices by business center"
-          className="mb-8 md:mb-12 -mx-4 px-4 md:mx-0 md:px-0 flex md:grid md:grid-cols-4 lg:grid-cols-7 overflow-x-auto md:overflow-visible gap-2 md:gap-3 snap-x snap-mandatory scrollbar-hide pb-1 md:pb-0"
+          className="mb-8 md:mb-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 md:gap-3"
         >
           <FilterPill
             active={filter === "all"}
@@ -193,7 +193,7 @@ export function OfficesGrid({
           <div className="col-span-12 lg:col-span-8">
             <div className="flex items-center gap-2 font-mono text-[0.66rem] md:text-[0.68rem] uppercase tracking-[0.22em] text-stone mb-3 md:mb-5">
               <Info className="h-3.5 w-3.5" strokeWidth={1.8} />
-              What's included in every plan
+              Additional charges / exclusions
             </div>
             {/* Mobile: 1-col compact list, no per-row borders. Desktop: 3-col grid with bottom rule per row. */}
             <dl className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-0 md:gap-y-3 divide-y divide-ink/10 md:divide-y-0">
@@ -270,11 +270,8 @@ function FilterPill({
         onClick={onClick}
         title={primary}
         className={cn(
-          "group transition-all flex items-center",
-          // Mobile: compact tab — text + count inline, no min-height
-          "gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-2 text-[0.82rem] font-medium",
-          // Desktop: rich pill with logo, stacked column layout
-          "md:min-h-[112px] md:w-full md:flex-col md:items-center md:justify-center md:gap-3 md:rounded-2xl md:px-3 md:py-4 md:text-center md:font-normal md:text-base md:whitespace-normal",
+          "group transition-all flex flex-col items-center justify-center text-center w-full",
+          "min-h-[80px] md:min-h-[112px] gap-1.5 md:gap-3 rounded-2xl border px-2.5 py-3 md:px-3 md:py-4",
           active
             ? "border-brand-night bg-brand-night text-paper shadow-[0_10px_25px_-12px_rgba(14,53,84,0.5)]"
             : disabled
@@ -282,20 +279,9 @@ function FilterPill({
             : "border-ink/15 bg-paper text-ink hover:border-ink/40 hover:bg-paper-soft",
         )}
       >
-        {/* Mobile label — name + count inline */}
-        <span className="md:hidden">{primary}</span>
-        <span
-          className={cn(
-            "md:hidden font-mono text-[0.62rem]",
-            active ? "text-mist" : "text-stone",
-          )}
-        >
-          · {secondary.split(" ")[0]}
-        </span>
-
-        {/* Desktop logo + count */}
+        {/* Logo (or name fallback for entries without one) */}
         {logo ? (
-          <span className="relative hidden md:block h-14 w-full">
+          <span className="relative block h-8 md:h-14 w-full">
             <Image
               src={logo}
               alt={primary}
@@ -304,17 +290,18 @@ function FilterPill({
               className={cn(
                 "object-contain transition-opacity",
                 active && "brightness-0 invert",
+                disabled && "opacity-40",
               )}
             />
           </span>
         ) : (
-          <span className="hidden md:inline text-[1.05rem] font-medium leading-tight">
+          <span className="text-[0.9rem] md:text-[1.05rem] font-medium leading-tight">
             {primary}
           </span>
         )}
         <span
           className={cn(
-            "hidden md:inline max-w-full leading-tight font-mono text-[0.58rem] uppercase tracking-[0.18em]",
+            "max-w-full leading-tight font-mono text-[0.55rem] md:text-[0.58rem] uppercase tracking-[0.16em] md:tracking-[0.18em]",
             active ? "text-mist" : "text-stone",
           )}
         >

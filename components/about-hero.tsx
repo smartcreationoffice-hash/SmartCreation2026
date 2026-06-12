@@ -53,7 +53,7 @@ export function AboutHero() {
     <section
       ref={sectionRef}
       data-dark-hero
-      className="relative overflow-hidden flex flex-col min-h-[85vh] md:min-h-[92vh] pt-32 md:pt-40 pb-12 md:pb-16 bg-ink text-paper"
+      className="relative overflow-hidden flex flex-col min-h-[64vh] md:min-h-[92vh] pt-28 md:pt-40 pb-12 md:pb-16 bg-ink text-paper"
       style={
         {
           "--glow-x": "70%",
@@ -61,15 +61,24 @@ export function AboutHero() {
         } as React.CSSProperties
       }
     >
-      {/* Background photo — visible by default, softly dimmed by gradient */}
+      {/* Background photo — softly dimmed by gradient. Vertical crop on
+          mobile, landscape group photo on desktop. */}
       <div aria-hidden className="absolute inset-0 -z-0">
+        <Image
+          src="/about-team-vertical.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center md:hidden"
+        />
         <Image
           src="/team-group.webp"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_22%]"
+          className="hidden md:block object-cover object-[center_22%]"
         />
       </div>
 
@@ -140,7 +149,7 @@ export function AboutHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display font-medium tracking-[-0.03em] leading-[1.05] text-[clamp(1.5rem,3.4vw,2.8rem)] text-paper text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)] whitespace-nowrap"
+          className="font-display font-medium tracking-[-0.03em] leading-[1.08] md:leading-[1.05] text-[clamp(1.6rem,5.5vw,2.8rem)] text-paper text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)] md:whitespace-nowrap"
         >
           Built around your business{" "}
           <span className="text-brand">· since 2020.</span>

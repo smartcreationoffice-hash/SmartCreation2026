@@ -324,3 +324,114 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Services ascent — gently floating icon cards */
+@keyframes ascent-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(-1.2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+.ascent-float {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ascent-float var(--float-dur, 3.6s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ascent-float {
+    animation: none;
+  }
+}
+
+/* Services ascent — businessperson climbing the stairs into the door */
+@keyframes sa-climb {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  5% {
+    offset-distance: 0%;
+    opacity: 1;
+  }
+  78% {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  88% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+.sa-climber {
+  transform-box: fill-box;
+  offset-path: path(
+    "M 50 300 H 136 V 220 H 236 V 140 H 336 V 70 H 392"
+  );
+  offset-anchor: 36% 96%;
+  offset-rotate: 0deg;
+  animation: sa-climb 7s ease-in-out 1.4s infinite;
+  will-change: offset-distance, opacity;
+}
+@keyframes sa-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.3px);
+  }
+}
+.sa-bob {
+  animation: sa-bob 0.58s ease-in-out infinite;
+}
+@keyframes sa-leg-front {
+  0%,
+  100% {
+    transform: rotate(17deg);
+  }
+  50% {
+    transform: rotate(-17deg);
+  }
+}
+@keyframes sa-leg-back {
+  0%,
+  100% {
+    transform: rotate(-17deg);
+  }
+  50% {
+    transform: rotate(17deg);
+  }
+}
+.sa-leg-front,
+.sa-leg-back {
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+.sa-leg-front {
+  animation: sa-leg-front 0.58s ease-in-out infinite;
+}
+.sa-leg-back {
+  animation: sa-leg-back 0.58s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sa-climber {
+    animation: none;
+    offset-distance: 32%;
+  }
+  .sa-bob,
+  .sa-leg-front,
+  .sa-leg-back {
+    animation: none;
+  }
+}

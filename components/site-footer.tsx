@@ -52,6 +52,7 @@ const columns = [
   {
     title: "Business centers",
     links: [
+      { label: "All business centers", href: "/business-centers" },
       { label: "Smart Creation", href: "/business-centers/smart-creation" },
       { label: "Smart Place", href: "/business-centers/smart-place" },
       { label: "Smart View", href: "/business-centers/smart-view" },

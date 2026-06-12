@@ -20,6 +20,7 @@ export function OfficeGallery({ images, title }: OfficeGalleryProps) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [zoomed, setZoomed] = useState(false);
   const thumbStripRef = useRef<HTMLUListElement>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const total = images.length;
 
@@ -36,6 +37,20 @@ export function OfficeGallery({ images, title }: OfficeGalleryProps) {
     () => setActiveIdx((i) => (i - 1 + total) % total),
     [total],
   );
+
+  // Mobile swipe — drag the hero left/right to change photos.
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+  };
 
   // Keyboard nav while zoomed
   useEffect(() => {
@@ -79,7 +94,11 @@ export function OfficeGallery({ images, title }: OfficeGalleryProps) {
     <div>
       {/* ── Mobile · classic hero + thumbnail strip ────────────────── */}
       <div className="md:hidden">
-        <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-paper-deep border border-ink/10">
+        <div
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-paper-deep border border-ink/10 touch-pan-y select-none"
+        >
           <AnimatePresence initial={false} mode="wait">
             <m.div
               key={images[activeIdx]}
@@ -126,14 +145,6 @@ export function OfficeGallery({ images, title }: OfficeGalleryProps) {
           <div className="absolute bottom-3 right-3 rounded-full bg-ink/65 backdrop-blur-md px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-paper">
             {activeIdx + 1} / {total}
           </div>
-
-          {/* Tap-to-zoom — entire image area opens the lightbox */}
-          <button
-            type="button"
-            onClick={() => openAt(activeIdx)}
-            aria-label="Open photo full screen"
-            className="absolute inset-0 cursor-zoom-in"
-          />
         </div>
 
         {/* Thumbnail strip — single horizontal row, scrolls on overflow */}

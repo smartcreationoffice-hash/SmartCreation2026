@@ -30,7 +30,7 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: 12,
+    value: 7,
     suffix: "+",
     label: "Years on the ground",
     meta: "Founded 2020",
@@ -54,7 +54,7 @@ const stats: Stat[] = [
     bar: 0.5,
   },
   {
-    value: 10,
+    value: 12,
     label: "Group companies",
     meta: "U.A.E · Canada · Pakistan",
     icon: Globe2,

@@ -238,7 +238,7 @@ export function AboutJourney() {
                     />
 
                     <div className="flex items-baseline gap-3">
-                      <span className="font-display font-semibold text-[1.25rem] md:text-[1.35rem] leading-none tracking-[-0.02em] text-brand-deep">
+                      <span className="shrink-0 font-display font-semibold text-[1.2rem] md:text-[1.3rem] leading-[1.2] tracking-[-0.02em] tabular-nums text-brand-deep">
                         {milestone.year}
                       </span>
                       <h3 className="font-display font-semibold text-[1rem] md:text-[1.05rem] leading-[1.2] tracking-[-0.01em] text-ink">

@@ -151,35 +151,39 @@ export function Hero() {
               </Link>
             </div>
 
-            {/* Rating chips */}
-            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+            {/* Ratings — full logos + stars */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-9 gap-y-6">
               <div
-                className="inline-flex items-center gap-2.5"
-                aria-label={`Google reviews · ${googleRating.average} out of 5`}
+                className="flex flex-col items-start gap-2"
+                aria-label={`Google rating ${googleRating.average} out of 5 from ${googleRating.count} reviews`}
               >
-                <HeroGoogleLogo className="h-5 w-5 shrink-0" />
-                <div className="flex items-center gap-1.5">
+                <GoogleWordmark className="h-[1.4rem] w-auto" />
+                <div className="flex items-center gap-2">
                   <StarRow value={googleRating.average} />
-                  <span className="text-[0.92rem] font-semibold text-paper tabular-nums">
-                    {googleRating.average.toFixed(1)}
+                  <span className="text-[0.82rem] text-paper/65">
+                    <span className="font-semibold text-paper tabular-nums">
+                      {googleRating.average.toFixed(1)}
+                    </span>
+                    <span className="text-paper/40"> / 5</span>
                   </span>
-                  <span className="text-[0.85rem] text-paper/65">Google</span>
                 </div>
               </div>
 
-              <span aria-hidden className="hidden sm:block h-4 w-px bg-paper/15" />
+              <span aria-hidden className="hidden sm:block h-11 w-px bg-paper/15" />
 
               <div
-                className="inline-flex items-center gap-2.5"
-                aria-label={`Trustpilot · ${trustpilotRating.average} out of 5`}
+                className="flex flex-col items-start gap-2"
+                aria-label={`Trustpilot rating ${trustpilotRating.average} out of 5 from ${trustpilotRating.count} reviews`}
               >
-                <TrustpilotMark className="h-5 w-5 shrink-0" />
-                <div className="flex items-center gap-1.5">
-                  <StarRow value={trustpilotRating.average} variant="trustpilot" />
-                  <span className="text-[0.92rem] font-semibold text-paper tabular-nums">
-                    {trustpilotRating.average.toFixed(1)}
+                <TrustpilotLogo />
+                <div className="flex items-center gap-2">
+                  <TrustpilotStars value={trustpilotRating.average} />
+                  <span className="text-[0.82rem] text-paper/65">
+                    <span className="font-semibold text-paper tabular-nums">
+                      {trustpilotRating.average.toFixed(1)}
+                    </span>
+                    <span className="text-paper/40"> / 5</span>
                   </span>
-                  <span className="text-[0.85rem] text-paper/65">Trustpilot</span>
                 </div>
               </div>
             </div>
@@ -263,21 +267,57 @@ function StarRow({ value, variant = "google" }: { value: number; variant?: "goog
   );
 }
 
-function HeroGoogleLogo({ className = "h-5 w-5" }: { className?: string }) {
+/** Full multicolour "Google" wordmark (official 2015 logo). */
+function GoogleWordmark({ className = "h-5 w-auto" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
-      <path fill="#4285F4" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6 8-11.3 8a12 12 0 1 1 0-24c3 0 5.8 1.1 7.9 2.9l5.7-5.7A20 20 0 1 0 44 24c0-1.3-.1-2.6-.4-3.9z" />
-      <path fill="#34A853" d="M6.3 14.7l6.6 4.8A12 12 0 0 1 24 12c3 0 5.8 1.1 7.9 2.9l5.7-5.7A20 20 0 0 0 6.3 14.7z" />
-      <path fill="#FBBC05" d="M24 44a20 20 0 0 0 13.5-5.2l-6.2-5.3a12 12 0 0 1-18-6.3l-6.6 5.1A20 20 0 0 0 24 44z" />
-      <path fill="#EA4335" d="M43.6 20.1H42V20H24v8h11.3a12 12 0 0 1-4 5.5l6.2 5.3c-.4.4 6.6-4.9 6.6-14.8 0-1.3-.1-2.6-.5-3.9z" />
+    <svg viewBox="0 0 272 92" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
+      <path fill="#EA4335" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" />
+      <path fill="#FBBC05" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" />
+      <path fill="#4285F4" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" />
+      <path fill="#34A853" d="M225 3v65h-9.5V3h9.5z" />
+      <path fill="#EA4335" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.06zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" />
+      <path fill="#4285F4" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" />
     </svg>
   );
 }
 
-function TrustpilotMark({ className = "h-5 w-5" }: { className?: string }) {
+/** Full Trustpilot logo — signature green star + wordmark. */
+function TrustpilotLogo() {
   return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
-      <path fill="#00B67A" d="M12 0l2.95 8.55H24l-7.36 5.34L19.55 24 12 18.55 4.45 24l2.91-10.11L0 8.55h9.05z" />
-    </svg>
+    <span className="inline-flex items-center gap-1.5">
+      <svg viewBox="0 0 24 24" className="h-[1.25rem] w-[1.25rem]" aria-hidden xmlns="http://www.w3.org/2000/svg">
+        <path fill="#00B67A" d="M12 0l2.95 8.55H24l-7.36 5.34L19.55 24 12 18.55 4.45 24l2.91-10.11L0 8.55h9.05z" />
+      </svg>
+      <span className="font-display text-[1.18rem] font-semibold leading-none tracking-[-0.01em] text-paper">
+        Trustpilot
+      </span>
+    </span>
+  );
+}
+
+/** Trustpilot's boxed green star rating (partial fill on the last box). */
+function TrustpilotStars({ value }: { value: number }) {
+  return (
+    <span className="inline-flex items-center gap-[3px]" aria-hidden>
+      {Array.from({ length: 5 }).map((_, i) => {
+        const fill = Math.max(0, Math.min(1, value - i));
+        return (
+          <span
+            key={i}
+            className="relative inline-flex h-[17px] w-[17px] items-center justify-center overflow-hidden rounded-[3px] bg-paper/25"
+          >
+            {fill > 0 && (
+              <span
+                className="absolute inset-y-0 left-0 bg-[#00B67A]"
+                style={{ width: `${fill * 100}%` }}
+              />
+            )}
+            <svg viewBox="0 0 24 24" className="relative h-[11px] w-[11px]" aria-hidden xmlns="http://www.w3.org/2000/svg">
+              <path fill="#fff" d="M12 0l2.95 8.55H24l-7.36 5.34L19.55 24 12 18.55 4.45 24l2.91-10.11L0 8.55h9.05z" />
+            </svg>
+          </span>
+        );
+      })}
+    </span>
   );
 }
