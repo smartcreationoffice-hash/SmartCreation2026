@@ -16,6 +16,8 @@ import {
   HardHat,
   Building,
   Sparkles,
+  Anchor,
+  MapPin,
 } from "lucide-react";
 
 // ── Brand & company ──────────────────────────────────────────────────
@@ -35,9 +37,11 @@ export const BRAND = {
 
 export type MegaLink = {
   label: string;
-  href: string;
+  /** Omit for display-only items (services we list but don't have a page for yet). */
+  href?: string;
   desc?: string;
   badge?: string;
+  icon?: LucideIcon;
 };
 
 export type MegaGroup = {
@@ -66,18 +70,129 @@ export type NavItem = {
 
 export const navigation: NavItem[] = [
   {
+    label: "Business Setup",
+    href: "/business-setup",
+    mega: {
+      groups: [
+        {
+          title: "Business Setup",
+          links: [
+            { label: "Mainland Setup", href: "/business-setup#mainland", desc: "Dubai DET license, LLC, branches", icon: Landmark },
+            { label: "Free Zone Setup", href: "/business-setup#free-zone", desc: "Every major UAE free zone", icon: Globe2 },
+            { label: "Offshore Structure", href: "/business-setup#offshore", desc: "JAFZA, RAK ICC, Ajman", icon: Anchor },
+          ],
+        },
+      ],
+      feature: {
+        eyebrow: "Free · 45 min",
+        title: "Tell us what you're building. We'll come back with a plan.",
+        body: "Jurisdiction, costs, timeline, banking, visa quota: written up within one business day. No sales script.",
+        cta: { label: "Book consultation", href: "/contact" },
+      },
+      footer: { label: "Book consultation", href: "/contact" },
+    },
+  },
+  {
+    label: "Financial",
+    href: "/financial",
+    noLink: true,
+    mega: {
+      groups: [
+        {
+          title: "Accounting",
+          links: [
+            { label: "Accounting Services", href: "/financial/accounting#accounting-services" },
+            { label: "Bookkeeping Services", href: "/financial/accounting#bookkeeping-services" },
+          ],
+        },
+        {
+          title: "Audit & Assurance",
+          links: [
+            { label: "Internal Audit Services", href: "/financial/audit-assurance#internal-audit" },
+            { label: "External Audit Services", href: "/financial/audit-assurance#external-audit" },
+            { label: "FTA Tax Audit", href: "/financial/audit-assurance#fta-tax-audit" },
+          ],
+        },
+        {
+          title: "Tax Consultation",
+          links: [
+            { label: "Corporate Tax Services", href: "/financial/tax-consultation#corporate-tax" },
+            { label: "Double Taxation Advisory", href: "/financial/tax-consultation#double-taxation" },
+            { label: "Foreign Tax Credit (FTC) Advisory", href: "/financial/tax-consultation#ftc-advisory" },
+            { label: "Permanent Establishment (PE) Advisory", href: "/financial/tax-consultation#pe-advisory" },
+            { label: "Tax Residency Advisory", href: "/financial/tax-consultation#tax-residency" },
+            { label: "Transfer Pricing Advisory", href: "/financial/tax-consultation#transfer-pricing" },
+            { label: "Withholding Tax (WHT) Advisory", href: "/financial/tax-consultation#wht-advisory" },
+            { label: "Digital Tax Solutions", href: "/financial/tax-consultation#digital-tax" },
+          ],
+        },
+        {
+          title: "VAT Consultancy",
+          links: [
+            { label: "VAT Registration Service", href: "/financial/vat-consultancy#vat-registration" },
+            { label: "VAT Compliance Audit", href: "/financial/vat-consultancy#vat-compliance-audit" },
+            { label: "VAT Refund Service", href: "/financial/vat-consultancy#vat-refund" },
+            { label: "VAT Return Filing", href: "/financial/vat-consultancy#vat-return-filing" },
+          ],
+        },
+        {
+          title: "Compliance",
+          links: [
+            { label: "AML Compliance Services", href: "/financial/compliance#aml-compliance" },
+            { label: "UBO Notification", href: "/financial/compliance#ubo-notification" },
+            { label: "Business Structuring Service", href: "/financial/compliance#business-structuring" },
+            { label: "Trademark Registration", href: "/financial/compliance#trademark-registration" },
+          ],
+        },
+      ],
+      feature: {
+        eyebrow: "Free · 45 min",
+        title: "Books, banking and tax — handled by one team.",
+        body: "Accounting, VAT, Corporate Tax, audit and compliance, kept on a calendar so you're never filing under deadline.",
+        cta: { label: "Book consultation", href: "/contact" },
+      },
+      footer: { label: "Book consultation", href: "/contact" },
+    },
+  },
+  {
+    label: "Business Centers",
+    href: "/business-centers",
+    mega: {
+      groups: [
+        {
+          title: "Business Centers",
+          links: [
+            { label: "All Business Centers", href: "/business-centers", desc: "Browse all six", icon: Building2 },
+            { label: "Smart Creation Business Center", href: "/business-centers/smart-creation", desc: "Tecom · Barsha Heights", icon: MapPin },
+            { label: "Smart Place Business Center",    href: "/business-centers/smart-place",    desc: "Al Barsha 1", icon: MapPin },
+            { label: "Smart View Business Center",     href: "/business-centers/smart-view",     desc: "Bur Dubai", icon: MapPin },
+            { label: "Future Space Business Center",   href: "/business-centers/future-space",   desc: "Al Muraqabat", icon: MapPin },
+            { label: "Smart Founders Business Center", href: "/business-centers/smart-founders", desc: "Umm Ramool", icon: MapPin },
+            { label: "Abna Rashid Business Center",    href: "/business-centers/abna-rashid",    desc: "Naif · Deira", icon: MapPin },
+          ],
+        },
+      ],
+      feature: {
+        eyebrow: "Operating snapshot",
+        title: "Six owned centers across Dubai.",
+        body: "Private offices, dedicated desks, virtual addresses and meeting rooms — from Tecom to Bur Dubai to Al Muraqabat, all owned and operated by us.",
+        cta: { label: "Browse all centers", href: "/business-centers" },
+      },
+      footer: { label: "All business centers", href: "/business-centers" },
+    },
+  },
+  {
     label: "Services",
     href: "/services",
     noLink: true,
     mega: {
       groups: [
         {
-          title: "Company formation",
+          title: "Business Setup",
           links: [
-            { label: "Mainland setup", href: "/services/company-formation#mainland", desc: "Dubai DET license, LLC, branches" },
-            { label: "Free zone setup", href: "/services/company-formation#free-zone", desc: "Every major UAE free zone" },
-            { label: "Offshore structure", href: "/services/company-formation#offshore", desc: "JAFZA, RAK ICC, Ajman" },
-            { label: "Holding & subsidiary", href: "/services/company-formation#holding", desc: "Group structuring" },
+            { label: "Mainland setup", href: "/business-setup#mainland", desc: "Dubai DET license, LLC, branches" },
+            { label: "Free zone setup", href: "/business-setup#free-zone", desc: "Every major UAE free zone" },
+            { label: "Offshore structure", href: "/business-setup#offshore", desc: "JAFZA, RAK ICC, Ajman" },
           ],
         },
         {
@@ -92,10 +207,10 @@ export const navigation: NavItem[] = [
         {
           title: "Financial",
           links: [
-            { label: "Corporate banking", href: "/services/financial#banking", desc: "UAE & international banks" },
-            { label: "Accounting & VAT", href: "/services/financial#accounting", desc: "Monthly books, VAT filing" },
-            { label: "Corporate tax", href: "/services/financial#corporate-tax", desc: "Registration, returns, advisory" },
-            { label: "Audit", href: "/services/financial#audit", desc: "Statutory, internal, due diligence" },
+            { label: "Corporate banking", href: "/financial#banking", desc: "UAE & international banks" },
+            { label: "Accounting & Bookkeeping", href: "/financial#accounting", desc: "Monthly books, VAT filing" },
+            { label: "Corporate tax", href: "/financial#corporate-tax", desc: "Registration, returns, advisory" },
+            { label: "Audit", href: "/financial#audit", desc: "Statutory, internal, due diligence" },
           ],
         },
         {
@@ -118,97 +233,12 @@ export const navigation: NavItem[] = [
     },
   },
   {
-    label: "Free Zones",
-    href: "/free-zones",
-    noLink: true,
-    mega: {
-      groups: [
-        {
-          title: "Dubai",
-          links: [
-            { label: "IFZA", href: "/free-zones/dubai#ifza", desc: "International Free Zone Authority" },
-            { label: "DMCC", href: "/free-zones/dubai#dmcc", desc: "Multi Commodities Centre" },
-            { label: "DIFC", href: "/free-zones/dubai#difc", desc: "International Financial Centre" },
-            { label: "Meydan", href: "/free-zones/dubai#meydan", desc: "Professional services" },
-            { label: "DCC", href: "/free-zones/dubai#dcc", desc: "Dubai CommerCity for e-commerce" },
-            { label: "DTEC", href: "/free-zones/dubai#dtec", desc: "Technology Entrepreneur Campus" },
-            { label: "Dubai South", href: "/free-zones/dubai#dubai-south", desc: "Aviation, logistics & e-commerce" },
-          ],
-        },
-        {
-          title: "Other emirates",
-          links: [
-            { label: "SHAMS", href: "/free-zones/northern-emirates#shams", desc: "Sharjah Media City" },
-            { label: "SPC", href: "/free-zones/northern-emirates#spc", desc: "Sharjah Publishing City" },
-            { label: "SPARK", href: "/free-zones/northern-emirates#spark", desc: "Sharjah Research, Technology & Innovation Park" },
-            { label: "RAKEZ", href: "/free-zones/northern-emirates#rakez", desc: "Ras Al Khaimah Economic Zone" },
-            { label: "AFZA", href: "/free-zones/northern-emirates#afza", desc: "Ajman Free Zone" },
-            { label: "ANCFZ", href: "/free-zones/northern-emirates#ancfz", desc: "Ajman NuVentures Centre" },
-            { label: "UAQ", href: "/free-zones/northern-emirates#uaq", desc: "Umm Al Quwain Free Trade Zone" },
-          ],
-        },
-      ],
-      feature: {
-        eyebrow: "Decision tool",
-        title: "Not sure which zone fits?",
-        body: "Compare all twelve side-by-side: cost, visa quota, activity list, setup time and Corporate Tax impact.",
-        cta: { label: "See every zone", href: "/free-zones" },
-      },
-      footer: { label: "Every zone we cover", href: "/free-zones" },
-    },
-  },
-  {
-    label: "Smart Group",
-    href: "/business-centers",
-    noLink: true,
-    mega: {
-      groups: [
-        {
-          title: "Business Centers",
-          links: [
-            { label: "All business centers", href: "/business-centers", desc: "Browse all six" },
-            { label: "Smart Creation",  href: "/business-centers/smart-creation", desc: "Tecom · Barsha Heights" },
-            { label: "Smart Place",     href: "/business-centers/smart-place",    desc: "Al Barsha 1" },
-            { label: "Smart View",      href: "/business-centers/smart-view",     desc: "Bur Dubai" },
-            { label: "Future Space",    href: "/business-centers/future-space",   desc: "Al Muraqabat" },
-            { label: "Smart Founders",  href: "/business-centers/smart-founders", desc: "Umm Ramool" },
-            { label: "Abna Rashid",     href: "/business-centers/abna-rashid",    desc: "Naif · Deira" },
-          ],
-        },
-        {
-          title: "Group Companies",
-          links: [
-            { label: "Smart Business Creation",  href: "/group-companies#smart-business-creation", desc: "Business setup · UAE" },
-            { label: "Smart Accounting & Bookkeeping", href: "/group-companies#smart-accounting-bookkeeping", desc: "Accounting · UAE" },
-            { label: "Smart Typing Center",      href: "/group-companies#smart-typing-center",    desc: "Typing services · UAE" },
-            { label: "Next Journey Technology",  href: "/group-companies#next-journey",           desc: "Technology · UAE" },
-            { label: "Smart Holiday Homes",      href: "/group-companies#smart-holiday-homes",    desc: "Hospitality · UAE" },
-            { label: "Intercity Bus Service",    href: "/group-companies#intercity-bus",          desc: "Transport · Canada" },
-            { label: "MM Contractor",            href: "/group-companies#mm-contractor",          desc: "Construction · Pakistan" },
-            { label: "Immersion Social",         href: "/group-companies#immersion-social",       desc: "Social Media · UAE" },
-          ],
-        },
-      ],
-      feature: {
-        eyebrow: "Operating snapshot",
-        title: "One Group. Three countries. Seven years.",
-        body: "Six owned business centers across Dubai plus six specialist arms in the UAE, Canada and Pakistan — every file run by the same accountable team.",
-        cta: { label: "Meet the Group", href: "/about" },
-      },
-      footer: { label: "About the Group", href: "/about" },
-    },
-  },
-  {
     label: "About",
     href: "/about",
   },
   {
-    label: "Insights",
-    href: "/insights",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
+    label: "Blogs",
+    href: "/blogs",
   },
 ];
 
@@ -575,7 +605,7 @@ export const services: Service[] = [
     title: "Mainland Company Formation",
     summary:
       "Dubai Department of Economy & Tourism licensing for LLCs, branches, and professional firms, with no restriction on where you can trade.",
-    href: "/services/company-formation#mainland",
+    href: "/business-setup#mainland",
     icon: Landmark,
   },
   {
@@ -584,7 +614,7 @@ export const services: Service[] = [
     title: "Free Zone Setup",
     summary:
       "Direct relationships with every major UAE free zone. We recommend the right one for your sector: IFZA, DMCC, JAFZA, DIFC, and nine more.",
-    href: "/services/company-formation#free-zone",
+    href: "/business-setup#free-zone",
     icon: Building2,
   },
   {
@@ -593,7 +623,7 @@ export const services: Service[] = [
     title: "Offshore Incorporation",
     summary:
       "JAFZA Offshore, RAK ICC, and Ajman Offshore structures for holding, asset protection, and international trade.",
-    href: "/services/company-formation#offshore",
+    href: "/business-setup#offshore",
     icon: Globe2,
   },
   {
@@ -611,7 +641,7 @@ export const services: Service[] = [
     title: "Corporate Banking",
     summary:
       "Introductions, pre-qualification, and full application support for Emirates NBD, Mashreq, HSBC, ADCB, WIO and more.",
-    href: "/services/financial#banking",
+    href: "/financial#banking",
     icon: Banknote,
   },
   {
@@ -620,7 +650,7 @@ export const services: Service[] = [
     title: "Accounting, VAT & Corporate Tax",
     summary:
       "Monthly bookkeeping, VAT returns, Corporate Tax registration and filing, statutory audit. FTA-compliant, on time.",
-    href: "/services/financial#accounting",
+    href: "/financial#accounting",
     icon: Calculator,
   },
   {
@@ -931,7 +961,7 @@ export const blogPosts: BlogPost[] = [
     date: "Apr 18, 2026",
     readTime: "14 min read",
     image: "/damac-executive.webp",
-    href: "/insights/how-to-start-business-dubai-2026",
+    href: "/blogs/how-to-start-business-dubai-2026",
   },
   {
     slug: "free-zone-vs-mainland-2026",
@@ -942,7 +972,7 @@ export const blogPosts: BlogPost[] = [
     date: "Apr 09, 2026",
     readTime: "9 min read",
     image: "/building/building-3.jpg",
-    href: "/insights/free-zone-vs-mainland-dubai-2026",
+    href: "/blogs/free-zone-vs-mainland-dubai-2026",
   },
   {
     slug: "corporate-tax-uae-founders-2026",
@@ -953,7 +983,7 @@ export const blogPosts: BlogPost[] = [
     date: "Mar 27, 2026",
     readTime: "11 min read",
     image: "/offices/office-37.jpg",
-    href: "/insights/uae-corporate-tax-vat-2026-guide",
+    href: "/blogs/uae-corporate-tax-vat-2026-guide",
   },
 ];
 

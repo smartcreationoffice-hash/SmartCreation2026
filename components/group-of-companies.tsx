@@ -112,6 +112,36 @@ const companyById: Record<string, GroupCompany> = Object.fromEntries(
   groupCompanies.map((c) => [c.id, c])
 );
 
+// Business centers have their own detail pages; the other group companies
+// each have a section on /group-companies. Anything without a destination
+// stays unlinked.
+const CENTER_KEYS = new Set([
+  "smart-creation",
+  "smart-place",
+  "smart-view",
+  "future-space",
+  "smart-founders",
+  "abna-rashid",
+]);
+const GROUP_ANCHORS = new Set([
+  "smart-business-creation",
+  "smart-accounting-bookkeeping",
+  "smart-typing-center",
+  "next-journey",
+  "smart-holiday-homes",
+  "intercity-bus",
+  "mm-contractor",
+  "immersion-social",
+]);
+
+/** Resolve a company id to its on-site destination, or null if none exists. */
+function companyHref(id: string): string | null {
+  const key = id.endsWith("-bc") ? id.slice(0, -3) : id;
+  if (CENTER_KEYS.has(key)) return `/business-centers/${key}`;
+  if (GROUP_ANCHORS.has(id)) return `/group-companies#${id}`;
+  return null;
+}
+
 // Mobile-only list order — six business centers first (Smart Creation BC,
 // Smart Business Creation, Smart Place, Smart Founders, Smart View, Future
 // Space), then the rest of the group in current desktop-circuit order.
@@ -299,19 +329,26 @@ export function GroupOfCompanies() {
           </div>
 
           {/* Perimeter cards */}
-          {CHIPS.map((c, i) => {
+          {CHIPS.map((c) => {
             const company = companyById[c.companyId];
             if (!company) return null;
+            const href = companyHref(c.companyId);
             return (
               <div
                 key={c.companyId}
-                                                                className="absolute -translate-x-1/2 -translate-y-1/2 z-10"
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-10"
                 style={{
                   left: `${(c.cx / VBOX_W) * 100}%`,
                   top: `${(c.cy / VBOX_H) * 100}%`,
                 }}
               >
-                <PerimeterCard company={company} />
+                {href ? (
+                  <Link href={href} aria-label={company.name} className="block">
+                    <PerimeterCard company={company} />
+                  </Link>
+                ) : (
+                  <PerimeterCard company={company} />
+                )}
               </div>
             );
           })}
@@ -325,43 +362,59 @@ export function GroupOfCompanies() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {MOBILE_ORDER.map((id) => companyById[id])
               .filter((c): c is GroupCompany => Boolean(c))
-              .map((c) => (
-                <li
-                  key={c.id}
-                  className="flex items-center gap-3 rounded-2xl border border-paper/10 bg-paper/[0.03] p-3"
-                >
-                  <div className="flex h-14 w-20 shrink-0 items-center justify-center overflow-hidden">
-                    {c.logo ? (
-                      <Image
-                        src={c.logo}
-                        alt={`${c.name} logo`}
-                        width={120}
-                        height={56}
-                        className={
-                          "max-h-full max-w-full w-auto h-auto object-contain " +
-                          (c.id === "mm-contractor" ? "scale-[2.1]" : c.id === "intercity-bus" ? "scale-110" : "")
-                        }
-                      />
+              .map((c) => {
+                const href = companyHref(c.id);
+                const rowClass =
+                  "flex items-center gap-3 rounded-2xl border border-paper/10 bg-paper/[0.03] p-3" +
+                  (href
+                    ? " transition-colors hover:border-brand/40 hover:bg-paper/[0.06]"
+                    : "");
+                const inner = (
+                  <>
+                    <div className="flex h-14 w-20 shrink-0 items-center justify-center overflow-hidden">
+                      {c.logo ? (
+                        <Image
+                          src={c.logo}
+                          alt={`${c.name} logo`}
+                          width={120}
+                          height={56}
+                          className={
+                            "max-h-full max-w-full w-auto h-auto object-contain " +
+                            (c.id === "mm-contractor" ? "scale-[2.1]" : c.id === "intercity-bus" ? "scale-110" : "")
+                          }
+                        />
+                      ) : (
+                        <c.icon
+                          className="h-5 w-5 text-brand-soft"
+                          strokeWidth={1.6}
+                        />
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="font-display text-[0.95rem] leading-tight text-paper">
+                        {c.name}
+                      </div>
+                      <div className="mt-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-mist truncate">
+                        <span aria-hidden className="mr-1.5">
+                          {c.flag}
+                        </span>
+                        {c.sector}
+                      </div>
+                    </div>
+                  </>
+                );
+                return (
+                  <li key={c.id}>
+                    {href ? (
+                      <Link href={href} aria-label={c.name} className={rowClass}>
+                        {inner}
+                      </Link>
                     ) : (
-                      <c.icon
-                        className="h-5 w-5 text-brand-soft"
-                        strokeWidth={1.6}
-                      />
+                      <div className={rowClass}>{inner}</div>
                     )}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="font-display text-[0.95rem] leading-tight text-paper">
-                      {c.name}
-                    </div>
-                    <div className="mt-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-mist truncate">
-                      <span aria-hidden className="mr-1.5">
-                        {c.flag}
-                      </span>
-                      {c.sector}
-                    </div>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
           </ul>
         </div>
 

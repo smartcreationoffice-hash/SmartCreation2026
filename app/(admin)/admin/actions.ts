@@ -251,8 +251,8 @@ export async function saveInsightAction(formData: FormData) {
     if (error) throw new Error(error.message);
   }
   revalidatePath("/admin/insights");
-  revalidatePath("/insights");
-  revalidatePath(`/insights/${slug}`);
+  revalidatePath("/blogs");
+  revalidatePath(`/blogs/${slug}`);
   revalidatePath("/");
   redirect("/admin/insights");
 }
@@ -343,7 +343,7 @@ export async function deleteInsightAction(formData: FormData) {
     .eq("id", id);
   if (error) throw new Error(error.message);
   revalidatePath("/admin/insights");
-  revalidatePath("/insights");
+  revalidatePath("/blogs");
   revalidatePath("/");
   redirect("/admin/insights");
 }
@@ -421,4 +421,55 @@ export async function deletePopupAction(formData: FormData) {
   revalidatePath("/admin/popups");
   revalidatePath("/");
   redirect("/admin/popups");
+}
+
+/* ── Instagram reels ───────────────────────────────────────────────── */
+
+export async function saveReelAction(formData: FormData) {
+  await requireAdmin();
+  const id = formData.get("id") ? Number(formData.get("id")) : null;
+
+  const url = String(formData.get("url") ?? "").trim();
+  if (!url) throw new Error("Reel URL is required");
+
+  const displayOrderRaw = Number(formData.get("display_order") || 100);
+  const displayOrder = Number.isFinite(displayOrderRaw)
+    ? Math.max(0, Math.round(displayOrderRaw))
+    : 100;
+
+  const data = {
+    url,
+    caption: String(formData.get("caption") ?? "").trim() || null,
+    active: formData.get("active") === "on",
+    display_order: displayOrder,
+    updated_at: new Date().toISOString(),
+  };
+
+  if (id) {
+    const { error } = await supabaseAdmin
+      .from("sc_reels")
+      .update(data)
+      .eq("id", id);
+    if (error) throw new Error(error.message);
+  } else {
+    const { error } = await supabaseAdmin.from("sc_reels").insert(data);
+    if (error) throw new Error(error.message);
+  }
+  revalidatePath("/admin/reels");
+  revalidatePath("/about");
+  redirect("/admin/reels");
+}
+
+export async function deleteReelAction(formData: FormData) {
+  await requireAdmin();
+  const id = Number(formData.get("id"));
+  if (!id) return;
+  const { error } = await supabaseAdmin
+    .from("sc_reels")
+    .delete()
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/reels");
+  revalidatePath("/about");
+  redirect("/admin/reels");
 }

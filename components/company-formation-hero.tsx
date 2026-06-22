@@ -8,7 +8,6 @@ import {
   ArrowUpRight,
   Building2,
   Globe2,
-  Network,
   ShieldCheck,
 } from "lucide-react";
 
@@ -24,7 +23,6 @@ const pillars: Pillar[] = [
   { id: "mainland", index: "01", label: "Mainland", desc: "Trade anywhere onshore", icon: Building2 },
   { id: "free-zone", index: "02", label: "Free zone", desc: "100% foreign ownership", icon: Globe2 },
   { id: "offshore", index: "03", label: "Offshore", desc: "Hold assets, IP, shares", icon: ShieldCheck },
-  { id: "holding", index: "04", label: "Holding", desc: "Group & subsidiary structure", icon: Network },
 ];
 
 const trust = [
@@ -134,9 +132,7 @@ export function CompanyFormationHero() {
             Home
           </Link>
           <span className="text-paper/30">/</span>
-          <span className="text-mist">Services</span>
-          <span className="text-paper/30">/</span>
-          <span className="text-paper">Company formation</span>
+          <span className="text-paper">Business Setup</span>
         </m.div>
 
         <div className="grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-14 items-center">
@@ -149,7 +145,7 @@ export function CompanyFormationHero() {
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-              § Company formation
+              § Business Setup
             </m.div>
 
             <m.h1
@@ -169,9 +165,9 @@ export function CompanyFormationHero() {
               transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
               className="mt-7 max-w-[36rem] text-[1.04rem] md:text-[1.1rem] leading-relaxed text-paper/70 text-pretty"
             >
-              Mainland, free zone, offshore or a holding-company group: we set up
-              companies across every UAE jurisdiction. One team accountable from
-              name reservation to your first invoice.
+              Mainland, free zone or offshore: we set up companies across every
+              UAE jurisdiction. One team accountable from name reservation to
+              your first invoice.
             </m.p>
 
             <m.div
@@ -220,7 +216,7 @@ export function CompanyFormationHero() {
                   Choose your structure
                 </span>
                 <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-paper/40">
-                  4 paths
+                  3 paths
                 </span>
               </div>
 

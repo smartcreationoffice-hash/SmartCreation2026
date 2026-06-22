@@ -8,10 +8,10 @@ import {
 } from "@/components/service-section";
 
 export const metadata: Metadata = {
-  title: "Financial Services · Banking, Accounting, Tax & Audit",
+  title: "Financial Services · Banking, Accounting, Tax, AML & Trademark",
   description:
-    "Corporate banking, monthly accounting, VAT filing, UAE Corporate Tax registration and statutory audit. One accountable team for every number that touches your business.",
-  alternates: { canonical: "/services/financial" },
+    "Corporate banking, monthly accounting, VAT filing, UAE Corporate Tax registration, AML / ESR / UBO frameworks and trademark filing. One accountable team for every number that touches your business.",
+  alternates: { canonical: "/financial" },
 };
 
 const sections: ServiceSectionData[] = [
@@ -62,13 +62,13 @@ const sections: ServiceSectionData[] = [
     id: "accounting",
     index: "02",
     eyebrow: "Bookkeeping & VAT compliance",
-    title: "Accounting & VAT",
+    title: "Accounting & Bookkeeping",
     icon: "calculator",
     lede:
       "Monthly bookkeeping, financial statements and VAT registration plus quarterly returns. Clean books from day one, so when an audit, an investor or a Corporate Tax return shows up, you don't scramble for six months of receipts.",
     image: {
       src: "/services/financial/accounting.webp",
-      alt: "Accounting & VAT filings",
+      alt: "Accounting & Bookkeeping filings",
     },
     good: [
       "Companies invoicing regularly, local or cross-border",
@@ -145,46 +145,89 @@ const sections: ServiceSectionData[] = [
     ],
   },
   {
-    id: "audit",
+    id: "aml-esr-ubo",
     index: "04",
-    eyebrow: "Statutory & internal audit",
-    title: "Audit",
-    icon: "file-search",
+    eyebrow: "Regulatory frameworks",
+    title: "AML / ESR / UBO",
+    icon: "badge-check",
     lede:
-      "Statutory audits for free-zone and mainland companies, internal audits for risk and control reviews, and financial due diligence for investments and exits. Audit-ready books mean no surprises, and a faster, cleaner audit when it matters.",
+      "Anti-Money-Laundering frameworks, Economic Substance Regulations notifications and Ultimate Beneficial Owner filings. Each one carries fines if missed. We put the framework in place and file every cycle on time.",
     image: {
-      src: "/services/financial/audit.webp",
-      alt: "Statutory & internal audit",
+      src: "/services/compliance/aml-esr-ubo.webp",
+      alt: "AML, ESR and UBO compliance",
     },
     good: [
-      "Free-zone entities required to audit annually (DMCC, JAFZA, ADGM, DIFC)",
-      "Companies preparing for investment, sale or restructuring",
-      "Boards seeking an internal-audit and risk-control review",
-      "Buyers running financial due diligence before closing",
+      "DNFBPs (real estate, dealers in precious metals, accountants, advisors)",
+      "Companies engaged in relevant ESR activities: IP, holding, banking, leasing",
+      "Free-zone and mainland companies with multiple beneficial owners",
+      "Boards needing a documented compliance framework, not just a filing",
     ],
     included: [
-      "Engagement scoping and audit-plan agreement",
-      "Walkthroughs, controls testing, substantive procedures",
-      "Reconciliation review and adjusting-entries discussion",
-      "Final audit report (ISA-compliant) signed by the auditor",
-      "Optional management-letter with findings and recommendations",
+      "AML risk assessment, policies, KYC / EDD framework, MLRO support",
+      "ESR notification and substance return filings",
+      "UBO declaration filing and register maintenance",
+      "Annual recertification and ongoing change reporting",
+      "Investigation and audit-readiness preparation",
     ],
     meta: [
-      { label: "Standards", value: "ISA · IFRS" },
-      { label: "Required for", value: "DMCC · JAFZA · ADGM · DIFC and others" },
-      { label: "Timeline", value: "3–6 weeks once books are clean" },
-      { label: "CT linkage", value: "Audited statements feed CT return" },
+      { label: "Authorities", value: "FIU · MoE · DET · free-zone regulators" },
+      { label: "Cadence", value: "Annual + change-driven filings" },
+      { label: "Fines if missed", value: "AED 10k–1M per breach" },
+      { label: "Coverage", value: "Mainland · free zone · offshore" },
     ],
     highlight: {
-      eyebrow: "Why our audits move faster",
-      title: "Clean books in, clean report out.",
-      body: "Most audits drag because the books need fixing first. When we keep the books, the auditor walks in to a closed period: fewer adjustments, fewer follow-ups, signed report on schedule.",
+      eyebrow: "Why these get missed",
+      title: "Three filings, three authorities, three deadlines.",
+      body: "AML, ESR and UBO each go to a different regulator on a different schedule. We track all three on one calendar so the year-end never becomes a fire drill, and the policies behind them are real, not template-only.",
     },
     steps: [
-      "Scope the engagement: statutory, internal or due diligence.",
-      "Fieldwork: walkthroughs, sampling and substantive testing.",
-      "Resolve adjusting entries with management.",
-      "Issue the signed audit report and management letter.",
+      "Risk-assess the entity for AML, ESR and UBO obligations.",
+      "Draft policies, registers and KYC frameworks.",
+      "File the relevant notifications and returns.",
+      "Recertify each cycle. No missed deadlines.",
+    ],
+  },
+  {
+    id: "trademark",
+    index: "05",
+    eyebrow: "Brand protection",
+    title: "Trademark",
+    icon: "copyright",
+    lede:
+      "Register your brand name, logo and word-marks in the UAE, and, when you're ready, internationally through the Madrid System. Most disputes start because the trademark wasn't filed early enough; we make sure yours is.",
+    image: {
+      src: "/services/compliance/trademark.webp",
+      alt: "Trademark filing",
+    },
+    good: [
+      "Founders launching a new brand or product line",
+      "Companies expanding into a new emirate or international market",
+      "Businesses that just received a copy-cat warning or threat",
+      "Anyone whose name is on a contract; protect it before someone else files it",
+    ],
+    included: [
+      "Pre-filing similarity search across UAE, GCC and key markets",
+      "Class selection across the 45 Nice classification classes",
+      "Application drafting, filing fee handling and Ministry follow-up",
+      "Publication, opposition window and certificate issuance",
+      "International filing via the Madrid Protocol (multiple countries in one file)",
+    ],
+    meta: [
+      { label: "Authority", value: "MoE · Ministry of Economy" },
+      { label: "Term", value: "10 years · renewable" },
+      { label: "Filing time", value: "8–12 months to certificate" },
+      { label: "International", value: "Madrid Protocol · single filing, many countries" },
+    ],
+    highlight: {
+      eyebrow: "The classic mistake",
+      title: "Trade licence is not a trademark.",
+      body: "Your trade licence proves you can operate. Your trademark proves the brand belongs to you. We see disputes every quarter because owners assumed the licence was enough. File the trademark while the brand is still small.",
+    },
+    steps: [
+      "Run a similarity search across UAE and target markets.",
+      "Pick the right classes (the 45-class system).",
+      "File with MoE and respond to any office action.",
+      "Publish, clear opposition window, receive certificate.",
     ],
   },
 ];
@@ -229,7 +272,7 @@ export default function FinancialPage() {
                   />
                 </Link>
                 <Link
-                  href="/services/company-formation"
+                  href="/business-setup"
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-paper/20 bg-paper/5 backdrop-blur px-5 py-3 text-[0.9rem] text-paper hover:bg-paper/10 transition-colors"
                 >
                   <Calendar className="h-3.5 w-3.5" strokeWidth={1.8} />

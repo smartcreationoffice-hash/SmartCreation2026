@@ -39,11 +39,11 @@ export async function generateMetadata({
   return {
     title: meta.metaTitle,
     description: meta.metaDescription,
-    alternates: { canonical: `/insights/${meta.slug}` },
+    alternates: { canonical: `/blogs/${meta.slug}` },
     openGraph: {
       title: meta.metaTitle,
       description: meta.metaDescription,
-      url: `/insights/${meta.slug}`,
+      url: `/blogs/${meta.slug}`,
       type: "article",
       images: [{ url: meta.cover, width: 1600, height: 900, alt: meta.title }],
     },
@@ -93,7 +93,7 @@ export default async function InsightArticlePage({
             <span className="h-px w-8 bg-paper/25" />
             <Link href="/" className="hover:text-paper transition-colors">Home</Link>
             <span className="text-paper/30">/</span>
-            <Link href="/insights" className="hover:text-paper transition-colors">Insights</Link>
+            <Link href="/blogs" className="hover:text-paper transition-colors">Blogs</Link>
             <span className="text-paper/30">/</span>
             <span className="text-paper truncate max-w-[40ch]">{meta.category}</span>
           </nav>
@@ -200,7 +200,7 @@ export default async function InsightArticlePage({
                 same way we explain them to clients. Free, no spam, unsubscribe
                 in one click.
               </p>
-              <NewsletterForm source={`Insights · /insights/${slug}`} />
+              <NewsletterForm source={`Blogs · /blogs/${slug}`} />
             </div>
           </div>
         </div>
@@ -282,7 +282,7 @@ export default async function InsightArticlePage({
               {related.map((p) => (
                 <li key={p.slug}>
                   <Link
-                    href={`/insights/${p.slug}`}
+                    href={`/blogs/${p.slug}`}
                     className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-paper transition-all hover:border-brand/40 hover:shadow-[0_22px_60px_-30px_rgba(72,168,219,0.45)] hover:-translate-y-0.5"
                   >
                     <div className="relative aspect-[16/9] overflow-hidden">
@@ -359,11 +359,11 @@ export default async function InsightArticlePage({
                   />
                 </Link>
                 <Link
-                  href="/insights"
+                  href="/blogs"
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-paper/20 bg-paper/5 backdrop-blur px-5 py-3 text-[0.9rem] text-paper hover:bg-paper/10 transition-colors"
                 >
                   <MessageCircle className="h-3.5 w-3.5" strokeWidth={1.8} />
-                  Read more insights
+                  Read more blogs
                 </Link>
               </div>
             </div>

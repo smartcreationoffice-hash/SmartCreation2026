@@ -81,6 +81,8 @@ export type ServiceSectionData = {
   highlight: { eyebrow: string; title: string; body: string };
   steps: string[];
   badge?: string;
+  /** Optional "Starting from" price, e.g. "AED 9,999". Shown under the lede. */
+  priceFrom?: string;
   /**
    * Media mode for the right-hand card.
    * - "image" (default): show the parallax photo overlaid with the logo pill.
@@ -147,9 +149,12 @@ const stagger = {
 export function ServiceSection({
   section: s,
   idx,
+  ctaHref,
 }: {
   section: ServiceSectionData;
   idx: number;
+  /** When set, the section CTA links here instead of opening the consultation modal. */
+  ctaHref?: string;
 }) {
   const { open: openConsultation } = useConsultation();
   const Icon = ICONS[s.icon];
@@ -269,19 +274,46 @@ export function ServiceSection({
               {s.lede}
             </p>
 
+            {s.priceFrom && (
+              <div className="mt-8 flex items-center gap-3.5">
+                <span aria-hidden className="h-10 w-1 rounded-full bg-brand" />
+                <div className="leading-none">
+                  <div className="font-mono text-[0.64rem] uppercase tracking-[0.2em] text-ink-mute mb-1.5">
+                    Starting from
+                  </div>
+                  <div className="font-display text-[1.7rem] md:text-[1.9rem] font-semibold leading-none tracking-[-0.02em] text-brand-deep">
+                    {s.priceFrom}
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={openConsultation}
-                aria-haspopup="dialog"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
-              >
-                Discuss this option
-                <ArrowUpRight
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  strokeWidth={1.8}
-                />
-              </button>
+              {ctaHref ? (
+                <Link
+                  href={ctaHref}
+                  className="group inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
+                >
+                  Discuss this option
+                  <ArrowUpRight
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.8}
+                  />
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  onClick={openConsultation}
+                  aria-haspopup="dialog"
+                  className="group inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
+                >
+                  Discuss this option
+                  <ArrowUpRight
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.8}
+                  />
+                </button>
+              )}
             </div>
           </m.div>
 

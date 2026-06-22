@@ -193,7 +193,7 @@ export function InsightForm({ data }: { data: InsightFormData }) {
           </button>
           {!isNew && data.slug && (
             <a
-              href={`/insights/${data.slug}`}
+              href={`/blogs/${data.slug}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[0.85rem] text-ink-mute hover:text-ink underline"

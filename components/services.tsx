@@ -44,7 +44,7 @@ const corePillars: Pillar[] = [
       "Corporate bank account",
       "Investor & employee visas · PRO",
     ],
-    href: "/services/company-formation",
+    href: "/business-setup",
     icon: Briefcase,
   },
   {
@@ -60,16 +60,16 @@ const corePillars: Pillar[] = [
       "Corporate Tax registration & filing",
       "Payroll, audit & banking support",
     ],
-    href: "/services/financial",
+    href: "/financial",
     icon: Calculator,
   },
   {
     id: "business-centres",
     index: "03",
-    title: "Business Centres",
+    title: "Business Centers",
     short: "Office space, ready",
     tagline:
-      "Move-in-ready offices, flexi-desks and meeting rooms across our UAE business centres — with the Ejari and licensed address your trade licence needs.",
+      "Move-in-ready offices, flexi-desks and meeting rooms across our UAE business centers — with the Ejari and licensed address your trade licence needs.",
     bullets: [
       "Move-in-ready private offices",
       "Flexi-desks & meeting rooms",
@@ -209,10 +209,10 @@ export function Services() {
                         {p.index}
                       </span>
                       <span className="block font-display text-[0.8rem] md:text-[1rem] font-semibold leading-tight tracking-[-0.015em] text-ink text-balance">
-                        {p.short}
+                        {p.title}
                       </span>
                       <span className="hidden md:block font-mono text-[0.58rem] uppercase tracking-[0.18em] text-stone truncate w-full">
-                        {p.title}
+                        {p.short}
                       </span>
                     </button>
                   </li>

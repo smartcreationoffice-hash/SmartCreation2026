@@ -4,10 +4,10 @@ import { InsightsHero } from "@/components/insights-hero";
 import { InsightsGrid } from "@/components/insights-grid";
 
 export const metadata: Metadata = {
-  title: "Insights · Dubai business setup, tax & compliance",
+  title: "Blogs · Dubai business setup, tax & compliance",
   description:
-    "Long-form guides from the Smart Creation team: company formation playbooks, free-zone vs mainland breakdowns, and the UAE Corporate Tax & VAT survival guides.",
-  alternates: { canonical: "/insights" },
+    "Long-form guides from the Smart Creation team: business setup playbooks, free-zone vs mainland breakdowns, and the UAE Corporate Tax & VAT survival guides.",
+  alternates: { canonical: "/blogs" },
 };
 
 const fmt = (iso: string) =>

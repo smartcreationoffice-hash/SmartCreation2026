@@ -26,8 +26,8 @@ type Step = {
 
 const STEPS: Step[] = [
   { id: "setup", label: "Set up", icon: Briefcase, cx: 86, y: 300 },
-  { id: "finance", label: "Finance", icon: Calculator, cx: 186, y: 220 },
-  { id: "office", label: "Offices", icon: Building2, cx: 286, y: 140 },
+  { id: "office", label: "Offices", icon: Building2, cx: 186, y: 220 },
+  { id: "finance", label: "Finance", icon: Calculator, cx: 286, y: 140 },
 ];
 
 // the ascending profile — three treads then the landing the door sits on

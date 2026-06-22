@@ -181,7 +181,7 @@ export function AboutJourney() {
               const isRight = i % 2 === 0;
               return (
                 <m.li
-                  key={milestone.year}
+                  key={milestone.title}
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}

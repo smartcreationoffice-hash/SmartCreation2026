@@ -8,10 +8,10 @@ import {
 } from "@/components/service-section";
 
 export const metadata: Metadata = {
-  title: "Company Formation in the UAE",
+  title: "Business Setup in the UAE",
   description:
-    "Mainland, free zone, offshore and holding-company formation across the UAE. Smart Creation Group handles licensing, banking introductions and PRO services end-to-end, trusted since 2020.",
-  alternates: { canonical: "/services/company-formation" },
+    "Mainland, free zone and offshore business setup across the UAE. Smart Creation Group handles licensing, banking introductions and PRO services end-to-end, trusted since 2020.",
+  alternates: { canonical: "/business-setup" },
 };
 
 const sections: ServiceSectionData[] = [
@@ -21,6 +21,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Onshore licensing",
     title: "Mainland setup",
     icon: "building",
+    priceFrom: "AED 9,999",
     lede:
       "Trade anywhere in the UAE, including direct contracts with government, hotels, malls and other onshore entities. Most of our clients setting up to actively serve the local market choose mainland for the freedom and credibility it carries.",
     image: {
@@ -64,6 +65,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Free zone licensing",
     title: "Free zone setup",
     icon: "globe",
+    priceFrom: "AED 5,750",
     lede:
       "100% foreign ownership, 0% personal income tax, fast-tracked licensing and a defined activity list. We work across every major UAE free zone: IFZA, DMCC, JAFZA, DIFC, RAKEZ, SHAMS, DAFZA, Meydan and more.",
     image: {
@@ -107,6 +109,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "International structuring",
     title: "Offshore structure",
     icon: "shield",
+    priceFrom: "AED 3,500",
     lede:
       "An offshore company holds assets, IP or shares; it doesn't trade inside the UAE. Right for asset protection, international holding, succession planning and ring-fencing IP from operating entities.",
     image: {
@@ -144,49 +147,6 @@ const sections: ServiceSectionData[] = [
       "Apostille / attest the documents for international use.",
     ],
   },
-  {
-    id: "holding",
-    index: "04",
-    eyebrow: "Group structuring",
-    title: "Holding & subsidiary",
-    icon: "network",
-    lede:
-      "Build a parent → subsidiary group across multiple jurisdictions. Right for founders running several brands, investors with multiple verticals, or operators who need to separate IP, trading and real-estate arms.",
-    image: {
-      src: "/services/company-formation/holding.webp",
-      alt: "Holding & subsidiary group structure",
-    },
-    good: [
-      "Family offices and multi-brand operators",
-      "Founders ring-fencing risk between business lines",
-      "Holding intellectual property in one entity, licensing it to operators",
-      "Preparing the cap table for outside investment or acquisition",
-    ],
-    included: [
-      "Group-structure design: parent, sub-holdings and operating subs",
-      "Shareholder agreements and inter-company licensing terms",
-      "Coordinated incorporation across mainland, free zone and offshore",
-      "Corporate-tax grouping advisory and transfer-pricing readiness",
-      "Centralised compliance calendar: renewals, ESR, UBO, AML",
-    ],
-    meta: [
-      { label: "Typical layers", value: "Holding → ops → IP / RE" },
-      { label: "Tax group eligible", value: "Often yes (UAE CT)" },
-      { label: "Setup time", value: "2–6 weeks end-to-end" },
-      { label: "Ongoing", value: "Single point of compliance with us" },
-    ],
-    highlight: {
-      eyebrow: "We structure for the future, not just today",
-      title: "A clean structure now saves a painful restructure before exit.",
-      body: "We design the group with corporate tax, future investment, and an eventual sale in mind, so when the time comes, your cap table, IP and operating entities don't need to be unwound and rebuilt under deal pressure.",
-    },
-    steps: [
-      "Map out the brands, IP and operating entities you need.",
-      "Design parent / sub-holding / operating layers.",
-      "Incorporate across mainland, free zone and offshore in lockstep.",
-      "Wire up shareholder agreements, IP licences and CT grouping.",
-    ],
-  },
 ];
 
 export default function CompanyFormationPage() {
@@ -195,7 +155,7 @@ export default function CompanyFormationPage() {
       <CompanyFormationHero />
 
       {sections.map((s, idx) => (
-        <ServiceSection key={s.id} section={s} idx={idx} />
+        <ServiceSection key={s.id} section={s} idx={idx} ctaHref="/calculator" />
       ))}
 
       {/* CTA */}

@@ -142,6 +142,28 @@ create trigger sc_popups_updated_at
   for each row execute function public.sc_set_updated_at();
 
 -- ─────────────────────────────────────────────────────────────────────
+-- sc_reels — featured Instagram reels editable from admin
+-- ─────────────────────────────────────────────────────────────────────
+
+create table if not exists public.sc_reels (
+  id             bigserial   primary key,
+  url            text        not null,                  -- full instagram reel URL
+  caption        text,                                  -- optional internal note
+  active         boolean     not null default true,
+  display_order  integer     not null default 100,
+  created_at     timestamptz not null default now(),
+  updated_at     timestamptz not null default now()
+);
+
+create index if not exists sc_reels_active_idx
+  on public.sc_reels (active, display_order);
+
+drop trigger if exists sc_reels_updated_at on public.sc_reels;
+create trigger sc_reels_updated_at
+  before update on public.sc_reels
+  for each row execute function public.sc_set_updated_at();
+
+-- ─────────────────────────────────────────────────────────────────────
 -- sc_insights — long-form blog posts editable from admin
 -- ─────────────────────────────────────────────────────────────────────
 
@@ -181,12 +203,14 @@ alter table public.sc_centres    enable row level security;
 alter table public.sc_properties enable row level security;
 alter table public.sc_team       enable row level security;
 alter table public.sc_popups     enable row level security;
+alter table public.sc_reels      enable row level security;
 alter table public.sc_insights   enable row level security;
 
 drop policy if exists "sc_centres anon read"    on public.sc_centres;
 drop policy if exists "sc_properties anon read" on public.sc_properties;
 drop policy if exists "sc_team anon read"       on public.sc_team;
 drop policy if exists "sc_popups anon read"     on public.sc_popups;
+drop policy if exists "sc_reels anon read"      on public.sc_reels;
 drop policy if exists "sc_insights anon read"   on public.sc_insights;
 
 create policy "sc_centres anon read"
@@ -206,6 +230,11 @@ create policy "sc_team anon read"
 
 create policy "sc_popups anon read"
   on public.sc_popups for select
+  to anon, authenticated
+  using (active = true);
+
+create policy "sc_reels anon read"
+  on public.sc_reels for select
   to anon, authenticated
   using (active = true);
 

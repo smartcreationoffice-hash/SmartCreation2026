@@ -230,7 +230,7 @@ export default function VisasPage() {
                   />
                 </Link>
                 <Link
-                  href="/services/company-formation"
+                  href="/business-setup"
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-paper/20 bg-paper/5 backdrop-blur px-5 py-3 text-[0.9rem] text-paper hover:bg-paper/10 transition-colors"
                 >
                   <Calendar className="h-3.5 w-3.5" strokeWidth={1.8} />

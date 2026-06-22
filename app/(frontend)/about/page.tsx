@@ -11,6 +11,8 @@ import { AboutJourney } from "@/components/about-journey";
 import { AboutDifferentiators } from "@/components/about-differentiators";
 import { AboutPresence } from "@/components/about-presence";
 import { AboutTeamGrid } from "@/components/about-team-grid";
+import { InstagramReels } from "@/components/instagram-reels";
+import { getDisplayReelUrls } from "@/lib/reels";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/reveal";
 
 export const dynamic = "force-dynamic";
@@ -31,6 +33,7 @@ const ceoBio = [
 export default async function AboutPage() {
   const ceo = team.find((m) => m.name === "Asad Hashmi");
   const members = await getTeam();
+  const reelUrls = await getDisplayReelUrls();
 
   return (
     <>
@@ -124,6 +127,9 @@ export default async function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Featured Instagram reels */}
+      <InstagramReels reels={reelUrls} />
 
       {/* Team grid (animated client component) */}
       <section className="py-20 md:py-28 bg-paper-soft border-t border-ink/8">

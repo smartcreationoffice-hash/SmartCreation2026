@@ -19,7 +19,7 @@ export function ArticleShare({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setUrl(`${window.location.origin}/insights/${slug}`);
+    setUrl(`${window.location.origin}/blogs/${slug}`);
   }, [slug]);
 
   const liHref = url

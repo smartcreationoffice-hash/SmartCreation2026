@@ -170,23 +170,37 @@ export function SiteHeader() {
           </ul>
 
           <div className="flex items-center gap-2 md:gap-3">
-            <Link
-              href={CONTACT.phoneHref}
-              className={cn(
-                "hidden md:inline-flex items-center gap-2 rounded-full px-3 py-2 text-[0.85rem] font-mono transition-colors",
-                inverted
-                  ? "text-mist hover:text-paper"
-                  : "text-ink-mute hover:text-ink"
-              )}
-            >
-              <Phone className="h-3.5 w-3.5" strokeWidth={1.8} />
-              <span>{CONTACT.phone}</span>
-            </Link>
+            <div className="hidden md:flex items-center gap-1.5">
+              {/* WhatsApp */}
+              <a
+                href={CONTACT.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat on WhatsApp"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] transition-colors hover:bg-[#1fad55]"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  className="h-[1.2rem] w-[1.2rem]"
+                  fill="#ffffff"
+                  aria-hidden
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 01-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 01-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.717.315-.601.662-.945 1.49-.945 2.39 0 .24.03.481.08.722.244 1.176.914 2.254 1.682 3.17 1.198 1.433 3.137 2.878 5.12 3.42.525.143 1.047.23 1.58.23.98 0 2.137-.343 2.752-1.047.315-.372.45-.78.45-1.236 0-.235-.057-.472-.145-.687-.172-.372-1.205-.93-1.576-1.006a3.205 3.205 0 00-.55-.086zM16.06 4.29c-6.53 0-11.82 5.29-11.82 11.82 0 2.088.544 4.125 1.593 5.92L4 29l7.13-1.82a11.768 11.768 0 004.93 1.073c6.53 0 11.82-5.29 11.82-11.82 0-6.53-5.29-11.82-11.82-11.82zm.018 21.8a9.96 9.96 0 01-5.09-1.392l-.36-.215-3.77.972 1.006-3.653-.243-.386a9.977 9.977 0 01-1.52-5.305c0-5.514 4.49-10.004 10.004-10.004 5.514 0 10.004 4.49 10.004 10.004 0 5.514-4.49 10.004-10.03 10.004z" />
+                </svg>
+              </a>
+              {/* Call */}
+              <a
+                href={CONTACT.phoneHref}
+                aria-label={`Call ${CONTACT.phone}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand text-paper transition-colors hover:bg-brand-deep"
+              >
+                <Phone className="h-[1.05rem] w-[1.05rem]" strokeWidth={2} />
+              </a>
+            </div>
 
-            <button
-              type="button"
-              onClick={openConsultation}
-              aria-haspopup="dialog"
+            <Link
+              href="/calculator"
               className={cn(
                 "group inline-flex items-center gap-1.5 rounded-full px-3 sm:px-4 py-2.5 text-[0.82rem] sm:text-[0.85rem] font-medium whitespace-nowrap transition-colors",
                 inverted
@@ -194,13 +208,13 @@ export function SiteHeader() {
                   : "bg-brand-night text-paper hover:bg-brand"
               )}
             >
-              <span className="sm:hidden">Book</span>
-              <span className="hidden sm:inline">Book consultation</span>
+              <span className="sm:hidden">Calculator</span>
+              <span className="hidden sm:inline">Cost calculator</span>
               <ArrowUpRight
                 className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 strokeWidth={2}
               />
-            </button>
+            </Link>
 
             <button
               type="button"
@@ -341,6 +355,7 @@ function MegaPanel({
 }) {
   if (!item.mega) return null;
   const { groups, feature, footer } = item.mega;
+  const singleGroup = groups.length === 1;
 
   return (
     <div
@@ -362,25 +377,32 @@ function MegaPanel({
         }}
       />
 
-      <div className="relative grid grid-cols-12 gap-6 p-7 md:p-8">
+      <div className="relative grid grid-cols-12 gap-5 p-5 md:p-6">
         {/* Left: grouped link columns */}
         <div
           className={cn(
-            "grid gap-x-4 md:gap-x-8 gap-y-7",
             feature ? "col-span-12 lg:col-span-8" : "col-span-12",
-            groups.length >= 3 ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2"
+            singleGroup
+              ? "grid grid-cols-1 gap-y-7"
+              : cn(
+                  "gap-x-4 md:gap-x-8",
+                  groups.length >= 5
+                    ? "columns-2 md:columns-3 lg:columns-4"
+                    : "columns-2 md:columns-4"
+                )
           )}
         >
           {groups.map((group, gIdx) => (
             <m.div
               key={group.title}
+              className={cn(!singleGroup && "mb-5 break-inside-avoid")}
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, delay: gIdx * 0.04 }}
             >
               <div
                 className={cn(
-                  "flex items-center gap-2 mb-4 font-mono text-[0.62rem] uppercase tracking-[0.24em]",
+                  "flex items-center gap-2 mb-2.5 font-mono text-[0.62rem] uppercase tracking-[0.24em]",
                   inverted ? "text-mist" : "text-stone"
                 )}
               >
@@ -392,32 +414,69 @@ function MegaPanel({
                 />
                 {group.title}
               </div>
-              <ul className="space-y-0.5">
-                {group.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        "group flex items-start gap-3 rounded-lg -mx-2 px-2 py-2 transition-colors",
-                        inverted ? "hover:bg-paper/5" : "hover:bg-ink/[0.04]"
-                      )}
-                    >
-                      <span
-                        className={cn(
-                          "mt-1.5 block h-1 w-1 shrink-0 rounded-full transition-colors",
+              <ul className={cn(singleGroup ? "grid grid-cols-1 sm:grid-cols-2 gap-2" : "space-y-0.5")}>
+                {group.links.map((link) => {
+                  const Icon = link.icon;
+                  const isLink = Boolean(link.href);
+                  const rowClass = cn(
+                    "flex items-start gap-3 transition-all",
+                    isLink && "group",
+                    singleGroup
+                      ? cn(
+                          "rounded-xl border p-3",
                           inverted
-                            ? "bg-paper/30 group-hover:bg-brand"
-                            : "bg-ink/20 group-hover:bg-brand"
-                        )}
-                      />
+                            ? "border-paper/10 hover:border-brand/50 hover:bg-paper/[0.06]"
+                            : "border-ink/10 hover:border-brand/40 hover:bg-paper-soft hover:shadow-[0_12px_30px_-18px_rgba(31,110,149,0.5)]"
+                        )
+                      : cn(
+                          "rounded-lg -mx-2 px-2 py-1.5",
+                          isLink
+                            ? inverted
+                              ? "hover:bg-paper/5"
+                              : "hover:bg-ink/[0.04]"
+                            : "cursor-default"
+                        )
+                  );
+                  const content = (
+                    <>
+                      {Icon ? (
+                        <span
+                          className={cn(
+                            "flex shrink-0 items-center justify-center rounded-lg transition-colors",
+                            singleGroup ? "h-9 w-9" : "mt-0.5 h-7 w-7",
+                            inverted
+                              ? "bg-paper/[0.06] text-brand-soft group-hover:bg-brand group-hover:text-ink"
+                              : "bg-brand-wash text-brand-deep group-hover:bg-brand-deep group-hover:text-paper"
+                          )}
+                        >
+                          <Icon className="h-[1.05rem] w-[1.05rem]" strokeWidth={1.7} />
+                        </span>
+                      ) : (
+                        <span
+                          className={cn(
+                            "mt-1.5 block h-1 w-1 shrink-0 rounded-full transition-colors",
+                            isLink
+                              ? inverted
+                                ? "bg-paper/30 group-hover:bg-brand"
+                                : "bg-ink/20 group-hover:bg-brand"
+                              : inverted
+                              ? "bg-paper/20"
+                              : "bg-ink/15"
+                          )}
+                        />
+                      )}
                       <span className="min-w-0 flex-1">
                         <span className="flex items-center gap-2">
                           <span
                             className={cn(
                               "text-[0.92rem] font-medium transition-colors",
-                              inverted
-                                ? "text-paper group-hover:text-brand"
-                                : "text-ink group-hover:text-brand-deep"
+                              isLink
+                                ? inverted
+                                  ? "text-paper group-hover:text-brand"
+                                  : "text-ink group-hover:text-brand-deep"
+                                : inverted
+                                ? "text-paper/75"
+                                : "text-ink/75"
                             )}
                           >
                             {link.label}
@@ -446,9 +505,20 @@ function MegaPanel({
                           </span>
                         )}
                       </span>
-                    </Link>
-                  </li>
-                ))}
+                    </>
+                  );
+                  return (
+                    <li key={link.label}>
+                      {isLink ? (
+                        <Link href={link.href!} className={rowClass}>
+                          {content}
+                        </Link>
+                      ) : (
+                        <div className={rowClass}>{content}</div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </m.div>
           ))}
@@ -540,7 +610,7 @@ function MegaPanel({
               inverted ? "text-mist" : "text-stone"
             )}
           >
-            Smart Creation Group · Dubai
+            Abu Dhabi · Dubai · Sharjah · Ajman · Umm Al Quwain · Ras Al Khaimah · Fujairah
           </span>
           <Link
             href={footer.href}
@@ -765,16 +835,19 @@ function MobileDrawer({
                                 {group.title}
                               </div>
                               <ul className="space-y-2">
-                                {group.links.map((link) => (
-                                  <li key={link.href}>
-                                    <Link
-                                      href={link.href}
-                                      onClick={onClose}
-                                      className="group/link flex items-center gap-2.5 -mx-2 px-2 py-1.5 rounded-lg text-[0.92rem] text-paper/85 hover:bg-paper/5 hover:text-paper transition-colors"
-                                    >
+                                {group.links.map((link) => {
+                                  const rowCls =
+                                    "flex items-center gap-2.5 -mx-2 px-2 py-1.5 rounded-lg text-[0.92rem] transition-colors";
+                                  const inner = (
+                                    <>
                                       <span
                                         aria-hidden
-                                        className="block h-1 w-1 rounded-full bg-paper/30 group-hover/link:bg-brand transition-colors"
+                                        className={cn(
+                                          "block h-1 w-1 rounded-full transition-colors",
+                                          link.href
+                                            ? "bg-paper/30 group-hover/link:bg-brand"
+                                            : "bg-paper/20"
+                                        )}
                                       />
                                       <span className="flex-1">{link.label}</span>
                                       {link.badge && (
@@ -782,9 +855,29 @@ function MobileDrawer({
                                           {link.badge}
                                         </span>
                                       )}
-                                    </Link>
-                                  </li>
-                                ))}
+                                    </>
+                                  );
+                                  return (
+                                    <li key={link.label}>
+                                      {link.href ? (
+                                        <Link
+                                          href={link.href}
+                                          onClick={onClose}
+                                          className={cn(
+                                            "group/link text-paper/85 hover:bg-paper/5 hover:text-paper",
+                                            rowCls
+                                          )}
+                                        >
+                                          {inner}
+                                        </Link>
+                                      ) : (
+                                        <div className={cn("text-paper/60", rowCls)}>
+                                          {inner}
+                                        </div>
+                                      )}
+                                    </li>
+                                  );
+                                })}
                               </ul>
                             </m.div>
                           ))}

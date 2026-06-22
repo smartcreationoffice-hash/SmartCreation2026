@@ -18,6 +18,7 @@ import {
 
 import { OfficeGallery } from "@/components/office-gallery";
 import { BookViewingButton } from "@/components/book-viewing-button";
+import { ShareButton } from "@/components/share-button";
 import {
   getProperty,
   getSimilarProperties,
@@ -140,6 +141,10 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                   ★ Featured
                 </span>
               )}
+              <ShareButton
+                title={`${office.officeNo} · ${office.title}`}
+                className="ml-auto"
+              />
             </div>
 
             <div className="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-stone mb-3">

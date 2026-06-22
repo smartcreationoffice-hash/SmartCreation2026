@@ -1,101 +1,112 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 import { m } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
   Banknote,
+  BadgeCheck,
+  Building2,
   Calculator,
+  Copyright,
+  FileSearch,
   FileText,
+  Globe2,
+  IdCard,
+  Landmark,
+  Network,
+  Percent,
+  Receipt,
   Scale,
+  ShieldCheck,
   Stamp,
+  type LucideIcon,
 } from "lucide-react";
 
-type Pillar = {
+export type CategoryIconKey =
+  | "calculator"
+  | "file-text"
+  | "banknote"
+  | "landmark"
+  | "file-search"
+  | "shield"
+  | "badge-check"
+  | "copyright"
+  | "stamp"
+  | "scale"
+  | "building"
+  | "globe"
+  | "receipt"
+  | "percent"
+  | "id-card"
+  | "network";
+
+const ICONS: Record<CategoryIconKey, LucideIcon> = {
+  calculator: Calculator,
+  "file-text": FileText,
+  banknote: Banknote,
+  landmark: Landmark,
+  "file-search": FileSearch,
+  shield: ShieldCheck,
+  "badge-check": BadgeCheck,
+  copyright: Copyright,
+  stamp: Stamp,
+  scale: Scale,
+  building: Building2,
+  globe: Globe2,
+  receipt: Receipt,
+  percent: Percent,
+  "id-card": IdCard,
+  network: Network,
+};
+
+export type CategoryPillar = {
   id: string;
   index: string;
   label: string;
   desc: string;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  icon: CategoryIconKey;
 };
 
-const pillars: Pillar[] = [
-  { id: "banking", index: "01", label: "Corporate banking", desc: "UAE & international banks", icon: Banknote },
-  { id: "accounting", index: "02", label: "Accounting & Bookkeeping", desc: "Monthly books, VAT filing", icon: Calculator },
-  { id: "corporate-tax", index: "03", label: "Corporate tax", desc: "Registration, returns, advisory", icon: FileText },
-  { id: "aml-esr-ubo", index: "04", label: "AML / ESR / UBO", desc: "Frameworks and filings", icon: Scale },
-  { id: "trademark", index: "05", label: "Trademark", desc: "UAE & international filing", icon: Stamp },
-];
+type CategoryHeroProps = {
+  /** Current page label, shown after "Home / Financial /". */
+  breadcrumb: string;
+  /** Small eyebrow pill text (without the §). */
+  eyebrow: string;
+  /** Hero headline. */
+  title: React.ReactNode;
+  lede: string;
+  cta?: { label: string; href: string };
+  /** In-page sections, rendered as the right-hand "jump to" picker. */
+  pillars: CategoryPillar[];
+};
 
-const trust = [
-  { value: "7+", label: "Years on the books", meta: "Founded 2020" },
-  { value: "9%", label: "UAE Corporate Tax", meta: "Above AED 375k profit" },
-  { value: "5%", label: "VAT", meta: "Quarterly filings, all sectors" },
-  { value: "Dual", label: "FTA & FZ compliance", meta: "Mainland · free zone · offshore" },
-];
-
-export function FinancialHero() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-
-    let raf = 0;
-    let pendingX = 72;
-    let pendingY = 30;
-
-    const apply = () => {
-      el.style.setProperty("--glow-x", `${pendingX}%`);
-      el.style.setProperty("--glow-y", `${pendingY}%`);
-      raf = 0;
-    };
-
-    const onMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      pendingX = ((e.clientX - rect.left) / rect.width) * 100;
-      pendingY = ((e.clientY - rect.top) / rect.height) * 100;
-      if (!raf) raf = requestAnimationFrame(apply);
-    };
-
-    const onLeave = () => {
-      pendingX = 72;
-      pendingY = 30;
-      if (!raf) raf = requestAnimationFrame(apply);
-    };
-
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
-    apply();
-
-    return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
+/**
+ * Reusable dark hero for the Financial category pages (Accounting, Audit,
+ * Tax Consultation, etc.). Mirrors the FinancialHero design so every page
+ * looks part of the same family: breadcrumb, eyebrow, headline, lede, CTA,
+ * and a "choose a service" picker that anchor-links to the page sections.
+ */
+export function CategoryHero({
+  breadcrumb,
+  eyebrow,
+  title,
+  lede,
+  cta,
+  pillars,
+}: CategoryHeroProps) {
   return (
     <section
-      ref={sectionRef}
       data-dark-hero
       className="relative overflow-hidden pt-32 md:pt-40 pb-20 md:pb-28 bg-ink text-paper"
-      style={
-        {
-          "--glow-x": "72%",
-          "--glow-y": "30%",
-        } as React.CSSProperties
-      }
     >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(720px circle at var(--glow-x) var(--glow-y), rgba(72,168,219,0.16), transparent 55%)",
+            "radial-gradient(720px circle at 72% 30%, rgba(72,168,219,0.16), transparent 55%)",
         }}
       />
       <div
@@ -121,6 +132,7 @@ export function FinancialHero() {
       />
 
       <div className="container-edit relative">
+        {/* Breadcrumb */}
         <m.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,10 +144,15 @@ export function FinancialHero() {
             Home
           </Link>
           <span className="text-paper/30">/</span>
-          <span className="text-paper">Financial</span>
+          <Link href="/financial" className="hover:text-paper transition-colors">
+            Financial
+          </Link>
+          <span className="text-paper/30">/</span>
+          <span className="text-paper">{breadcrumb}</span>
         </m.div>
 
         <div className="grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-14 items-center">
+          {/* Left — copy */}
           <div className="col-span-12 lg:col-span-7">
             <m.div
               initial={{ opacity: 0, y: 8 }}
@@ -143,18 +160,16 @@ export function FinancialHero() {
               transition={{ duration: 0.55, delay: 0.05 }}
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-paper/15 bg-paper/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ Financial
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" />§ {eyebrow}
             </m.div>
 
             <m.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-medium tracking-[-0.03em] leading-[0.98] text-[clamp(2.4rem,6vw,4.6rem)] text-paper text-balance"
+              className="font-display font-medium tracking-[-0.03em] leading-[1.0] text-[clamp(2.4rem,6vw,4.4rem)] text-paper text-balance"
             >
-              <span className="block">Books, banks and</span>
-              <span className="block">tax, handled by</span>
-              <span className="block text-brand">one team.</span>
+              {title}
             </m.h1>
 
             <m.p
@@ -163,62 +178,49 @@ export function FinancialHero() {
               transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
               className="mt-7 max-w-[36rem] text-[1.04rem] md:text-[1.1rem] leading-relaxed text-paper/70 text-pretty"
             >
-              Open the corporate account, keep clean monthly books, file VAT,
-              register for Corporate Tax and pass audits without scrambling. One
-              accountable team for everything that touches your numbers.
+              {lede}
             </m.p>
 
-            <m.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4"
-            >
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-paper shadow-[0_10px_30px_-10px_rgba(72,168,219,0.55)]"
+            {cta && (
+              <m.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-9"
               >
-                Book a finance review
-                <ArrowRight
-                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                  strokeWidth={2}
-                />
-              </Link>
-            </m.div>
-
-            <m.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-12 flex items-center gap-3 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-mist"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inset-0 inline-flex animate-ping rounded-full bg-brand opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
-              </span>
-              <span>FTA-registered tax agent · audit-ready monthly</span>
-            </m.div>
+                <Link
+                  href={cta.href}
+                  className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-paper shadow-[0_10px_30px_-10px_rgba(72,168,219,0.55)]"
+                >
+                  {cta.label}
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                    strokeWidth={2}
+                  />
+                </Link>
+              </m.div>
+            )}
           </div>
 
+          {/* Right — section picker */}
           <div className="col-span-12 lg:col-span-5">
             <m.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
             >
               <div className="mb-4 flex items-center justify-between">
                 <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mist">
-                  Choose your service
+                  Choose a service
                 </span>
                 <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-paper/40">
-                  5 areas
+                  {pillars.length} {pillars.length === 1 ? "area" : "areas"}
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {pillars.map((p, i) => {
-                  const Icon = p.icon;
+                  const Icon = ICONS[p.icon] ?? Calculator;
                   return (
                     <m.div
                       key={p.id}
@@ -226,7 +228,7 @@ export function FinancialHero() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
                         duration: 0.55,
-                        delay: 0.32 + i * 0.07,
+                        delay: 0.32 + i * 0.06,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >
@@ -257,7 +259,7 @@ export function FinancialHero() {
                         </div>
 
                         <div className="relative mt-5">
-                          <div className="font-display text-[1.15rem] leading-tight tracking-[-0.01em] text-paper">
+                          <div className="font-display text-[1.1rem] leading-tight tracking-[-0.01em] text-paper">
                             {p.label}
                           </div>
                           <div className="mt-1.5 text-[0.82rem] leading-snug text-paper/55">
@@ -280,31 +282,6 @@ export function FinancialHero() {
             </m.div>
           </div>
         </div>
-
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-20 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-y-10 border-t border-paper/15 pt-10"
-        >
-          {trust.map((item, i) => (
-            <div
-              key={item.label}
-              className={
-                "px-1 md:px-6 relative " +
-                (i > 0 ? "md:border-l md:border-paper/15" : "")
-              }
-            >
-              <div className="font-display font-medium text-[2rem] md:text-[2.4rem] leading-none tracking-[-0.03em] text-paper">
-                {item.value}
-              </div>
-              <div className="mt-3 text-[0.92rem] text-paper">{item.label}</div>
-              <div className="mt-1 font-mono text-[0.66rem] uppercase tracking-[0.15em] text-mist">
-                {item.meta}
-              </div>
-            </div>
-          ))}
-        </m.div>
       </div>
     </section>
   );

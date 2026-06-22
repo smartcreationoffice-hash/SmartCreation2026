@@ -56,7 +56,7 @@ export default async function HomePage() {
       date: fmtDate(m.date),
       readTime: readMins(m.readMinutes),
       image: m.cover,
-      href: `/insights/${m.slug}`,
+      href: `/blogs/${m.slug}`,
     }));
 
   return (

@@ -66,8 +66,7 @@ export function InsightsGrid({ posts }: { posts: InsightCard[] }) {
     <div ref={sectionRef}>
       <div className="flex items-center justify-between gap-3 font-mono text-[0.66rem] uppercase tracking-[0.22em] text-stone mb-6 flex-wrap">
         <span className="inline-flex items-center gap-3">
-          <span className="h-px w-8 bg-ink/25" />
-          All insights
+          <span className="h-px w-8 bg-ink/25" />All blogs
         </span>
         {totalPages > 1 && filtered.length > 0 && (
           <span className="shrink-0">
@@ -87,8 +86,8 @@ export function InsightsGrid({ posts }: { posts: InsightCard[] }) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search insights by title, topic or keyword…"
-            aria-label="Search insights"
+            placeholder="Search blogs by title, topic or keyword…"
+            aria-label="Search blogs"
             className="w-full rounded-full border border-ink/15 bg-paper-soft pl-11 pr-12 py-3 text-[0.92rem] text-ink placeholder:text-stone focus:outline-none focus:border-ink/40 focus:bg-paper transition-colors"
           />
           {query && (
@@ -113,7 +112,7 @@ export function InsightsGrid({ posts }: { posts: InsightCard[] }) {
       {filtered.length === 0 && (
         <div className="rounded-3xl border border-dashed border-ink/15 bg-paper p-10 md:p-14 text-center">
           <p className="text-ink font-medium">
-            No insights found for &ldquo;{query}&rdquo;.
+            No blogs found for &ldquo;{query}&rdquo;.
           </p>
           <p className="mt-2 text-[0.92rem] text-ink-mute">
             Try a different keyword, or{" "}
@@ -133,7 +132,7 @@ export function InsightsGrid({ posts }: { posts: InsightCard[] }) {
         {pageItems.map((p) => (
           <li key={p.slug}>
             <Link
-              href={`/insights/${p.slug}`}
+              href={`/blogs/${p.slug}`}
               className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-paper transition-all hover:border-brand/40 hover:shadow-[0_22px_60px_-30px_rgba(72,168,219,0.45)] hover:-translate-y-0.5"
             >
               <div className="relative aspect-[16/9] overflow-hidden">
@@ -183,7 +182,7 @@ export function InsightsGrid({ posts }: { posts: InsightCard[] }) {
 
       {totalPages > 1 && (
         <nav
-          aria-label="Insights pagination"
+          aria-label="Blogs pagination"
           className="mt-12 flex flex-wrap items-center justify-center gap-2"
         >
           <PageButton

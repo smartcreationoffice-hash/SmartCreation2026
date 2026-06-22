@@ -72,7 +72,6 @@ function formatRange(min: number | null, max: number | null): string {
 /** Strip the redundant "Business Center" suffix so the pin head reads cleanly. */
 function shortCentreName(name: string): string {
   return name
-    .replace(/\s*Business Center(s)?\s*/i, "")
     .replace(/Hamd Bin Huwaidi Building/i, "Bldg.")
     .trim();
 }
