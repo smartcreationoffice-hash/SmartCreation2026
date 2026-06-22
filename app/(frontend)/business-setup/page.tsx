@@ -21,7 +21,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Onshore licensing",
     title: "Mainland setup",
     icon: "building",
-    priceFrom: "AED 9,999",
+    priceFrom: "AED 14,999",
     lede:
       "Trade anywhere in the UAE, including direct contracts with government, hotels, malls and other onshore entities. Most of our clients setting up to actively serve the local market choose mainland for the freedom and credibility it carries.",
     image: {
@@ -65,7 +65,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Free zone licensing",
     title: "Free zone setup",
     icon: "globe",
-    priceFrom: "AED 5,750",
+    priceFrom: "AED 12,500",
     lede:
       "100% foreign ownership, 0% personal income tax, fast-tracked licensing and a defined activity list. We work across every major UAE free zone: IFZA, DMCC, JAFZA, DIFC, RAKEZ, SHAMS, DAFZA, Meydan and more.",
     image: {
@@ -109,7 +109,7 @@ const sections: ServiceSectionData[] = [
     eyebrow: "International structuring",
     title: "Offshore structure",
     icon: "shield",
-    priceFrom: "AED 3,500",
+    priceFrom: "AED 8,000",
     lede:
       "An offshore company holds assets, IP or shares; it doesn't trade inside the UAE. Right for asset protection, international holding, succession planning and ring-fencing IP from operating entities.",
     image: {
