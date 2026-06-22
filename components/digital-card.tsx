@@ -4,7 +4,6 @@ import {
   Mail,
   MapPin,
   Globe,
-  Calendar,
   Download,
   ArrowUpRight,
   Linkedin,
@@ -13,17 +12,58 @@ import {
   Youtube,
 } from "lucide-react";
 import { CONTACT } from "@/lib/data";
+import { CardConsultation } from "@/components/card-consultation";
 
 const MAPS_URL =
   "https://maps.google.com/?q=" +
   encodeURIComponent("Damac Executive Heights, Barsha Heights (Tecom), Dubai");
 
-const SOCIALS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/smartbusinesscreation/", Icon: Linkedin },
-  { label: "Instagram", href: "https://www.instagram.com/smartcreationuae", Icon: Instagram },
-  { label: "Facebook", href: "https://www.facebook.com/smartbusinesscreationuae/", Icon: Facebook },
-  { label: "YouTube", href: "https://www.youtube.com/@SmartBusinessCreation", Icon: Youtube },
+const COMPANY_SOCIALS: SocialLink[] = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/smartbusinesscreation/", icon: "linkedin" },
+  { label: "Instagram", href: "https://www.instagram.com/smartcreationuae", icon: "instagram" },
+  { label: "Facebook", href: "https://www.facebook.com/smartbusinesscreationuae/", icon: "facebook" },
+  { label: "YouTube", href: "https://www.youtube.com/@SmartBusinessCreation", icon: "youtube" },
+  { label: "TikTok", href: "https://www.tiktok.com/@smartcreationuae", icon: "tiktok" },
+  { label: "X", href: "https://x.com/smartcreationae", icon: "x" },
+  { label: "Threads", href: "https://www.threads.com/@smartcreationuae", icon: "threads" },
 ];
+
+const SOCIAL_ICONS = {
+  linkedin: Linkedin,
+  instagram: Instagram,
+  facebook: Facebook,
+  youtube: Youtube,
+  tiktok: TikTokGlyph,
+  x: XGlyph,
+  threads: ThreadsGlyph,
+} as const;
+
+export type SocialKey = keyof typeof SOCIAL_ICONS;
+export type SocialLink = { label: string; href: string; icon: SocialKey };
+
+function TikTokGlyph({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.62a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.05Z" />
+    </svg>
+  );
+}
+
+function XGlyph({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.5 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.834l4.713 6.231L18.244 2.25Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z" />
+    </svg>
+  );
+}
+
+function ThreadsGlyph({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.18 22.5h-.06C8.5 22.48 5.71 21.34 4.04 19.16 2.56 17.22 1.8 14.55 1.78 11.24v-.49c.02-3.31.78-5.98 2.26-7.93C5.71 1.16 8.5.02 12.12 0h.06c2.78.02 5.1.7 6.9 2.03 1.7 1.25 2.9 3.04 3.55 5.31l-2.07.58c-1.1-3.95-3.92-5.95-8.4-5.97-2.95.02-5.19.93-6.65 2.7-1.37 1.66-2.07 4.05-2.1 7.1.02 3.05.73 5.45 2.1 7.1 1.46 1.77 3.7 2.69 6.65 2.7 2.65-.02 4.42-.65 5.88-2.08 1.66-1.63 1.64-3.62.96-4.83-.4-.7-1.13-1.29-2.1-1.7-.24 1.78-.81 3.22-1.71 4.3-1.2 1.45-2.91 2.24-5.1 2.36-1.65.09-3.25-.31-4.47-1.13-1.45-.97-2.3-2.46-2.39-4.18-.18-3.34 2.49-5.74 6.65-5.98 1.48-.08 2.86 0 4.13.24-.17-1.04-.51-1.86-1.02-2.45-.7-.81-1.79-1.23-3.23-1.24h-.04c-1.16 0-2.73.32-3.73 1.85L4.18 7.34c1.33-2.04 3.5-3.16 6.1-3.16h.05c4.36.03 6.96 2.7 7.22 7.36.15.06.3.12.44.2 2 .94 3.47 2.36 4.24 4.1 1.07 2.43.99 6.39-2.13 9.45-2.38 2.34-5.27 3.4-9.13 3.42h-.06l.05-.21Zm.59-12.62c-.34 0-.69 0-1.04.03-3.12.17-5.06 1.6-4.95 3.65.12 2.16 2.5 3.16 4.8 3.04 2.11-.11 4.86-.93 5.33-6.36-.91-.21-2.32-.36-4.14-.36Z" />
+    </svg>
+  );
+}
 
 function WhatsAppGlyph({ className }: { className?: string }) {
   return (
@@ -48,6 +88,20 @@ export type DigitalCardProps = {
   chip?: string;
   /** Direct dial number for this card (defaults to the main line). */
   phoneHref?: string;
+  /** Display number shown in the contact rows (defaults to the main line). */
+  phone?: string;
+  /** Email address shown + linked (defaults to the company inbox). */
+  email?: string;
+  emailHref?: string;
+  /** WhatsApp chat link (defaults to the company number). */
+  whatsappHref?: string;
+  /** Address lines (default to the head office). */
+  address1?: string;
+  address2?: string;
+  /** Social links to show — icons only for links provided. */
+  socials?: SocialLink[];
+  /** Label used to tag consultation form submissions. */
+  source?: string;
 };
 
 export function DigitalCard({
@@ -58,6 +112,14 @@ export function DigitalCard({
   vcf,
   chip,
   phoneHref = CONTACT.phoneHref,
+  phone = CONTACT.phone,
+  email = CONTACT.email,
+  emailHref = CONTACT.emailHref,
+  whatsappHref = CONTACT.whatsappHref,
+  address1 = CONTACT.address,
+  address2 = CONTACT.addressLine2,
+  socials = COMPANY_SOCIALS,
+  source = "Digital card",
 }: DigitalCardProps) {
   return (
     <main className="min-h-[100svh] w-full bg-paper-deep flex items-start sm:items-center justify-center px-4 py-6 sm:py-10">
@@ -81,13 +143,6 @@ export function DigitalCard({
                 "radial-gradient(closest-side, rgba(72,168,219,0.45), rgba(72,168,219,0) 70%)",
             }}
           />
-          <div className="absolute left-5 top-4 inline-flex items-center gap-2 rounded-full border border-paper/25 bg-ink/40 backdrop-blur-md px-3 py-1 font-mono text-[0.58rem] uppercase tracking-[0.2em] text-paper">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inset-0 inline-flex animate-ping rounded-full bg-brand opacity-70" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
-            </span>
-            Open · Barsha Heights
-          </div>
         </div>
 
         {/* Avatar */}
@@ -136,10 +191,10 @@ export function DigitalCard({
           <QuickAction href={phoneHref} label="Call" tone="ink">
             <Phone className="h-5 w-5" strokeWidth={1.8} />
           </QuickAction>
-          <QuickAction href={CONTACT.whatsappHref} label="WhatsApp" tone="whatsapp" external>
+          <QuickAction href={whatsappHref} label="WhatsApp" tone="whatsapp" external>
             <WhatsAppGlyph className="h-5 w-5" />
           </QuickAction>
-          <QuickAction href={CONTACT.emailHref} label="Email" tone="ink">
+          <QuickAction href={emailHref} label="Email" tone="ink">
             <Mail className="h-5 w-5" strokeWidth={1.8} />
           </QuickAction>
           <QuickAction href={MAPS_URL} label="Map" tone="ink" external>
@@ -149,18 +204,7 @@ export function DigitalCard({
 
         {/* Primary CTAs */}
         <div className="px-6 pt-5 space-y-2.5">
-          <a
-            href="https://thesmartcreation.com/contact"
-            className="group flex w-full items-center justify-between rounded-2xl border border-brand/40 bg-brand-wash px-5 py-3.5 transition-colors hover:border-brand hover:bg-brand/10"
-          >
-            <span className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand/15 text-brand-deep">
-                <Calendar className="h-4 w-4" strokeWidth={1.9} />
-              </span>
-              <span className="text-[0.95rem] font-medium text-ink">Book a free consultation</span>
-            </span>
-            <ArrowUpRight className="h-4 w-4 text-brand-deep transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
-          </a>
+          <CardConsultation source={source} />
           <a
             href="https://thesmartcreation.com"
             className="group flex w-full items-center justify-between rounded-2xl border border-ink/10 bg-paper-soft px-5 py-3.5 transition-colors hover:border-ink/30"
@@ -175,17 +219,41 @@ export function DigitalCard({
           </a>
         </div>
 
+        {/* Contact details */}
+        <div className="mx-6 mt-5 space-y-2">
+          <a
+            href={phoneHref}
+            className="group flex items-center gap-3 rounded-2xl border border-ink/10 bg-paper-soft px-5 py-3.5 transition-colors hover:border-brand/40"
+          >
+            <Phone className="h-4 w-4 shrink-0 text-brand-deep" strokeWidth={1.9} />
+            <span className="min-w-0">
+              <span className="block font-mono text-[0.56rem] uppercase tracking-[0.18em] text-stone">Phone</span>
+              <span className="block text-[0.9rem] text-ink leading-snug">{phone}</span>
+            </span>
+          </a>
+          <a
+            href={emailHref}
+            className="group flex items-center gap-3 rounded-2xl border border-ink/10 bg-paper-soft px-5 py-3.5 transition-colors hover:border-brand/40"
+          >
+            <Mail className="h-4 w-4 shrink-0 text-brand-deep" strokeWidth={1.9} />
+            <span className="min-w-0">
+              <span className="block font-mono text-[0.56rem] uppercase tracking-[0.18em] text-stone">Email</span>
+              <span className="block truncate text-[0.9rem] text-ink leading-snug">{email}</span>
+            </span>
+          </a>
+        </div>
+
         {/* Address */}
         <a
           href={MAPS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group mx-6 mt-5 flex items-start gap-3 rounded-2xl border border-ink/10 bg-paper-soft px-5 py-4 transition-colors hover:border-brand/40"
+          className="group mx-6 mt-2 flex items-start gap-3 rounded-2xl border border-ink/10 bg-paper-soft px-5 py-4 transition-colors hover:border-brand/40"
         >
           <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-deep" strokeWidth={1.9} />
           <span className="min-w-0">
-            <span className="block text-[0.9rem] text-ink leading-snug">{CONTACT.address}</span>
-            <span className="block text-[0.82rem] text-ink-mute leading-snug">{CONTACT.addressLine2}</span>
+            <span className="block text-[0.9rem] text-ink leading-snug">{address1}</span>
+            <span className="block text-[0.82rem] text-ink-mute leading-snug">{address2}</span>
             <span className="mt-1 inline-flex items-center gap-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-brand-deep">
               Get directions
               <ArrowUpRight className="h-3 w-3" strokeWidth={2} />
@@ -195,18 +263,21 @@ export function DigitalCard({
 
         {/* Socials */}
         <div className="px-6 pt-6 flex items-center justify-center gap-2.5">
-          {SOCIALS.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink-mute transition-colors hover:border-brand-night hover:bg-brand-night hover:text-paper"
-            >
-              <s.Icon className="h-4 w-4" strokeWidth={1.7} />
-            </a>
-          ))}
+          {socials.map((s) => {
+            const Icon = SOCIAL_ICONS[s.icon];
+            return (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink-mute transition-colors hover:border-brand-night hover:bg-brand-night hover:text-paper"
+              >
+                <Icon className="h-4 w-4" strokeWidth={1.7} />
+              </a>
+            );
+          })}
         </div>
 
         {/* Footer */}
