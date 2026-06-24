@@ -26,7 +26,8 @@ const nextConfig: NextConfig = {
       { source: "/services/company-formation", destination: "/business-setup", permanent: true },
       { source: "/services/financial", destination: "/financial", permanent: true },
       { source: "/insights", destination: "/blogs", permanent: true },
-      { source: "/insights/:slug", destination: "/blogs/:slug", permanent: true },
+      // Exclude asset files (e.g. /insights/cover.webp) — only redirect real slugs.
+      { source: "/insights/:slug([^.]+)", destination: "/blogs/:slug", permanent: true },
     ];
   },
   async headers() {

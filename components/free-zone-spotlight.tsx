@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ConsultationButton } from "@/components/consultation-button";
 import Link from "next/link";
 import { m } from "framer-motion";
 import {
@@ -380,16 +381,13 @@ export function FreeZoneSpotlight({
               </p>
             </div>
             <div className="col-span-12 lg:col-span-4 lg:text-right">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-[0.92rem] font-medium text-ink hover:bg-paper transition-colors"
-              >
+              <ConsultationButton className="group inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-[0.92rem] font-medium text-ink hover:bg-paper transition-colors" >
                 Talk through {z.code}
                 <ArrowUpRight
                   className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   strokeWidth={1.8}
                 />
-              </Link>
+              </ConsultationButton>
             </div>
           </div>
         </m.div>

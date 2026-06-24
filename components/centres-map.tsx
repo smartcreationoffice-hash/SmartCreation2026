@@ -76,6 +76,15 @@ function shortCentreName(name: string): string {
     .trim();
 }
 
+/** Google Maps link — uses exact coordinates when known, else a name+address search. */
+function mapsHref(pin: CentreMapPin): string {
+  const c = CENTRE_COORDS[pin.key];
+  const query = c
+    ? `${c.lat},${c.lng}`
+    : `${pin.name} ${pin.address}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
 /**
  * Per-centre stem length in pixels. Pins anchor at their geographic
  * coordinate (the bottom dot) and the head floats above by `STEM_PX`,
@@ -385,6 +394,15 @@ export function CentresMap({ pins }: { pins: CentreMapPin[] }) {
                       strokeWidth={1.8}
                     />
                   </Link>
+                  <a
+                    href={mapsHref(selected)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center w-full gap-1.5 rounded-full border border-ink/15 bg-paper px-4 py-2.5 text-[0.82rem] text-ink hover:border-ink/40 hover:bg-paper-soft transition-colors"
+                  >
+                    <MapPin className="h-3.5 w-3.5 text-brand-deep" strokeWidth={1.8} />
+                    Open in Google Maps
+                  </a>
                   {selected.officesCount > 0 && (
                     <a
                       href="#available-offices"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ConsultationButton } from "@/components/consultation-button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -216,13 +217,11 @@ export default async function CentrePage({ params }: PageProps) {
                   Fresh inventory is being prepared at this center. Get in touch and
                   we'll match you with a unit before it's listed publicly.
                 </p>
-                <Link
-                  href="/contact"
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.9rem] font-medium text-paper hover:bg-brand transition-colors"
+                <ConsultationButton className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.9rem] font-medium text-paper hover:bg-brand transition-colors"
                 >
                   Schedule a tour
                   <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} />
-                </Link>
+                </ConsultationButton>
               </div>
             </>
           )}

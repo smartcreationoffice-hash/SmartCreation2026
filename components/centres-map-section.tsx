@@ -15,6 +15,13 @@ const CENTRE_LOGO: Record<string, string> = {
 
 type Variant = "light" | "dark";
 
+/** Ensure every centre shows its full "… Business Center" name on the map,
+ *  without double-appending or relabelling the Rashid building. */
+function fullCentreName(name: string): string {
+  if (/business cent(er|re)/i.test(name) || /building|bldg/i.test(name)) return name;
+  return `${name} Business Center`;
+}
+
 export async function CentresMapSection({
   variant = "light",
   eyebrow = "§ On the map",
@@ -30,7 +37,7 @@ export async function CentresMapSection({
   const pins: CentreMapPin[] = data.map((d) => ({
     id: d.id,
     key: d.key,
-    name: d.name,
+    name: fullCentreName(d.name),
     logo: CENTRE_LOGO[d.key] ?? "/group-logos/smart-creation-bc.webp",
     address: d.address,
     officesCount: d.officesCount,

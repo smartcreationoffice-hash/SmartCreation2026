@@ -622,8 +622,9 @@ export function ServiceSection({
                   <p className="mt-3 text-[0.92rem] leading-relaxed text-paper/75">
                     {s.highlight.body}
                   </p>
-                  <Link
-                    href="/contact"
+                  <button
+                    type="button"
+                    onClick={openConsultation}
                     className="group mt-5 inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2.5 text-[0.85rem] font-medium text-ink hover:bg-paper transition-colors"
                   >
                     Talk it through
@@ -631,7 +632,7 @@ export function ServiceSection({
                       className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       strokeWidth={1.8}
                     />
-                  </Link>
+                  </button>
                 </div>
               </m.div>
             </div>

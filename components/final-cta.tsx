@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ConsultationButton } from "@/components/consultation-button";
 import { ArrowRight, Phone, Mail, MessageCircle, MapPin } from "lucide-react";
 import { CONTACT } from "@/lib/data";
 import { Logo } from "@/components/logo";
@@ -45,16 +46,13 @@ export function FinalCTA() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink hover:bg-paper transition-colors"
-              >
+              <ConsultationButton className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink hover:bg-paper transition-colors" >
                 Book free consultation
                 <ArrowRight
                   className="h-4 w-4 transition-transform group-hover:translate-x-1"
                   strokeWidth={2}
                 />
-              </Link>
+              </ConsultationButton>
               <Link
                 href={CONTACT.whatsappHref}
                 target="_blank"

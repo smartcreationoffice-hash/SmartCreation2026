@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { m } from "framer-motion";
+import { ConsultationButton } from "@/components/consultation-button";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -188,16 +189,26 @@ export function CategoryHero({
                 transition={{ duration: 0.7, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 className="mt-9"
               >
-                <Link
-                  href={cta.href}
-                  className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-paper shadow-[0_10px_30px_-10px_rgba(72,168,219,0.55)]"
-                >
-                  {cta.label}
-                  <ArrowRight
-                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                    strokeWidth={2}
-                  />
-                </Link>
+                {cta.href === "/contact" ? (
+                  <ConsultationButton className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-paper shadow-[0_10px_30px_-10px_rgba(72,168,219,0.55)]">
+                    {cta.label}
+                    <ArrowRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                      strokeWidth={2}
+                    />
+                  </ConsultationButton>
+                ) : (
+                  <Link
+                    href={cta.href}
+                    className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-paper shadow-[0_10px_30px_-10px_rgba(72,168,219,0.55)]"
+                  >
+                    {cta.label}
+                    <ArrowRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                      strokeWidth={2}
+                    />
+                  </Link>
+                )}
               </m.div>
             )}
           </div>

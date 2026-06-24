@@ -353,6 +353,7 @@ function MegaPanel({
   item: NavItem;
   inverted: boolean;
 }) {
+  const { open: openConsultation } = useConsultation();
   if (!item.mega) return null;
   const { groups, feature, footer } = item.mega;
   const singleGroup = groups.length === 1;
@@ -573,21 +574,40 @@ function MegaPanel({
                 >
                   {feature.body}
                 </p>
-                <Link
-                  href={feature.cta.href}
-                  className={cn(
-                    "mt-6 self-start group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.82rem] font-medium transition-colors",
-                    inverted
-                      ? "bg-brand text-ink hover:bg-paper"
-                      : "bg-brand-night text-paper hover:bg-brand"
-                  )}
-                >
-                  {feature.cta.label}
-                  <ArrowRight
-                    className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                    strokeWidth={2}
-                  />
-                </Link>
+                {feature.cta.href === "/contact" ? (
+                  <button
+                    type="button"
+                    onClick={openConsultation}
+                    className={cn(
+                      "mt-6 self-start group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.82rem] font-medium transition-colors",
+                      inverted
+                        ? "bg-brand text-ink hover:bg-paper"
+                        : "bg-brand-night text-paper hover:bg-brand"
+                    )}
+                  >
+                    {feature.cta.label}
+                    <ArrowRight
+                      className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                      strokeWidth={2}
+                    />
+                  </button>
+                ) : (
+                  <Link
+                    href={feature.cta.href}
+                    className={cn(
+                      "mt-6 self-start group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.82rem] font-medium transition-colors",
+                      inverted
+                        ? "bg-brand text-ink hover:bg-paper"
+                        : "bg-brand-night text-paper hover:bg-brand"
+                    )}
+                  >
+                    {feature.cta.label}
+                    <ArrowRight
+                      className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                      strokeWidth={2}
+                    />
+                  </Link>
+                )}
               </div>
             </div>
           </m.div>
@@ -612,19 +632,36 @@ function MegaPanel({
           >
             Abu Dhabi · Dubai · Sharjah · Ajman · Umm Al Quwain · Ras Al Khaimah · Fujairah
           </span>
-          <Link
-            href={footer.href}
-            className={cn(
-              "group inline-flex items-center gap-1.5 text-[0.82rem] font-medium transition-colors",
-              inverted ? "text-paper hover:text-brand" : "text-ink hover:text-brand-deep"
-            )}
-          >
-            {footer.label}
-            <ArrowUpRight
-              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              strokeWidth={2}
-            />
-          </Link>
+          {footer.href === "/contact" ? (
+            <button
+              type="button"
+              onClick={openConsultation}
+              className={cn(
+                "group inline-flex items-center gap-1.5 text-[0.82rem] font-medium transition-colors",
+                inverted ? "text-paper hover:text-brand" : "text-ink hover:text-brand-deep"
+              )}
+            >
+              {footer.label}
+              <ArrowUpRight
+                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                strokeWidth={2}
+              />
+            </button>
+          ) : (
+            <Link
+              href={footer.href}
+              className={cn(
+                "group inline-flex items-center gap-1.5 text-[0.82rem] font-medium transition-colors",
+                inverted ? "text-paper hover:text-brand" : "text-ink hover:text-brand-deep"
+              )}
+            >
+              {footer.label}
+              <ArrowUpRight
+                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                strokeWidth={2}
+              />
+            </Link>
+          )}
         </div>
       )}
     </div>
@@ -891,10 +928,15 @@ function MobileDrawer({
                                 ease: easeOut,
                               }}
                             >
-                              <Link
-                                href={item.mega.feature.cta.href}
-                                onClick={onClose}
-                                className="group/feat relative block rounded-2xl border border-paper/15 bg-paper/[0.04] p-4 overflow-hidden hover:border-brand/40 hover:bg-paper/[0.07] transition-colors"
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  onClose();
+                                  if (item.mega!.feature!.cta.href === "/contact") {
+                                    onBookConsultation();
+                                  }
+                                }}
+                                className="group/feat relative block w-full text-left rounded-2xl border border-paper/15 bg-paper/[0.04] p-4 overflow-hidden hover:border-brand/40 hover:bg-paper/[0.07] transition-colors"
                               >
                                 <span
                                   aria-hidden
@@ -914,7 +956,7 @@ function MobileDrawer({
                                   {item.mega.feature.cta.label}
                                   <ArrowRight className="h-3 w-3 transition-transform group-hover/feat:translate-x-0.5" strokeWidth={2} />
                                 </div>
-                              </Link>
+                              </button>
                             </m.div>
                           )}
                         </div>

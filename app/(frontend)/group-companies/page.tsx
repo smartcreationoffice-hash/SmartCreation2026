@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Calendar } from "lucide-react";
+import { ConsultationButton } from "@/components/consultation-button";
 import { AffiliatedCompaniesHero } from "@/components/affiliated-companies-hero";
 import {
   ServiceSection,
@@ -418,8 +419,7 @@ export default function AffiliatedCompaniesPage() {
             </div>
             <div className="col-span-12 lg:col-span-5 lg:text-right">
               <div className="inline-flex flex-col gap-3 lg:items-end">
-                <Link
-                  href="/contact"
+                <ConsultationButton
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink hover:bg-paper transition-colors"
                 >
                   Book consultation
@@ -427,7 +427,7 @@ export default function AffiliatedCompaniesPage() {
                     className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     strokeWidth={1.8}
                   />
-                </Link>
+                </ConsultationButton>
                 <Link
                   href="/business-centers"
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-paper/20 bg-paper/5 backdrop-blur px-5 py-3 text-[0.9rem] text-paper hover:bg-paper/10 transition-colors"

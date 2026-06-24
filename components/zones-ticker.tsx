@@ -9,9 +9,25 @@ import { groupCompanies } from "@/lib/data";
  * pauses on hover, and supports click-and-drag scrubbing with the mouse.
  */
 
+// Per-logo scale so every brand cube renders at the same height regardless of
+// the source logo's aspect (measured from each file's cube). Scales are centred
+// (no origin-left) so logos stay centred in their box and never clip an edge.
 const LOGO_SCALE: Record<string, string> = {
+  // compact lockups (≈3.4:1) — already near full height
+  "smart-business-creation": "scale-[0.92]",
+  "smart-accounting-tax": "scale-[0.98]",
+  "smart-creation-bc": "scale-[0.98]",
+  // wide lockups (≈5.5:1) — render short, bumped up to match
+  "smart-accounting-bookkeeping": "scale-[1.3]",
+  "smart-typing-center": "scale-[1.32]",
+  "smart-founders": "scale-[1.32]",
+  "future-space": "scale-[1.41]",
+  "smart-holiday-homes": "scale-[1.41]",
+  "smart-place": "scale-[1.43]",
+  "smart-view": "scale-[1.53]",
+  // non-cube logos
   "mm-contractor": "scale-[1.4]",
-  "intercity-bus": "scale-125",
+  "intercity-bus": "scale-[1.25]",
 };
 
 export function ZonesTicker() {
@@ -160,7 +176,7 @@ export function ZonesTicker() {
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
         onClickCapture={onClickCapture}
-        className="flex items-center gap-10 md:gap-14 overflow-x-auto whitespace-nowrap will-change-scroll cursor-grab select-none touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="flex items-center gap-12 md:gap-16 overflow-x-auto whitespace-nowrap will-change-scroll cursor-grab select-none touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         style={{ scrollBehavior: "auto" }}
       >
         {items.map((company, idx) => (
@@ -178,7 +194,7 @@ export function ZonesTicker() {
                 sizes="200px"
                 draggable={false}
                 className={
-                  "object-contain object-left pointer-events-none select-none " +
+                  "object-contain pointer-events-none select-none " +
                   (LOGO_SCALE[company.id] ?? "")
                 }
               />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Quote, Sparkles } from "lucide-react";
+import { ConsultationButton } from "@/components/consultation-button";
 import { team } from "@/lib/data";
 import { getTeam } from "@/lib/team";
 import { AboutHero } from "@/components/about-hero";
@@ -161,8 +162,7 @@ export default async function AboutPage() {
               </p>
             </div>
             <div className="col-span-12 lg:col-span-5 lg:text-right">
-              <Link
-                href="/contact"
+              <ConsultationButton
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink hover:bg-paper transition-colors"
               >
                 Book a consultation
@@ -170,7 +170,7 @@ export default async function AboutPage() {
                   className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   strokeWidth={1.8}
                 />
-              </Link>
+              </ConsultationButton>
             </div>
           </div>
         </div>

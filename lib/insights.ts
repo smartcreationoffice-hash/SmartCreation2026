@@ -62,7 +62,12 @@ function rowToMeta(r: DbRow): InsightMeta {
     category: r.category,
     date: typeof r.date === "string" ? r.date.slice(0, 10) : r.date,
     readMinutes: r.read_minutes,
-    cover: r.cover,
+    // Covers historically live under /insights/*. That path now 308-redirects
+    // to /blogs/*, which broke the images, so serve them from /blog-covers/*.
+    cover:
+      typeof r.cover === "string"
+        ? r.cover.replace(/^\/insights\//, "/blog-covers/")
+        : r.cover,
     faqs: Array.isArray(r.faqs) ? r.faqs : [],
   };
 }

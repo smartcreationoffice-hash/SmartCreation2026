@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ConsultationButton } from "@/components/consultation-button";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
@@ -33,10 +34,10 @@ const accentBg: Record<OfficeListing["accent"], string> = {
 const standardFees = [
   { label: "Security deposit", value: "AED 5,000" },
   { label: "Management fee", value: "AED 1,500" },
-  { label: "Ejari & contract", value: "AED 500" },
+  { label: "Ejari Registration", value: "AED 500" },
   { label: "DDA NOC", value: "AED 1,400" },
   { label: "VAT", value: "5%" },
-  { label: "Parking (optional)", value: "AED 3,500 / yr" },
+  { label: "Parking (optional)", value: "AED 4,000 / yr" },
 ];
 
 type Filter = "all" | string;
@@ -213,16 +214,13 @@ export function OfficesGrid({
             </p>
           </div>
           <div className="col-span-12 lg:col-span-4 flex flex-col justify-end gap-2.5 md:gap-3">
-            <Link
-              href="/contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-night px-5 py-3 md:py-3.5 text-[0.9rem] md:text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
-            >
+            <ConsultationButton className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-night px-5 py-3 md:py-3.5 text-[0.9rem] md:text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors" >
               Book an office tour
               <ArrowUpRight
                 className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 strokeWidth={1.8}
               />
-            </Link>
+            </ConsultationButton>
             <Link
               href="/business-centers"
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-paper px-5 py-2.5 md:py-3 text-[0.86rem] md:text-[0.88rem] text-ink hover:border-ink/40 transition-colors"
@@ -345,13 +343,10 @@ function EmptyCenterState() {
         before they go on the public list.
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.9rem] font-medium text-paper hover:bg-brand transition-colors"
-        >
+        <ConsultationButton className="inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.9rem] font-medium text-paper hover:bg-brand transition-colors" >
           Schedule a tour
           <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} />
-        </Link>
+        </ConsultationButton>
       </div>
     </div>
   );

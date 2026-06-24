@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ConsultationButton } from "@/components/consultation-button";
 import Link from "next/link";
 import { m, useScroll } from "framer-motion";
 import {
@@ -325,16 +326,13 @@ export function InsightArticle({
                     Same team that writes these guides also licenses, files, and
                     runs the bank intros.
                   </div>
-                  <Link
-                    href="/contact"
-                    className="group mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-[0.78rem] font-medium text-ink hover:bg-paper transition-colors"
-                  >
+                  <ConsultationButton className="group mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-[0.78rem] font-medium text-ink hover:bg-paper transition-colors" >
                     Book a call
                     <ChevronRight
                       className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
                       strokeWidth={2}
                     />
-                  </Link>
+                  </ConsultationButton>
                 </div>
               </div>
             </aside>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ConsultationButton } from "@/components/consultation-button";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { CategoryHero } from "@/components/category-hero";
@@ -385,13 +386,10 @@ export default function TaxConsultationPage() {
               </p>
             </div>
             <div className="col-span-12 lg:col-span-5 lg:text-right">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink hover:bg-paper transition-colors"
-              >
+              <ConsultationButton className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink hover:bg-paper transition-colors" >
                 Book a tax review
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.8} />
-              </Link>
+              </ConsultationButton>
             </div>
           </div>
         </div>

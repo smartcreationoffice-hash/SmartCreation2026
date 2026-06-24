@@ -82,7 +82,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
   const feeRows: { label: string; value?: string }[] = [
     { label: "Security deposit", value: office.fees.securityDeposit },
     { label: "Management fee", value: office.fees.managementFee },
-    { label: "Ejari & contract", value: office.fees.ejariFee },
+    { label: "Ejari Registration", value: office.fees.ejariFee },
     { label: "DDA NOC", value: office.fees.ddaNoc },
     { label: "VAT", value: office.fees.vat },
     { label: "Parking", value: office.fees.parking },

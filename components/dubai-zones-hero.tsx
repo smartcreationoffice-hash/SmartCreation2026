@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ConsultationButton } from "@/components/consultation-button";
 import { useEffect, useRef } from "react";
 import { m } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -199,16 +200,13 @@ export function DubaiZonesHero() {
               transition={{ duration: 0.7, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4"
             >
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-paper shadow-[0_10px_30px_-10px_rgba(72,168,219,0.55)]"
-              >
+              <ConsultationButton className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink transition-colors hover:bg-paper shadow-[0_10px_30px_-10px_rgba(72,168,219,0.55)]" >
                 Get a Dubai zone match
                 <ArrowRight
                   className="h-4 w-4 transition-transform group-hover:translate-x-1"
                   strokeWidth={2}
                 />
-              </Link>
+              </ConsultationButton>
               <Link
                 href="#ifza"
                 className="group inline-flex items-center gap-2 rounded-full border border-paper/20 bg-paper/5 backdrop-blur px-5 py-3 text-[0.9rem] text-paper hover:bg-paper/10 transition-colors"

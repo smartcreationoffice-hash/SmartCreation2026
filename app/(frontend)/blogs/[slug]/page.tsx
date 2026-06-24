@@ -9,6 +9,7 @@ import {
   MessageCircle,
   Sparkles,
 } from "lucide-react";
+import { ConsultationButton } from "@/components/consultation-button";
 import { InsightArticle } from "@/components/insight-article";
 import { ArticleHeroBg } from "@/components/article-hero-bg";
 import { ArticleProgress } from "@/components/article-progress";
@@ -223,8 +224,7 @@ export default async function InsightArticlePage({
                   Specific to {meta.category.toLowerCase()}. Don't see yours
                   here? Tap "Book a consultation"; we'll cover it on the call.
                 </p>
-                <Link
-                  href="/contact"
+                <ConsultationButton
                   className="group mt-6 inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
                 >
                   Ask your question
@@ -232,7 +232,7 @@ export default async function InsightArticlePage({
                     className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     strokeWidth={1.8}
                   />
-                </Link>
+                </ConsultationButton>
               </div>
 
               <ul className="col-span-12 lg:col-span-8 divide-y divide-ink/10 rounded-3xl border border-ink/10 bg-paper overflow-hidden">
@@ -348,8 +348,7 @@ export default async function InsightArticlePage({
             </div>
             <div className="col-span-12 lg:col-span-5 lg:text-right">
               <div className="inline-flex flex-col gap-3 lg:items-end">
-                <Link
-                  href="/contact"
+                <ConsultationButton
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-[0.95rem] font-medium text-ink hover:bg-paper transition-colors"
                 >
                   Book a consultation
@@ -357,7 +356,7 @@ export default async function InsightArticlePage({
                     className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     strokeWidth={1.8}
                   />
-                </Link>
+                </ConsultationButton>
                 <Link
                   href="/blogs"
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-paper/20 bg-paper/5 backdrop-blur px-5 py-3 text-[0.9rem] text-paper hover:bg-paper/10 transition-colors"

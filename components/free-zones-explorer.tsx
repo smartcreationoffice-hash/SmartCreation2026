@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ConsultationButton } from "@/components/consultation-button";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { m } from "framer-motion";
@@ -435,16 +436,13 @@ export function FreeZoneMethod() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
-          >
+          <ConsultationButton className="group inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors" >
             Get my zone recommendation
             <ChevronRight
               className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
               strokeWidth={1.8}
             />
-          </Link>
+          </ConsultationButton>
           <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-stone">
             One-page summary, within one business day
           </span>

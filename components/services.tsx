@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ConsultationButton } from "@/components/consultation-button";
 import Link from "next/link";
 import { ServicesAscentSteps } from "@/components/services-ascent-steps";
 import { m, AnimatePresence } from "framer-motion";
@@ -34,7 +35,7 @@ const corePillars: Pillar[] = [
   {
     id: "business-setup",
     index: "01",
-    title: "Business Setup & Formation",
+    title: "Business Setup",
     short: "Get set up",
     tagline:
       "Pick the right jurisdiction — mainland, free zone or offshore — then the trade licence, the bank account and the visas. One team owns the whole setup.",
@@ -469,16 +470,13 @@ export function Services() {
                 Every service we deliver, in one catalog.
               </h3>
             </div>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-ink hover:text-brand-deep transition-colors"
-            >
+            <ConsultationButton className="group inline-flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-ink hover:text-brand-deep transition-colors" >
               Talk to us
               <ArrowUpRight
                 className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 strokeWidth={1.8}
               />
-            </Link>
+            </ConsultationButton>
           </div>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
