@@ -71,6 +71,8 @@ export type ServiceSectionData = {
   eyebrow: string;
   title: string;
   lede: string;
+  /** Optional bulleted list shown directly under the lede (e.g. a service breakdown). */
+  ledeBullets?: string[];
   icon: ServiceIconKey;
   /** Optional: when provided, the icon plate renders this PNG/SVG masked to brand-blue instead of the lucide icon. */
   logoSrc?: string;
@@ -150,11 +152,14 @@ export function ServiceSection({
   section: s,
   idx,
   ctaHref,
+  ctaLabel,
 }: {
   section: ServiceSectionData;
   idx: number;
   /** When set, the section CTA links here instead of opening the consultation modal. */
   ctaHref?: string;
+  /** Overrides the primary CTA label. Defaults to "Discuss this option". */
+  ctaLabel?: string;
 }) {
   const { open: openConsultation } = useConsultation();
   const Icon = ICONS[s.icon];
@@ -274,6 +279,22 @@ export function ServiceSection({
               {s.lede}
             </p>
 
+            {s.ledeBullets && s.ledeBullets.length > 0 && (
+              <ul className="mt-5 max-w-[60ch] space-y-2.5">
+                {s.ledeBullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <CheckCircle2
+                      className="h-[1.15rem] w-[1.15rem] mt-0.5 shrink-0 text-brand-deep"
+                      strokeWidth={2}
+                    />
+                    <span className="text-[1.02rem] leading-relaxed text-ink">
+                      {bullet}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
             {s.priceFrom && (
               <div className="mt-8 flex items-center gap-3.5">
                 <span aria-hidden className="h-10 w-1 rounded-full bg-brand" />
@@ -294,7 +315,7 @@ export function ServiceSection({
                   href={ctaHref}
                   className="group inline-flex items-center gap-2 rounded-full bg-brand-night px-5 py-3 text-[0.92rem] font-medium text-paper hover:bg-brand transition-colors"
                 >
-                  Discuss this option
+                  {ctaLabel ?? "Discuss this option"}
                   <ArrowUpRight
                     className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     strokeWidth={1.8}

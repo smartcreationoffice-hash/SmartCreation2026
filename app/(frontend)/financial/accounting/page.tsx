@@ -23,9 +23,20 @@ const sections: ServiceSectionData[] = [
     title: "Accounting Services",
     icon: "calculator",
     lede:
-      "Monthly management accounts, financial statements and a clean ledger maintained on a calendar — so your numbers are always investor-, bank- and FTA-ready, never rebuilt under deadline.",
+      "Our accounting services include:",
+    ledeBullets: [
+      "Preparation of financial statements",
+      "Financial reporting in accordance with applicable IFRS",
+      "Month-end and year-end closing",
+      "Budgeting and forecasting",
+      "Cash flow analysis",
+      "Financial performance analysis",
+      "Fixed asset accounting",
+      "Management reporting (Monthly, Quarterly, Bi-Annually)",
+      "Support for external audits",
+    ],
     image: {
-      src: "/services/financial/accounting.webp",
+      src: "/services/financial/accounting-services.webp",
       alt: "Accounting services in the UAE",
     },
     good: [
@@ -65,10 +76,16 @@ const sections: ServiceSectionData[] = [
     eyebrow: "Day-to-day bookkeeping",
     title: "Bookkeeping Services",
     icon: "file-text",
-    lede:
-      "Accurate day-to-day recording of every invoice, bill, receipt and payment — the clean foundation that makes accounting, VAT and tax effortless instead of a reconstruction job.",
+    lede: "Our bookkeeping services include:",
+    ledeBullets: [
+      "Recording day-to-day financial transactions",
+      "Sales and purchase bookkeeping",
+      "Bank and credit card reconciliations",
+      "General ledger maintenance",
+      "Monthly bookkeeping",
+    ],
     image: {
-      src: "/services/financial/banking.webp",
+      src: "/services/financial/bookkeeping.webp",
       alt: "Bookkeeping services in the UAE",
     },
     good: [

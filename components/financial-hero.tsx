@@ -7,10 +7,10 @@ import { m } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
-  Banknote,
   Calculator,
+  FileSearch,
   FileText,
-  Scale,
+  ShieldCheck,
   Stamp,
 } from "lucide-react";
 
@@ -23,11 +23,11 @@ type Pillar = {
 };
 
 const pillars: Pillar[] = [
-  { id: "banking", index: "01", label: "Corporate banking", desc: "UAE & international banks", icon: Banknote },
-  { id: "accounting", index: "02", label: "Accounting & Bookkeeping", desc: "Monthly books, VAT filing", icon: Calculator },
-  { id: "corporate-tax", index: "03", label: "Corporate tax", desc: "Registration, returns, advisory", icon: FileText },
-  { id: "aml-esr-ubo", index: "04", label: "AML / ESR / UBO", desc: "Frameworks and filings", icon: Scale },
-  { id: "trademark", index: "05", label: "Trademark", desc: "UAE & international filing", icon: Stamp },
+  { id: "accounting", index: "01", label: "Accounting", desc: "Bookkeeping & monthly close", icon: Calculator },
+  { id: "audit-assurance", index: "02", label: "Audit & Assurance", desc: "Internal, external & FTA audits", icon: FileSearch },
+  { id: "tax-consultation", index: "03", label: "Tax Consultation", desc: "Corporate & cross-border tax", icon: FileText },
+  { id: "vat-consultancy", index: "04", label: "VAT Consultancy", desc: "Register, file & refund", icon: Stamp },
+  { id: "compliance", index: "05", label: "Compliance", desc: "AML, UBO & trademark", icon: ShieldCheck },
 ];
 
 const trust = [

@@ -24,7 +24,7 @@ const sections: ServiceSectionData[] = [
     icon: "badge-check",
     lede:
       "A real AML framework — policies, risk assessment, KYC and MLRO support — for the DNFBPs and regulated businesses that face fines without one. Built to satisfy the regulator, not just to sit in a folder.",
-    image: { src: "/services/compliance/aml-esr-ubo.webp", alt: "AML compliance services" },
+    image: { src: "/services/compliance/aml-compliance-services.webp", alt: "AML compliance services" },
     good: [
       "DNFBPs: real estate, precious metals, accountants, advisors",
       "Companies registered on the goAML portal",
@@ -64,7 +64,7 @@ const sections: ServiceSectionData[] = [
     icon: "id-card",
     lede:
       "Every UAE company must declare its Ultimate Beneficial Owners and keep the register current. We file the declaration and maintain it through every ownership change — so a missed update never becomes a penalty.",
-    image: { src: "/services/compliance/attestation.webp", alt: "UBO notification filing" },
+    image: { src: "/services/compliance/ubo-notification.webp", alt: "UBO notification filing" },
     good: [
       "Newly incorporated companies completing UBO filings",
       "Businesses with layered or foreign ownership",
@@ -104,7 +104,7 @@ const sections: ServiceSectionData[] = [
     icon: "network",
     lede:
       "Design the right ownership structure — parent, subsidiaries, holding and operating entities — across mainland, free zone and offshore. Clean today, and built for tax, investment and an eventual exit.",
-    image: { src: "/services/compliance/renewal.webp", alt: "Business structuring service" },
+    image: { src: "/services/compliance/business-structuring-service.webp", alt: "Business structuring service" },
     good: [
       "Founders running several brands or business lines",
       "Investors with multiple verticals to ring-fence",
@@ -144,7 +144,7 @@ const sections: ServiceSectionData[] = [
     icon: "copyright",
     lede:
       "Register your brand name, logo and word-marks in the UAE — and internationally via the Madrid System. Most disputes start because the mark was filed too late; we make sure yours isn't.",
-    image: { src: "/services/compliance/trademark.webp", alt: "Trademark registration" },
+    image: { src: "/services/compliance/trademark-registration.webp", alt: "Trademark registration" },
     good: [
       "Founders launching a new brand or product line",
       "Companies expanding into new emirates or markets",

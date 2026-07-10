@@ -24,7 +24,7 @@ const sections: ServiceSectionData[] = [
     icon: "file-text",
     lede:
       "UAE Corporate Tax is here at 9% above AED 375,000, with special rules for free zones, groups and small-business relief. We register, file and structure so you pay what you owe and not a dirham more.",
-    image: { src: "/services/financial/corporate-tax.webp", alt: "UAE Corporate Tax services" },
+    image: { src: "/services/financial/corporate-tax-services.webp", alt: "UAE Corporate Tax services" },
     good: [
       "Mainland companies above the AED 375k profit threshold",
       "Free-zone companies protecting 0% qualifying-income status",
@@ -64,7 +64,7 @@ const sections: ServiceSectionData[] = [
     icon: "globe",
     lede:
       "The UAE has 140+ double-taxation treaties. Used correctly, they stop the same income being taxed twice. We map your cross-border flows to the right treaty and secure the relief and certificates you're entitled to.",
-    image: { src: "/services/financial/banking.webp", alt: "Double taxation treaty advisory" },
+    image: { src: "/services/financial/double-taxation-advisory.webp", alt: "Double taxation treaty advisory" },
     good: [
       "Companies earning income across multiple countries",
       "Shareholders receiving foreign dividends or interest",
@@ -104,7 +104,7 @@ const sections: ServiceSectionData[] = [
     icon: "banknote",
     lede:
       "Paid tax abroad on income that's also taxable in the UAE? A foreign tax credit offsets it against your UAE Corporate Tax. We calculate the credit correctly and document it so the FTA accepts it.",
-    image: { src: "/services/financial/accounting.webp", alt: "Foreign tax credit advisory" },
+    image: { src: "/services/financial/foreign-tax-credit.webp", alt: "Foreign tax credit advisory" },
     good: [
       "UAE companies with foreign-taxed income",
       "Businesses with overseas branches or projects",
@@ -144,7 +144,7 @@ const sections: ServiceSectionData[] = [
     icon: "building",
     lede:
       "Operating across borders can unintentionally create a taxable presence — a permanent establishment — and an unexpected tax bill. We assess your footprint and structure activities to manage PE risk.",
-    image: { src: "/services/financial/corporate-tax.webp", alt: "Permanent establishment advisory" },
+    image: { src: "/services/financial/permanent-establishment-advisory.webp", alt: "Permanent establishment advisory" },
     good: [
       "Foreign companies operating in or into the UAE",
       "UAE companies with staff or projects abroad",
@@ -184,7 +184,7 @@ const sections: ServiceSectionData[] = [
     icon: "id-card",
     lede:
       "A UAE Tax Residency Certificate unlocks treaty benefits and proves where you're taxed. We confirm eligibility and obtain the certificate for both companies and individuals.",
-    image: { src: "/services/financial/audit.webp", alt: "Tax residency advisory" },
+    image: { src: "/services/financial/tax-residency-advisory.webp", alt: "Tax residency advisory" },
     good: [
       "Companies claiming double-taxation treaty relief",
       "Individuals proving UAE tax residency",
@@ -224,7 +224,7 @@ const sections: ServiceSectionData[] = [
     icon: "network",
     lede:
       "Transactions between related companies must be priced at arm's length and documented — a core UAE Corporate Tax requirement. We set defensible policies and prepare the documentation the FTA expects.",
-    image: { src: "/services/financial/accounting.webp", alt: "Transfer pricing advisory" },
+    image: { src: "/services/financial/transfer-pricing-advisory.webp", alt: "Transfer pricing advisory" },
     good: [
       "Groups with inter-company transactions",
       "Companies charging management or service fees internally",
@@ -264,7 +264,7 @@ const sections: ServiceSectionData[] = [
     icon: "calculator",
     lede:
       "The UAE applies 0% domestic withholding tax — but cross-border payments can attract foreign WHT. We manage withholding on your international flows and recover it through treaties where possible.",
-    image: { src: "/services/financial/banking.webp", alt: "Withholding tax advisory" },
+    image: { src: "/services/financial/withholding-tax-advisory.webp", alt: "Withholding tax advisory" },
     good: [
       "Companies making or receiving cross-border payments",
       "Businesses paying foreign suppliers, IP or interest",
@@ -304,7 +304,7 @@ const sections: ServiceSectionData[] = [
     icon: "shield",
     lede:
       "Move tax off spreadsheets. We set up accounting and tax software, automate VAT and Corporate Tax workflows, and get you ready for the UAE's shift toward e-invoicing and digital filing.",
-    image: { src: "/services/financial/corporate-tax.webp", alt: "Digital tax solutions" },
+    image: { src: "/services/financial/digital-tax-solutions.webp", alt: "Digital tax solutions" },
     good: [
       "Companies still running tax on spreadsheets",
       "Businesses preparing for UAE e-invoicing",

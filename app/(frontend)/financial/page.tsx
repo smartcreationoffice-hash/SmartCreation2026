@@ -9,226 +9,239 @@ import {
 } from "@/components/service-section";
 
 export const metadata: Metadata = {
-  title: "Financial Services · Banking, Accounting, Tax, AML & Trademark",
+  title: "Financial Services · Accounting, Audit, Tax, VAT & Compliance",
   description:
-    "Corporate banking, monthly accounting, VAT filing, UAE Corporate Tax registration, AML / ESR / UBO frameworks and trademark filing. One accountable team for every number that touches your business.",
+    "Five financial disciplines under one accountable team: accounting & bookkeeping, audit & assurance, tax consultation, VAT consultancy and regulatory compliance. Explore each service area.",
   alternates: { canonical: "/financial" },
 };
 
-const sections: ServiceSectionData[] = [
-  {
-    id: "banking",
-    index: "01",
-    eyebrow: "Bank account opening",
-    title: "Corporate banking",
-    icon: "banknote",
-    lede:
-      "Open a UAE corporate account that actually approves, and, if you need it, an international account too. We pre-screen your file against each bank's compliance bar, frame the documents the way they expect, and stay on the application until it's live.",
-    image: {
-      src: "/services/financial/banking.webp",
-      alt: "UAE corporate banking",
-    },
-    good: [
-      "New companies that need a working account in the first month",
-      "Foreign shareholders without an existing UAE relationship",
-      "Trading or holding structures with multi-currency needs",
-      "Founders who've been declined elsewhere and need a fresh route",
-    ],
-    included: [
-      "Eligibility audit: activity, jurisdiction, beneficial-owner profile",
-      "Bank shortlist with realistic approval probability per bank",
-      "KYC pack assembly: corporate docs, references, business plan",
-      "Application submission and bank-meeting accompaniment",
-      "Account activation, online banking and card issuance",
-    ],
-    meta: [
-      { label: "Banks covered", value: "ENBD · Mashreq · ADIB · ADCB · FAB · WIO · RAK · HSBC" },
-      { label: "Setup time", value: "2–6 weeks" },
-      { label: "Currencies", value: "AED · USD · EUR · GBP · multi-CCY" },
-      { label: "International", value: "Available · case by case" },
-    ],
-    highlight: {
-      eyebrow: "Why we get more accounts approved",
-      title: "We frame the file the way the bank wants to read it.",
-      body: "Most rejections aren't about the business; they're about how the file is presented. We package activity, ownership and source of funds so compliance has the answer before they ask the question.",
-    },
-    steps: [
-      "Profile review: activity, ownership, expected turnover.",
-      "Shortlist banks with realistic approval odds for your file.",
-      "Assemble KYC pack and walk into the bank meeting prepared.",
-      "Account live: online banking, card and cheque book ready.",
-    ],
-  },
+/** A category section that links through to its own dedicated page. */
+type CategorySection = ServiceSectionData & { href: string; ctaLabel: string };
+
+const sections: CategorySection[] = [
   {
     id: "accounting",
-    index: "02",
-    eyebrow: "Bookkeeping & VAT compliance",
-    title: "Accounting & Bookkeeping",
+    index: "01",
+    eyebrow: "Bookkeeping & management accounts",
+    title: "Accounting",
     icon: "calculator",
+    href: "/financial/accounting",
+    ctaLabel: "Explore accounting",
     lede:
-      "Monthly bookkeeping, financial statements and VAT registration plus quarterly returns. Clean books from day one, so when an audit, an investor or a Corporate Tax return shows up, you don't scramble for six months of receipts.",
+      "Clean books, kept monthly. From day-to-day bookkeeping to investor-grade management accounts, we maintain the ledger every audit, VAT return and Corporate Tax filing depends on — so the numbers are always ready, never rebuilt under deadline.",
     image: {
-      src: "/services/financial/accounting.webp",
-      alt: "Accounting & Bookkeeping filings",
+      src: "/services/financial/accounting-services.webp",
+      alt: "Accounting & bookkeeping services in the UAE",
     },
     good: [
-      "Companies invoicing regularly, local or cross-border",
-      "Businesses approaching or above the AED 375k VAT threshold",
-      "Founders who want investor-grade books from month one",
-      "Owners tired of doing it themselves on a spreadsheet",
+      "Companies that want monthly numbers, not a year-end scramble",
+      "Founders preparing for investment, a loan or an audit",
+      "Businesses moving off spreadsheets to proper cloud accounting",
+      "Owners who want a clear monthly P&L and cash position",
     ],
     included: [
-      "Chart-of-accounts setup, software onboarding (Zoho / Xero)",
-      "Monthly transaction capture and bank reconciliations",
-      "Monthly P&L, balance sheet and cash-flow statements",
-      "VAT registration, invoice review and quarterly VAT returns",
-      "Year-end financial statements ready for audit and Corporate Tax",
+      "Accounting Services — monthly close and financial statements",
+      "Bookkeeping Services — accurate day-to-day ledger upkeep",
+      "Cloud accounting on Zoho, Xero or QuickBooks",
+      "Management reporting with the numbers that matter to you",
+      "Year-end statements ready for audit and Corporate Tax",
     ],
     meta: [
-      { label: "VAT threshold", value: "AED 375k turnover" },
-      { label: "Filing cadence", value: "Quarterly (or monthly)" },
+      { label: "Cadence", value: "Monthly close" },
       { label: "Software", value: "Zoho · Xero · QuickBooks" },
-      { label: "Reporting", value: "Monthly P&L + balance sheet" },
+      { label: "Reporting", value: "P&L · balance sheet · cash flow" },
+      { label: "Standards", value: "IFRS-aligned" },
     ],
     highlight: {
-      eyebrow: "Books your CFO will thank you for",
-      title: "We don't catch up. We keep up.",
-      body: "Monthly close, monthly review, monthly numbers. Not a 6-month panic before tax season. When you need to share financials with a bank, an investor or the FTA, they're already there.",
+      eyebrow: "Why monthly beats year-end",
+      title: "We keep up, so you never catch up.",
+      body: "Books closed every month mean no six-month panic before tax season — when a bank, investor or the FTA asks for figures, they're already there and reconciled.",
     },
     steps: [
-      "Set up the chart of accounts and onboard the software.",
-      "Capture and reconcile every month, closed by day 10.",
-      "Register for VAT and file quarterly returns on time.",
-      "Year-end statements compiled for audit and tax filing.",
+      "Set up the chart of accounts and onboard your software.",
+      "Record and reconcile every transaction, monthly.",
+      "Issue management accounts by the 10th of each month.",
+      "Compile year-end statements for audit and tax.",
     ],
   },
   {
-    id: "corporate-tax",
-    index: "03",
-    eyebrow: "UAE Corporate Tax",
-    title: "Corporate tax",
-    icon: "file-text",
+    id: "audit-assurance",
+    index: "02",
+    eyebrow: "Internal, external & FTA audits",
+    title: "Audit & Assurance",
+    icon: "file-search",
+    href: "/financial/audit-assurance",
+    ctaLabel: "Explore audit & assurance",
     lede:
-      "UAE Corporate Tax is here at 9% above AED 375,000, with special rules for free zones, holding structures and small business relief. We register, file and structure so you pay what you owe and not a dirham more.",
+      "Independent assurance that stands up to scrutiny. Internal audits that surface the gaps before they cost you, statutory external audits banks and regulators accept, and full representation when the FTA opens a tax audit.",
     image: {
-      src: "/services/financial/corporate-tax.webp",
-      alt: "UAE Corporate Tax",
+      src: "/services/financial/external-audit.webp",
+      alt: "Audit & assurance services in the UAE",
     },
     good: [
-      "Mainland companies above the AED 375k profit threshold",
-      "Free-zone companies wanting to keep the 0% qualifying-income status",
-      "Holding companies with subsidiaries, IP or real estate",
-      "Groups eligible to consolidate as a UAE Tax Group",
+      "Free-zone companies with a mandatory annual audit requirement",
+      "Businesses raising finance or reporting to shareholders",
+      "Groups needing internal controls reviewed and tightened",
+      "Companies notified of an FTA tax audit",
     ],
     included: [
-      "FTA registration and Tax Registration Number (TRN) issuance",
-      "Free-zone qualifying-income analysis and documentation",
-      "Annual taxable-income computation from your audited books",
-      "Corporate Tax return preparation and filing",
-      "Transfer-pricing documentation for related-party transactions",
+      "Internal Audit — controls, risk and process review",
+      "External Audit — statutory, IFRS-aligned independent opinion",
+      "FTA Tax Audit — preparation, documentation and representation",
+      "Findings ranked by severity, with the fix for each",
+      "A report you can act on, not just file",
+    ],
+    meta: [
+      { label: "Standards", value: "IFRS · ISA" },
+      { label: "Scope", value: "Internal · external · tax" },
+      { label: "Turnaround", value: "2–4 weeks typical" },
+      { label: "Output", value: "Signed report + action list" },
+    ],
+    highlight: {
+      eyebrow: "Why our audits land differently",
+      title: "Findings you can act on Monday.",
+      body: "An audit that ends in a filed PDF changes nothing. Ours ends in a prioritised list of what to fix, why it matters and how — so the assurance actually makes the business stronger.",
+    },
+    steps: [
+      "Scope the engagement: internal, external or FTA.",
+      "Test the books, controls and documentation.",
+      "Draft findings with severity ratings and fixes.",
+      "Issue the report and walk you through every point.",
+    ],
+  },
+  {
+    id: "tax-consultation",
+    index: "03",
+    eyebrow: "Corporate tax & cross-border",
+    title: "Tax Consultation",
+    icon: "file-text",
+    href: "/financial/tax-consultation",
+    ctaLabel: "Explore tax consultation",
+    lede:
+      "UAE Corporate Tax is here — and cross-border tax is where the real money is won or lost. Registration, structuring, treaty relief, transfer pricing and more, handled so you pay exactly what you owe and not a dirham more.",
+    image: {
+      src: "/services/financial/corporate-tax-services.webp",
+      alt: "Tax consultation services in the UAE",
+    },
+    good: [
+      "Companies above the AED 375k Corporate Tax threshold",
+      "Free-zone entities protecting 0% qualifying income",
+      "Groups with related-party or cross-border transactions",
+      "Businesses exposed to foreign withholding or double tax",
+    ],
+    included: [
+      "Corporate Tax — registration, computation and filing",
+      "Double Taxation and Foreign Tax Credit advisory",
+      "Permanent Establishment and Tax Residency guidance",
+      "Transfer Pricing documentation and Withholding Tax advisory",
+      "Digital tax and e-invoicing readiness",
     ],
     meta: [
       { label: "Standard rate", value: "9% above AED 375k" },
-      { label: "Small Business Relief", value: "Up to AED 3M revenue" },
-      { label: "Free-zone status", value: "0% on qualifying income" },
+      { label: "Free-zone", value: "0% on qualifying income" },
+      { label: "Coverage", value: "8 tax specialisms" },
       { label: "Filing", value: "Annual · within 9 months" },
     ],
     highlight: {
       eyebrow: "The free-zone trap most miss",
       title: "0% isn't automatic. It's documented.",
-      body: "Free-zone entities that don't track \"qualifying income\" properly lose the 0% status and pay 9% on everything. We set up the books to evidence qualifying income from day one, so the 0% sticks under FTA review.",
+      body: "Free-zone entities that don't evidence \"qualifying income\" lose the 0% and pay 9% on everything. We build the structure and the paper trail so the rate sticks under FTA review.",
     },
     steps: [
-      "Assess your CT exposure: mainland vs free zone vs group.",
-      "Register with the FTA and get your TRN.",
-      "Maintain audit-ready books with qualifying-income tags.",
-      "Compute, file and document within 9 months of year-end.",
+      "Map your exposure: entity, group and cross-border.",
+      "Register with the FTA and structure for the right rate.",
+      "Document qualifying income and related-party pricing.",
+      "Compute, file and defend within the deadline.",
     ],
   },
   {
-    id: "aml-esr-ubo",
+    id: "vat-consultancy",
     index: "04",
-    eyebrow: "Regulatory frameworks",
-    title: "AML / ESR / UBO",
-    icon: "badge-check",
+    eyebrow: "Registration to refunds",
+    title: "VAT Consultancy",
+    icon: "file-signature",
+    href: "/financial/vat-consultancy",
+    ctaLabel: "Explore VAT consultancy",
     lede:
-      "Anti-Money-Laundering frameworks, Economic Substance Regulations notifications and Ultimate Beneficial Owner filings. Each one carries fines if missed. We put the framework in place and file every cycle on time.",
+      "Every stage of VAT, handled end to end. Registration without rejections, returns filed on time, voluntary disclosures that beat penalties, and refund claims that actually get your cash back.",
     image: {
-      src: "/services/compliance/aml-esr-ubo.webp",
-      alt: "AML, ESR and UBO compliance",
+      src: "/services/financial/vat-registration-service.webp",
+      alt: "VAT consultancy services in the UAE",
     },
     good: [
-      "DNFBPs (real estate, dealers in precious metals, accountants, advisors)",
-      "Companies engaged in relevant ESR activities: IP, holding, banking, leasing",
-      "Free-zone and mainland companies with multiple beneficial owners",
-      "Boards needing a documented compliance framework, not just a filing",
+      "Businesses at or above the AED 375k VAT threshold",
+      "Companies filing late, incorrectly or not at all",
+      "Exporters and zero-rated businesses owed refunds",
+      "Firms wanting a compliance check before the FTA does",
     ],
     included: [
-      "AML risk assessment, policies, KYC / EDD framework, MLRO support",
-      "ESR notification and substance return filings",
-      "UBO declaration filing and register maintenance",
-      "Annual recertification and ongoing change reporting",
-      "Investigation and audit-readiness preparation",
+      "VAT Registration — TRN issued without the rejections",
+      "VAT Return Filing — accurate, on every deadline",
+      "VAT Compliance Audit — fix issues before they become penalties",
+      "VAT Refund — reclaim the input tax you're owed",
+      "Voluntary disclosures handled the right way",
     ],
     meta: [
-      { label: "Authorities", value: "FIU · MoE · DET · free-zone regulators" },
-      { label: "Cadence", value: "Annual + change-driven filings" },
-      { label: "Fines if missed", value: "AED 10k–1M per breach" },
-      { label: "Coverage", value: "Mainland · free zone · offshore" },
+      { label: "Threshold", value: "AED 375k turnover" },
+      { label: "Standard rate", value: "5%" },
+      { label: "Cadence", value: "Quarterly (or monthly)" },
+      { label: "Coverage", value: "Register · file · audit · refund" },
+    ],
+    highlight: {
+      eyebrow: "Where the penalties come from",
+      title: "Companies get fined for being late, not wrong.",
+      body: "Most VAT penalties are for missed deadlines and unclaimed positions, not honest errors. We keep the calendar, file on time and chase every refund so nothing leaks.",
+    },
+    steps: [
+      "Register for VAT and set up compliant invoicing.",
+      "File accurate returns every quarter, on time.",
+      "Audit past filings and disclose voluntarily if needed.",
+      "Prepare and submit refund claims.",
+    ],
+  },
+  {
+    id: "compliance",
+    index: "05",
+    eyebrow: "AML · UBO · structuring · trademark",
+    title: "Compliance",
+    icon: "shield",
+    href: "/financial/compliance",
+    ctaLabel: "Explore compliance",
+    lede:
+      "The regulatory layer that keeps your company clean, current and protected. AML frameworks, UBO filings, corporate structuring and trademark registration — each a fine or a dispute if missed, all tracked on one calendar.",
+    image: {
+      src: "/services/compliance/aml-compliance-services.webp",
+      alt: "Compliance services in the UAE",
+    },
+    good: [
+      "DNFBPs and companies with AML obligations",
+      "Businesses with multiple or changing beneficial owners",
+      "Founders structuring or restructuring a group",
+      "Brands that need their name legally protected",
+    ],
+    included: [
+      "AML Compliance — policies, KYC and MLRO support",
+      "UBO Notification — filing and register upkeep",
+      "Business Structuring — a clean, tax-efficient setup",
+      "Trademark Registration — protect the brand early",
+      "One calendar for every regulator and deadline",
+    ],
+    meta: [
+      { label: "Authorities", value: "FIU · MoE · DET" },
+      { label: "Cadence", value: "Annual + change-driven" },
+      { label: "Fines if missed", value: "AED 10k–1M" },
+      { label: "Coverage", value: "AML · UBO · structuring · IP" },
     ],
     highlight: {
       eyebrow: "Why these get missed",
-      title: "Three filings, three authorities, three deadlines.",
-      body: "AML, ESR and UBO each go to a different regulator on a different schedule. We track all three on one calendar so the year-end never becomes a fire drill, and the policies behind them are real, not template-only.",
+      title: "Different authority, different deadline.",
+      body: "AML, UBO and trademark each answer to a different regulator on a different clock. We track them on one calendar so year-end never becomes a fire drill — and the frameworks behind them are real, not template-only.",
     },
     steps: [
-      "Risk-assess the entity for AML, ESR and UBO obligations.",
-      "Draft policies, registers and KYC frameworks.",
-      "File the relevant notifications and returns.",
-      "Recertify each cycle. No missed deadlines.",
-    ],
-  },
-  {
-    id: "trademark",
-    index: "05",
-    eyebrow: "Brand protection",
-    title: "Trademark",
-    icon: "copyright",
-    lede:
-      "Register your brand name, logo and word-marks in the UAE, and, when you're ready, internationally through the Madrid System. Most disputes start because the trademark wasn't filed early enough; we make sure yours is.",
-    image: {
-      src: "/services/compliance/trademark.webp",
-      alt: "Trademark filing",
-    },
-    good: [
-      "Founders launching a new brand or product line",
-      "Companies expanding into a new emirate or international market",
-      "Businesses that just received a copy-cat warning or threat",
-      "Anyone whose name is on a contract; protect it before someone else files it",
-    ],
-    included: [
-      "Pre-filing similarity search across UAE, GCC and key markets",
-      "Class selection across the 45 Nice classification classes",
-      "Application drafting, filing fee handling and Ministry follow-up",
-      "Publication, opposition window and certificate issuance",
-      "International filing via the Madrid Protocol (multiple countries in one file)",
-    ],
-    meta: [
-      { label: "Authority", value: "MoE · Ministry of Economy" },
-      { label: "Term", value: "10 years · renewable" },
-      { label: "Filing time", value: "8–12 months to certificate" },
-      { label: "International", value: "Madrid Protocol · single filing, many countries" },
-    ],
-    highlight: {
-      eyebrow: "The classic mistake",
-      title: "Trade licence is not a trademark.",
-      body: "Your trade licence proves you can operate. Your trademark proves the brand belongs to you. We see disputes every quarter because owners assumed the licence was enough. File the trademark while the brand is still small.",
-    },
-    steps: [
-      "Run a similarity search across UAE and target markets.",
-      "Pick the right classes (the 45-class system).",
-      "File with MoE and respond to any office action.",
-      "Publish, clear opposition window, receive certificate.",
+      "Assess AML, UBO and structuring obligations.",
+      "Draft policies, registers and the right structure.",
+      "File every notification and trademark application.",
+      "Recertify each cycle — no missed deadlines.",
     ],
   },
 ];
@@ -239,7 +252,13 @@ export default function FinancialPage() {
       <FinancialHero />
 
       {sections.map((s, idx) => (
-        <ServiceSection key={s.id} section={s} idx={idx} />
+        <ServiceSection
+          key={s.id}
+          section={s}
+          idx={idx}
+          ctaHref={s.href}
+          ctaLabel={s.ctaLabel}
+        />
       ))}
 
       {/* CTA */}
@@ -255,9 +274,9 @@ export default function FinancialPage() {
                 <span className="text-brand-soft">We'll tell you where the gaps are.</span>
               </h2>
               <p className="mt-5 max-w-2xl text-[1.02rem] leading-relaxed text-paper/75">
-                Banking, VAT, Corporate Tax, audit-readiness: assessed against the
-                latest FTA rules and back to you within one business day. Free,
-                30-minute consultation.
+                Accounting, audit, Corporate Tax, VAT and compliance: assessed
+                against the latest FTA rules and back to you within one business
+                day. Free, 30-minute consultation.
               </p>
             </div>
             <div className="col-span-12 lg:col-span-5 lg:text-right">

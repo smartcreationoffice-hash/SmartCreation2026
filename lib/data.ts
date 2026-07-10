@@ -95,7 +95,6 @@ export const navigation: NavItem[] = [
   {
     label: "Financial",
     href: "/financial",
-    noLink: true,
     mega: {
       groups: [
         {

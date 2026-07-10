@@ -24,7 +24,7 @@ const sections: ServiceSectionData[] = [
     icon: "file-text",
     lede:
       "Register for VAT correctly the first time — mandatory above AED 375k turnover, voluntary above AED 187.5k. We assess your position, file with the FTA and get your TRN issued without rejections.",
-    image: { src: "/services/financial/accounting.webp", alt: "VAT registration in the UAE" },
+    image: { src: "/services/financial/vat-registration-service.webp", alt: "VAT registration in the UAE" },
     good: [
       "Businesses crossing the AED 375k mandatory threshold",
       "Startups registering voluntarily to reclaim input VAT",
@@ -64,7 +64,7 @@ const sections: ServiceSectionData[] = [
     icon: "calculator",
     lede:
       "Accurate VAT returns prepared and filed every period, on the FTA calendar. Input and output VAT reconciled to your books — no last-minute scrambles, no avoidable penalties.",
-    image: { src: "/services/financial/corporate-tax.webp", alt: "VAT return filing" },
+    image: { src: "/services/financial/vat-return-filing.webp", alt: "VAT return filing" },
     good: [
       "VAT-registered companies on monthly or quarterly periods",
       "Businesses that keep missing or rushing deadlines",
@@ -104,7 +104,7 @@ const sections: ServiceSectionData[] = [
     icon: "file-search",
     lede:
       "A review of your VAT position before the FTA does it for you — invoices, returns, input-recovery and record-keeping checked against the rules, with gaps fixed while they're still cheap.",
-    image: { src: "/services/financial/audit.webp", alt: "VAT compliance audit" },
+    image: { src: "/services/financial/vat-compliance-audit.webp", alt: "VAT compliance audit" },
     good: [
       "Companies unsure their past returns are correct",
       "Businesses preparing for a potential FTA review",
@@ -144,7 +144,7 @@ const sections: ServiceSectionData[] = [
     icon: "banknote",
     lede:
       "When your input VAT exceeds output VAT, that money is yours to reclaim. We prepare and substantiate the refund claim so the FTA approves it instead of querying it.",
-    image: { src: "/services/financial/banking.webp", alt: "VAT refund service" },
+    image: { src: "/services/financial/vat-refund-service.webp", alt: "VAT refund service" },
     good: [
       "Exporters and zero-rated businesses in a refund position",
       "Companies with heavy input VAT on setup or capex",

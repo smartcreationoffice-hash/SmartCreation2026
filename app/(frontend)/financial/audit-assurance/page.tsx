@@ -64,7 +64,7 @@ const sections: ServiceSectionData[] = [
     icon: "shield",
     lede:
       "Independent statutory audits for free-zone and mainland companies — the signed, ISA-compliant report your free zone, bank, investor or shareholders require, delivered without the usual back-and-forth.",
-    image: { src: "/services/financial/accounting.webp", alt: "External statutory audit" },
+    image: { src: "/services/financial/external-audit.webp", alt: "External statutory audit" },
     good: [
       "Free-zone entities required to audit annually (DMCC, JAFZA, DIFC, ADGM)",
       "Companies needing audited accounts for banks or investors",
@@ -104,7 +104,7 @@ const sections: ServiceSectionData[] = [
     icon: "badge-check",
     lede:
       "Faced with an FTA audit on VAT or Corporate Tax? We prepare your records, represent your position and handle the correspondence — so an audit becomes a process, not a panic.",
-    image: { src: "/services/financial/corporate-tax.webp", alt: "FTA tax audit support" },
+    image: { src: "/services/financial/fta-tax-audit.webp", alt: "FTA tax audit support" },
     good: [
       "Companies notified of an FTA VAT or Corporate Tax audit",
       "Businesses unsure their filings will hold up to review",
