@@ -1,13 +1,10 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { loginWithPassword, logout, requireAdmin } from "@/lib/admin-auth";
 import { supabaseAdmin, SC_MEDIA_BUCKET } from "@/lib/supabase";
 import { estimateReadMinutes, slugifyInsightTitle } from "@/lib/insights";
-
-// All pages use `force-dynamic`, so re-fetches happen on every request —
-// no need for revalidatePath() (which Next 16 Turbopack has issues importing).
-const revalidatePath = (_path: string) => {};
 
 /* ── Auth ──────────────────────────────────────────────────────────── */
 

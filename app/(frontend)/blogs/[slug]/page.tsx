@@ -22,6 +22,10 @@ import {
   getInsightsList,
 } from "@/lib/insights";
 
+// Regenerate at most once a minute so edits and newly published posts appear
+// on the live site without a redeploy.
+export const revalidate = 60;
+
 type Params = { slug: string };
 
 export async function generateStaticParams(): Promise<Params[]> {

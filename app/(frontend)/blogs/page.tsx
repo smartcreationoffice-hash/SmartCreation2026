@@ -3,6 +3,10 @@ import { getInsightsList } from "@/lib/insights";
 import { InsightsHero } from "@/components/insights-hero";
 import { InsightsGrid } from "@/components/insights-grid";
 
+// Regenerate at most once a minute so newly published posts appear on the
+// live site without a redeploy (the page is otherwise statically rendered).
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Blogs · Dubai business setup, tax & compliance",
   description:
