@@ -401,20 +401,46 @@ function MegaPanel({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, delay: gIdx * 0.04 }}
             >
-              <div
-                className={cn(
-                  "flex items-center gap-2 mb-2.5 font-mono text-[0.62rem] uppercase tracking-[0.24em]",
-                  inverted ? "text-mist" : "text-stone"
-                )}
-              >
-                <span
+              {group.href ? (
+                <Link
+                  href={group.href}
                   className={cn(
-                    "h-px w-4",
-                    inverted ? "bg-paper/25" : "bg-ink/20"
+                    "group/gt inline-flex items-center gap-2 mb-2.5 font-mono text-[0.62rem] uppercase tracking-[0.24em] transition-colors",
+                    inverted
+                      ? "text-mist hover:text-brand"
+                      : "text-stone hover:text-brand-deep"
                   )}
-                />
-                {group.title}
-              </div>
+                >
+                  <span
+                    className={cn(
+                      "h-px w-4 transition-colors",
+                      inverted
+                        ? "bg-paper/25 group-hover/gt:bg-brand"
+                        : "bg-ink/20 group-hover/gt:bg-brand-deep"
+                    )}
+                  />
+                  {group.title}
+                  <ArrowUpRight
+                    className="h-3 w-3 -translate-x-1 opacity-0 transition-all group-hover/gt:translate-x-0 group-hover/gt:opacity-100"
+                    strokeWidth={2}
+                  />
+                </Link>
+              ) : (
+                <div
+                  className={cn(
+                    "flex items-center gap-2 mb-2.5 font-mono text-[0.62rem] uppercase tracking-[0.24em]",
+                    inverted ? "text-mist" : "text-stone"
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "h-px w-4",
+                      inverted ? "bg-paper/25" : "bg-ink/20"
+                    )}
+                  />
+                  {group.title}
+                </div>
+              )}
               <ul className={cn(singleGroup ? "grid grid-cols-1 sm:grid-cols-2 gap-2" : "space-y-0.5")}>
                 {group.links.map((link) => {
                   const Icon = link.icon;
@@ -867,10 +893,22 @@ function MobileDrawer({
                                 ease: easeOut,
                               }}
                             >
-                              <div className="flex items-center gap-2 mb-2.5 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-mist">
-                                <span className="h-px w-4 bg-paper/20" />
-                                {group.title}
-                              </div>
+                              {group.href ? (
+                                <Link
+                                  href={group.href}
+                                  onClick={onClose}
+                                  className="group/gt inline-flex items-center gap-2 mb-2.5 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-mist hover:text-brand transition-colors"
+                                >
+                                  <span className="h-px w-4 bg-paper/20 group-hover/gt:bg-brand transition-colors" />
+                                  {group.title}
+                                  <ArrowUpRight className="h-3 w-3" strokeWidth={2} />
+                                </Link>
+                              ) : (
+                                <div className="flex items-center gap-2 mb-2.5 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-mist">
+                                  <span className="h-px w-4 bg-paper/20" />
+                                  {group.title}
+                                </div>
+                              )}
                               <ul className="space-y-2">
                                 {group.links.map((link) => {
                                   const rowCls =

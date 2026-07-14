@@ -46,6 +46,8 @@ export type MegaLink = {
 
 export type MegaGroup = {
   title: string;
+  /** When set, the group heading itself links to this category/landing page. */
+  href?: string;
   links: MegaLink[];
 };
 
@@ -76,6 +78,7 @@ export const navigation: NavItem[] = [
       groups: [
         {
           title: "Business Setup",
+          href: "/business-setup",
           links: [
             { label: "Mainland Setup", href: "/business-setup#mainland", desc: "Dubai DET license, LLC, branches", icon: Landmark },
             { label: "Free Zone Setup", href: "/business-setup#free-zone", desc: "Every major UAE free zone", icon: Globe2 },
@@ -99,6 +102,7 @@ export const navigation: NavItem[] = [
       groups: [
         {
           title: "Accounting",
+          href: "/financial/accounting",
           links: [
             { label: "Accounting Services", href: "/financial/accounting#accounting-services" },
             { label: "Bookkeeping Services", href: "/financial/accounting#bookkeeping-services" },
@@ -106,6 +110,7 @@ export const navigation: NavItem[] = [
         },
         {
           title: "Audit & Assurance",
+          href: "/financial/audit-assurance",
           links: [
             { label: "Internal Audit Services", href: "/financial/audit-assurance#internal-audit" },
             { label: "External Audit Services", href: "/financial/audit-assurance#external-audit" },
@@ -114,6 +119,7 @@ export const navigation: NavItem[] = [
         },
         {
           title: "Tax Consultation",
+          href: "/financial/tax-consultation",
           links: [
             { label: "Corporate Tax Services", href: "/financial/tax-consultation#corporate-tax" },
             { label: "Double Taxation Advisory", href: "/financial/tax-consultation#double-taxation" },
@@ -127,6 +133,7 @@ export const navigation: NavItem[] = [
         },
         {
           title: "VAT Consultancy",
+          href: "/financial/vat-consultancy",
           links: [
             { label: "VAT Registration Service", href: "/financial/vat-consultancy#vat-registration" },
             { label: "VAT Compliance Audit", href: "/financial/vat-consultancy#vat-compliance-audit" },
@@ -136,6 +143,7 @@ export const navigation: NavItem[] = [
         },
         {
           title: "Compliance",
+          href: "/financial/compliance",
           links: [
             { label: "AML Compliance Services", href: "/financial/compliance#aml-compliance" },
             { label: "UBO Notification", href: "/financial/compliance#ubo-notification" },
@@ -160,6 +168,7 @@ export const navigation: NavItem[] = [
       groups: [
         {
           title: "Business Centers",
+          href: "/business-centers",
           links: [
             { label: "All Business Centers", href: "/business-centers", desc: "Browse all six", icon: Building2 },
             { label: "Smart Creation Business Center", href: "/business-centers/smart-creation", desc: "Tecom · Barsha Heights", icon: MapPin },
@@ -188,6 +197,7 @@ export const navigation: NavItem[] = [
       groups: [
         {
           title: "Business Setup",
+          href: "/business-setup",
           links: [
             { label: "Mainland setup", href: "/business-setup#mainland", desc: "Dubai DET license, LLC, branches" },
             { label: "Free zone setup", href: "/business-setup#free-zone", desc: "Every major UAE free zone" },
@@ -196,6 +206,7 @@ export const navigation: NavItem[] = [
         },
         {
           title: "Visas & residency",
+          href: "/services/visas",
           links: [
             { label: "PRO services", href: "/services/visas#pro-visa", desc: "Visa, Emirates ID, labour" },
             { label: "Investor visa", href: "/services/visas#investor-visa", desc: "2, 5 and 10-year options" },
@@ -205,6 +216,7 @@ export const navigation: NavItem[] = [
         },
         {
           title: "Financial",
+          href: "/financial",
           links: [
             { label: "Corporate banking", href: "/financial#banking", desc: "UAE & international banks" },
             { label: "Accounting & Bookkeeping", href: "/financial#accounting", desc: "Monthly books, VAT filing" },
@@ -214,6 +226,7 @@ export const navigation: NavItem[] = [
         },
         {
           title: "Compliance & licensing",
+          href: "/services/compliance",
           links: [
             { label: "Trademark", href: "/services/compliance#trademark", desc: "UAE & international filing" },
             { label: "AML / ESR / UBO", href: "/services/compliance#aml-esr-ubo", desc: "Frameworks and filings" },
