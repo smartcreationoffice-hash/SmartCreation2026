@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -16,8 +17,15 @@ import { Logo } from "@/components/logo";
 import { useConsultation } from "@/components/consultation-provider";
 import { cn } from "@/lib/utils";
 
+/** True when the current route is this nav item's page (or one of its sub-pages). */
+function isCurrentPath(pathname: string, href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+}
+
 export function SiteHeader() {
   const { open: openConsultation } = useConsultation();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMega, setActiveMega] = useState<string | null>(null);
@@ -163,6 +171,7 @@ export function SiteHeader() {
                 item={item}
                 inverted={inverted}
                 isActive={activeMega === item.label}
+                isCurrent={isCurrentPath(pathname, item.href)}
                 onOpen={() => openMega(item.label)}
                 onClose={scheduleCloseMega}
               />
@@ -279,23 +288,31 @@ function NavItemTrigger({
   item,
   inverted,
   isActive,
+  isCurrent,
   onOpen,
   onClose,
 }: {
   item: NavItem;
   inverted: boolean;
   isActive: boolean;
+  /** True when the current route is this item's page — renders a "you are here" state. */
+  isCurrent: boolean;
   onOpen: () => void;
   onClose: () => void;
 }) {
   const hasMega = !!item.mega;
   const isLabelOnly = item.noLink === true;
+  // Highlight the item for the page we're currently on: brighter text, medium
+  // weight and a subtle pill background so it reads as "you are here".
+  const highlight = isCurrent || isActive;
   const triggerClass = cn(
     "inline-flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors",
     inverted
       ? "text-paper/80 hover:text-paper"
       : "text-ink/80 hover:text-ink",
-    isActive && (inverted ? "text-paper" : "text-ink"),
+    highlight && (inverted ? "text-paper" : "text-ink"),
+    isCurrent &&
+      "font-medium " + (inverted ? "bg-paper/[0.08]" : "bg-ink/[0.06]"),
     isLabelOnly && hasMega ? "cursor-default" : undefined,
   );
   const triggerInner = (

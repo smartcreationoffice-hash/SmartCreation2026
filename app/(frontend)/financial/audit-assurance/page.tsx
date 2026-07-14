@@ -24,7 +24,7 @@ const sections: ServiceSectionData[] = [
     icon: "file-search",
     lede:
       "An independent look at your processes, controls and risks — where money leaks, where errors hide, and where a tighter system saves time and cost. Practical findings, not a binder that gathers dust.",
-    image: { src: "/services/financial/audit.webp", alt: "Internal audit services" },
+    image: { src: "/services/financial/internal-audit.webp", alt: "Internal audit services" },
     good: [
       "Boards wanting assurance over controls and risk",
       "Companies scaling fast and outgrowing manual processes",

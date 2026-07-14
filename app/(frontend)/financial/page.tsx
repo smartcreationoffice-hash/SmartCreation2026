@@ -30,7 +30,7 @@ const sections: CategorySection[] = [
     lede:
       "Clean books, kept monthly. From day-to-day bookkeeping to investor-grade management accounts, we maintain the ledger every audit, VAT return and Corporate Tax filing depends on — so the numbers are always ready, never rebuilt under deadline.",
     image: {
-      src: "/services/financial/accounting-services.webp",
+      src: "/services/financial/accounting-category.webp",
       alt: "Accounting & bookkeeping services in the UAE",
     },
     good: [
@@ -75,7 +75,7 @@ const sections: CategorySection[] = [
     lede:
       "Independent assurance that stands up to scrutiny. Internal audits that surface the gaps before they cost you, statutory external audits banks and regulators accept, and full representation when the FTA opens a tax audit.",
     image: {
-      src: "/services/financial/external-audit.webp",
+      src: "/services/financial/audit-assurance-category.webp",
       alt: "Audit & assurance services in the UAE",
     },
     good: [
@@ -120,7 +120,7 @@ const sections: CategorySection[] = [
     lede:
       "UAE Corporate Tax is here — and cross-border tax is where the real money is won or lost. Registration, structuring, treaty relief, transfer pricing and more, handled so you pay exactly what you owe and not a dirham more.",
     image: {
-      src: "/services/financial/corporate-tax-services.webp",
+      src: "/services/financial/tax-consultation-category.webp",
       alt: "Tax consultation services in the UAE",
     },
     good: [
@@ -165,7 +165,7 @@ const sections: CategorySection[] = [
     lede:
       "Every stage of VAT, handled end to end. Registration without rejections, returns filed on time, voluntary disclosures that beat penalties, and refund claims that actually get your cash back.",
     image: {
-      src: "/services/financial/vat-registration-service.webp",
+      src: "/services/financial/vat-consultancy-category.webp",
       alt: "VAT consultancy services in the UAE",
     },
     good: [
@@ -210,7 +210,7 @@ const sections: CategorySection[] = [
     lede:
       "The regulatory layer that keeps your company clean, current and protected. AML frameworks, UBO filings, corporate structuring and trademark registration — each a fine or a dispute if missed, all tracked on one calendar.",
     image: {
-      src: "/services/compliance/aml-compliance-services.webp",
+      src: "/services/compliance/compliance-category.webp",
       alt: "Compliance services in the UAE",
     },
     good: [
