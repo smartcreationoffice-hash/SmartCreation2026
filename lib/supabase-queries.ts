@@ -5,6 +5,7 @@
 import "server-only";
 import { supabasePublic } from "./supabase";
 import type { OfficeListing, CenterId } from "./office-listings";
+import { sortByOfficeNo } from "./office-order";
 
 /* ── Types matching the Supabase schema ─────────────────────────────── */
 
@@ -120,7 +121,9 @@ export async function getProperties({
   }
   const { data, error } = await q;
   if (error) throw error;
-  return (data ?? []) as PropertyWithCentre[];
+  // The DB order (featured first, then id) decides which rows survive the
+  // limit; the final display order is always office-number sequence.
+  return sortByOfficeNo((data ?? []) as PropertyWithCentre[], (p) => p.office_no);
 }
 
 export async function getProperty(slug: string): Promise<PropertyWithCentre | null> {
@@ -145,7 +148,7 @@ export async function getSimilarProperties(opts: {
     .neq("slug", opts.excludeSlug)
     .limit(opts.limit ?? 3);
   if (error) throw error;
-  return (data ?? []) as PropertyWithCentre[];
+  return sortByOfficeNo((data ?? []) as PropertyWithCentre[], (p) => p.office_no);
 }
 
 /**

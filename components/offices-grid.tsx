@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { cn } from "@/lib/utils";
+import { sortByOfficeNo } from "@/lib/office-order";
 import type { OfficeListing, CenterId } from "@/lib/office-listings";
 
 type Center = {
@@ -60,10 +61,10 @@ export function OfficesGrid({
     return c;
   }, [offices, centers]);
 
-  // Always cap the homepage grid to 6 cards. `getProperties` already sorts
-  // by `featured DESC, id ASC`, so featured properties surface first; if a
-  // center has fewer than 6 featured, the remaining slots are filled with
-  // its other live inventory.
+  // Always cap the homepage grid to 6 cards. Featured properties claim the
+  // slots first and any leftover slots are filled from the rest of the live
+  // inventory — but whatever gets picked is then shown in office-number
+  // sequence, same as every other property list on the site.
   const HOMEPAGE_PER_FILTER = 6;
   const totalForFilter =
     filter === "all"
@@ -74,7 +75,11 @@ export function OfficesGrid({
       filter === "all"
         ? offices
         : offices.filter((o) => o.centerId === filter);
-    return base.slice(0, HOMEPAGE_PER_FILTER);
+    const picked = [
+      ...base.filter((o) => o.featured),
+      ...base.filter((o) => !o.featured),
+    ].slice(0, HOMEPAGE_PER_FILTER);
+    return sortByOfficeNo(picked, (o) => o.officeNo);
   }, [offices, filter]);
 
   const activeCentre =

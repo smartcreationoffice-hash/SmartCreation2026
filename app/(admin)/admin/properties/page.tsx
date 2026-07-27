@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { requireAdmin } from "@/lib/admin-auth";
 import { supabaseAdmin } from "@/lib/supabase";
+import { compareOfficeNo } from "@/lib/office-order";
 import { AdminShell } from "../_shell";
 
 export const dynamic = "force-dynamic";
@@ -46,6 +47,16 @@ export default async function PropertiesList({
   if (filterCentreId) properties = properties.filter((p) => p.centre_id === filterCentreId);
 
   const centreById = new Map(centers.map((c) => [c.id, c]));
+
+  // Same order the public site uses: grouped by center, then office number
+  // in sequence — so a unit uploaded today lands next to its neighbours
+  // instead of at the bottom of the list.
+  properties = [...properties].sort((a, b) => {
+    const oa = centreById.get(a.centre_id ?? -1)?.display_order ?? Number.MAX_SAFE_INTEGER;
+    const ob = centreById.get(b.centre_id ?? -1)?.display_order ?? Number.MAX_SAFE_INTEGER;
+    if (oa !== ob) return oa - ob;
+    return compareOfficeNo(a.office_no, b.office_no);
+  });
 
   return (
     <AdminShell active="properties">
