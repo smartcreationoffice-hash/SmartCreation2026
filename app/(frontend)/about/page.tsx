@@ -11,6 +11,7 @@ import { AboutMission } from "@/components/about-mission";
 import { AboutJourney } from "@/components/about-journey";
 import { AboutDifferentiators } from "@/components/about-differentiators";
 import { AboutPresence } from "@/components/about-presence";
+import { AboutGroup } from "@/components/about-group";
 import { AboutTeamGrid } from "@/components/about-team-grid";
 import { InstagramReels } from "@/components/instagram-reels";
 import { getDisplayReelUrls } from "@/lib/reels";
@@ -141,6 +142,9 @@ export default async function AboutPage() {
 
       {/* Where we operate — three countries, one Group */}
       <AboutPresence />
+
+      {/* The eight group companies — gateway to /group-companies */}
+      <AboutGroup />
 
       {/* CTA */}
       <section className="py-20 md:py-28 bg-ink text-paper border-t border-paper/10">

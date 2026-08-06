@@ -64,6 +64,7 @@ const columns = [
   {
     title: "Resources",
     links: [
+      { label: "Group of companies", href: "/group-companies" },
       { label: "Cost calculator", href: "/calculator" },
       { label: "Free zone comparison", href: "/free-zones" },
       { label: "Golden Visa guide", href: "/services/visas#golden-visa" },
