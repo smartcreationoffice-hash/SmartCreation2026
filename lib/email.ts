@@ -206,6 +206,61 @@ export async function sendContactEmail(payload: {
   });
 }
 
+/**
+ * A lead from someone's digital card. Goes to the card owner first, with the
+ * admin inbox copied so head office still has the full record.
+ */
+export async function sendCardLeadEmail(payload: {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+  /** Card owner */
+  ownerName: string;
+  ownerEmail: string | null;
+  cardUrl: string;
+}) {
+  const firstName = payload.name.split(" ")[0];
+  const html = renderEmail({
+    title: `New lead from your digital card`,
+    preheader: `${payload.name} (${payload.email}) filled in the form on your card.`,
+    intro: `${payload.name} just contacted you from your card.`,
+    rows: [
+      { label: "Name", value: payload.name },
+      { label: "Email", value: payload.email },
+      { label: "Phone", value: payload.phone || "—" },
+      { label: "Card", value: payload.cardUrl },
+      { label: "Message", value: payload.message, isBlock: true },
+    ],
+    ctaUrl: `mailto:${payload.email}?subject=Re: your enquiry to Smart Creation Group`,
+    ctaLabel: `Reply to ${firstName}`,
+  });
+
+  // No owner address on the card — head office still gets it.
+  const to = payload.ownerEmail || ADMIN_EMAIL;
+  const cc = payload.ownerEmail ? ADMIN_EMAIL : undefined;
+
+  await getTransport().sendMail({
+    from: FROM,
+    to,
+    cc,
+    replyTo: payload.email,
+    subject: `[Smart Creation] New lead for ${payload.ownerName} — ${payload.name}`,
+    html,
+    text: [
+      `New lead from your digital card`,
+      ``,
+      `Name: ${payload.name}`,
+      `Email: ${payload.email}`,
+      `Phone: ${payload.phone || "—"}`,
+      `Card: ${payload.cardUrl}`,
+      ``,
+      `Message:`,
+      payload.message,
+    ].join("\n"),
+  });
+}
+
 export async function sendNewsletterEmail(payload: {
   email: string;
   source?: string;

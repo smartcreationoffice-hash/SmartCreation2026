@@ -137,6 +137,7 @@ export function CardForm({
               name="email"
               defaultValue={data.email}
               type="email"
+              hint="Leads from this card's form are emailed here (admin is copied). Leave blank and they go to admin only."
             />
           </div>
           <div className="grid sm:grid-cols-2 gap-4">

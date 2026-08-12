@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { sendContactEmail } from "@/lib/email";
+import { sendCardLeadEmail, sendContactEmail } from "@/lib/email";
+import { cardUrl, getCard } from "@/lib/cards";
 
 export const runtime = "nodejs";
 
@@ -29,6 +30,26 @@ export async function POST(request: Request) {
         { error: "Message too long" },
         { status: 400 },
       );
+    }
+
+    // Leads raised from someone's digital card go to that person, with the
+    // admin inbox copied. The client sends only the card slug — the
+    // destination address is resolved here, never passed in from the browser.
+    const cardSlug = String(body.cardSlug ?? "").trim();
+    if (cardSlug) {
+      const card = await getCard(cardSlug);
+      if (card) {
+        await sendCardLeadEmail({
+          name,
+          email,
+          phone,
+          message,
+          ownerName: card.name,
+          ownerEmail: card.email,
+          cardUrl: cardUrl(card.slug),
+        });
+        return NextResponse.json({ ok: true });
+      }
     }
 
     await sendContactEmail({ name, email, phone, topic, message });

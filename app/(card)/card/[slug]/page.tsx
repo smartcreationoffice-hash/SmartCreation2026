@@ -81,6 +81,9 @@ export default async function CardPage({
       address2={card.address2 ?? undefined}
       socials={card.socials.length > 0 ? card.socials : undefined}
       source={`${card.name} — digital card`}
+      cardSlug={card.slug}
+      ownerName={card.name.split(" ")[0]}
+      ownerWhatsapp={waDigits || undefined}
     />
   );
 }

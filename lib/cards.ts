@@ -8,9 +8,13 @@
 import { supabasePublic, supabaseAdmin } from "./supabase";
 import type { SocialKey, SocialLink } from "@/components/digital-card";
 
-/** Public origin the QR codes and vCards point at. */
+/**
+ * Public origin the QR codes and vCards point at. Overridable with
+ * NEXT_PUBLIC_SITE_URL, but note that changing it invalidates QR codes that
+ * have already been printed.
+ */
 export const CARD_SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://thesmartcreation.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://smartbusinesscreation.com"
 ).replace(/\/$/, "");
 
 export type CardRow = {

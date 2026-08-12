@@ -6,6 +6,7 @@ import {
   ChevronDown,
   Loader2,
   CheckCircle2,
+  MessageCircle,
   User,
   Mail,
 } from "lucide-react";
@@ -15,12 +16,26 @@ import {
   type PhoneInputValue,
 } from "@/components/phone-input";
 
-export function CardConsultation({ source = "Digital card" }: { source?: string }) {
+export function CardConsultation({
+  source = "Digital card",
+  cardSlug,
+  ownerName,
+  ownerWhatsapp,
+}: {
+  source?: string;
+  /** When set, the lead is emailed to this card's owner instead of only admin. */
+  cardSlug?: string;
+  /** First name used in the WhatsApp hand-off copy. */
+  ownerName?: string;
+  /** Digits only. Enables the "send on WhatsApp too" step after submitting. */
+  ownerWhatsapp?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState<string | null>(null);
   const [phone, setPhone] = useState<PhoneInputValue>(emptyPhoneValue());
   const [showPhoneError, setShowPhoneError] = useState(false);
+  const [waHref, setWaHref] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -37,10 +52,27 @@ export function CardConsultation({ source = "Digital card" }: { source?: string 
       email: String(data.get("email") ?? ""),
       phone: phone.e164,
       topic: source,
+      cardSlug,
       message:
         String(data.get("message") ?? "").trim() ||
         `Consultation request from ${source}.`,
     };
+
+    // Prepare the optional WhatsApp hand-off: the visitor can push the same
+    // details straight into the card owner's WhatsApp with one tap.
+    if (ownerWhatsapp) {
+      const lines = [
+        `Hi${ownerName ? ` ${ownerName}` : ""}, I just filled in the form on your card.`,
+        ``,
+        `Name: ${payload.name}`,
+        `Email: ${payload.email}`,
+        `Phone: ${payload.phone}`,
+        payload.message ? `\n${payload.message}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+      setWaHref(`https://wa.me/${ownerWhatsapp}?text=${encodeURIComponent(lines)}`);
+    }
 
     try {
       const res = await fetch("/api/contact", {
@@ -85,14 +117,30 @@ export function CardConsultation({ source = "Digital card" }: { source?: string 
 
       {open &&
         (status === "sent" ? (
-          <div className="mt-2 flex items-start gap-3 rounded-2xl border border-brand/30 bg-brand-wash px-5 py-4">
-            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-deep" strokeWidth={1.8} />
-            <div>
-              <p className="text-[0.95rem] font-medium text-ink">Request received</p>
-              <p className="mt-0.5 text-[0.85rem] text-ink-mute">
-                Thank you — we&apos;ll be in touch shortly.
-              </p>
+          <div className="mt-2 rounded-2xl border border-brand/30 bg-brand-wash px-5 py-4">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-deep" strokeWidth={1.8} />
+              <div>
+                <p className="text-[0.95rem] font-medium text-ink">Request received</p>
+                <p className="mt-0.5 text-[0.85rem] text-ink-mute">
+                  {ownerName
+                    ? `Thank you — ${ownerName} has your details and will be in touch shortly.`
+                    : "Thank you — we'll be in touch shortly."}
+                </p>
+              </div>
             </div>
+
+            {waHref && (
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-[0.9rem] font-medium text-white transition-[filter] hover:brightness-105"
+              >
+                <MessageCircle className="h-4 w-4" strokeWidth={2} />
+                Send on WhatsApp too
+              </a>
+            )}
           </div>
         ) : (
           <form

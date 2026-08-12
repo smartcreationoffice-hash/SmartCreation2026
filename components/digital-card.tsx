@@ -18,6 +18,9 @@ const MAPS_URL =
   "https://maps.google.com/?q=" +
   encodeURIComponent("Damac Executive Heights, Barsha Heights (Tecom), Dubai");
 
+/** Where the "Visit our website" row goes, and the domain the cards live on. */
+const WEBSITE_URL = "https://smartbusinesscreation.com";
+
 const COMPANY_SOCIALS: SocialLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/smartbusinesscreation/", icon: "linkedin" },
   { label: "Instagram", href: "https://www.instagram.com/smartcreationuae", icon: "instagram" },
@@ -102,6 +105,12 @@ export type DigitalCardProps = {
   socials?: SocialLink[];
   /** Label used to tag consultation form submissions. */
   source?: string;
+  /** Admin-managed card: routes form leads to this card's owner. */
+  cardSlug?: string;
+  /** First name of the card owner, used in the form's confirmation copy. */
+  ownerName?: string;
+  /** Owner's WhatsApp number, digits only — enables the WhatsApp hand-off. */
+  ownerWhatsapp?: string;
 };
 
 export function DigitalCard({
@@ -120,6 +129,9 @@ export function DigitalCard({
   address2 = CONTACT.addressLine2,
   socials = COMPANY_SOCIALS,
   source = "Digital card",
+  cardSlug,
+  ownerName,
+  ownerWhatsapp,
 }: DigitalCardProps) {
   return (
     <main className="min-h-[100svh] w-full bg-paper-deep flex items-start sm:items-center justify-center px-4 py-6 sm:py-10">
@@ -204,9 +216,16 @@ export function DigitalCard({
 
         {/* Primary CTAs */}
         <div className="px-6 pt-5 space-y-2.5">
-          <CardConsultation source={source} />
+          <CardConsultation
+            source={source}
+            cardSlug={cardSlug}
+            ownerName={ownerName}
+            ownerWhatsapp={ownerWhatsapp}
+          />
           <a
-            href="https://thesmartcreation.com"
+            href={WEBSITE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex w-full items-center justify-between rounded-2xl border border-ink/10 bg-paper-soft px-5 py-3.5 transition-colors hover:border-ink/30"
           >
             <span className="flex items-center gap-3">
