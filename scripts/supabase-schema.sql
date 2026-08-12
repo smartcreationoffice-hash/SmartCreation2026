@@ -196,6 +196,38 @@ create trigger sc_insights_updated_at
   for each row execute function public.sc_set_updated_at();
 
 -- ─────────────────────────────────────────────────────────────────────
+-- sc_cards — NFC / QR digital business cards, one row per person
+-- ─────────────────────────────────────────────────────────────────────
+
+create table if not exists public.sc_cards (
+  id             bigserial   primary key,
+  slug           text        not null unique,          -- /card/<slug>
+  name           text        not null,
+  chip           text,                                 -- pill above the name, e.g. "Founder & C.E.O"
+  role           text        not null default 'Smart Creation Group of Companies',
+  tagline        text        not null default '',
+  photo          text,                                 -- portrait; falls back to the SC cube
+  phone          text,                                 -- display + tel: (digits extracted)
+  email          text,
+  whatsapp       text,                                 -- number; wa.me link is built from it
+  whatsapp_text  text,                                 -- prefilled WhatsApp message
+  address1       text,
+  address2       text,
+  socials        jsonb       not null default '[]'::jsonb,  -- [{label, href, icon}]
+  active         boolean     not null default true,
+  created_at     timestamptz not null default now(),
+  updated_at     timestamptz not null default now()
+);
+
+create index if not exists sc_cards_slug_idx
+  on public.sc_cards (slug);
+
+drop trigger if exists sc_cards_updated_at on public.sc_cards;
+create trigger sc_cards_updated_at
+  before update on public.sc_cards
+  for each row execute function public.sc_set_updated_at();
+
+-- ─────────────────────────────────────────────────────────────────────
 -- Row Level Security — anon can read everything, only service role writes
 -- ─────────────────────────────────────────────────────────────────────
 
@@ -205,6 +237,7 @@ alter table public.sc_team       enable row level security;
 alter table public.sc_popups     enable row level security;
 alter table public.sc_reels      enable row level security;
 alter table public.sc_insights   enable row level security;
+alter table public.sc_cards      enable row level security;
 
 drop policy if exists "sc_centres anon read"    on public.sc_centres;
 drop policy if exists "sc_properties anon read" on public.sc_properties;
@@ -212,6 +245,7 @@ drop policy if exists "sc_team anon read"       on public.sc_team;
 drop policy if exists "sc_popups anon read"     on public.sc_popups;
 drop policy if exists "sc_reels anon read"      on public.sc_reels;
 drop policy if exists "sc_insights anon read"   on public.sc_insights;
+drop policy if exists "sc_cards anon read"      on public.sc_cards;
 
 create policy "sc_centres anon read"
   on public.sc_centres for select
@@ -242,6 +276,11 @@ create policy "sc_insights anon read"
   on public.sc_insights for select
   to anon, authenticated
   using (status = 'published');
+
+create policy "sc_cards anon read"
+  on public.sc_cards for select
+  to anon, authenticated
+  using (active = true);
 
 -- ─────────────────────────────────────────────────────────────────────
 -- Storage bucket — sc-media (public)

@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { loginWithPassword, logout, requireAdmin } from "@/lib/admin-auth";
 import { supabaseAdmin, SC_MEDIA_BUCKET } from "@/lib/supabase";
 import { estimateReadMinutes, slugifyInsightTitle } from "@/lib/insights";
+import { SOCIAL_KEYS, slugifyCardName } from "@/lib/cards";
 
 /* ── Auth ──────────────────────────────────────────────────────────── */
 
@@ -418,6 +419,83 @@ export async function deletePopupAction(formData: FormData) {
   revalidatePath("/admin/popups");
   revalidatePath("/");
   redirect("/admin/popups");
+}
+
+/* ── Digital cards (NFC / QR) ──────────────────────────────────────── */
+
+export async function saveCardAction(formData: FormData) {
+  await requireAdmin();
+  const id = formData.get("id") ? Number(formData.get("id")) : null;
+
+  const name = String(formData.get("name") ?? "").trim();
+  if (!name) throw new Error("Name is required");
+
+  let slug = String(formData.get("slug") ?? "").trim().toLowerCase();
+  if (!slug) slug = slugifyCardName(name);
+  slug = slugifyCardName(slug);
+  if (!slug) throw new Error("Could not build a link from that name");
+
+  // Build the socials array from the per-network fields, keeping only the
+  // ones actually filled in so the card renders just those icons.
+  const socials = SOCIAL_KEYS.map(({ key, label }) => {
+    const href = String(formData.get(`social_${key}`) ?? "").trim();
+    return href ? { label, href, icon: key } : null;
+  }).filter(Boolean);
+
+  const data = {
+    slug,
+    name,
+    chip: String(formData.get("chip") ?? "").trim() || null,
+    role:
+      String(formData.get("role") ?? "").trim() ||
+      "Smart Creation Group of Companies",
+    tagline: String(formData.get("tagline") ?? "").trim(),
+    photo: String(formData.get("photo") ?? "").trim() || null,
+    phone: String(formData.get("phone") ?? "").trim() || null,
+    email: String(formData.get("email") ?? "").trim() || null,
+    whatsapp: String(formData.get("whatsapp") ?? "").trim() || null,
+    whatsapp_text: String(formData.get("whatsapp_text") ?? "").trim() || null,
+    address1: String(formData.get("address1") ?? "").trim() || null,
+    address2: String(formData.get("address2") ?? "").trim() || null,
+    socials,
+    active: formData.get("active") === "on",
+    updated_at: new Date().toISOString(),
+  };
+
+  if (id) {
+    const { error } = await supabaseAdmin
+      .from("sc_cards")
+      .update(data)
+      .eq("id", id);
+    if (error) throw new Error(error.message);
+  } else {
+    const { error } = await supabaseAdmin.from("sc_cards").insert(data);
+    if (error) {
+      // Unique violation on slug — the friendliest thing to say is "pick
+      // another link", not the raw Postgres text.
+      if (error.code === "23505") {
+        throw new Error(
+          `The link /card/${slug} is already taken. Set a different link on the card.`,
+        );
+      }
+      throw new Error(error.message);
+    }
+  }
+  revalidatePath("/admin/cards");
+  revalidatePath(`/card/${slug}`);
+  redirect("/admin/cards");
+}
+
+export async function deleteCardAction(formData: FormData) {
+  await requireAdmin();
+  const id = Number(formData.get("id"));
+  if (!id) return;
+  const slug = String(formData.get("slug") ?? "").trim();
+  const { error } = await supabaseAdmin.from("sc_cards").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/cards");
+  if (slug) revalidatePath(`/card/${slug}`);
+  redirect("/admin/cards");
 }
 
 /* ── Instagram reels ───────────────────────────────────────────────── */
