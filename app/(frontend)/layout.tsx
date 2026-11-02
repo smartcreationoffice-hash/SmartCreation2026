@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 import { SiteHeader } from "@/components/site-header";
@@ -233,6 +234,20 @@ export default async function RootLayout({
             <PromoPopup popups={popups} />
           </ConsultationProvider>
         </LazyMotionProvider>
+
+        {/* Google tag (gtag.js) — Google Ads AW-17193293605 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17193293605"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17193293605');
+          `}
+        </Script>
       </body>
     </html>
   );
